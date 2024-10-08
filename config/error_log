@@ -1,0 +1,4 @@
+[16-Jun-2024 05:17:13 America/Chicago] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home2/atfleurs/public_html/config/database.php:16
+Stack trace:
+#0 {main}
+  thrown in /home2/atfleurs/public_html/config/database.php on line 16
