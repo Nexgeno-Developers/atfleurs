@@ -224,10 +224,10 @@
                                         @endphp
                                         @if (!empty($admin_products))
                                             <div class="card mb-3 shadow-sm border-0 rounded">
-                                                <div class="card-header p-3">
+                                                {{-- <div class="card-header p-3">
                                                     <h5 class="fs-16 fw-600 mb-0">{{ get_setting('site_name') }}
                                                         {{ translate('Products') }}</h5>
-                                                </div>
+                                                </div> --}}
                                                 <div class="card-body">
                                                     <ul class="list-group list-group-flush">
                                                         @php
@@ -240,7 +240,7 @@
                                                                     $physical = true;
                                                                 }
                                                             @endphp
-                                                            <li class="list-group-item">
+                                                            {{-- <li class="list-group-item">
                                                                 <div class="d-flex">
                                                                     <span class="mr-2">
                                                                         <img src="{{ uploaded_asset($product->thumbnail_img) }}"
@@ -250,7 +250,7 @@
                                                                     <span
                                                                         class="fs-14">{{ $product->getTranslation('name') }}</span>
                                                                 </div>
-                                                            </li>
+                                                            </li> --}}
                                                         @endforeach
                                                     </ul>
                                                     @if ($physical)
