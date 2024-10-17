@@ -83,7 +83,8 @@ if (auth()->user() != null) {
                 </li>
                 @if (Auth::check())
                     <li class="list-inline-item">
-                        <a href="{{ route('checkout.shipping_info') }}" class="btn btn-primary btn-sm">
+                        {{-- <a href="{{ route('checkout.shipping_info') }}" class="btn btn-primary btn-sm"> --}}
+                        <a href="{{ route('checkout.store_delivery_info2') }}" class="btn btn-primary btn-sm">
                             {{ translate('Checkout') }}
                         </a>
                     </li>

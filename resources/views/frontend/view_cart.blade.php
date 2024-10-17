@@ -13,7 +13,7 @@
                                 <h3 class="fs-14 fw-600 d-none d-lg-block">{{ translate('1. My Cart') }}</h3>
                             </div>
                         </div>
-                        <div class="col">
+                        {{-- <div class="col">
                             <div class="text-center">
                                 <i class="la-3x mb-2 opacity-50 las la-map"></i>
                                 <h3 class="fs-14 fw-600 d-none d-lg-block opacity-90">{{ translate('2. Shipping info') }}
@@ -26,17 +26,17 @@
                                 <h3 class="fs-14 fw-600 d-none d-lg-block opacity-90">{{ translate('3. Delivery info') }}
                                 </h3>
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="col">
                             <div class="text-center">
                                 <i class="la-3x mb-2 opacity-50 las la-credit-card"></i>
-                                <h3 class="fs-14 fw-600 d-none d-lg-block opacity-90">{{ translate('4. Payment') }}</h3>
+                                <h3 class="fs-14 fw-600 d-none d-lg-block opacity-90">{{ translate('2. Payment') }}</h3>
                             </div>
                         </div>
                         <div class="col">
                             <div class="text-center">
                                 <i class="la-3x mb-2 opacity-50 las la-check-circle"></i>
-                                <h3 class="fs-14 fw-600 d-none d-lg-block opacity-90">{{ translate('5. Confirmation') }}
+                                <h3 class="fs-14 fw-600 d-none d-lg-block opacity-90">{{ translate('3. Confirmation') }}
                                 </h3>
                             </div>
                         </div>
@@ -159,7 +159,7 @@
                                 </div>
                                 <div class="col-md-6 text-center text-md-right">
                                     @if (Auth::check())
-                                        <a href="{{ route('checkout.shipping_info') }}" class="btn btn-primary fw-600">
+                                        <a href="{{ route('checkout.store_delivery_info2') }}" class="btn btn-primary fw-600">
                                             {{ translate('Continue to Shipping') }}
                                         </a>
                                     @else
