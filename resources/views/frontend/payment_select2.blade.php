@@ -1365,7 +1365,7 @@
                     contentType: false,
                     processData: false,
                     success: function(response) {
-                        console.log(response);
+                        // console.log(response);
                         if (response.success === true) {
                             // Update the cart summary with the response view
                             $('#cart_summary').html(response.view);
@@ -1386,7 +1386,7 @@
                         }
                     },
                     error: function(xhr) {
-                        console.log(xhr.responseText);
+                        // console.log(xhr.responseText);
                         // Handle errors here
                         AIZ.plugins.notify('danger', 'An unexpected error occurred.');
                     }
@@ -1409,7 +1409,7 @@
                     contentType: false,
                     processData: false,
                     success: function(response) {
-                        console.log(response);
+                        // console.log(response);
                         if (response.success === true) {
                             // Update the cart summary with the response view
                             $('#cart_summary').html(response.view);
@@ -1428,7 +1428,7 @@
                         }
                     },
                     error: function(xhr) {
-                        console.log(xhr.responseText);
+                        // console.log(xhr.responseText);
                         // Handle errors here
                         AIZ.plugins.notify('danger', 'An unexpected error occurred.');
                     }
@@ -1477,8 +1477,6 @@
                 var $homeDeliveryRadio = $(
                     'input[name="shipping_type_{{ \App\Models\User::where('user_type', 'admin')->first()->id }}"][value="home_delivery"]'
                 );
-
-                console.log('home........');
 
                 $homeDeliveryRadio.trigger('click');
                 $homeDeliveryRadio.trigger('change');
@@ -1728,21 +1726,6 @@
         })
     </script>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Find the radio button with the value 'home_delivery' and click it
-            const homeDeliveryRadio = document.querySelector('input[type="radio"][value="home_delivery"]');
-
-            if (homeDeliveryRadio) {
-                homeDeliveryRadio.click();  // Trigger the click event
-                console.log('Radio button home_delivery clicked.');
-            } else {
-                console.log('Radio button with value home_delivery not found.');
-            }
-
-            console.log('DOM fully loaded and parsed.');
-        });
-    </script>
 
     <script type="text/javascript">
         function add_new_address() {
