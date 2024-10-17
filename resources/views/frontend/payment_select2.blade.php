@@ -240,11 +240,11 @@
                                         @endphp
                                         @if (!empty($admin_products))
                                             <div class="card mb-3 shadow-sm border-0 rounded">
-                                                <div class="card-header p-3">
+                                                {{-- <div class="card-header p-3">
                                                     <h5 class="fs-16 fw-600 mb-0">{{ get_setting('site_name') }}
                                                         {{ translate('Products') }}</h5>
-                                                </div>
-                                                <div class="card-body p-0">
+                                                </div> --}}
+                                                <div class="card-body">
                                                     <ul class="list-group list-group-flush">
                                                         @php
                                                             $physical = false;
@@ -256,7 +256,7 @@
                                                                     $physical = true;
                                                                 }
                                                             @endphp
-                                                            <li class="list-group-item">
+                                                            {{-- <li class="list-group-item">
                                                                 <div class="d-flex">
                                                                     <span class="mr-2">
                                                                         <img src="{{ uploaded_asset($product->thumbnail_img) }}"
@@ -266,7 +266,7 @@
                                                                     <span
                                                                         class="fs-14">{{ $product->getTranslation('name') }}</span>
                                                                 </div>
-                                                            </li>
+                                                            </li> --}}
                                                         @endforeach
                                                     </ul>
                                                     @if ($physical)
@@ -1381,7 +1381,7 @@
                     contentType: false,
                     processData: false,
                     success: function(response) {
-                        console.log(response);
+                        // console.log(response);
                         if (response.success === true) {
                             // Update the cart summary with the response view
                             $('#cart_summary').html(response.view);
@@ -1402,7 +1402,7 @@
                         }
                     },
                     error: function(xhr) {
-                        console.log(xhr.responseText);
+                        // console.log(xhr.responseText);
                         // Handle errors here
                         AIZ.plugins.notify('danger', 'An unexpected error occurred.');
                     }
@@ -1425,7 +1425,7 @@
                     contentType: false,
                     processData: false,
                     success: function(response) {
-                        console.log(response);
+                        // console.log(response);
                         if (response.success === true) {
                             // Update the cart summary with the response view
                             $('#cart_summary').html(response.view);
@@ -1444,7 +1444,7 @@
                         }
                     },
                     error: function(xhr) {
-                        console.log(xhr.responseText);
+                        // console.log(xhr.responseText);
                         // Handle errors here
                         AIZ.plugins.notify('danger', 'An unexpected error occurred.');
                     }
@@ -1493,8 +1493,6 @@
                 var $homeDeliveryRadio = $(
                     'input[name="shipping_type_{{ \App\Models\User::where('user_type', 'admin')->first()->id }}"][value="home_delivery"]'
                 );
-
-                console.log('home........');
 
                 $homeDeliveryRadio.trigger('click');
                 $homeDeliveryRadio.trigger('change');
@@ -1744,21 +1742,6 @@
         })
     </script>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Find the radio button with the value 'home_delivery' and click it
-            const homeDeliveryRadio = document.querySelector('input[type="radio"][value="home_delivery"]');
-
-            if (homeDeliveryRadio) {
-                homeDeliveryRadio.click();  // Trigger the click event
-                console.log('Radio button home_delivery clicked.');
-            } else {
-                console.log('Radio button with value home_delivery not found.');
-            }
-
-            console.log('DOM fully loaded and parsed.');
-        });
-    </script>
 
     <script type="text/javascript">
         function add_new_address() {

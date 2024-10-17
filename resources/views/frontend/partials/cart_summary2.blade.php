@@ -87,7 +87,7 @@
                         $product_shipping_cost = $cartItem['shipping_cost'];
                         
                         $shipping += $product_shipping_cost;
-                        
+
                         $product_name_with_choice = $product->getTranslation('name');
                         if ($cartItem['variant'] != null) {
                             $product_name_with_choice = $product->getTranslation('name') . ' - ' . $cartItem['variant'];
@@ -100,6 +100,9 @@
                                 × {{ $cartItem['quantity'] }}
                             </strong>
                         </td>
+                        <td><img src="{{ uploaded_asset($product->thumbnail_img) }}"
+                            class="img-fit size-60px rounded"
+                            alt="{{ $product->getTranslation('name') }}"></td>
                         <td class="product-total text-right">
                             <span
                                 class="pl-4 pr-0">{{ single_price(cart_product_price($cartItem, $cartItem->product, false, false) * $cartItem['quantity']) }}</span>
