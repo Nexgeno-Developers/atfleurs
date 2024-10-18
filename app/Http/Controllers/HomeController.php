@@ -58,7 +58,8 @@ class HomeController extends Controller
     public function login()
     {
         if (Auth::check()) {
-            return redirect()->route('home');
+             // Store a flash session with a welcome message
+            return redirect()->route('dashboard');
         }
         return view('frontend.user_login');
     }

@@ -8,8 +8,20 @@
             if($product->auction_product == 1) {
                 $product_url = route('auction-product', $product->slug);
             }
+
+            $product_tag = $product->product_tag_id;
+            if ($product_tag != null) {
+                $product_tag_name = DB::table('product_tag')
+                    ->select('name')
+                    ->where('status', 1)
+                    ->where('id', $product_tag)
+                    ->first();
+            }else{
+                $product_tag_name = null;
+            }
         @endphp
         <a href="{{ $product_url }}" class="d-block">
+            @if($product_tag_name != null)<p> {{$product_tag_name->name}} </p> @else <p> NOOOOOO </p> @endif
             <img loading="lazy"
                 class="img-fit lazyload mx-auto"
                 src="{{ static_asset('assets/img/spinner.webp') }}"
