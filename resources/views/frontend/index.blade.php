@@ -14,7 +14,7 @@
 }
 
 div#welcomeModal .modal-content {
-    background-image: url(assets/img/login_bg_image.png);
+    background-image: url(/public/assets/img/login_bg_image.png);
     background-size: cover;
     height: 234px;
     border: 0;
