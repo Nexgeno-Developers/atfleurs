@@ -163,7 +163,7 @@
                                                         <div class="border p-3 rounded mb-3 c-pointer text-center bg-white"
                                                             onclick="add_new_address()">
                                                             <i class="las la-plus la-2x mb-3"></i>
-                                                            <div class="alpha-7">{{ translate('Add New Address') }}</div>
+                                                            <div class="alpha-7">{{ translate('Add More') }}</div>
                                                         </div>
                                                     
                                                     </div>
@@ -190,7 +190,7 @@
 
                         <!-- Delivery Info -->
                         <div class="card rounded-0 border shadow-none"
-                            style="margin-bottom: 2rem; overflow: visible !important;">
+                            style="margin-bottom: 1rem; overflow: visible !important;">
                             <div class="card-header border-bottom-0 py-3 py-xl-4" id="headingDeliveryInfo" type="button"
                                 data-toggle="collapse" data-target="#collapseDeliveryInfo" aria-expanded="true"
                                 aria-controls="collapseDeliveryInfo">
@@ -244,7 +244,7 @@
                                                     <h5 class="fs-16 fw-600 mb-0">{{ get_setting('site_name') }}
                                                         {{ translate('Products') }}</h5>
                                                 </div> --}}
-                                                <div class="card-body">
+                                                <div class="card-body py-0">
                                                     <ul class="list-group list-group-flush">
                                                         @php
                                                             $physical = false;
@@ -270,9 +270,9 @@
                                                         @endforeach
                                                     </ul>
                                                     @if ($physical)
-                                                        <div class="row border-top pt-3">
+                                                        <div class="row ">
                                                             <div class="col-md-6">
-                                                                <h6 class="fs-15 fw-600">
+                                                                <h6 class="fs-15 fw-600 text-right pt-3">
                                                                     {{ translate('Choose Delivery Type') }}</h6>
                                                             </div>
                                                             <div class="col-md-6">
@@ -589,7 +589,7 @@
                             </div>
                             <div id="collapsePaymentInfo" class="collapse show" aria-labelledby="headingPaymentInfo"
                                 data-parent="#accordioncCheckoutInfo">
-                                <div class="card-body" id="payment_info">
+                                <div class="card-body py-0" id="payment_info">
                                     <form action="{{ route('payment.checkout') }}" class="form-default checkout-form"
                                         role="form" method="POST" id="checkout-form">
                                         @csrf
@@ -601,7 +601,7 @@
                                                     {{ translate('Choose Delivery Date And Time') }}
                                                 </h3>
                                             </div>
-                                            <div class="input-group px-3">
+                                            <div class="input-group">
                                                 <div class="input-group-text">Select date and time</div>
                                                 <?php
                                                 // Set the timezone to India Standard Time
@@ -624,7 +624,7 @@
                                                     {{ translate('Any additional info?') }}
                                                 </h3>
                                             </div>
-                                            <div class="form-group px-3 pt-3">
+                                            <div class="form-group pt-3">
                                                 <textarea name="additional_info" rows="5" class="form-control"
                                                     placeholder="{{ translate('Type your text') }}"></textarea>
                                             </div>

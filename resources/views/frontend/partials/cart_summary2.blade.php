@@ -1,8 +1,14 @@
+<style>
+    .width-50
+    {
+        width:50px !important;
+    }
+</style>
 <div class="card rounded border-0 shadow-sm">
     <div class="card-header">
         <h3 class="fs-16 fw-600 mb-0">{{ translate('Summary') }}</h3>
         <div class="text-right">
-            <span class="badge badge-inline badge-primary">
+            <span class="badge badge-inline badge-primary width-50">
                 {{ count($carts) }}
                 {{ translate('Items') }}
             </span>
@@ -65,8 +71,8 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th class="product-name">{{ translate('Product') }}</th>
-                    <th class="product-total text-right">{{ translate('Total') }}</th>
+                    <th class="product-name border-0">{{ translate('Product') }}</th>
+                    <th class="product-total text-right border-0">{{ translate('Total') }}</th>
                 </tr>
             </thead>
             <tbody>
