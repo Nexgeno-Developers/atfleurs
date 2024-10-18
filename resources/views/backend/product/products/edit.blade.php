@@ -839,7 +839,33 @@
                             </div>
                         </div>
                     </div>
-                </div> 
+                </div>
+                
+                
+                <!--product tag-->
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0 h6">{{translate('Product Tag')}}</h5>
+                    </div>
+                    <div class="card-body">
+                        <label for="gst">
+                            {{translate('Tag')}}
+                        </label>
+                        @php
+                            $product_tag = DB::table('product_tag')->select('id', 'name')->where('status', 1)->get();
+                        @endphp
+                        <div class="form-row">
+                            <div class="form-group col-md-12">
+                                <select class="form-control aiz-selectpicker" name="product_tag_id">
+                                    <option value="">Select Product Tag</option>
+                                    @foreach($product_tag as $tag)
+                                        <option value="{{ $tag->id }}"  @if($product->product_tag_id) selected @endif>{{ $tag->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 
 
             </div>

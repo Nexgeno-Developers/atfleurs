@@ -118,11 +118,23 @@
                                    
                             @foreach ($todays_deal_products as $key => $product)
                                 @if ($product != null)
-                              
                                  <a href="{{ route('product', $product->slug) }}" class="d-block p-2 text-reset rounded">
+                                        @php 
+                                            $product_tag = $product->product_tag_id;
+                                            if ($product_tag != null) {
+                                                $product_tag_name = DB::table('product_tag')
+                                                    ->select('name')
+                                                    ->where('status', 1)
+                                                    ->where('id', $product_tag)
+                                                    ->first();
+                                            }else{
+                                                $product_tag_name = null;
+                                            }
+                                        @endphp
                                         <div class="gutters-5 align-items-center">
                                             <div class="col-xxl">
                                                 <div class="img image_box_shadow">
+                                                    @if($product_tag_name != null)<p> {{$product_tag_name->name}} </p>@endif
                                                     <img loading="lazy"
                                                         class="lazyload img-fit"
                                                         src="{{ static_asset('assets/img/spinner.webp') }}"
@@ -794,6 +806,30 @@ your feelings</h3>
     </div>
 </section>
 
+
+@if(session('welcome_message'))
+    <!-- Modal HTML structure -->
+    <div id="welcomeModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="welcomeModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="welcomeModalLabel">Welcome!</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Welcome, {{  Auth::user()->name . '!' }}</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    @php session()->forget('welcome_message'); @endphp
+@endif
+
 @endsection
 
 @section('script')
@@ -1006,6 +1042,14 @@ document.addEventListener("DOMContentLoaded", function() {
         });
       });
       
+    </script>
+
+
+    <!-- Trigger the modal using JavaScript -->
+    <script>
+        $(document).ready(function() {
+            $('#welcomeModal').modal('show');
+        });
     </script>
     
 @endsection

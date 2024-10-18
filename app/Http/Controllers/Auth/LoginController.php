@@ -282,6 +282,8 @@ class LoginController extends Controller
             return redirect()->route('seller.dashboard');
         } else {
 
+            session()->put('welcome_message', 'Welcome');
+
             if (session('link') != null) {
                 return redirect(session('link'));
             } else {
@@ -452,7 +454,7 @@ class LoginController extends Controller
             session()->forget('otp_timestamp');
             session()->forget('otp_login');
             session()->forget('user_id');
-            
+
             $response = [
                 'status' => true,
                 'notification' => 'Login successfully',
