@@ -10,7 +10,7 @@
     background: #fff !important;
 }
 .handwriting_img img {
-    border-radius: 30px;
+    border-radius: 31px;
 }
 
 div#welcomeModal .modal-content {
