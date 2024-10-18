@@ -271,11 +271,11 @@
                                                     </ul>
                                                     @if ($physical)
                                                         <div class="row ">
-                                                            <div class="col-md-6">
+                                                            <div class="col-md-5">
                                                                 <h6 class="fs-15 fw-600 text-right pt-3">
                                                                     {{ translate('Choose Delivery Type') }}</h6>
                                                             </div>
-                                                            <div class="col-md-6">
+                                                            <div class="col-md-7">
                                                                 <div class="row gutters-5">
                                                                     @if (get_setting('shipping_type') != 'carrier_wise_shipping')
                                                                         <div class="col-6">

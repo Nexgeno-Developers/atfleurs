@@ -21,7 +21,7 @@
             }
         @endphp
         <a href="{{ $product_url }}" class="d-block">
-            @if($product_tag_name != null)<p> {{$product_tag_name->name}} </p> @else <p> NOOOOOO </p> @endif
+            @if($product_tag_name != null)<p class="badges_box animationEffect" > {{$product_tag_name->name}} </p> @else <p class="badges_box animationEffect"> BEST SELLER </p> @endif
             <img loading="lazy"
                 class="img-fit lazyload mx-auto"
                 src="{{ static_asset('assets/img/spinner.webp') }}"
