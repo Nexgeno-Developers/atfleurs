@@ -159,9 +159,12 @@
                                 </div>
                                 <div class="col-md-6 text-center text-md-right">
                                     @if (Auth::check())
-                                        <a href="{{ route('checkout.store_delivery_info2') }}" class="btn btn-primary fw-600">
+                                        <a href="{{ route('checkout.store_delivery_info') }}" class="btn btn-primary fw-600">
                                             {{ translate('Continue to Shipping') }}
                                         </a>
+                                        {{-- <a href="{{ route('checkout.shipping_info') }}" class="btn btn-primary fw-600">
+                                            {{ translate('Continue to Shipping') }}
+                                        </a> --}}
                                     @else
                                         <button class="btn btn-primary fw-600"
                                             onclick="showCheckoutModal()">{{ translate('Continue to Shipping') }}</button>

@@ -68,9 +68,9 @@
 				<tr>
 					<td>
 						@if($logo != null)
-							<img loading="lazy"  src="{{ uploaded_asset($logo) }}" height="40" style="display:inline-block;">
+							<img loading="lazy"  src="https://www.atfleurs.com/public/uploads/all/GlSAfVRZ8L2h63Cd42m12yIbcgOIQ1AduUybmPgn.webp" height="40" style="display:inline-block;">
 						@else
-							<img loading="lazy"  src="{{ static_asset('assets/img/logo.png') }}" height="40" style="display:inline-block;">
+							<img loading="lazy"  src="https://www.atfleurs.com/public/uploads/all/GlSAfVRZ8L2h63Cd42m12yIbcgOIQ1AduUybmPgn.webp" height="40" style="display:inline-block;">
 						@endif
 					</td>
 				</tr>
@@ -100,6 +100,10 @@
             <table>
 				@php
 					$shipping_address = json_decode($order->shipping_address);
+
+					echo"<pre>";
+					var_dump($order);
+					echo"</pre>";
 				@endphp
 				<tr><td class="strong small gry-color">{{ translate('Bill to') }}:</td></tr>
 				<tr><td class="strong">{{ $shipping_address->name }}</td></tr>

@@ -12,111 +12,6 @@
 .handwriting_img img {
     border-radius: 31px;
 }
-
-div#welcomeModal .modal-content {
-    background-image: url(/public/assets/img/login_bg_image.png);
-    background-size: cover;
-    height: 234px;
-    border: 0;
-    border-radius: 0;
-}
-
-div#welcomeModal .modal-dialog {
-    max-width: 345px;
-}
-
-div#welcomeModal h4 {
-    text-align: center;
-    font-size: 34px;
-    font-family: ui-serif;
-    padding-top: 0;
-    font-weight: bold;
-    color: #e18a14b3;
-}
-
-div#welcomeModal p {
-    text-align: center;
-    font-size: 16px;
-}
-
-div#welcomeModal  .modal-header {
-    border: 0;
-}
-
-div#welcomeModal button.close {
-    opacity: 1;
-    z-index: 99;
-    margin: -3rem -2rem 1rem auto;
-    background: #eaac59;
-    color: #fff;
-    padding: 5px 5px;
-    border-radius: 100%;
-}
-div#welcomeModal {
-    margin-top: -4%;
-}
-
-div#welcomeModal .modal-header .close:before {
-    font-size: 12px;
-}
-
-@keyframes confetti-slow {
-            0% {
-                transform: translate3d(0, 0, 0) rotateX(0) rotateY(0);
-            }
-            100% {
-                transform: translate3d(25px, 105vh, 0) rotateX(360deg) rotateY(180deg);
-            }
-        }
-        @keyframes confetti-medium {
-            0% {
-                transform: translate3d(0, 0, 0) rotateX(0) rotateY(0);
-            }
-            100% {
-                transform: translate3d(100px, 105vh, 0) rotateX(100deg) rotateY(360deg);
-            }
-        }
-        @keyframes confetti-fast {
-            0% {
-                transform: translate3d(0, 0, 0) rotateX(0) rotateY(0);
-            }
-            100% {
-                transform: translate3d(-50px, 105vh, 0) rotateX(10deg) rotateY(250deg);
-            }
-        }
-        .confetti-container {
-            perspective: 700px;
-            position: absolute;
-            overflow: hidden;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-        }
-        .confetti {
-            position: absolute;
-            z-index: 1;
-            top: -10px;
-            border-radius: 0;
-        }
-        .confetti--animation-slow {
-            animation: confetti-slow 2.25s linear 1 forwards;
-        }
-        .confetti--animation-medium {
-            animation: confetti-medium 1.75s linear 1 forwards;
-        }
-        .confetti--animation-fast {
-            animation: confetti-fast 1.25s linear 1 forwards;
-        }
-
-
-         @media(max-width:767px)
-         {
-            div#welcomeModal .modal-dialog {
-    max-width: 100%;
-    margin: 20px;
-}
-         }
 </style>
     {{-- Categories , Sliders . Today's deal --}}
     <div class="home-banner-area">
@@ -223,23 +118,25 @@ div#welcomeModal .modal-header .close:before {
                                    
                             @foreach ($todays_deal_products as $key => $product)
                                 @if ($product != null)
+                                
+                                @php
+                                    $product_tag = $product->product_tag_id;
+                                    if ($product_tag != null) {
+                                        $product_tag_name = DB::table('product_tag')
+                                            ->select('name')
+                                            ->where('status', 1)
+                                            ->where('id', $product_tag)
+                                            ->first();
+                                    }else{
+                                        $product_tag_name = null;
+                                    }
+                                @endphp
+            
                                  <a href="{{ route('product', $product->slug) }}" class="d-block p-2 text-reset rounded">
-                                        @php 
-                                            $product_tag = $product->product_tag_id;
-                                            if ($product_tag != null) {
-                                                $product_tag_name = DB::table('product_tag')
-                                                    ->select('name')
-                                                    ->where('status', 1)
-                                                    ->where('id', $product_tag)
-                                                    ->first();
-                                            }else{
-                                                $product_tag_name = null;
-                                            }
-                                        @endphp
                                         <div class="gutters-5 align-items-center">
                                             <div class="col-xxl">
                                                 <div class="img image_box_shadow">
-                                                    @if($product_tag_name != null)<p> {{$product_tag_name->name}} </p>@endif
+                                                    @if($product_tag_name != null)<p class="badges_box animationEffect" > {{$product_tag_name->name}} </p> @endif
                                                     <img loading="lazy"
                                                         class="lazyload img-fit"
                                                         src="{{ static_asset('assets/img/spinner.webp') }}"
@@ -595,7 +492,7 @@ div#welcomeModal .modal-header .close:before {
 change Just express 
 your feelings</h3>
 
-<a href="/category/bouquets-valentines" class="btn btn-primary balsamiq_font">Do It Now</a>
+<a href="/" class="btn btn-primary balsamiq_font">Do It Now</a>
 
 
 </div>
@@ -911,29 +808,6 @@ your feelings</h3>
     </div>
 </section>
 
-
-@if(session('welcome_message'))
-    <!-- Modal HTML structure -->
-    <div id="welcomeModal" class="modal fade js-container" tabindex="-1" role="dialog" aria-labelledby="welcomeModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content ">
-                <div class="modal-header">
-                   
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <h4>Welcome</h4>
-                    <p>{{  Auth::user()->name . '!' }}</p>
-                </div>
-                
-            </div>
-        </div>
-    </div>
-    @php session()->forget('welcome_message'); @endphp
-@endif
-
 @endsection
 
 @section('script')
@@ -1146,76 +1020,6 @@ document.addEventListener("DOMContentLoaded", function() {
         });
       });
       
-    </script>
-
-
-    <!-- Trigger the modal using JavaScript -->
-    <script>
-        $(document).ready(function() {
-            $('#welcomeModal').modal('show');
-        });
-    </script>
-
-     <script>
-        const Confettiful = function (el) {
-            this.el = el;
-            this.containerEl = null;
-
-            this.confettiFrequency = 3;
-            this.confettiColors = ["#fce18a", "#ff726d", "#b48def", "#f4306d"];
-            this.confettiAnimations = ["slow", "medium", "fast"];
-
-            this._setupElements();
-            this._renderConfetti();
-        };
-
-        Confettiful.prototype._setupElements = function () {
-            const containerEl = document.createElement("div");
-            const elPosition = this.el.style.position;
-
-            if (elPosition !== "relative" && elPosition !== "absolute") {
-                this.el.style.position = "relative";
-            }
-
-            containerEl.classList.add("confetti-container");
-            this.el.appendChild(containerEl);
-            this.containerEl = containerEl;
-        };
-
-        Confettiful.prototype._renderConfetti = function () {
-            this.confettiInterval = setInterval(() => {
-                const confettiEl = document.createElement("div");
-                const confettiSize = Math.floor(Math.random() * 3) + 7 + "px";
-                const confettiBackground = this.confettiColors[
-                    Math.floor(Math.random() * this.confettiColors.length)
-                ];
-                const confettiLeft = Math.floor(Math.random() * this.el.offsetWidth) + "px";
-                const confettiAnimation = this.confettiAnimations[
-                    Math.floor(Math.random() * this.confettiAnimations.length)
-                ];
-
-                confettiEl.classList.add(
-                    "confetti",
-                    "confetti--animation-" + confettiAnimation
-                );
-                confettiEl.style.left = confettiLeft;
-                confettiEl.style.width = confettiSize;
-                confettiEl.style.height = confettiSize;
-                confettiEl.style.backgroundColor = confettiBackground;
-
-                confettiEl.removeTimeout = setTimeout(function () {
-                    confettiEl.parentNode.removeChild(confettiEl);
-                }, 3000);
-
-                this.containerEl.appendChild(confettiEl);
-            }, 25);
-			  // Stop the confetti after 5 seconds
-            setTimeout(() => {
-                clearInterval(this.confettiInterval);
-            }, 10000);
-        };
-
-        window.confettiful = new Confettiful(document.querySelector(".js-container"));
     </script>
     
 @endsection
