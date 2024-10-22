@@ -596,44 +596,54 @@
 
                                         <input type="hidden" name="owner_id" value="{{ $carts[0]['owner_id'] }}">
                                         <div class="card rounded border-0 shadow-sm">
-                                            <div class="card-header p-3">
-                                                <h3 class="fs-16 fw-600 mb-0">
+
+                                        <div class="row">
+                                            <div class="col-md-5 mb-4">
+                                                <h3 class="fs-16 fw-600 mb-0 pb-2">
                                                     {{ translate('Choose Delivery Date And Time') }}
                                                 </h3>
+                                               <div class="input-group">
+                                                    <label for="datetime" class="clickable-box">
+                                                        <?php
+                                                        // Set the timezone to India Standard Time
+                                                        date_default_timezone_set('Asia/Kolkata');
+                                                        
+                                                        // Get the current date and time
+                                                        $currentDateTime = new DateTime();
+                                                        
+                                                        // Create a DateInterval of 24 hours
+                                                        $interval = new DateInterval('PT24H');
+                                                        
+                                                        // Add the interval to the current date and time
+                                                        $minDateTime = $currentDateTime->add($interval)->format('Y-m-d\TH:i');
+                                                        ?>
+                                                        <input type="datetime-local" min="<?= $minDateTime ?>" id="datetime"
+                                                            name="delivery_datetime" class="form-control" style="pointer-events: none;">
+                                                    </label>
+                                                </div>
                                             </div>
-                                            <div class="input-group">
-                                                <div class="input-group-text">Select date and time</div>
-                                                <?php
-                                                // Set the timezone to India Standard Time
-                                                date_default_timezone_set('Asia/Kolkata');
-                                                
-                                                // Get the current date and time
-                                                $currentDateTime = new DateTime();
-                                                
-                                                // Create a DateInterval of 24 hours
-                                                $interval = new DateInterval('PT24H');
-                                                
-                                                // Add the interval to the current date and time
-                                                $minDateTime = $currentDateTime->add($interval)->format('Y-m-d\TH:i');
-                                                ?>
-                                                <input type="datetime-local" min="<?= $minDateTime ?>" id="datetime"
-                                                    name="delivery_datetime" class="form-control">
+
+
+                                            <div class="col-md-7">
+                                                    <div class="pb-2">
+                                                    <h3 class="fs-16 fw-600 mb-0">
+                                                        {{ translate('Any additional info?') }}
+                                                    </h3>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <textarea name="additional_info" rows="3" class="form-control"
+                                                        placeholder="{{ translate('Type your text') }}"></textarea>
+                                                </div>
+                                           
                                             </div>
-                                            <div class="card-header p-3">
-                                                <h3 class="fs-16 fw-600 mb-0">
-                                                    {{ translate('Any additional info?') }}
-                                                </h3>
-                                            </div>
-                                            <div class="form-group pt-3">
-                                                <textarea name="additional_info" rows="5" class="form-control"
-                                                    placeholder="{{ translate('Type your text') }}"></textarea>
-                                            </div>
-                                            <div class="card-header p-3">
-                                                <h3 class="fs-16 fw-600 mb-0">
+                                        </div>
+                                           
+                                            <h3 class="fs-16 fw-600 mb-0 mt-2">
                                                     {{ translate('Select a payment option') }}
                                                 </h3>
-                                            </div>
                                             <div class="card-body text-center">
+                                                
                                                 <div class="row">
                                                     <div class="col-xxl-8 col-xl-10 mx-auto">
                                                         <div class="row gutters-10">
