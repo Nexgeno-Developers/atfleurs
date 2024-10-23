@@ -113,68 +113,66 @@ class CheckoutController extends Controller
 
      public function store_shipping_info(Request $request)
     {
-        if ($request->address_id == null) {
-            flash(translate("Please add shipping address"))->warning();
-            return back();
-        }
+        // if ($request->address_id == null) {
+        //     flash(translate("Please add shipping address"))->warning();
+        //     return back();
+        // }
 
-        $carts = Cart::where('user_id', Auth::user()->id)->get();
-        if($carts->isEmpty()) {
-            flash(translate('Your cart is empty'))->warning();
-            return redirect()->route('home');
-        }
+        // $carts = Cart::where('user_id', Auth::user()->id)->get();
+        // if($carts->isEmpty()) {
+        //     flash(translate('Your cart is empty'))->warning();
+        //     return redirect()->route('home');
+        // }
         
-        //zipcode availibility check
-        if ($carts && count($carts) > 0 && !empty($request->address_id)) {
-            $zp_error = [];
-            $shipping_info = Address::where('id', $request->address_id)->first();
+        // //zipcode availibility check
+        // if ($carts && count($carts) > 0 && !empty($request->address_id)) {
+        //     $zp_error = [];
+        //     $shipping_info = Address::where('id', $request->address_id)->first();
         
-            foreach ($carts as $key => $cartItem) {
-                $product = Product::find($cartItem['product_id']);
-                // $zp = DB::table('zipcode_availibility')->where('id', $product->zipcode_availibility_id)->first();
-                $zp = DB::table('zipcode_availibility')->where('id', json_decode($product->zipcode_availibility_id))->first();
-                if (isset($zp->id)) {
-                    $type = $zp->type;
-                    $zipcodes = json_decode($zp->zipcode);
+        //     foreach ($carts as $key => $cartItem) {
+        //         $product = Product::find($cartItem['product_id']);
+        //         // $zp = DB::table('zipcode_availibility')->where('id', $product->zipcode_availibility_id)->first();
+        //         $zp = DB::table('zipcode_availibility')->where('id', json_decode($product->zipcode_availibility_id))->first();
+        //         if (isset($zp->id)) {
+        //             $type = $zp->type;
+        //             $zipcodes = json_decode($zp->zipcode);
         
-                    if ($type == 'allow') {
-                        if (!in_array($shipping_info->postal_code, $zipcodes)) {
-                            $zp_error[] = $product->name . ' Not deliverable at ' . $shipping_info->postal_code;
-                        }
-                    }
-                }
-            }
+        //             if ($type == 'allow') {
+        //                 if (!in_array($shipping_info->postal_code, $zipcodes)) {
+        //                     $zp_error[] = $product->name . ' Not deliverable at ' . $shipping_info->postal_code;
+        //                 }
+        //             }
+        //         }
+        //     }
         
-            if (!empty($zp_error)) {
-                foreach ($zp_error as $error) {
-                    flash(translate($error))->error();
-                }
-                return redirect()->route('cart');
-            }
-        }       
+        //     if (!empty($zp_error)) {
+        //         foreach ($zp_error as $error) {
+        //             flash(translate($error))->error();
+        //         }
+        //         return redirect()->route('cart');
+        //     }
+        // }       
         
-        foreach ($carts as $key => $cartItem) {
-            $cartItem->address_id = $request->address_id;
-            $cartItem->save();
-        }
+        // foreach ($carts as $key => $cartItem) {
+        //     $cartItem->address_id = $request->address_id;
+        //     $cartItem->save();
+        // }
 
-        $carrier_list = array();
-        if(get_setting('shipping_type') == 'carrier_wise_shipping'){
-            $zone = \App\Models\Country::where('id',$carts[0]['address']['country_id'])->first()->zone_id;
+        // $carrier_list = array();
+        // if(get_setting('shipping_type') == 'carrier_wise_shipping'){
+        //     $zone = \App\Models\Country::where('id',$carts[0]['address']['country_id'])->first()->zone_id;
 
-            $carrier_query = Carrier::query();
-            $carrier_query->whereIn('id',function ($query) use ($zone) {
-                $query->select('carrier_id')->from('carrier_range_prices')
-                ->where('zone_id', $zone);
-            })->orWhere('free_shipping', 1);
-            $carrier_list = $carrier_query->get();
-        }
+        //     $carrier_query = Carrier::query();
+        //     $carrier_query->whereIn('id',function ($query) use ($zone) {
+        //         $query->select('carrier_id')->from('carrier_range_prices')
+        //         ->where('zone_id', $zone);
+        //     })->orWhere('free_shipping', 1);
+        //     $carrier_list = $carrier_query->get();
+        // }
         
-        return view('frontend.delivery_info', compact('carts','carrier_list'));
-    }
+        // return view('frontend.delivery_info', compact('carts','carrier_list'));
 
-    public function store_shipping_info2(Request $request)
-    {
+
         if ($request->address_id == null) {
             return response()->json([
                 'success' => false,
@@ -350,7 +348,7 @@ class CheckoutController extends Controller
             
             
            $zipcode_availability = DB::table('zipcode_availibility')
-            ->whereJsonContains('zipcode', ["$shipping_info->postal_code"])
+            ->whereJsonContains('zipcode', $shipping_info->postal_code ?? '')
             ->orderBy('charges', 'desc')
             ->select('charges')
             ->first();
@@ -363,7 +361,7 @@ class CheckoutController extends Controller
                 
             } else {
                 // Log if no charges found
-                \Illuminate\Support\Facades\Log::info('No charges found for zipcode: ' . $shipping_info->postal_code);
+                \Illuminate\Support\Facades\Log::info('No charges found for zipcode: ' . ($shipping_info->postal_code ?? ''));
             }
                 // Add charges to shipping
                 $shipping += $charges;  
@@ -405,7 +403,12 @@ class CheckoutController extends Controller
             }
             $total = $subtotal + $tax + $shipping + $charges;
 
-            return view('frontend.payment_select', compact('carts', 'shipping_info', 'total'));
+            return response()->json([
+                'success' => true,
+                'view' => view('frontend.partials.cart_summary2', compact('carts'))->render()
+            ]);
+
+            // return view('frontend.payment_select', compact('carts', 'shipping_info', 'total'));
 
         } else {
             flash(translate('Your Cart was empty'))->warning();

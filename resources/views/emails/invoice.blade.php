@@ -100,16 +100,14 @@
             <table>
 				@php
 					$shipping_address = json_decode($order->shipping_address);
-
-					echo"<pre>";
-					var_dump($order);
-					echo"</pre>";
+					$additional_info = 	$order->additional_info;
 				@endphp
 				<tr><td class="strong small gry-color">{{ translate('Bill to') }}:</td></tr>
 				<tr><td class="strong">{{ $shipping_address->name }}</td></tr>
 				<tr><td class="gry-color small">{{ $shipping_address->address }}, {{ $shipping_address->city }}, {{ $shipping_address->country }}</td></tr>
 				<tr><td class="gry-color small">{{ translate('Email') }}: {{ $shipping_address->email }}</td></tr>
 				<tr><td class="gry-color small">{{ translate('Phone') }}: {{ $shipping_address->phone }}</td></tr>
+				<tr><td class="gry-color strong">{{ translate('Additional Info') }} :  {{ $additional_info }}</td></tr>
 			</table>
 		</div>
 
