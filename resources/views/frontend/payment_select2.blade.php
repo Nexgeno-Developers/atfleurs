@@ -10,6 +10,14 @@
     top: 15px;
 }
 
+@media(max-width:767px) {
+    h6.fs-15.fw-600.text-right.pt-3
+    {
+        text-align:start !important;
+        padding-bottom:5px;
+    }
+}
+
 
 </style>
     <section class="mb-4 pt-5">
@@ -244,7 +252,7 @@
                                                     <h5 class="fs-16 fw-600 mb-0">{{ get_setting('site_name') }}
                                                         {{ translate('Products') }}</h5>
                                                 </div> --}}
-                                                <div class="card-body py-0">
+                                                <div class="card-body p-0">
                                                     <ul class="list-group list-group-flush">
                                                         @php
                                                             $physical = false;
@@ -645,14 +653,14 @@
                                             <div class="card-body text-center">
                                                 
                                                 <div class="row">
-                                                    <div class="col-xxl-8 col-xl-10 mx-auto">
+                                                    <div class="col-xxl-8 col-xl-12 mx-auto">
                                                         <div class="row gutters-10">
                                                             @if (get_setting('ccavenue_payment') == 1)
-                                                                <div class="col-6 col-md-4">
+                                                                <div class="col-6 col-md-3">
                                                                     <label class="aiz-megabox d-block mb-3">
                                                                         <input value="ccavenue" class="online_payment"
                                                                             type="radio" name="payment_option" checked>
-                                                                        <span class="d-block aiz-megabox-elem p-3">
+                                                                        <span class="d-block aiz-megabox-elem p-2">
                                                                             <img src="{{ static_asset('assets/img/cards/ccavenue.png') }}"
                                                                                 class="img-fluid mb-2">
                                                                             <span class="d-block text-center">
@@ -664,7 +672,7 @@
                                                                 </div>
                                                             @endif
                                                             @if (get_setting('paypal_payment') == 1)
-                                                                <div class="col-6 col-md-4">
+                                                                <div class="col-6 col-md-3">
                                                                     <label class="aiz-megabox d-block mb-3">
                                                                         <input value="paypal" class="online_payment"
                                                                             type="radio" name="payment_option" checked>
@@ -680,7 +688,7 @@
                                                                 </div>
                                                             @endif
                                                             @if (get_setting('stripe_payment') == 1)
-                                                                <div class="col-6 col-md-4">
+                                                                <div class="col-6 col-md-3">
                                                                     <label class="aiz-megabox d-block mb-3">
                                                                         <input value="stripe" class="online_payment"
                                                                             type="radio" name="payment_option" checked>

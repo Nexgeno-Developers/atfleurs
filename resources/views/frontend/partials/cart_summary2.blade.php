@@ -68,6 +68,8 @@
             </div>
         @endif
 
+        <div class="table-responsive">
+
         <table class="table">
             <thead>
                 <tr>
@@ -117,6 +119,7 @@
                 @endforeach
             </tbody>
         </table>
+                    </div>
         <input type="hidden" id="sub_total" value="{{ $subtotal }}">
         <table class="table">
 
