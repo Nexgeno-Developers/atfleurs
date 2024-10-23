@@ -86,9 +86,9 @@
                                         @if (Auth::check())
                                             <div class="shadow-sm bg-white rounded mb-4">
                                                 <div class="row gutters-5">
+                                                @if(Auth::user()->addresses != null)
                                                     <div class="col-md-10">
                                                         <div class="row">
-                                                    @if(Auth::user()->addresses != null)
                                                         @foreach (Auth::user()->addresses as $key => $address)
                                                             <div class="col-md-6 mb-0 p-2">
                                                                 <label class="aiz-megabox d-block bg-white mb-0">
@@ -154,10 +154,11 @@
                                                                 </div>
                                                             </div>
                                                         @endforeach
-                                                    @endif
 
-                                                     </div>
-                                                     </div>
+
+                                                        </div>
+                                                    </div>
+                                                @endif
                                                     <input type="hidden" name="checkout_type" value="logged">
                                                     <div class="col-md-2 pl-3 pt-2">
                                                         <div class="border p-3 rounded mb-3 c-pointer text-center bg-white"
