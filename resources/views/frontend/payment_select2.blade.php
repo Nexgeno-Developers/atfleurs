@@ -1408,13 +1408,13 @@
                                 });
                             }
                         } else {
-                            AIZ.plugins.notify('danger', 'An unknown error occurred 1.');
+                            AIZ.plugins.notify('danger', 'An unexpected error occurred, Please Try Again');
                         }
                     },
                     error: function(xhr) {
                         // console.log(xhr.responseText);
                         // Handle errors here
-                        AIZ.plugins.notify('danger', 'An unexpected error occurred 2.');
+                        AIZ.plugins.notify('danger', 'An unexpected error occurred, Please Try Again');
                     }
                 });
             }
@@ -1450,13 +1450,13 @@
                                 });
                             }
                         } else {
-                            AIZ.plugins.notify('danger', 'An unknown error occurred 3.');
+                            AIZ.plugins.notify('danger', 'An unexpected error occurred, Please Try Again');
                         }
                     },
                     error: function(xhr) {
                         // console.log(xhr.responseText);
                         // Handle errors here
-                        AIZ.plugins.notify('danger', 'An unexpected error occurred 4.');
+                        AIZ.plugins.notify('danger', 'An unexpected error occurred, Please Try Again');
                     }
                 });
             }
