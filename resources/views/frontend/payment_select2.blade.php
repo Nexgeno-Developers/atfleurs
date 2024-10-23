@@ -86,7 +86,7 @@
                                         @if (Auth::check())
                                             <div class="shadow-sm bg-white rounded mb-4">
                                                 <div class="row gutters-5">
-                                                @if(Auth::user()->addresses != null)
+                                                @if(Auth::user()->addresses != null && count(Auth::user()->addresses) != 0)
                                                     <div class="col-md-10">
                                                         <div class="row">
                                                         @foreach (Auth::user()->addresses as $key => $address)
