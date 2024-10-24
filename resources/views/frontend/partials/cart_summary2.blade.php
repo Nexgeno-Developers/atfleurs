@@ -109,7 +109,7 @@
                             </strong>
                         </td>
                         <td><img src="{{ uploaded_asset($product->thumbnail_img) }}"
-                            class="img-fit size-60px rounded"
+                            class="img-fit size-50px rounded"
                             alt="{{ $product->getTranslation('name') }}"></td>
                         <td class="product-total text-right">
                             <span

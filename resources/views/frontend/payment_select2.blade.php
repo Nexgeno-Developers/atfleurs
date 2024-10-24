@@ -9,6 +9,30 @@
     .top-15 {
     top: 15px;
 }
+td.product-name {
+    font-size: 12px;
+    
+    padding: 10px 0px;
+}
+.w-100
+{
+    width:100px !important;
+}
+.date_time1 .form-group {
+    display: block;
+}
+
+.date_time1 .form-group input {
+    display: block !important;!i;!;
+}
+
+.input-group.date_time1 {
+    display: block !important;!i;!;
+}
+
+.date_time1 label.clickable-box {
+    display: block;
+}
 
 @media(max-width:767px) {
     h6.fs-15.fw-600.text-right.pt-3
@@ -93,7 +117,7 @@
                                         @csrf
                                         @if (Auth::check())
                                             <div class="shadow-sm bg-white rounded mb-4">
-                                                <div class="row gutters-5">
+                                                <div class="row justify-content-center gutters-5">
                                                 @if(Auth::user()->addresses != null && count(Auth::user()->addresses) != 0)
                                                     <div class="col-md-10">
                                                         <div class="row">
@@ -172,7 +196,7 @@
                                                         <div class="border p-3 rounded mb-3 c-pointer text-center bg-white"
                                                             onclick="add_new_address()">
                                                             <i class="las la-plus la-2x mb-3"></i>
-                                                            <div class="alpha-7">{{ translate('Add More') }}</div>
+                                                            <div class="alpha-7">{{ translate('Add Address') }}</div>
                                                         </div>
                                                     
                                                     </div>
@@ -607,11 +631,11 @@
                                         <div class="card rounded border-0 shadow-sm">
 
                                         <div class="row">
-                                            <div class="col-md-5 mb-4">
+                                            <div class="col-md-12 mb-4">
                                                 <h3 class="fs-16 fw-600 mb-0 pb-2">
                                                     {{ translate('Choose Delivery Date And Time') }}
                                                 </h3>
-                                               <div class="input-group">
+                                               <div class="input-group date_time1">
                                                     <label for="datetime" class="clickable-box">
                                                         <?php
                                                         // Set the timezone to India Standard Time
@@ -633,28 +657,37 @@
                                             </div>
 
 
-                                            <div class="col-md-7">
+                                           
+                                        </div>
+
+                                        
+                                           
+                                          
+                                            <div class="card-body text-center p-0">
+                                                
+                                                <div class="row">
+
+                                                 <div class="col-md-12">
                                                     <div class="pb-2">
-                                                    <h3 class="fs-16 fw-600 mb-0">
+                                                    <h3 class="fs-16 fw-600 mb-0 text-left">
                                                         {{ translate('Any additional info?') }}
                                                     </h3>
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <textarea name="additional_info" rows="3" class="form-control"
+                                                    <textarea name="additional_info" rows="4" class="form-control"
                                                         placeholder="{{ translate('Type your text') }}"></textarea>
                                                 </div>
                                            
                                             </div>
-                                        </div>
-                                           
-                                            <h3 class="fs-16 fw-600 mb-0 mt-2">
+
+
+                                                    <div class="col-xxl-12 col-xl-12 mx-auto">
+                                                        <div class="pb-2">
+                                                          <h3 class="fs-16 fw-600 mb-0 text-left">
                                                     {{ translate('Select a payment option') }}
                                                 </h3>
-                                            <div class="card-body text-center">
-                                                
-                                                <div class="row">
-                                                    <div class="col-xxl-8 col-xl-12 mx-auto">
+                                        </div>
                                                         <div class="row gutters-10">
                                                             @if (get_setting('ccavenue_payment') == 1)
                                                                 <div class="col-6 col-md-3">
@@ -663,7 +696,7 @@
                                                                             type="radio" name="payment_option" checked>
                                                                         <span class="d-block aiz-megabox-elem p-2">
                                                                             <img src="{{ static_asset('assets/img/cards/ccavenue.png') }}"
-                                                                                class="img-fluid mb-2">
+                                                                                class="img-fluid mb-2 w-100">
                                                                             <span class="d-block text-center">
                                                                                 <span
                                                                                     class="d-block fw-600 fs-15">{{ translate('Ccavenue') }}</span>
