@@ -335,8 +335,12 @@ class CheckoutController extends Controller
                 ->get();
 
         if($carts->isEmpty()) {
-            flash(translate('Your cart is empty'))->warning();
-            return redirect()->route('home');
+            // flash(translate('Your cart is empty'))->warning();
+            // return redirect()->route('home');
+            return response()->json([
+                'success' => false,
+                'errors' => ['Your cart is empty']
+            ]);
         }
 
         $shipping_info = Address::where('id', $carts[0]['address_id'])->first();
@@ -415,8 +419,12 @@ class CheckoutController extends Controller
             // return view('frontend.payment_select', compact('carts', 'shipping_info', 'total'));
 
         } else {
-            flash(translate('Your Cart was empty'))->warning();
-            return redirect()->route('home');
+            // flash(translate('Your Cart was empty'))->warning();
+            // return redirect()->route('home');
+            return response()->json([
+                'success' => false,
+                'errors' => ['Your cart is empty']
+            ]);
         }
     }
 
