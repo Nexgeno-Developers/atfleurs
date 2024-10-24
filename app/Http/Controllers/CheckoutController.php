@@ -30,6 +30,13 @@ class CheckoutController extends Controller
     //check the selected payment gateway and redirect to that controller accordingly
     public function checkout(Request $request)
     {
+
+        $carts = Cart::where('user_id', Auth::user()->id)->get();
+        if($carts->isEmpty()) {
+            flash(translate('Your Cart was empty'))->warning();
+            return redirect()->route('home');
+        }
+
         // Minumum order amount check
         if(get_setting('minimum_order_amount_check') == 1){
             $subtotal = 0;
