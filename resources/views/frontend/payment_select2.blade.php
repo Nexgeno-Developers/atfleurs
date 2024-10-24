@@ -3,6 +3,10 @@
 @section('content')
 
 <style>
+    .events_none
+    {
+            pointer-events: none;
+    }
     .right-20 {
     right: 20px;
 }
@@ -94,7 +98,7 @@ td.product-name {
 
                         <!-- Shipping Info -->
                         <div class="card rounded-0 border shadow-none" style="margin-bottom: 1rem;">
-                            <div class="card-header border-bottom-0 py-3 py-xl-4" id="headingShippingInfo" type="button"
+                            <div class="card-header border-bottom-0 py-3 py-xl-4 events_none" id="headingShippingInfo" type="button"
                                 data-toggle="collapse" data-target="#collapseShippingInfo" aria-expanded="true"
                                 aria-controls="collapseShippingInfo">
                                 <div class="d-flex align-items-center">
@@ -224,7 +228,7 @@ td.product-name {
                         <!-- Delivery Info -->
                         <div class="card rounded-0 border shadow-none"
                             style="margin-bottom: 1rem; overflow: visible !important;">
-                            <div class="card-header border-bottom-0 py-3 py-xl-4" id="headingDeliveryInfo" type="button"
+                            <div class="card-header border-bottom-0 py-3 py-xl-4 events_none" id="headingDeliveryInfo" type="button"
                                 data-toggle="collapse" data-target="#collapseDeliveryInfo" aria-expanded="true"
                                 aria-controls="collapseDeliveryInfo">
                                 <div class="d-flex align-items-center">
@@ -606,7 +610,7 @@ td.product-name {
 
                         <!-- Payment Info -->
                         <div class="card rounded-0 mb-0 border shadow-none">
-                            <div class="card-header border-bottom-0 py-3 py-xl-4" id="headingPaymentInfo" type="button"
+                            <div class="card-header border-bottom-0 py-3 py-xl-4 events_none" id="headingPaymentInfo" type="button"
                                 data-toggle="collapse" data-target="#collapsePaymentInfo" aria-expanded="true"
                                 aria-controls="collapsePaymentInfo">
                                 <div class="d-flex align-items-center">
