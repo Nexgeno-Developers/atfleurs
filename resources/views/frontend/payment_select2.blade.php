@@ -120,7 +120,7 @@ td.product-name {
                                         method="POST">
                                         @csrf
                                         @if (Auth::check())
-                                            <div class="shadow-sm bg-white rounded mb-4">
+                                            <div class="bg-white rounded mb-4">
                                                 <div class="row justify-content-center gutters-5">
                                                 @if(Auth::user()->addresses != null && count(Auth::user()->addresses) != 0)
                                                     <div class="col-md-10">
@@ -221,31 +221,8 @@ td.product-name {
                                         </div>
                                         --}}
                                     </form>
-                                </div>
-                            </div>
-                        </div>
 
-                        <!-- Delivery Info -->
-                        <div class="card rounded-0 border shadow-none"
-                            style="margin-bottom: 1rem; overflow: visible !important;">
-                            <div class="card-header border-bottom-0 py-3 py-xl-4" id="headingDeliveryInfo" type="button"
-                                data-toggle="collapse" data-target="#collapseDeliveryInfo" aria-expanded="true"
-                                aria-controls="collapseDeliveryInfo">
-                                <div class="d-flex align-items-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                        viewBox="0 0 20 20">
-                                        <path id="Path_42357" data-name="Path 42357"
-                                            d="M58,48A10,10,0,1,0,68,58,10,10,0,0,0,58,48ZM56.457,61.543a.663.663,0,0,1-.423.212.693.693,0,0,1-.428-.216l-2.692-2.692.856-.856,2.269,2.269,6-6.043.841.87Z"
-                                            transform="translate(-48 -48)" fill="#9d9da6" />
-                                    </svg>
-                                    <span class="ml-2 fs-19 fw-700">{{ translate('Delivery Info') }}</span>
-                                </div>
-                                <i class="las la-angle-down fs-18"></i>
-                            </div>
-                            <div id="collapseDeliveryInfo" class="collapse show" aria-labelledby="headingDeliveryInfo"
-                                data-parent="#accordioncCheckoutInfo">
-                                <div class="card-body py-0" id="delivery_info">
-                                    <form class="form-default delivery-type-form"
+                                    <form class="form-default delivery-type-form d-none"
                                         action="{{ route('checkout.store_delivery_info') }}" role="form"
                                         method="POST">
                                         @csrf
@@ -276,7 +253,7 @@ td.product-name {
                                             }
                                         @endphp
                                         @if (!empty($admin_products))
-                                            <div class="card mb-3 shadow-sm border-0 rounded">
+                                            <div class="card mb-3 border-0 rounded">
                                                 {{-- <div class="card-header p-3">
                                                     <h5 class="fs-16 fw-600 mb-0">{{ get_setting('site_name') }}
                                                         {{ translate('Products') }}</h5>
@@ -608,6 +585,32 @@ td.product-name {
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Delivery Info -->
+                        {{-- <div class="card rounded-0 border shadow-none"
+                            style="margin-bottom: 1rem; overflow: visible !important;">
+                            <div class="card-header border-bottom-0 py-3 py-xl-4" id="headingDeliveryInfo" type="button"
+                                data-toggle="collapse" data-target="#collapseDeliveryInfo" aria-expanded="true"
+                                aria-controls="collapseDeliveryInfo">
+                                <div class="d-flex align-items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                        viewBox="0 0 20 20">
+                                        <path id="Path_42357" data-name="Path 42357"
+                                            d="M58,48A10,10,0,1,0,68,58,10,10,0,0,0,58,48ZM56.457,61.543a.663.663,0,0,1-.423.212.693.693,0,0,1-.428-.216l-2.692-2.692.856-.856,2.269,2.269,6-6.043.841.87Z"
+                                            transform="translate(-48 -48)" fill="#9d9da6" />
+                                    </svg>
+                                    <span class="ml-2 fs-19 fw-700">{{ translate('Delivery Info') }}</span>
+                                </div>
+                                <i class="las la-angle-down fs-18"></i>
+                            </div>
+                            <div id="collapseDeliveryInfo" class="collapse show" aria-labelledby="headingDeliveryInfo"
+                                data-parent="#accordioncCheckoutInfo">
+                                <div class="card-body py-0" id="delivery_info">
+
+
+                                </div>
+                            </div>
+                        </div> --}}
 
                         <!-- Delivery Info -->
                         {{-- <div class="card rounded-0 border shadow-none"
