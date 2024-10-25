@@ -3,40 +3,7 @@
 @section('content')
 
 <style>
-    .events_none
-    {
-            pointer-events: none;
-    }
-    .right-20 {
-    right: 20px;
-}
-    .top-15 {
-    top: 15px;
-}
-td.product-name {
-    font-size: 12px;
-    
-    padding: 10px 0px;
-}
-.w-100
-{
-    width:100px !important;
-}
-.date_time1 .form-group {
-    display: block;
-}
-
-.date_time1 .form-group input {
-    display: block !important;!i;!;
-}
-
-.input-group.date_time1 {
-    display: block !important;!i;!;
-}
-
-.date_time1 label.clickable-box {
-    display: block;
-}
+ 
 
 @media(max-width:767px) {
     h6.fs-15.fw-600.text-right.pt-3
@@ -1272,7 +1239,7 @@ td.product-name {
                                         <!-- Complete Ordert -->
                                         <div class="col-6 text-right">
                                             <button type="button" onclick="submitOrder(this)" id="submitOrderBtn"
-                                                class="btn btn-primary fs-14 fw-700 rounded-0 px-4">{{ translate('Complete Order') }}</button>
+                                                class="btn btn-success fs-14 fw-700 rounded-0 px-4">{{ translate('Complete Order') }}</button>
                                         </div>
                                     </div>
 

@@ -1,3 +1,5 @@
+
+
 @extends('frontend.layouts.user_panel')
 
 @section('panel_content')
@@ -10,7 +12,7 @@
 </div>
 <div class="row gutters-10">
     <div class="col-md-4">
-        <div class="bg-grad-1 text-white rounded-lg mb-4 overflow-hidden">
+        <div class="bg-grad-1 text-white rounded-lg mb-md-4 mb-5 overflow-hidden">
             <div class="px-3 pt-3">
                 @php
                     $user_id = Auth::user()->id;
@@ -33,7 +35,7 @@
         </div>
     </div>
     <div class="col-md-4">
-        <div class="bg-grad-2 text-white rounded-lg mb-4 overflow-hidden">
+        <div class="bg-grad-2 text-white rounded-lg mb-md-4 mb-5 overflow-hidden">
             <div class="px-3 pt-3">
                 @php
                     $orders = \App\Models\Order::where('user_id', Auth::user()->id)->get();
@@ -51,7 +53,7 @@
         </div>
     </div>
     <div class="col-md-4">
-        <div class="bg-grad-3 text-white rounded-lg mb-4 overflow-hidden">
+        <div class="bg-grad-3 text-white rounded-lg mb-md-4 mb-5 overflow-hidden">
             <div class="px-3 pt-3">
                 @php
                     $orders = \App\Models\Order::where('user_id', Auth::user()->id)->get();

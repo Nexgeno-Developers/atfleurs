@@ -11,8 +11,8 @@
     <div class="row">
         <div class="col-md-4 mx-auto mb-3" >
             <div class="p-3 rounded mb-3 c-pointer text-center bg-white shadow-sm hov-shadow-lg has-transition" data-toggle="modal" data-target="#ticket_modal">
-                <span class="size-70px rounded-circle mx-auto bg-secondary d-flex align-items-center justify-content-center mb-3">
-                    <i class="las la-plus la-3x text-white"></i>
+                <span class="size-md-70px size-40px rounded-circle mx-auto bg-secondary d-flex align-items-center justify-content-center mb-3">
+                    <i class="las la-plus la-md-3x la-2x text-white"></i>
                 </span>
                 <div class="fs-20 text-primary">{{ translate('Create a Ticket') }}</div>
             </div>

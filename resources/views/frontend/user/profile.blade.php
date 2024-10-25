@@ -1,7 +1,21 @@
+<style>
+
+    @media(max-width:767px)
+    {
+.card .card-header {
+    padding: 12px 15px;
+}
+.card .card-body {
+    padding: 20px 15px;
+}
+    }
+    
+</style>
+
 @extends('frontend.layouts.user_panel')
 
 @section('panel_content')
-    <div class="aiz-titlebar mt-2 mb-4">
+    <div class="aiz-titlebar mt-2 mb-md-4 mb-2">
       <div class="row align-items-center">
         <div class="col-md-6">
             <h1 class="h3">{{ translate('Manage Profile') }}</h1>
@@ -71,7 +85,7 @@
         </div>
 
         <div class="form-group mb-0 text-right">
-            <button type="submit" class="btn btn-primary">{{translate('Update Profile')}}</button>
+            <button type="submit" class="btn btn-success">{{translate('Update Profile')}}</button>
         </div>
     </form>
 
@@ -160,7 +174,7 @@
                       <div class="input-group mb-3">
                         <input type="email" class="form-control" placeholder="{{ translate('Your Email')}}" name="email" value="{{ Auth::user()->email }}" />
                         <div class="input-group-append">
-                           <button type="button" class="btn btn-outline-secondary new-email-verification">
+                           <button type="button" class="btn btn-secondary new-email-verification">
                                <span class="d-none loading">
                                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>{{ translate('Sending Email...') }}
                                </span>
@@ -169,7 +183,7 @@
                         </div>
                       </div>
                       <div class="form-group mb-0 text-right">
-                          <button type="submit" class="btn btn-primary">{{translate('Update Email')}}</button>
+                          <button type="submit" class="btn btn-success">{{translate('Update Email')}}</button>
                       </div>
                   </div>
               </div>

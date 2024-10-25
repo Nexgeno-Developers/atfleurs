@@ -227,7 +227,7 @@
                                 placeholder="{{ translate('Have coupon code? Enter here') }}" required>
                             <div class="input-group-append">
                                 <button type="button" id="coupon-apply"
-                                    class="btn btn-primary">{{ translate('Apply') }}</button>
+                                    class="btn btn-success">{{ translate('Apply') }}</button>
                             </div>
                         </div>
                     </form>

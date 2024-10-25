@@ -118,7 +118,7 @@
                             </a>
                         </div>
                         <div class="col-md-6 text-center text-md-right">
-                            <button type="submit" class="btn btn-primary fw-600">{{ translate('Continue to Delivery Info')}}</a>
+                            <button type="submit" class="btn btn-success fw-600">{{ translate('Continue to Delivery Info')}}</a>
                         </div>
                     </div>
                 </form>

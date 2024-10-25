@@ -113,7 +113,7 @@
     </div>
     @endif
     <div class="text-center">
-        <button class="btn btn-outline-primary mb-3 mb-sm-0" data-dismiss="modal">{{ translate('Back to shopping')}}</button>
-        <a onclick="return gtag_report_conversion('{{ route('cart') }}');" href="{{ route('cart') }}" class="btn btn-primary mb-3 mb-sm-0">{{ translate('Proceed to Checkout')}}</a>
+        <button class="btn btn-outline-success mb-3 mb-sm-0" data-dismiss="modal">{{ translate('Back to shopping')}}</button>
+        <a onclick="return gtag_report_conversion('{{ route('cart') }}');" href="{{ route('cart') }}" class="btn btn-success text-white mb-3 mb-sm-0">{{ translate('Proceed to Checkout')}}</a>
     </div>
 </div>

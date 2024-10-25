@@ -2139,3 +2139,56 @@ span.num {
     left: 110%;
   }
 }
+
+
+.events_none {
+  pointer-events: none;
+}
+
+.right-20 {
+  right: 20px;
+}
+
+.top-15 {
+  top: 15px;
+}
+
+td.product-name {
+  font-size: 12px;
+  padding: 10px 0px;
+}
+
+.w-100 {
+  width: 100px !important;
+}
+
+.date_time1 .form-group {
+  display: block;
+}
+
+.date_time1 .form-group input {
+  display: block !important;
+
+}
+
+.input-group.date_time1 {
+  display: block !important;
+}
+
+.date_time1 label.clickable-box {
+  display: block;
+}
+
+span.badge.badge-inline.badge-success {
+  width: auto;
+}
+
+section#cart-summary .col-md-6.text-center.text-md-right a {
+  background-color: var(--success);
+  border-color: var(--success);
+  color: var(--white);
+}
+
+table.table.aiz-table.mb-0.footable.footable-1.breakpoint-lg span.badge.badge-inline.badge-danger {
+  width: auto;
+}
