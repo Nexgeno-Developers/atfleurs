@@ -292,6 +292,20 @@ Route::group(['middleware' => ['customer', 'verified', 'unbanned']], function() 
         });
     });
 
+    Route::post('/set-deliverable-session', function (Illuminate\Http\Request $request) {
+        session(['deliverable' => $request->input('deliverable')]);
+        return response()->json(['status' => 'success']);
+    })->name('set-deliverable-session');
+    
+    Route::get('/get-deliverable-session', function () {
+        return response()->json(['deliverable' => session('deliverable', false)]);
+    })->name('get-deliverable-session');
+
+    Route::post('/flush-deliverable-session', function () {
+        session()->forget('deliverable');  // Removes only the 'deliverable' session
+        return response()->json(['status' => 'success']);
+    })->name('flush-deliverable-session');
+
     // Purchase History
     Route::resource('purchase_history', PurchaseHistoryController::class);
     Route::controller(PurchaseHistoryController::class)->group(function () {

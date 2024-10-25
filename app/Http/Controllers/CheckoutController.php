@@ -30,6 +30,13 @@ class CheckoutController extends Controller
     //check the selected payment gateway and redirect to that controller accordingly
     public function checkout(Request $request)
     {
+
+        $carts = Cart::where('user_id', Auth::user()->id)->get();
+        if($carts->isEmpty()) {
+            flash(translate('Your Cart was empty'))->warning();
+            return redirect()->route('home');
+        }
+
         // Minumum order amount check
         if(get_setting('minimum_order_amount_check') == 1){
             $subtotal = 0;
@@ -335,8 +342,12 @@ class CheckoutController extends Controller
                 ->get();
 
         if($carts->isEmpty()) {
-            flash(translate('Your cart is empty'))->warning();
-            return redirect()->route('home');
+            // flash(translate('Your cart is empty'))->warning();
+            // return redirect()->route('home');
+            return response()->json([
+                'success' => false,
+                'errors' => ['Your cart is empty']
+            ]);
         }
 
         $shipping_info = Address::where('id', $carts[0]['address_id'])->first();
@@ -415,8 +426,12 @@ class CheckoutController extends Controller
             // return view('frontend.payment_select', compact('carts', 'shipping_info', 'total'));
 
         } else {
-            flash(translate('Your Cart was empty'))->warning();
-            return redirect()->route('home');
+            // flash(translate('Your Cart was empty'))->warning();
+            // return redirect()->route('home');
+            return response()->json([
+                'success' => false,
+                'errors' => ['Your cart is empty']
+            ]);
         }
     }
 

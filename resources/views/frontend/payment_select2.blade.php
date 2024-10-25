@@ -75,7 +75,7 @@
                                             d="M58,48A10,10,0,1,0,68,58,10,10,0,0,0,58,48ZM56.457,61.543a.663.663,0,0,1-.423.212.693.693,0,0,1-.428-.216l-2.692-2.692.856-.856,2.269,2.269,6-6.043.841.87Z"
                                             transform="translate(-48 -48)" fill="#9d9da6" />
                                     </svg>
-                                    <span class="ml-2 fs-19 fw-700">{{ translate('Shipping Info') }}</span>
+                                    <span class="ml-2 fs-19 fw-700">{{ translate('Shipping & Delivery Info') }}</span>
                                 </div>
                                 <i class="las la-angle-down fs-18"></i>
                             </div>
@@ -87,7 +87,7 @@
                                         method="POST">
                                         @csrf
                                         @if (Auth::check())
-                                            <div class="shadow-sm bg-white rounded mb-4">
+                                            <div class="bg-white rounded mb-4">
                                                 <div class="row justify-content-center gutters-5">
                                                 @if(Auth::user()->addresses != null && count(Auth::user()->addresses) != 0)
                                                     <div class="col-md-10">
@@ -167,7 +167,7 @@
                                                         <div class="border p-3 rounded mb-3 c-pointer text-center bg-white"
                                                             onclick="add_new_address()">
                                                             <i class="las la-plus la-2x mb-3"></i>
-                                                            <div class="alpha-7">{{ translate('Add Address') }}</div>
+                                                            <div class="alpha-7">{{ translate('Add New Address') }}</div>
                                                         </div>
                                                     
                                                     </div>
@@ -188,31 +188,8 @@
                                         </div>
                                         --}}
                                     </form>
-                                </div>
-                            </div>
-                        </div>
 
-                        <!-- Delivery Info -->
-                        <div class="card rounded-0 border shadow-none"
-                            style="margin-bottom: 1rem; overflow: visible !important;">
-                            <div class="card-header border-bottom-0 py-3 py-xl-4 events_none" id="headingDeliveryInfo" type="button"
-                                data-toggle="collapse" data-target="#collapseDeliveryInfo" aria-expanded="true"
-                                aria-controls="collapseDeliveryInfo">
-                                <div class="d-flex align-items-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                        viewBox="0 0 20 20">
-                                        <path id="Path_42357" data-name="Path 42357"
-                                            d="M58,48A10,10,0,1,0,68,58,10,10,0,0,0,58,48ZM56.457,61.543a.663.663,0,0,1-.423.212.693.693,0,0,1-.428-.216l-2.692-2.692.856-.856,2.269,2.269,6-6.043.841.87Z"
-                                            transform="translate(-48 -48)" fill="#9d9da6" />
-                                    </svg>
-                                    <span class="ml-2 fs-19 fw-700">{{ translate('Delivery Info') }}</span>
-                                </div>
-                                <i class="las la-angle-down fs-18"></i>
-                            </div>
-                            <div id="collapseDeliveryInfo" class="collapse show" aria-labelledby="headingDeliveryInfo"
-                                data-parent="#accordioncCheckoutInfo">
-                                <div class="card-body py-0" id="delivery_info">
-                                    <form class="form-default delivery-type-form"
+                                    <form class="form-default delivery-type-form d-none"
                                         action="{{ route('checkout.store_delivery_info') }}" role="form"
                                         method="POST">
                                         @csrf
@@ -243,7 +220,7 @@
                                             }
                                         @endphp
                                         @if (!empty($admin_products))
-                                            <div class="card mb-3 shadow-sm border-0 rounded">
+                                            <div class="card mb-3 border-0 rounded">
                                                 {{-- <div class="card-header p-3">
                                                     <h5 class="fs-16 fw-600 mb-0">{{ get_setting('site_name') }}
                                                         {{ translate('Products') }}</h5>
@@ -348,16 +325,17 @@
                                                                         <select class="form-control aiz-selectpicker"
                                                                             name="pickup_point_id_{{ \App\Models\User::where('user_type', 'admin')->first()->id }}"
                                                                             data-live-search="true">
-                                                                            <option>
+                                                                            {{-- <option>
                                                                                 {{ translate('Select your nearest pickup point') }}
-                                                                            </option>
+                                                                            </option> --}}
                                                                             @foreach ($pickup_point_list as $pick_up_point)
                                                                                 <option value="{{ $pick_up_point->id }}"
                                                                                     data-content="<span class='d-block'>
                                                                                             <span class='d-block fs-16 fw-600 mb-2'>{{ $pick_up_point->getTranslation('name') }}</span>
                                                                                             <span class='d-block opacity-50 fs-12'><i class='las la-map-marker'></i> {{ $pick_up_point->getTranslation('address') }}</span>
                                                                                             <span class='d-block opacity-50 fs-12'><i class='las la-phone'></i>{{ $pick_up_point->phone }}</span>
-                                                                                        </span>">
+                                                                                        </span>"
+                                                                                    {{ $loop->first ? 'selected' : '' }}>
                                                                                 </option>
                                                                             @endforeach
                                                                         </select>
@@ -570,9 +548,61 @@
                                         </div>
                                         --}}
                                     </form>
+
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Delivery Info -->
+                        {{-- <div class="card rounded-0 border shadow-none"
+                            style="margin-bottom: 1rem; overflow: visible !important;">
+                            <div class="card-header border-bottom-0 py-3 py-xl-4" id="headingDeliveryInfo" type="button"
+                                data-toggle="collapse" data-target="#collapseDeliveryInfo" aria-expanded="true"
+                                aria-controls="collapseDeliveryInfo">
+                                <div class="d-flex align-items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                        viewBox="0 0 20 20">
+                                        <path id="Path_42357" data-name="Path 42357"
+                                            d="M58,48A10,10,0,1,0,68,58,10,10,0,0,0,58,48ZM56.457,61.543a.663.663,0,0,1-.423.212.693.693,0,0,1-.428-.216l-2.692-2.692.856-.856,2.269,2.269,6-6.043.841.87Z"
+                                            transform="translate(-48 -48)" fill="#9d9da6" />
+                                    </svg>
+                                    <span class="ml-2 fs-19 fw-700">{{ translate('Delivery Info') }}</span>
+                                </div>
+                                <i class="las la-angle-down fs-18"></i>
+                            </div>
+                            <div id="collapseDeliveryInfo" class="collapse show" aria-labelledby="headingDeliveryInfo"
+                                data-parent="#accordioncCheckoutInfo">
+                                <div class="card-body py-0" id="delivery_info">
+
+
+                                </div>
+                            </div>
+                        </div> --}}
+
+                        <!-- Delivery Info -->
+                        {{-- <div class="card rounded-0 border shadow-none"
+                            style="margin-bottom: 1rem; overflow: visible !important;">
+                            <div class="card-header border-bottom-0 py-3 py-xl-4" id="headingDeliveryInfo" type="button"
+                                data-toggle="collapse" data-target="#collapseDeliveryInfo" aria-expanded="true"
+                                aria-controls="collapseDeliveryInfo">
+                                <div class="d-flex align-items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                        viewBox="0 0 20 20">
+                                        <path id="Path_42357" data-name="Path 42357"
+                                            d="M58,48A10,10,0,1,0,68,58,10,10,0,0,0,58,48ZM56.457,61.543a.663.663,0,0,1-.423.212.693.693,0,0,1-.428-.216l-2.692-2.692.856-.856,2.269,2.269,6-6.043.841.87Z"
+                                            transform="translate(-48 -48)" fill="#9d9da6" />
+                                    </svg>
+                                    <span class="ml-2 fs-19 fw-700">{{ translate('Delivery Info') }}</span>
+                                </div>
+                                <i class="las la-angle-down fs-18"></i>
+                            </div>
+                            <div id="collapseDeliveryInfo" class="collapse show" aria-labelledby="headingDeliveryInfo"
+                                data-parent="#accordioncCheckoutInfo">
+                                <div class="card-body py-0" id="delivery_info">
+
+                                </div>
+                            </div>
+                        </div> --}}
 
 
                         <!-- Payment Info -->
@@ -1384,6 +1414,99 @@
         });
 
         $(document).ready(function() {
+
+            let home_page_url = "{{ route('home') }}";
+            let cart_page_url = "{{ route('cart') }}";
+
+            // Function to check session and toggle visibility of the form
+            function checkDeliverableSession() {
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    url: "{{ url(route('get-deliverable-session')) }}", // Proper Blade syntax for route
+                    method: 'GET',
+                    success: function(response) {
+                        const isDeliverable = response.deliverable === true || response.deliverable === 'true'; // Ensure it works for boolean and string
+
+                        if (isDeliverable) {
+                            $('.delivery-type-form').removeClass('d-none'); // Show the form if deliverable is true
+                        } else {
+                            setTimeout(function() {
+                                flushDeliverableSession();
+                                window.location.href = cart_page_url;
+                            }, 1000); 
+                        }
+                    },
+                    error: function() {
+                        console.log('Error checking session');
+                    }
+                });
+            }
+
+            @if(!Session::has('deliverable'))
+                $('input[name="address_id"]').prop('checked', false);
+            @endif
+
+            function flushDeliverableSession() {
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    url: "{{ url(route('flush-deliverable-session')) }}", // Route to flush the session
+                    method: 'POST',
+                    success: function(response) {
+                        // if (response.status === 'success') {
+                        //     AIZ.plugins.notify('success', '{{ translate("Session cleared successfully.") }}');
+                        // } else {
+                        //     AIZ.plugins.notify('danger', '{{ translate("Failed to clear session.") }}');
+                        // }
+                    },
+                    error: function() {
+                        AIZ.plugins.notify('danger', '{{ translate("An error occurred. Please try again.") }}');
+                    }
+                });
+            }
+
+            // Function to update the session deliverable status
+            function session_update(condition) {
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    url: "{{ url(route('set-deliverable-session')) }}", // Proper Blade syntax for route
+                    method: 'POST',
+                    data: { deliverable: condition },
+                    success: function() {
+                        if (condition === false) {
+                            // Take 10 seconds then reload
+                            setTimeout(function() {
+                                flushDeliverableSession();
+                                window.location.href = cart_page_url; // Reload the page after 10 sec
+                            }, 1000); // 10000 ms = 10 sec
+                        } else {
+                            location.reload(); // Reload immediately if true
+                        }
+                    }
+                });
+            }
+
+            // Function to check session on page load
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: "{{ url(route('get-deliverable-session')) }}", // Proper Blade syntax for route
+                method: 'GET',
+                success: function(response) {
+                    const isDeliverable = response.deliverable === true || response.deliverable === 'true'; // Ensure it works 
+
+                    if (isDeliverable) {
+                        $('.delivery-type-form').removeClass('d-none'); // Show the form if deliverable is true
+                    }
+                }
+            });
+
             stepCompletionShippingInfo();
             stepCompletionDeliveryInfo();
             stepCompletionPaymentInfo();
@@ -1410,7 +1533,9 @@
                             $('#cart_summary').html(response.view);
                             // $('.delivery-type-form').show();
                             stepCompletionShippingInfo();
-                            location.reload();
+
+                            session_update(true); // Set session to true on success
+
                         } else if (response.success === false) {
                             // $('.delivery-type-form').hide();
                             // $('.checkout-form').hide();
@@ -1420,14 +1545,28 @@
                                     AIZ.plugins.notify('danger', error);
                                 });
                             }
+
+                            session_update(false); // Set session to false on failure
+                            if (!$('.delivery-type-form').hasClass('d-none')) {
+                                $('.delivery-type-form').addClass('d-none');
+                            }
+
                         } else {
-                            AIZ.plugins.notify('danger', 'An unexpected error occurred, Please Try Again');
+                            AIZ.plugins.notify('danger', 'Your cart is empty. Please try again.');
+                            setTimeout(function() {
+                              flushDeliverableSession();
+                              window.location.href = cart_page_url;
+                            }, 1000);
                         }
                     },
                     error: function(xhr) {
                         // console.log(xhr.responseText);
                         // Handle errors here
-                        AIZ.plugins.notify('danger', 'An unexpected error occurred, Please Try Again');
+                        AIZ.plugins.notify('danger', 'Something went wrong, Please Try Again');
+                        setTimeout(function() {
+                              flushDeliverableSession();
+                              window.location.href = home_page_url;
+                        }, 1000);
                     }
                 });
             }
@@ -1463,13 +1602,21 @@
                                 });
                             }
                         } else {
-                            AIZ.plugins.notify('danger', 'An unexpected error occurred, Please Try Again');
+                            AIZ.plugins.notify('danger', 'Your cart is empty. Please try again.');
+                            setTimeout(function() {
+                              flushDeliverableSession();
+                              window.location.href = cart_page_url;
+                            }, 1000);
                         }
                     },
                     error: function(xhr) {
                         // console.log(xhr.responseText);
                         // Handle errors here
-                        AIZ.plugins.notify('danger', 'An unexpected error occurred, Please Try Again');
+                        AIZ.plugins.notify('danger', 'Something went wrong, Please Try Again');
+                        setTimeout(function() {
+                              flushDeliverableSession();
+                              window.location.href = home_page_url;
+                        }, 1000);
                     }
                 });
             }
@@ -1614,6 +1761,26 @@
             }
         }
 
+        function flushDeliverableSession() {
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: "{{ url(route('flush-deliverable-session')) }}", // Route to flush the session
+                method: 'POST',
+                success: function(response) {
+                    // if (response.status === 'success') {
+                    //     AIZ.plugins.notify('success', '{{ translate("Session cleared successfully.") }}');
+                    // } else {
+                    //     AIZ.plugins.notify('danger', '{{ translate("Failed to clear session.") }}');
+                    // }
+                },
+                error: function() {
+                    AIZ.plugins.notify('danger', '{{ translate("An error occurred. Please try again.") }}');
+                }
+            });
+        }
+
         function submitOrder(el) {
             $(el).prop('disabled', true);
             if ($('#agree_checkbox').is(":checked")) {
@@ -1633,8 +1800,13 @@
                         var isOkPayment = stepCompletionPaymentInfo();
                         if (isOkShipping && isOkDelivery && isOkPayment) {
                             allIsOk = true;
+                            flushDeliverableSession();
                         } else {
-                            AIZ.plugins.notify('danger', '{{ translate('Please fill in all mandatory fields!') }}');
+                            @if(!Session::has('deliverable'))
+                                AIZ.plugins.notify('danger', '{{ translate("Please select your address.") }}');
+                            @else
+                                AIZ.plugins.notify('danger', '{{ translate('Please fill in all mandatory fields!') }}');
+                            @endif
                             $('#checkout-form [required]').each(function(i, el) {
                                 if ($(el).val() == '' || $(el).val() == undefined) {
                                     var is_trx_id = $('.d-none #trx_id').length;
