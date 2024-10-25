@@ -68,12 +68,12 @@ Route::get('/clear-cache', function () {
     Artisan::call('route:clear');
 }); 
 
-Route::get('/test-otp', function () {
-    $sessionData = Session()->all();
+// Route::get('/test-otp', function () {
+//     $sessionData = Session()->all();
 
-    // Print session data
-    dd($sessionData);
-});
+//     // Print session data
+//     dd($sessionData);
+// });
 
 Route::get('/key-generate', function () {
     Artisan::call('key:generate');
