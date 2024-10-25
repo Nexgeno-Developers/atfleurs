@@ -121,6 +121,8 @@ class LoginController extends Controller
             Session::forget('temp_user_id');
         }
 
+        session()->put('welcome_message', 'Welcome');
+
         if (session('link') != null) {
             return redirect(session('link'));
         } else {
