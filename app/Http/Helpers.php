@@ -429,17 +429,6 @@ if (!function_exists('carts_coupon_discount')) {
     {
         $coupon = Coupon::where('code', $code)->first();
         $coupon_discount = 0;
-
-        $subtotal = 0;
-
-        foreach ($carts as $key => $cartItem) { 
-            $product = Product::find($cartItem['product_id']);
-            $subtotal += cart_product_price($cartItem, $product, false, false) * $cartItem['quantity'];
-        }
-
-        $sum = $subtotal;
-        $product = '';
-
         if ($coupon != null) {
             if (strtotime(date('d-m-Y')) >= $coupon->start_date && strtotime(date('d-m-Y')) <= $coupon->end_date) {
                 if (CouponUsage::where('user_id', Auth::user()->id)->where('coupon_id', $coupon->id)->first() == null) {
@@ -448,6 +437,16 @@ if (!function_exists('carts_coupon_discount')) {
                     $carts = Cart::where('user_id', Auth::user()->id)
                         ->where('owner_id', $coupon->user_id)
                         ->get();
+
+                    $subtotal = 0;
+
+                    foreach ($carts as $key => $cartItem) { 
+                        $product = Product::find($cartItem['product_id']);
+                        $subtotal += cart_product_price($cartItem, $product, false, false) * $cartItem['quantity'];
+                    }
+
+                    $sum = $subtotal;
+                    $product = '';
 
                     if ($coupon->type == 'cart_base') {
                         $subtotal = 0;
