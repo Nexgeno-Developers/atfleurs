@@ -35,6 +35,7 @@
                 @php
                     $coupon_discount = carts_coupon_discount($coupon_code);
                 @endphp
+                
             @endif
 
             @php $subtotal_for_min_order_amount = 0; @endphp

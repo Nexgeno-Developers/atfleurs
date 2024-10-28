@@ -1917,6 +1917,7 @@
             })
         });
 
+        
         $(document).on("click", "#coupon-remove", function() {
             var data = new FormData($('#remove-coupon-form')[0]);
 

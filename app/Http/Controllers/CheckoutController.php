@@ -565,6 +565,7 @@ class CheckoutController extends Controller
                         }
                     }
 
+                    
                     // var_dump($coupon_discount);
 
                     if($coupon_discount > 0){
