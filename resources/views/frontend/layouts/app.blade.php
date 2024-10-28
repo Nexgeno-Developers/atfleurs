@@ -621,6 +621,28 @@ jQuery(document).ready(function($){
             $('#cart_items').html(view);
         }
 
+        let cart_page_url = "{{ route('cart') }}";
+
+        function flushDeliverableSession_app() {
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: "{{ url(route('flush-deliverable-session')) }}", // Route to flush the session
+                method: 'POST',
+                success: function(response) {
+                    // if (response.status === 'success') {
+                    //     AIZ.plugins.notify('success', '{{ translate("Session cleared successfully.") }}');
+                    // } else {
+                    //     AIZ.plugins.notify('danger', '{{ translate("Failed to clear session.") }}');
+                    // }
+                },
+                error: function() {
+                    AIZ.plugins.notify('danger', '{{ translate("An error occurred. Please try again.") }}');
+                }
+            });
+        }
+
         function removeFromCart(key){
             $.post('{{ route('cart.removeFromCart') }}', {
                 _token  : AIZ.data.csrf,
@@ -630,6 +652,12 @@ jQuery(document).ready(function($){
                 $('#cart-summary').html(data.cart_view);
                 AIZ.plugins.notify('success', "{{ translate('Item has been removed from cart') }}");
                 $('#cart_items_sidenav').html(parseInt($('#cart_items_sidenav').html())-1);
+
+                setTimeout(function() {
+                    flushDeliverableSession_app()
+                    window.location.href = cart_page_url; // Reload the page after 10 sec
+                }, 1000); // 10000 ms = 10 sec
+
             });
         }
 

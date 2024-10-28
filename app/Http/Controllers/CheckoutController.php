@@ -355,6 +355,7 @@ class CheckoutController extends Controller
         $tax = 0;
         $shipping = 0;
         $subtotal = 0;
+        $subtotal_offer = 0;
         $charges = 0; // Initialize charges
         $a=0;
         
@@ -380,6 +381,12 @@ class CheckoutController extends Controller
             }
                 // Add charges to shipping
                 $shipping += $charges;  
+
+            foreach ($carts as $key => $cartItem) {
+                $product = Product::find($cartItem['product_id']);
+                $tax += cart_product_tax($cartItem, $product,false) * $cartItem['quantity'];
+                $subtotal_offer += cart_product_price($cartItem, $product, false, false) * $cartItem['quantity'];
+            }
             
             foreach ($carts as $key => $cartItem) {
                 $product = Product::find($cartItem['product_id']);
@@ -397,14 +404,49 @@ class CheckoutController extends Controller
                     if ($cartItem['shipping_type'] == 'home_delivery') {
                         
                         // $cartItem['shipping_cost'] = getShippingCost($carts, $key);
-                        if($a == 0){
-                            if($product->shipping_type != 'free'){
-                                $cartItem['shipping_cost'] = getShippingCost($carts, $key) + $charges;
-                                $a++;
-                            }
-                        }else{
+
+                        // if($a == 0){
+                        //     if($product->shipping_type != 'free'){
+                        //         $cartItem['shipping_cost'] = getShippingCost($carts, $key) + $charges;
+                        //         $a++;
+                        //     }
+                        // }else{
+                        //         $cartItem['shipping_cost'] = getShippingCost($carts, $key);
+                        // }
+
+                        if ($a == 0) {
+                            if ($product->shipping_type != 'free') {
+                        
+                                $current_date = time();
+                                $offer_start_date = strtotime('2024-10-28 00:00:00');
+                                $offer_end_date = strtotime('2024-11-03 23:59:59');
+
+                                // var_dump($subtotal_offer);
+                                // var_dump($current_date);
+                                // var_dump($offer_start_date);
+                                // var_dump($offer_end_date);
+                        
+                                if ($subtotal_offer >= 10000 && $current_date >= $offer_start_date && $current_date <= $offer_end_date) {
+
+                                    // var_dump('working');
+
+                                    $cartItem['shipping_cost'] = getShippingCost($carts, $key);
+                                    $a++;
+                                } else {
+
+                                    // var_dump('not working');
+
+                                    $cartItem['shipping_cost'] = getShippingCost($carts, $key) + $charges;
+                                    $a++;
+                                }
+                        
+                            } else {
                                 $cartItem['shipping_cost'] = getShippingCost($carts, $key);
+                            }
+                        } else {
+                            $cartItem['shipping_cost'] = getShippingCost($carts, $key);
                         }
+
                     }
                 }
                 else{
@@ -479,7 +521,42 @@ class CheckoutController extends Controller
                             foreach ($coupon_details as $key => $coupon_detail) {
                                 if ($coupon_detail->product_id == $cartItem['product_id']) {
                                     if ($coupon->discount_type == 'percent') {
-                                        $coupon_discount += (cart_product_price($cartItem, $product, false, false) * $coupon->discount / 100) * $cartItem['quantity'];
+
+                                        $subtotal = 0;
+
+                                        foreach ($carts as $key => $cartItem) { 
+                                            $product = Product::find($cartItem['product_id']);
+                                            $subtotal += cart_product_price($cartItem, $product, false, false) * $cartItem['quantity'];
+                                        }
+
+                                        $sum = $subtotal;
+
+                                        $current_date = time();
+                                        $offer_start_date = strtotime('2024-10-28 00:00:00');
+                                        $offer_end_date = strtotime('2024-11-03 23:59:59');
+        
+                                        if ($sum >= 10000 && $current_date >= $offer_start_date && $current_date <= $offer_end_date) {
+        
+                                            // var_dump('working 1');
+        
+                                            $coupon_discount += (cart_product_price($cartItem, $product, false, false) * 10 / 100) * $cartItem['quantity'];
+
+                                        } elseif ( $sum <= 10000 && $current_date >= $offer_start_date && $current_date <= $offer_end_date ) {
+
+                                            // var_dump('working 2');
+
+                                            $coupon_discount += (cart_product_price($cartItem, $product, false, false) * 5 / 100) * $cartItem['quantity'];
+            
+                                        } else {
+
+                                            // var_dump('working 3');
+
+                                            $coupon_discount += (cart_product_price($cartItem, $product, false, false) * $coupon->discount / 100) * $cartItem['quantity'];
+
+                                        }
+        
+                                        // $coupon_discount += (cart_product_price($cartItem, $product, false, false) * $coupon->discount / 100) * $cartItem['quantity'];
+
                                     } elseif ($coupon->discount_type == 'amount') {
                                         $coupon_discount += $coupon->discount * $cartItem['quantity'];
                                     }
@@ -487,6 +564,8 @@ class CheckoutController extends Controller
                             }
                         }
                     }
+
+                    // var_dump($coupon_discount);
 
                     if($coupon_discount > 0){
                         Cart::where('user_id', Auth::user()->id)

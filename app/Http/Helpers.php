@@ -466,7 +466,42 @@ if (!function_exists('carts_coupon_discount')) {
                             foreach ($coupon_details as $key => $coupon_detail) {
                                 if ($coupon_detail->product_id == $cartItem['product_id']) {
                                     if ($coupon->discount_type == 'percent') {
-                                        $coupon_discount += (cart_product_price($cartItem, $product, false, false) * $coupon->discount / 100) * $cartItem['quantity'];
+
+                                        $subtotal = 0;
+
+                                        foreach ($carts as $key => $cartItem) { 
+                                            $product = Product::find($cartItem['product_id']);
+                                            $subtotal += cart_product_price($cartItem, $product, false, false) * $cartItem['quantity'];
+                                        }
+
+                                        $sum = $subtotal;
+
+                                        $current_date = time();
+                                        $offer_start_date = strtotime('2024-10-28 00:00:00');
+                                        $offer_end_date = strtotime('2024-11-03 23:59:59');
+        
+                                        if ($sum >= 10000 && $current_date >= $offer_start_date && $current_date <= $offer_end_date) {
+        
+                                            // var_dump('working 1');
+        
+                                            $coupon_discount += (cart_product_price($cartItem, $product, false, false) * 10 / 100) * $cartItem['quantity'];
+
+                                        } elseif ( $sum <= 10000 && $current_date >= $offer_start_date && $current_date <= $offer_end_date ) {
+
+                                            // var_dump('working 2');
+
+                                            $coupon_discount += (cart_product_price($cartItem, $product, false, false) * 5 / 100) * $cartItem['quantity'];
+            
+                                        } else {
+
+                                            // var_dump('working 3');
+
+                                            $coupon_discount += (cart_product_price($cartItem, $product, false, false) * $coupon->discount / 100) * $cartItem['quantity'];
+
+                                        }
+        
+                                        // $coupon_discount += (cart_product_price($cartItem, $product, false, false) * $coupon->discount / 100) * $cartItem['quantity'];
+                                        
                                     } elseif ($coupon->discount_type == 'amount') {
                                         $coupon_discount += $coupon->discount * $cartItem['quantity'];
                                     }
