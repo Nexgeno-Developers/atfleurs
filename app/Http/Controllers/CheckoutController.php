@@ -492,6 +492,15 @@ class CheckoutController extends Controller
                                     ->get();
 
                     $coupon_discount = 0;
+
+                    $subtotal = 0;
+
+                    foreach ($carts as $key => $cartItem) { 
+                        $product = Product::find($cartItem['product_id']);
+                        $subtotal += cart_product_price($cartItem, $product, false, false) * $cartItem['quantity'];
+                    }
+
+                    $sum = $subtotal;
                     
                     if ($coupon->type == 'cart_base') {
                         $subtotal = 0;
@@ -521,15 +530,6 @@ class CheckoutController extends Controller
                             foreach ($coupon_details as $key => $coupon_detail) {
                                 if ($coupon_detail->product_id == $cartItem['product_id']) {
                                     if ($coupon->discount_type == 'percent') {
-
-                                        $subtotal = 0;
-
-                                        foreach ($carts as $key => $cartItem) { 
-                                            $product = Product::find($cartItem['product_id']);
-                                            $subtotal += cart_product_price($cartItem, $product, false, false) * $cartItem['quantity'];
-                                        }
-
-                                        $sum = $subtotal;
 
                                         $current_date = time();
                                         $offer_start_date = strtotime('2024-10-28 00:00:00');
