@@ -517,7 +517,7 @@ class CheckoutController extends Controller
                         }
                     } elseif ($coupon->type == 'product_base') {
                         foreach ($carts as $key => $cartItem) { 
-                            $product = Product::find($cartItem['product_id']);
+                            $products = Product::find($cartItem['product_id']);
                             foreach ($coupon_details as $key => $coupon_detail) {
                                 if ($coupon_detail->product_id == $cartItem['product_id']) {
                                     if ($coupon->discount_type == 'percent') {
@@ -525,8 +525,8 @@ class CheckoutController extends Controller
                                         $subtotal = 0;
 
                                         foreach ($carts as $key => $cartItem) { 
-                                            $products = Product::find($cartItem['product_id']);
-                                            $subtotal += cart_product_price_dummy($cartItem, $products, false, false) * $cartItem['quantity'];
+                                            $product = Product::find($cartItem['product_id']);
+                                            $subtotal += cart_product_price($cartItem, $product, false, false) * $cartItem['quantity'];
                                         }
 
                                         $sum = $subtotal;
@@ -539,19 +539,19 @@ class CheckoutController extends Controller
         
                                             // var_dump('working 1');
         
-                                            $coupon_discount += (cart_product_price($cartItem, $product, false, false) * 10 / 100) * $cartItem['quantity'];
+                                            $coupon_discount += (cart_product_price_dummy($cartItem, $products, false, false) * 10 / 100) * $cartItem['quantity'];
 
                                         } elseif ( $sum <= 10000 && $current_date >= $offer_start_date && $current_date <= $offer_end_date ) {
 
                                             // var_dump('working 2');
 
-                                            $coupon_discount += (cart_product_price($cartItem, $product, false, false) * 5 / 100) * $cartItem['quantity'];
+                                            $coupon_discount += (cart_product_price_dummy($cartItem, $products, false, false) * 5 / 100) * $cartItem['quantity'];
             
                                         } else {
 
                                             // var_dump('working 3');
 
-                                            $coupon_discount += (cart_product_price($cartItem, $product, false, false) * $coupon->discount / 100) * $cartItem['quantity'];
+                                            $coupon_discount += (cart_product_price_dummy($cartItem, $products, false, false) * $coupon->discount / 100) * $cartItem['quantity'];
 
                                         }
         
