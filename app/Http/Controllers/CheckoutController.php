@@ -501,6 +501,8 @@ class CheckoutController extends Controller
                     }
 
                     $sum = $subtotal;
+                    $product = '';
+
                     
                     if ($coupon->type == 'cart_base') {
                         $subtotal = 0;
