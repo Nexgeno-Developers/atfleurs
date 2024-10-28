@@ -525,8 +525,8 @@ class CheckoutController extends Controller
                                         $subtotal = 0;
 
                                         foreach ($carts as $key => $cartItem) { 
-                                            $product = Product::find($cartItem['product_id']);
-                                            $subtotal += cart_product_price($cartItem, $product, false, false) * $cartItem['quantity'];
+                                            $products = Product::find($cartItem['product_id']);
+                                            $subtotal += cart_product_price_dummy($cartItem, $products, false, false) * $cartItem['quantity'];
                                         }
 
                                         $sum = $subtotal;
@@ -565,7 +565,7 @@ class CheckoutController extends Controller
                         }
                     }
 
-                    
+
                     // var_dump($coupon_discount);
 
                     if($coupon_discount > 0){

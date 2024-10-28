@@ -294,6 +294,66 @@ if (!function_exists('cart_product_price')) {
     }
 }
 
+
+if (!function_exists('cart_product_price_dummy')) {
+    function cart_product_price_dummy($cart_product, $products, $formatted = true, $tax = true)
+    {
+        if ($products->auction_product == 0) {
+            $str = '';
+            if ($cart_product['variation'] != null) {
+                $str = $cart_product['variation'];
+            }
+            $price = 0;
+            $product_stock = $products->stocks->where('variant', $str)->first();
+            if ($product_stock) {
+                $price = $product_stock->price;
+            }
+
+
+            //discount calculation
+            $discount_applicable = false;
+
+            if ($products->discount_start_date == null) {
+                $discount_applicable = true;
+            } elseif (
+                strtotime(date('d-m-Y H:i:s')) >= $products->discount_start_date &&
+                strtotime(date('d-m-Y H:i:s')) <= $products->discount_end_date
+            ) {
+                $discount_applicable = true;
+            }
+
+            if ($discount_applicable) {
+                if ($products->discount_type == 'percent') {
+                    $price -= ($price * $products->discount) / 100;
+                } elseif ($products->discount_type == 'amount') {
+                    $price -= $products->discount;
+                }
+            }
+        } else {
+            $price = $products->bids->max('amount');
+        }
+
+        //calculation of taxes 
+        if ($tax) {
+            $taxAmount = 0;
+            foreach ($product->taxes as $product_tax) {
+                if ($product_tax->tax_type == 'percent') {
+                    $taxAmount += ($price * $product_tax->tax) / 100;
+                } elseif ($product_tax->tax_type == 'amount') {
+                    $taxAmount += $product_tax->tax;
+                }
+            }
+            $price += $taxAmount;
+        }
+
+        if ($formatted) {
+            return format_price(convert_price($price));
+        } else {
+            return $price;
+        }
+    }
+}
+
 if (!function_exists('cart_product_tax')) {
     function cart_product_tax($cart_product, $product, $formatted = true)
     {
@@ -502,7 +562,7 @@ if (!function_exists('carts_coupon_discount')) {
         
                                         // $coupon_discount += (cart_product_price($cartItem, $product, false, false) * $coupon->discount / 100) * $cartItem['quantity'];
                                         
-                                        
+
                                     } elseif ($coupon->discount_type == 'amount') {
                                         $coupon_discount += $coupon->discount * $cartItem['quantity'];
                                     }
