@@ -336,7 +336,7 @@ if (!function_exists('cart_product_price_dummy')) {
         //calculation of taxes 
         if ($tax) {
             $taxAmount = 0;
-            foreach ($product->taxes as $product_tax) {
+            foreach ($products->taxes as $product_tax) {
                 if ($product_tax->tax_type == 'percent') {
                     $taxAmount += ($price * $product_tax->tax) / 100;
                 } elseif ($product_tax->tax_type == 'amount') {
