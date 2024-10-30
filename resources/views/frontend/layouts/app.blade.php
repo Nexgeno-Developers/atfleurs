@@ -232,6 +232,97 @@
                         margin: 20px;
                     }
                  }
+
+
+                 
+
+                  @keyframes  confetti-slow {
+                    0% {
+                        transform: translate3d(0, 0, 0) rotateX(0) rotateY(0);
+                    }
+                    100% {
+                        transform: translate3d(25px, 105vh, 0) rotateX(360deg) rotateY(180deg);
+                    }
+                }
+                @keyframes  confetti-medium {
+                    0% {
+                        transform: translate3d(0, 0, 0) rotateX(0) rotateY(0);
+                    }
+                    100% {
+                        transform: translate3d(100px, 105vh, 0) rotateX(100deg) rotateY(360deg);
+                    }
+                }
+                @keyframes  confetti-fast {
+                    0% {
+                        transform: translate3d(0, 0, 0) rotateX(0) rotateY(0);
+                    }
+                    100% {
+                        transform: translate3d(-50px, 105vh, 0) rotateX(10deg) rotateY(250deg);
+                    }
+                }
+                .confetti-container {
+                    perspective: 700px;
+                    position: absolute;
+                    overflow: hidden;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
+                    left: 0;
+                }
+                .confetti {
+                    position: absolute;
+                    z-index: 1;
+                    top: -10px;
+                    border-radius: 0;
+                }
+                .confetti--animation-slow {
+                    animation: confetti-slow 2.25s linear 1 forwards;
+                }
+                .confetti--animation-medium {
+                    animation: confetti-medium 1.75s linear 1 forwards;
+                }
+                .confetti--animation-fast {
+                    animation: confetti-fast 1.25s linear 1 forwards;
+                }
+#once-popup {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        background: rgba(0, 0, 0, 0.65);
+        text-align: center;
+        z-index: 10000;
+    }
+
+    div#once-popup img {
+    width: 100%;
+}
+    #once-popup .offer_popup {
+        background: #ffffff;
+    padding: 0px;
+    width: 530px;
+    max-width: 80%;
+    margin: 50px auto;
+    position: relative;
+    }
+    #once-popup #popup-close {
+    position: absolute;
+    right: -16px;
+    background: #84253b;
+    z-index: 99;
+    opacity: 1 !important;
+    border-radius: 50px;
+    height: 34px;
+    width: 34px;
+    line-height: 34px;
+    font-size: 34px;
+    text-shadow: none;
+    top: -16px;
+    color: #fff;
+    }
+
+                
     </style>
     
  <!-- Google tag (gtag.js) -->
@@ -886,6 +977,67 @@ jQuery(document).ready(function($){
 
     window.confettiful = new Confettiful(document.querySelector(".js-container"));
 </script>
+
+
+<div style="display:none" id="once-popup">
+    <div class="offer_popup">
+        <div id="popup-close" role="button">×</div>
+        <img src="/assets/img/diwali_offer.jpg" 
+             data-coupon="DIWALI24" 
+             id="coupon-image" 
+             style="cursor: pointer;" 
+             alt="Offer Image" />
+    </div>
+</div>
+
+<div id="copy-notification" style="    position: fixed;
+    top: 1%;
+    padding: 10px 20px;
+    background-color: rgb(76, 175, 80);
+    color: rgb(255, 255, 255);
+    border-radius: 5px;
+    font-size: 16px;
+    z-index: 99999;
+    right: 7px;
+    display:none;
+}">
+    Coupon copied!
+</div>
+<script>
+    $(document).ready(function() {
+        // Show popup on home page only
+        if (window.location.pathname === "/") {
+            $("#once-popup").delay(2000).fadeIn();
+        }
+
+        // Close popup on clicking close button
+        $('#popup-close').click(function(e) {
+            e.stopPropagation();
+            $('#once-popup').fadeOut();
+        });
+
+        // Close popup on clicking outside popup content
+        $('#once-popup').click(function(e) {
+            if (e.target === this) {
+                $(this).fadeOut();
+            }
+        });
+
+        // Copy coupon code when image is clicked
+        $('#coupon-image').click(function() {
+            var couponCode = $(this).data('coupon');
+            navigator.clipboard.writeText(couponCode).then(function() {
+                // Show notification
+                $('#copy-notification').fadeIn().delay(2000).fadeOut();
+            }).catch(function(error) {
+                console.error("Failed to copy text: ", error);
+            });
+        });
+    });
+</script>
+
+
+
 
 </body>
 </html>
