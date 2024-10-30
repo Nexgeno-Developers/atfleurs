@@ -1010,7 +1010,7 @@ jQuery(document).ready(function($){
 <div style="display:none" id="once-popup">
     <div class="offer_popup">
         <div id="popup-close" role="button">×</div>
-        <img src="assets/img/diwali_offer.jpg" 
+        <img src="public/assets/img/diwali_offer.jpg" 
              data-coupon="DIWALI24" 
              id="coupon-image" 
              style="cursor: pointer;" 
