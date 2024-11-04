@@ -1007,7 +1007,7 @@ jQuery(document).ready(function($){
 </script>
 
 
-<div style="display:none" id="once-popup">
+<!-- <div style="display:none" id="once-popup">
     <div class="offer_popup">
         <div id="popup-close" role="button">×</div>
         <img src="public/assets/img/diwali_offer.jpg" 
@@ -1062,7 +1062,7 @@ jQuery(document).ready(function($){
             });
         });
     });
-</script>
+</script> -->
 
 
 
