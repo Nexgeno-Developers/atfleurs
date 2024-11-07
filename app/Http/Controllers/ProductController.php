@@ -195,7 +195,7 @@ class ProductController extends Controller
         // Encode zipcode_availibility_id
         $request->merge([
             'zipcode_availibility_id' => json_encode($request->zipcode_availibility_id),
-            'product_tag_id' => $request->zipcode_availibility_id ?? null,
+            'product_tag_id' => json_encode($request->zipcode_availibility_id) ?? null,
         ]);
     
         $product = $this->productService->store($request->except([
