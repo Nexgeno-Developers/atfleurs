@@ -2192,3 +2192,59 @@ section#cart-summary .col-md-6.text-center.text-md-right a {
 table.table.aiz-table.mb-0.footable.footable-1.breakpoint-lg span.badge.badge-inline.badge-danger {
   width: auto;
 }
+
+.social-media-links {
+  display: flex;
+  justify-content: start;
+  gap: 15px; /* Space between icons */
+  padding: 5px 0;
+}
+
+.social-icon {
+  text-decoration: none;
+  font-size: 25px;
+  color: #fff; /* Icon color */
+  padding: 0px 6px; /* Inner padding */
+  border-radius: 0px; /* Circular background */
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.instagram {
+  background-color: #E4405F;
+}
+
+.twitter {
+  background-color: #1DA1F2;
+}
+
+.facebook {
+  background-color: #1877F2;
+}
+
+.linkedin {
+  background-color: #0077B5;
+}
+
+.social-icon:hover {
+  color: #fff; /* Slight zoom effect on hover */
+  transition: all 0.1s linear;
+}
+
+.social-icon i {
+  font-size: inherit;
+  transition: all 0.1s linear;
+}
+
+.guarantee_main_div {
+  display: flex;
+  padding-bottom: 10px; 
+  align-items: center;
+}
+
+.guarantee_img {
+  width: 40px;
+}
+
+.guarantee_img_div {
+  margin-right: 10px;
+}
