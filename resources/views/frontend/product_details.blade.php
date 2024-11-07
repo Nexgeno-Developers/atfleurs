@@ -481,6 +481,14 @@
                             @endphp
                             @if (addon_is_activated('refund_request'))
                                 <div class="row no-gutters mt-3 d">
+                                    <div class="col-12 guarantee_main_div">
+                                        <div class="guarantee_img_div">
+                                            <img class="guarantee_img" src="{{ static_asset('assets/img/guarantee-01.png')}}">
+                                        </div>
+                                        <div class="satisfaction_text_div">
+                                            <span class="satisfaction_text">100% Satisfaction with Every Purchase.</span>
+                                        </div>
+                                    </div>
                                     <div class="col-2">
                                         <div class="opacity-90 mt-2">{{ translate('Refund') }}:</div>
                                     </div>
@@ -503,7 +511,21 @@
                                     <div class="opacity-90 my-2">{{ translate('Share') }}:</div>
                                 </div>
                                 <div class="col-sm-10">
-                                    <div class="aiz-share"></div>
+                                    <!-- <div class="aiz-share"></div> -->
+                                    <div class="social-media-links">
+                                        <a href="https://www.instagram.com/atfleurs/" class="social-icon instagram">
+                                            <i class="lab la-instagram"></i>
+                                        </a>
+                                        <a href="https://x.com/Atfleurss" class="social-icon twitter">
+                                            <i class="lab la-twitter"></i>
+                                        </a>
+                                        <a href="https://m.facebook.com/atfleurs/" class="social-icon facebook">
+                                            <i class="lab la-facebook-f"></i>
+                                        </a>
+                                        <a href="https://www.linkedin.com/in/at-fleurs-39749b273/" class="social-icon linkedin">
+                                            <i class="lab la-linkedin-in"></i>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
