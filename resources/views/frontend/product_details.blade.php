@@ -480,7 +480,7 @@
                                 $refund_sticker = get_setting('refund_sticker');
                             @endphp
                             @if (addon_is_activated('refund_request'))
-                                <div class="row no-gutters mt-3 d">
+                                <div class="row no-gutters mt-2 d">
                                     <div class="col-12 guarantee_main_div">
                                         <div class="guarantee_img_div">
                                             <img class="guarantee_img" src="{{ static_asset('assets/img/guarantee_shield.png')}}">
@@ -489,7 +489,7 @@
                                             <p class="satisfaction_text">We guarantee a 100% safe and secure payment experience</p>
                                         </div>
                                     </div>
-                                    <div class="col-12 guarantee_main_div">
+                                    <div class="col-12 guarantee_main_div mb-md-2 mb-1">
                                         <div class="guarantee_img_div">
                                             <img class="guarantee_img" src="{{ static_asset('assets/img/flower_icon.png')}}">
                                         </div>
