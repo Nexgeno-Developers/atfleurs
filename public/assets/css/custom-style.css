@@ -2,6 +2,10 @@ body {
   font-family: poppins, sans-serif;
 }
 
+.fa {
+  font-family: 'fontAwesome' !important;
+}
+
 .sortbar_tabs-container select.form-select {
   word-wrap: normal;
   border: 0;
@@ -2196,21 +2200,24 @@ table.table.aiz-table.mb-0.footable.footable-1.breakpoint-lg span.badge.badge-in
 .social-media-links {
   display: flex;
   justify-content: start;
-  gap: 15px; /* Space between icons */
+  gap: 10px; /* Space between icons */
   padding: 5px 0;
+  margin-left: 18px;
 }
 
 .social-icon {
   text-decoration: none;
-  font-size: 25px;
-  color: #fff; /* Icon color */
-  padding: 0px 6px; /* Inner padding */
-  border-radius: 0px; /* Circular background */
+  font-size: 16px;
   transition: background-color 0.3s ease, transform 0.3s ease;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
 }
 
 .instagram {
-  background-color: #E4405F;
+  background-image: linear-gradient(135deg, #4958e1, #f32338);
+  /* transform: rotate(45deg); */
 }
 
 .twitter {
@@ -2225,14 +2232,15 @@ table.table.aiz-table.mb-0.footable.footable-1.breakpoint-lg span.badge.badge-in
   background-color: #0077B5;
 }
 
-.social-icon:hover {
-  color: #fff; /* Slight zoom effect on hover */
+.social-icon:hover { 
   transition: all 0.1s linear;
 }
 
 .social-icon i {
   font-size: inherit;
   transition: all 0.1s linear;
+  color: #fff;
+  font-weight: 400 !important;
 }
 
 .guarantee_main_div {
