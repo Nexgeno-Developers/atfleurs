@@ -483,17 +483,25 @@
                                 <div class="row no-gutters mt-3 d">
                                     <div class="col-12 guarantee_main_div">
                                         <div class="guarantee_img_div">
-                                            <img class="guarantee_img" src="{{ static_asset('assets/img/guarantee-01.png')}}">
+                                            <img class="guarantee_img" src="{{ static_asset('assets/img/guarantee_shield.png')}}">
                                         </div>
                                         <div class="satisfaction_text_div">
-                                            <span class="satisfaction_text">100% Satisfaction with Every Purchase.</span>
+                                            <p class="satisfaction_text">We guarantee a 100% safe and secure payment experience</p>
                                         </div>
                                     </div>
-                                    <div class="">
-                                        <div class="opacity-90 mt-2">{{ translate('Refund') }}:</div>
+                                    <div class="col-12 guarantee_main_div">
+                                        <div class="guarantee_img_div">
+                                            <img class="guarantee_img" src="{{ static_asset('assets/img/flower_icon.png')}}">
+                                        </div>
+                                        <div class="satisfaction_text_div">
+                                            <p class="satisfaction_text">Freshness Guarantee for Every Bloom</p>
+                                        </div>
                                     </div>
-                                    <div class="">
-                                        <a href="{{ route('returnpolicy') }}" target="_blank">
+                                    <div class="mt-2">
+                                        <div class="opacity-90">{{ translate('Refund') }}:</div>
+                                    </div>
+                                    <div class=" mt-2">
+                                        <a href="{{ route('returnpolicy') }}" target="_blank" class="d-none">
                                             @if ($refund_sticker != null)
                                                 <img src="{{ uploaded_asset($refund_sticker) }}" height="36">
                                             @else
@@ -501,7 +509,7 @@
                                                     height="36">
                                             @endif
                                         </a>
-                                        <a href="{{ route('returnpolicy') }}" class="ml-2"
+                                        <a href="{{ route('returnpolicy') }}" class="ml-4"
                                             target="_blank">{{ translate('View Policy') }}</a>
                                     </div>
                                 </div>
