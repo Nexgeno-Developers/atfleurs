@@ -225,15 +225,19 @@
                      <ul class="list-inline my-3 my-md-0 text-left">
                     
                     <li class="list-inline-item">
-                        <a href="https://www.facebook.com/atfleurs" aria-label="Facebook Link" target="_blank" class="facebook"><i class="lab la-facebook-f"></i></a>
+                        <a href="https://www.facebook.com/atfleurs" aria-label="Facebook Link" target="_blank" class="facebook"><i class="fa fa-facebook"></i></a>
                     </li>
                     
                     <li class="list-inline-item">
-                        <a href="https://instagram.com/atfleurs?igshid=MzNlNGNkZWQ4Mg==" aria-label="Instagram Link" target="_blank" class="instagram"><i class="lab la-instagram"></i></a>
+                        <a href="https://instagram.com/atfleurs?igshid=MzNlNGNkZWQ4Mg==" aria-label="Instagram Link" target="_blank" class="instagram"><i class="fa fa-instagram"></i></a>
                     </li>
                     
                     <li class="list-inline-item">
-                        <a href="https://twitter.com/Atfleurss" aria-label="Twitter Link" target="_blank" class="twitter"><i class="lab la-twitter"></i></a>
+                        <a href="https://x.com/Atfleurss" aria-label="Twitter X Link" target="_blank" class="twitter-x"><i class="fa fa-x-twitter"></i></a>
+                    </li>
+
+                    <li class="list-inline-item">
+                        <a href="https://www.linkedin.com/in/at-fleurs-39749b273/" aria-label="Linkedin Link" target="_blank" class="linkedin"><i class="fa fa-linkedin"></i></a>
                     </li>
                     
                     <li class="list-inline-item">

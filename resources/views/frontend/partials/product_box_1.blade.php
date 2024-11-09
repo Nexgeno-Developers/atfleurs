@@ -38,14 +38,23 @@
                 {{ translate('Wholesale') }}
             </span>
         @endif
-        <div class="absolute-top-right aiz-p-hov-icon display_none">
-            <a href="javascript:void(0)" onclick="addToWishList({{ $product->id }})" data-toggle="tooltip" data-title="{{ translate('Add to wishlist') }}" data-placement="left">
+        <div class="absolute-top-right aiz-p-hov-icon">
+            @if(isset(auth()->user()->id))
+            @php
+              $isWishlist = DB::table('wishlists')
+                  ->where('user_id', auth()->user()->id)
+                  ->where('product_id', $product->id)
+                  ->exists();
+            @endphp
+
+            <a href="javascript:void(0)" onclick="addToWishList({{ $product->id }})" data-toggle="tooltip" data-title="{{ translate('Add to wishlist') }}" data-placement="left" data-id="{{ $product->id }}" class="wishlist @if($isWishlist) active @endif">
                 <i class="la la-heart-o"></i>
             </a>
-            <a href="javascript:void(0)" onclick="addToCompare({{ $product->id }})" data-toggle="tooltip" data-title="{{ translate('Add to compare') }}" data-placement="left">
+            @endif
+            <a class="display_none" href="javascript:void(0)" onclick="addToCompare({{ $product->id }})" data-toggle="tooltip" data-title="{{ translate('Add to compare') }}" data-placement="left">
                 <i class="las la-sync"></i>
             </a>
-            <a href="javascript:void(0)" onclick="showAddToCartModal({{ $product->id }})" data-toggle="tooltip" data-title="{{ translate('Add to cart') }}" data-placement="left">
+            <a class="display_none" href="javascript:void(0)" onclick="showAddToCartModal({{ $product->id }})" data-toggle="tooltip" data-title="{{ translate('Add to cart') }}" data-placement="left">
                 <i class="las la-shopping-cart"></i>
             </a>
         </div>

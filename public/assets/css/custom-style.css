@@ -214,7 +214,8 @@ ul.social.colored [class*="google"] {
 
 .social_icons i {
   color: #333;
-  font-size: 30px;
+  font-size: 24px;
+  font-weight: 400;
 }
 
 .social_icons a {
@@ -2197,6 +2198,8 @@ table.table.aiz-table.mb-0.footable.footable-1.breakpoint-lg span.badge.badge-in
   width: auto;
 }
 
+/* zuber css open*/
+
 .social-media-links {
   display: flex;
   justify-content: start;
@@ -2215,20 +2218,20 @@ table.table.aiz-table.mb-0.footable.footable-1.breakpoint-lg span.badge.badge-in
   text-align: center;
 }
 
-.instagram {
+.social-media-links .instagram {
   background-image: linear-gradient(135deg, #4958e1, #f32338);
   /* transform: rotate(45deg); */
 }
 
-.twitter {
-  background-color: #1DA1F2;
+.social-media-links .twitter-x {
+  background-color: #111;
 }
 
-.facebook {
+.social-media-links .facebook {
   background-color: #1877F2;
 }
 
-.linkedin {
+.social-media-links .linkedin {
   background-color: #0077B5;
 }
 
@@ -2264,3 +2267,23 @@ table.table.aiz-table.mb-0.footable.footable-1.breakpoint-lg span.badge.badge-in
   font-size: 13px;
   margin-bottom: 0px;
 }
+
+.aiz-p-hov-icon a:hover i{
+  color: #ff0000;
+  font-weight: 900 !important;
+}
+
+.aiz-p-hov-icon a:hover {
+  background-color: #fff;
+}
+
+.wishlist.active i {
+  color: #ff0000;
+  font-weight: 900 !important;
+}
+
+.wishlist.active:hover {
+  background-color: #fff;
+}
+
+/* zuber css end*/

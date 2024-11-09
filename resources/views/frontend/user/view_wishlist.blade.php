@@ -22,23 +22,24 @@
                             <h5 class="fs-14 mb-0 lh-1-5 fw-600 text-truncate-2">
                                 <a href="{{ route('product', $wishlist->product->slug) }}" class="text-reset">{{ $wishlist->product->getTranslation('name') }}</a>
                             </h5>
-                            <div class="rating rating-sm mb-1">
+                            <!-- <div class="rating rating-sm mb-1">
                                 {{ renderStarRating($wishlist->product->rating) }}
-                            </div>
+                            </div> -->
                             <div class=" fs-14">
                                   @if(home_base_price($wishlist->product) != home_discounted_base_price($wishlist->product))
                                       <del class="opacity-60 mr-1">{{ home_base_price($wishlist->product) }}</del>
                                   @endif
-                                      <span class="fw-600 text-primary">{{ home_discounted_base_price($wishlist->product) }}</span>
+                                      <!-- <span class="fw-600 text-primary">{{ home_discounted_base_price($wishlist->product) }}</span> -->
+                                      <span class="fw-600 text-primary">{{ home_discounted_price($wishlist->product) }}</span>
                             </div>
                         </div>
                         <div class="card-footer">
                             <a href="#" class="link link--style-3" data-toggle="tooltip" data-placement="top" title="Remove from wishlist" onclick="removeFromWishlist({{ $wishlist->id }})">
                                 <i class="la la-trash la-2x"></i>
                             </a>
-                            <button type="button" class="btn btn-sm btn-block btn-primary ml-3" onclick="showAddToCartModal({{ $wishlist->product->id }})">
+                            <!-- <button type="button" class="btn btn-sm btn-block btn-primary ml-3" onclick="showAddToCartModal({{ $wishlist->product->id }})">
                                 <i class="la la-shopping-cart mr-2"></i>{{ translate('Add to cart')}}
-                            </button>
+                            </button> -->
                         </div>
                     </div>
                 </div>

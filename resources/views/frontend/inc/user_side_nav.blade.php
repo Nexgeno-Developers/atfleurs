@@ -152,13 +152,13 @@
                         </li>
                     @endif
 
-                    <!--<li class="aiz-side-nav-item">-->
-                    <!--    <a href="{{ route('wishlists.index') }}"-->
-                    <!--        class="aiz-side-nav-link {{ areActiveRoutes(['wishlists.index']) }}">-->
-                    <!--        <i class="la la-heart-o aiz-side-nav-icon"></i>-->
-                    <!--        <span class="aiz-side-nav-text">{{ translate('Wishlist') }}</span>-->
-                    <!--    </a>-->
-                    <!--</li>-->
+                    <li class="aiz-side-nav-item">
+                        <a href="{{ route('wishlists.index') }}"
+                            class="aiz-side-nav-link {{ areActiveRoutes(['wishlists.index']) }}">
+                            <i class="la la-heart-o aiz-side-nav-icon"></i>
+                            <span class="aiz-side-nav-text">{{ translate('Wishlist') }}</span>
+                        </a>
+                    </li>
 
                     <!--<li class="aiz-side-nav-item">-->
                     <!--    <a href="{{ route('compare') }}" class="aiz-side-nav-link {{ areActiveRoutes(['compare']) }}">-->
