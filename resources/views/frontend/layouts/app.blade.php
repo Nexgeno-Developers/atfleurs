@@ -60,7 +60,7 @@
     
     <!--<link rel="stylesheet" href="{{ static_asset('assets/css/aiz-core.css') }}">-->
     <link rel="stylesheet" href="{{ static_asset('assets/css/aiz-core.min.css') }}">
-    <link rel="stylesheet" href="{{ static_asset('assets/css/custom-style.css?v-1.2.2') }}">
+    <link rel="stylesheet" href="{{ static_asset('assets/css/custom-style.css?v-1.2.3') }}">
     <link rel="stylesheet" href="{{ static_asset('assets/css/fancybox.min.css') }}">
 
     <link rel="preload" href="{{ static_asset('assets/css/owl.carousel.min.css') }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -763,9 +763,11 @@ jQuery(document).ready(function($){
         function addToWishList(id){
             @if (Auth::check() && Auth::user()->user_type == 'customer')
                 $.post('{{ route('wishlists.store') }}', {_token: AIZ.data.csrf, id:id}, function(data){
+                const wishlistButton = $(`[data-id="${id}"]`);
                     if(data != 0){
                         $('#wishlist').html(data);
                         AIZ.plugins.notify('success', "{{ translate('Item has been added to wishlist') }}");
+                        wishlistButton.addClass("active");
                     }
                     else{
                         AIZ.plugins.notify('warning', "{{ translate('Please login first') }}");

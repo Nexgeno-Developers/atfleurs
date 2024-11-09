@@ -524,7 +524,7 @@
                                         <a href="https://www.instagram.com/atfleurs/" class="social-icon instagram">
                                             <i class="fa fa-instagram"></i>
                                         </a>
-                                        <a href="https://x.com/Atfleurss" class="social-icon twitter">
+                                        <a href="https://x.com/Atfleurss" class="social-icon twitter-x">
                                             <i class="fa fa-x-twitter"></i>
                                         </a>
                                         <a href="https://m.facebook.com/atfleurs/" class="social-icon facebook">
