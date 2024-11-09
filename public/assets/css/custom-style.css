@@ -721,6 +721,10 @@ h2.text-center.about-us-home {
     margin-bottom: -25px;
   }
 
+  .wishlist_product .col-md-4 {
+    margin-bottom: 0px;
+  }
+
   h2.text-center.about-us-home {
     padding: 10px 0 0;
     font-size: 26px;
