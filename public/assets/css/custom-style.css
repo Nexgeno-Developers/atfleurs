@@ -1560,6 +1560,10 @@ a.read-color {
     width: 100%;
     height: auto;
   }
+
+  .aiz-p-hov-icon a {
+    transform: none !important;
+  }
 }
 
 iframe.location-map {
@@ -1603,6 +1607,11 @@ iframe.location-map {
   .blog_section {
     padding-bottom: 2rem;
     padding-top: 2rem;
+  }
+
+  
+  .aiz-p-hov-icon a {
+    transform: none !important;
   }
 
 }
@@ -2284,6 +2293,10 @@ table.table.aiz-table.mb-0.footable.footable-1.breakpoint-lg span.badge.badge-in
 
 .wishlist.active:hover {
   background-color: #fff;
+}
+
+.tooltip_none {
+  display: none !important; 
 }
 
 /* zuber css end*/

@@ -60,7 +60,7 @@
     
     <!--<link rel="stylesheet" href="{{ static_asset('assets/css/aiz-core.css') }}">-->
     <link rel="stylesheet" href="{{ static_asset('assets/css/aiz-core.min.css') }}">
-    <link rel="stylesheet" href="{{ static_asset('assets/css/custom-style.css?v-1.2.3') }}">
+    <link rel="stylesheet" href="{{ static_asset('assets/css/custom-style.css?v-1.2.4') }}">
     <link rel="stylesheet" href="{{ static_asset('assets/css/fancybox.min.css') }}">
 
     <link rel="preload" href="{{ static_asset('assets/css/owl.carousel.min.css') }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
