@@ -171,7 +171,7 @@
             
             
             <div class="col-lg-6  col-md-8">
-        <div class="newsletter_box mt-4">
+        <div class="newsletter_box mt-lg-4">
         <div class="row col-md-12 col-12">
              <div class="col-lg-12">
                <h4 class="lora_font">Newsletter </h4>

@@ -1579,6 +1579,30 @@ iframe.location-map {
     background-position: 133px 270px !important;
   }
 
+  .newsletter_box {
+    padding: 22px 100px 22px 10px;
+  }
+
+  .wcs_fixed_right { 
+    bottom: 80px !important;
+    left: 10px !important;
+  }
+
+  section.call-buton { 
+    bottom: 50px !important;
+  }
+
+  .call-buton .cc-calto-action-ripple i { 
+    width: 50px !important; 
+    left: 28px !important;
+    height: 50px !important;
+    padding: 12px !important; 
+    font-size: 26px !important;
+  }
+
+  .contact_footer {
+    margin-top: 0px;
+  }
 
   .about_content_box a {
     margin-bottom: 50px !important;
@@ -1833,10 +1857,10 @@ footer.pt-1.pb-1.pb-xl-0.bg-white.text-light.border-top.border-dark-900.balsamiq
 }
 
 .wcs_fixed_right {
-  z-index: 999 !important;
+  z-index: 999;
   position: fixed !important;
-  bottom: 25px !important;
-  left: 25px !important;
+  bottom: 25px;
+  left: 25px;
 }
 
 .whatspicon_sz {
