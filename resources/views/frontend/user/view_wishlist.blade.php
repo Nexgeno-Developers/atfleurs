@@ -9,7 +9,7 @@
         </div>
     </div>
 
-    <div class="row gutters-5">
+    <div class="row gutters-5 wishlist_product">
         @forelse ($wishlists as $key => $wishlist)
             @if ($wishlist->product != null)
                 <div class="col-xxl-3 col-xl-4 col-lg-3 col-md-4 col-sm-6" id="wishlist_{{ $wishlist->id }}">
