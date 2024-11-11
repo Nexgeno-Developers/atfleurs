@@ -535,16 +535,18 @@
                             <div class="">
                                 <!-- <div class="aiz-share"></div> -->
                                 <div class="social-media-links">
-                                    <a href="https://www.instagram.com/atfleurs/" class="social-icon instagram">
+                                    <a target="_blank" href="https://www.instagram.com/atfleurs/"
+                                        class="social-icon instagram">
                                         <i class="fa fa-instagram"></i>
                                     </a>
-                                    <a href="https://x.com/Atfleurss" class="social-icon twitter-x">
+                                    <a target="_blank" href="https://x.com/Atfleurss" class="social-icon twitter-x">
                                         <i class="fa fa-x-twitter"></i>
                                     </a>
-                                    <a href="https://m.facebook.com/atfleurs/" class="social-icon facebook">
+                                    <a target="_blank" href="https://m.facebook.com/atfleurs/"
+                                        class="social-icon facebook">
                                         <i class="fa fa-facebook-f"></i>
                                     </a>
-                                    <a href="https://www.linkedin.com/in/at-fleurs-39749b273/"
+                                    <a target="_blank" href="https://www.linkedin.com/in/at-fleurs-39749b273/"
                                         class="social-icon linkedin">
                                         <i class="fa fa-linkedin-in"></i>
                                     </a>
