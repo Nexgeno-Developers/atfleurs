@@ -176,6 +176,9 @@ class OrderController extends Controller
             $order->user_id = Auth::user()->id;
             $order->shipping_address = $combined_order->shipping_address;
 
+            $order->from_name = $request->from_name;
+            $order->to_name = $request->to_name;
+
             $order->additional_info = $request->additional_info;
             $order->delivery_datetime = $request->delivery_datetime;
 

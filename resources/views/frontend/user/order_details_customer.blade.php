@@ -65,11 +65,19 @@
                             <td class="w-50 fw-600">{{ translate('Payment method') }}:</td>
                             <td>{{ translate(ucfirst(str_replace('_', ' ', $order->payment_type))) }}</td>
                         </tr>
-
                         <tr>
-                            <td class="text-main fw-600 text-bold">{{ translate('Additional Info') }}:</td>
-                            <td class="">{{ $order->additional_info }}</td>
+                            <td class="text-main fw-600 text-bold">{{ translate('Sender’s Name') }}:</td>
+                            <td>{{ $order->from_name }}</td>
                         </tr>
+                        <tr>
+                            <td class="text-main fw-600 text-bold">{{ translate('Recipient’s Name') }}:</td>
+                            <td>{{ $order->to_name }}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-main fw-600 text-bold">{{ translate('Additional Note') }}:</td>
+                            <td>{{ $order->additional_info }}</td>
+                        </tr>
+
                         {{--@if($order->delivery_datetime)--}}
                                 <tr>
                                     <td class="text-main fw-600 text-bold">{{ translate('Delivery At') }}:</td>
