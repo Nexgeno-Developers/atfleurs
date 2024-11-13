@@ -101,6 +101,8 @@
 				@php
 					$shipping_address = json_decode($order->shipping_address);
 					$additional_info = 	$order->additional_info;
+					$from_name = 	$order->from_name;
+					$to_name = 	$order->to_name;
 				@endphp
 				<tr><td class="strong small gry-color">{{ translate('Bill to') }}:</td></tr>
 				<tr><td class="strong">{{ $shipping_address->name }}</td></tr>
@@ -108,7 +110,13 @@
 				<tr><td class="gry-color small">{{ translate('Email') }}: {{ $shipping_address->email }}</td></tr>
 				<tr><td class="gry-color small">{{ translate('Phone') }}: {{ $shipping_address->phone }}</td></tr>
 				@if(!empty($additional_info))
-				<tr><td class="gry-color strong">{{ translate('Additional Info') }}: {{ $additional_info }}</td></tr>
+				<tr><td class="gry-color strong">{{ translate('Additional Note') }}: {{ $additional_info }}</td></tr>
+				@endif
+				@if(!empty($from_name))
+				<tr><td class="gry-color strong">{{ translate('From') }}: {{ $from_name }}</td></tr>
+				@endif
+				@if(!empty($to_name))
+				<tr><td class="gry-color strong">{{ translate('To') }}: {{ $to_name }}</td></tr>
 				@endif
 			</table>
 		</div>

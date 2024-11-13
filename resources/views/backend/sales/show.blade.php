@@ -138,11 +138,11 @@
                     <table>
                         <tbody>
                             <tr>
-                                <td class="text-main text-bold">{{ translate('Order #') }}</td>
+                                <td class="text-main fw-600 text-bold">{{ translate('Order #') }}</td>
                                 <td class="text-info text-bold text-right"> {{ $order->code }}</td>
                             </tr>
                             <tr>
-                                <td class="text-main text-bold">{{ translate('Order Status') }}</td>
+                                <td class="text-main fw-600 text-bold">{{ translate('Order Status') }}:</td>
                                 <td class="text-right">
                                     @if ($delivery_status == 'delivered')
                                         <span class="badge badge-inline badge-success">
@@ -156,11 +156,11 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td class="text-main text-bold">{{ translate('Order Date') }} </td>
+                                <td class="text-main fw-600 text-bold">{{ translate('Order Date') }}:</td>
                                 <td class="text-right">{{ date('d-m-Y h:i A', $order->date) }}</td>
                             </tr>
                             <tr>
-                                <td class="text-main text-bold">
+                                <td class="text-main fw-600 text-bold">
                                     {{ translate('Total amount') }}
                                 </td>
                                 <td class="text-right">
@@ -168,17 +168,26 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td class="text-main text-bold">{{ translate('Payment method') }}</td>
+                                <td class="text-main fw-600 text-bold">{{ translate('Payment method') }}:</td>
                                 <td class="text-right">
                                     {{ translate(ucfirst(str_replace('_', ' ', $order->payment_type))) }}</td>
                             </tr>
                             <tr>
-                                <td class="text-main text-bold">{{ translate('Additional Info') }}</td>
+                                <td class="text-main fw-600 text-bold">{{ translate('Sender’s Name') }}:</td>
+                                <td class="text-right">{{ $order->from_name }}</td>
+                            </tr>
+                            <tr>
+                            <td class="text-main fw-600 text-bold">{{ translate('Recipient’s Name') }}:</td>
+                                <td class="text-right">{{ $order->to_name }}</td>
+                            </tr>
+                            <tr>
+                                <td class="text-main fw-600 text-bold">{{ translate('Additional Note') }}:</td>
                                 <td class="text-right">{{ $order->additional_info }}</td>
                             </tr>
+
                             {{--@if($order->delivery_datetime)--}}
                                 <tr>
-                                    <td class="text-main text-bold">{{ translate('Delivery At') }}</td>
+                                    <td class="text-main fw-600 text-bold">{{ translate('Delivery At') }}:</td>
                                     <!--<td class="text-right">{{ $order->delivery_datetime }}</td>-->
                                     <td class="text-right">{{ $order->delivery_datetime ? date('d-m-Y h:i A', strtotime($order->delivery_datetime)) : '' }}</td>
                                 </tr>

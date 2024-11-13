@@ -668,27 +668,48 @@
                                                 
                                                 <div class="row">
 
-                                                 <div class="col-md-12">
-                                                    <div class="pb-2">
-                                                    <h3 class="fs-16 fw-600 mb-0 text-left">
-                                                        {{ translate('Any additional info?') }}
-                                                    </h3>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <textarea name="additional_info" rows="4" class="form-control"
-                                                        placeholder="{{ translate('Type your text') }}"></textarea>
-                                                </div>
-                                           
-                                            </div>
+                                                    <div class="col-md-12">
+                                                        <div class="pb-2">
+                                                            <h3 class="fs-16 fw-600 mb-0 text-left">
+                                                                {{ translate('Any additional info?') }}
+                                                            </h3>
+                                                        </div>
+                                                        <div class="row mt-2 mt-md-3">
+                                                            <div class="col-md-6">
+                                                                <div class="mb-3 text-left">
+                                                                    <label for="fromPerson" class="form-label">
+                                                                        Sender's Name <small class="text-muted">(Person sending the flowers)</small>
+                                                                    </label>
+                                                                    <input type="text" name="from_name" class="form-control" id="fromPerson" placeholder="Enter sender's name">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="mb-3 text-left">
+                                                                    <label for="toPerson" class="form-label">
+                                                                        Recipient's Name <small class="text-muted">(Person receiving the flowers)</small>
+                                                                    </label>
+                                                                    <input type="text" name="to_name" class="form-control" id="toPerson" placeholder="Enter recipient's name">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group text-left">
+                                                            <label for="additional_info" class="form-label">
+                                                                Additional Notes 
+                                                                <small class="text-muted">(Provide any extra information for us or a message for the recipient)</small>
+                                                            </label>
+                                                            <textarea name="additional_info" id="additional_info" rows="4" class="form-control"
+                                                                placeholder="Type your message here"></textarea>
+                                                        </div>
+                                               
+                                                    </div>
 
 
                                                     <div class="col-xxl-12 col-xl-12 mx-auto">
                                                         <div class="pb-2">
-                                                          <h3 class="fs-16 fw-600 mb-0 text-left">
-                                                    {{ translate('Select a payment option') }}
-                                                </h3>
-                                        </div>
+                                                            <h3 class="fs-16 fw-600 mb-0 text-left">
+                                                                {{ translate('Select a payment option') }}
+                                                            </h3>
+                                                        </div>
                                                         <div class="row gutters-10">
                                                             @if (get_setting('ccavenue_payment') == 1)
                                                                 <div class="col-6 col-md-3">
