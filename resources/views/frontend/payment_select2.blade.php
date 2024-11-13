@@ -41,13 +41,13 @@
                         <div class="col active">
                             <div class="text-primary text-center">
                                 <i class="la-3x las la-credit-card mb-2"></i>
-                                <h3 class="fs-14 fw-600 d-none d-lg-block">{{ translate('3. Payment') }}</h3>
+                                <h3 class="fs-14 fw-600 d-none d-lg-block">{{ translate('2. Payment') }}</h3>
                             </div>
                         </div>
                         <div class="col">
                             <div class="text-center">
                                 <i class="la-3x las la-check-circle mb-2 opacity-50"></i>
-                                <h3 class="fs-14 fw-600 d-none d-lg-block opacity-50">{{ translate('4. Confirmation') }}
+                                <h3 class="fs-14 fw-600 d-none d-lg-block opacity-50">{{ translate('3. Confirmation') }}
                                 </h3>
                             </div>
                         </div>
