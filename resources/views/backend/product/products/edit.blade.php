@@ -124,9 +124,9 @@
                                         <div class="input-group-text bg-soft-secondary font-weight-medium">{{ translate('Browse')}}</div>
                                     </div>
                                     <div class="form-control file-amount">{{ translate('Choose File') }}</div>
-                                    <input type="hidden" name="photos" value="{{ $product->photos }}" class="selected-files">
+                                    <input id="sort-the-photo" type="hidden" name="photos" value="{{ $product->photos }}" class="selected-files">
                                 </div>
-                                <div class="file-preview box sm">
+                                <div id="sort-photo" class="file-preview box sm">
                                 </div>
                             </div>
                         </div>
@@ -883,6 +883,98 @@
 @section('script')
 
 <script type="text/javascript">
+
+// $(document).ready(function () {
+//     // Ensure jQuery UI is loaded
+//     if (typeof $.ui !== 'undefined' && $.ui.sortable) {
+
+//         // Initialize sorting for the container with class 'file-preview box sm'
+//         $(".file-preview.box.sm").sortable({
+//             items: '.file-preview-item',  // Specify which elements to make sortable
+//             update: function (event, ui) {
+//                 // Log the HTML before sorting for debugging purposes
+//                 console.log('File Preview HTML before sorting:', $(this).html());
+
+//                 // Call the function to update the image order after sorting
+//                 updateImageOrder($(this));  // Pass the current file-preview container
+
+//                 // Log the HTML after sorting for debugging purposes
+//                 console.log('File Preview HTML after sorting:', $(this).html());
+//             }
+//         });
+
+//     } else {
+//         console.log("jQuery UI is not loaded.");
+//     }
+
+//     // Function to update the image order in the hidden input field
+//     function updateImageOrder(container) {
+//         var orderedIds = [];
+
+//         // Loop through each '.file-preview-item' inside the container and get the data-id
+//         container.find(".file-preview-item").each(function () {
+//             var itemId = $(this).data("id");  // Get the data-id attribute of each item
+//             console.log('Current data-id during sorting:', itemId);  // Log item ID
+
+//             // Push the itemId to the orderedIds array if it isn't already in the array
+//             if (itemId && !orderedIds.includes(itemId)) {
+//                 orderedIds.push(itemId);
+//             }
+//         });
+
+//         // Log the ordered IDs after sorting for debugging
+//         console.log('Ordered IDs after sorting:', orderedIds);
+
+//         // Update the value of the hidden input field (photos) with the ordered IDs
+//         container.closest('.form-group').find('input[name="photos"]').val(orderedIds.join(","));
+//     }
+// });
+$(document).ready(function () {
+    // Ensure jQuery UI is loaded
+    if (typeof $.ui !== 'undefined' && $.ui.sortable) {
+
+        // Apply sortable to the container with ID #sort-photo
+        $("#sort-photo").sortable({
+            items: '.file-preview-item',  // Specify which elements are sortable
+            update: function (event, ui) {
+                // Log the HTML before sorting for debugging purposes
+                console.log('File Preview HTML before sorting:', $(this).html());
+
+                // Call the function to update the image order after sorting
+                updateImageOrder($(this));  // Pass the current #sort-photo container
+
+                // Log the HTML after sorting for debugging purposes
+                console.log('File Preview HTML after sorting:', $(this).html());
+            }
+        });
+
+    } else {
+        console.log("jQuery UI is not loaded.");
+    }
+
+    // Function to update the image order in the hidden input field
+    function updateImageOrder(container) {
+        var orderedIds = [];
+
+        // Loop through each '.file-preview-item' inside the container and get the data-id
+        container.find(".file-preview-item").each(function () {
+            var itemId = $(this).data("id");  // Get the data-id attribute of each item
+            console.log('Current data-id during sorting:', itemId);  // Log item ID
+
+            // Push the itemId to the orderedIds array if it isn't already in the array
+            if (itemId && !orderedIds.includes(itemId)) {
+                orderedIds.push(itemId);
+            }
+        });
+
+        // Log the ordered IDs after sorting for debugging
+        console.log('Ordered IDs after sorting:', orderedIds);
+
+        // Find the input[name="photos"] inside the same parent container and update its value
+        container.closest('.form-group').find('input[name="photos"]').val(orderedIds.join(","));
+    }
+});
+
     $(document).ready(function (){
         show_hide_shipping_div();
     });
