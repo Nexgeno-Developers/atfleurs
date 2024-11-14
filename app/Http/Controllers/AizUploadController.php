@@ -250,6 +250,10 @@ class AizUploadController extends Controller
     {
         $ids = explode(',', $request->ids);
         $files = Upload::whereIn('id', $ids)->get();
+        // Reorder the files based on the original IDs array
+        $files = $files->sortBy(function($file) use ($ids) {
+            return array_search($file->id, $ids); // Find the index of the file id in the original ids array
+        });
         $new_file_array = [];
         foreach ($files as $file) {
             $file['file_name'] = my_asset($file->file_name);
