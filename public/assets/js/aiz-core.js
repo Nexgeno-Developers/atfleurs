@@ -901,6 +901,7 @@ $.fn.toggleAttr = function (attr, attr1, attr2) {
                           ["table", ["table"]],
                           ["insert", ["link", "picture", "video"]],
                           ["view", ["fullscreen", "undo", "redo"]],
+                          ["codeview"],
                       ]
                     : buttons;
                 placeholder = !placeholder ? "" : placeholder;
@@ -922,7 +923,10 @@ $.fn.toggleAttr = function (attr, attr1, attr2) {
                                 document.execCommand('insertText', false, bufferText);
                             }
                         }
-                    }
+                    },
+                        // Enable codeview functionality
+                        codeviewFilter: true, // Enable HTML filtering in codeview mode
+                        codeviewIframeFilter: true // Optional, filter iframes in codeview mode
                 });
 
                 var nativeHtmlBuilderFunc = $this.summernote('module', 'videoDialog').createVideoNode;
