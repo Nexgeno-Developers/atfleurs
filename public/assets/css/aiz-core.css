@@ -7476,6 +7476,19 @@ input[type="number"] {
 }
 
 /*File preview + remove*/
+
+.cursor_grab {
+    cursor: grab;
+}
+
+.cursor_grab.ui-sortable-helper {
+    cursor: grabbing;
+}
+
+.cursor_grab .col.body {
+    background: #fff;
+}
+
 .file-preview-item h6 {
     font-size: 13px;
     margin-bottom: 0;
