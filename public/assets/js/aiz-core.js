@@ -783,7 +783,7 @@ $.fn.toggleAttr = function (attr, attr1, attr2) {
                                         thumb = '<i class="la la-file-text"></i>';
                                     }
                                     var html =
-                                        '<div class="d-flex justify-content-between align-items-center mt-2 file-preview-item" data-id="' +
+                                        '<div class="d-flex justify-content-between align-items-center mt-2 file-preview-item cursor_grab" data-id="' +
                                         data[i].id +
                                         '" title="' +
                                         data[i].file_original_name +
