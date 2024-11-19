@@ -41,7 +41,7 @@
                                 {{ json_decode($order->shipping_address)->country }}</td>
                         </tr>
 						
-						 <tr>
+						 <!--<tr>
                             <td class="w-50 fw-600">{{ translate('Local Pickup address') }}:</td>
                              <td>
         @if (!empty($pickup_point_list) && count($pickup_point_list) > 0)
@@ -57,7 +57,7 @@
             {{ translate('No pickup points available.') }}
         @endif
     </td>
-                        </tr>
+                        </tr>-->
 						
 						
                     </table>
