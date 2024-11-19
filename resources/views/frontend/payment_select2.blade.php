@@ -13,7 +13,9 @@
     }
 }
 
-
+.pickup_point_id_admin .filter-option-inner-inner {
+    white-space: initial !important;
+}
 </style>
     <section class="mb-4 pt-5">
         <div class="container">
@@ -321,7 +323,7 @@
 
                                                                 </div>
                                                                 @if ($pickup_point_list)
-                                                                    <div class="mt-4 pickup_point_id_admin d-none">
+                                                                    <div class="mt-4 pickup_point_id_admin d-none" style="pointer-events:none;">
                                                                         <select class="form-control aiz-selectpicker"
                                                                             name="pickup_point_id_{{ \App\Models\User::where('user_type', 'admin')->first()->id }}"
                                                                             data-live-search="true">
@@ -331,9 +333,9 @@
                                                                             @foreach ($pickup_point_list as $pick_up_point)
                                                                                 <option value="{{ $pick_up_point->id }}"
                                                                                     data-content="<span class='d-block'>
-                                                                                            <span class='d-block fs-16 fw-600 mb-2'>{{ $pick_up_point->getTranslation('name') }}</span>
-                                                                                            <span class='d-block opacity-50 fs-12'><i class='las la-map-marker'></i> {{ $pick_up_point->getTranslation('address') }}</span>
-                                                                                            <span class='d-block opacity-50 fs-12'><i class='las la-phone'></i>{{ $pick_up_point->phone }}</span>
+                                                                                            <span class='d-block fs-16 fw-600 mb-2' style='color:#000;'>{{ $pick_up_point->getTranslation('name') }}</span>
+                                                                                            <span class='d-block fs-12' style='color:#000;'><i class='las la-map-marker'></i> {{ $pick_up_point->getTranslation('address') }}</span>
+                                                                                            <span class='d-block fs-12'  style='color:#000;'><i class='las la-phone'></i>{{ $pick_up_point->phone }}</span>
                                                                                         </span>"
                                                                                     {{ $loop->first ? 'selected' : '' }}>
                                                                                 </option>

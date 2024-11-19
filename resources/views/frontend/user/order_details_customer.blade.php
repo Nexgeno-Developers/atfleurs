@@ -40,6 +40,26 @@
                                 {{ json_decode($order->shipping_address)->postal_code }},
                                 {{ json_decode($order->shipping_address)->country }}</td>
                         </tr>
+						
+						 <tr>
+                            <td class="w-50 fw-600">{{ translate('Local Pickup address') }}:</td>
+                             <td>
+        @if (!empty($pickup_point_list) && count($pickup_point_list) > 0)
+            @foreach ($pickup_point_list as $pick_up_point)
+                <div>
+                    <strong>{{ $pick_up_point->getTranslation('name') }}</strong><br>
+                    {{ $pick_up_point->getTranslation('address') }}<br>
+                    {{ $pick_up_point->phone }}
+                </div>
+               
+            @endforeach
+        @else
+            {{ translate('No pickup points available.') }}
+        @endif
+    </td>
+                        </tr>
+						
+						
                     </table>
                 </div>
                 <div class="col-lg-6">
