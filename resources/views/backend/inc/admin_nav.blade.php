@@ -112,7 +112,7 @@
 
                         @foreach (\App\Models\Language::where('status', 1)->get() as $key => $language)
                             <li>
-                                <a href="javascript:void(0)" data-flag="{{ $language->code }}" class="dropdown-item @if($locale == $language->code) active @endif">
+                                <a hrer="#" data-flag="{{ $language->code }}" class="dropdown-item @if($locale == $language->code) active @endif">
                                     <img src="{{ static_asset('assets/img/flags/'.$language->code.'.png') }}" class="mr-2">
                                     <span class="language">{{ $language->name }}</span>
                                 </a>

@@ -163,7 +163,7 @@
                         </li>
                     @else
                         <li class="list-inline-item mr-0 border-left-0 pr-0 pl-0">
-                            <a href="{{ route('user.login') }}" class="text-reset d-inline-block py-2"> <i class="las la-user la-2x text-primary mb1 position_1"></i> {{ translate('Login')}}</a> <a class="pddleft">/</a> 
+                            <a href="{{ route('user.login') }}" class="text-reset d-inline-block py-2"> <i class="las la-user la-2x text-primary mb1 position_1"></i> {{ translate('Login')}}</a> <span class="pddleft">/</span> 
                             <a href="{{ route('user.registration') }}" class="text-reset d-inline-block py-2"> {{ translate('Registration')}}</a>
                         </li>
                     @endauth

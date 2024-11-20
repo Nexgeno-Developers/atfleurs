@@ -94,7 +94,7 @@
                             {{-- <a href="{{route('customer_products.edit',encrypt($product->id))}}" class="btn btn-soft-info btn-icon btn-circle btn-sm" title="{{ translate('Edit') }}">
                               <i class="las la-edit"></i>
                             </a> --}}
-                            <a href="javascript:void(0)" class="btn btn-soft-danger btn-icon btn-circle btn-sm confirm-delete" data-href="{{route('customer_products.destroy', $product->id)}}" title="{{ translate('Delete') }}">
+                            <a hrer="#" class="btn btn-soft-danger btn-icon btn-circle btn-sm confirm-delete" data-href="{{route('customer_products.destroy', $product->id)}}" title="{{ translate('Delete') }}">
                               <i class="las la-trash"></i>
                             </a>
                         </td>

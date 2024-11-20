@@ -72,7 +72,7 @@
                                             <span class="fw-600 fs-16 text-primary">{{ single_price(($cartItem['price'] + $cartItem['tax']) * $cartItem['quantity']) }}</span>
                                         </div>
                                         <div class="col-lg-auto col-6 order-5 order-lg-0 text-right">
-                                            <a href="javascript:void(0)" onclick="removeFromCartView(event, {{ $cartItem['id'] }})" class="btn btn-icon btn-sm btn-soft-primary btn-circle">
+                                            <a hrer="#" onclick="removeFromCartView(event, {{ $cartItem['id'] }})" class="btn btn-icon btn-sm btn-soft-primary btn-circle">
                                                 <i class="las la-trash"></i>
                                             </a>
                                         </div>
