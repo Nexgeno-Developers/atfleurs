@@ -43,7 +43,7 @@
             @php
               $isWishlist = DB::table('wishlists')
                   ->where('user_id', auth()->user()->id)
-                  ->where('product_id', $product->id)
+                  ->where('product_id', $product->id)  
                   ->exists();
             @endphp
 
