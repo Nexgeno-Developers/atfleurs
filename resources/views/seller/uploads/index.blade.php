@@ -71,7 +71,7 @@
 									<i class="la la-ellipsis-v"></i>
 								</a>
 								<div class="dropdown-menu dropdown-menu-right">
-									<a href="javascript:void(0)" class="dropdown-item" onclick="detailsInfo(this)" data-id="{{ $file->id }}">
+									<a hrer="#" class="dropdown-item" onclick="detailsInfo(this)" data-id="{{ $file->id }}">
 										<i class="las la-info-circle mr-2"></i>
 										<span>{{ translate('Details Info') }}</span>
 									</a>
@@ -79,11 +79,11 @@
 										<i class="la la-download mr-2"></i>
 										<span>{{ translate('Download') }}</span>
 									</a>
-									<a href="javascript:void(0)" class="dropdown-item" onclick="copyUrl(this)" data-url="{{ my_asset($file->file_name) }}">
+									<a hrer="#" class="dropdown-item" onclick="copyUrl(this)" data-url="{{ my_asset($file->file_name) }}">
 										<i class="las la-clipboard mr-2"></i>
 										<span>{{ translate('Copy Link') }}</span>
 									</a>
-									<a href="javascript:void(0)" class="dropdown-item confirm-alert" data-href="{{ route('seller.my_uploads.destroy', $file->id ) }}" data-target="#delete-modal">
+									<a hrer="#" class="dropdown-item confirm-alert" data-href="{{ route('seller.my_uploads.destroy', $file->id ) }}" data-target="#delete-modal">
 										<i class="las la-trash mr-2"></i>
 										<span>{{ translate('Delete') }}</span>
 									</a>

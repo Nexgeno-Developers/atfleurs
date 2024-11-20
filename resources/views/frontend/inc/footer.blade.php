@@ -119,9 +119,9 @@
             
             <div class="col-lg-2 col-md-4 col-6">
                 <div class="text-left text-md-left mt-4">
-                    <h4 class="fs-16 text-dark fw-600 pb-2 mb-1">
+                    <h1 class="fs-16 text-dark fw-600 pb-2 mb-1">
                         {{ get_setting('widget_one',null,App::getLocale()) }}
-                    </h4>
+                    </h1>
                     <ul class="list-unstyled">
                         @if ( get_setting('widget_one_labels',null,App::getLocale()) !=  null )
                             @foreach (json_decode( get_setting('widget_one_labels',null,App::getLocale()), true) as $key => $value)
@@ -141,7 +141,7 @@
             
            <div class="col-lg-2 col-md-4 col-6">
                 <div class="text-left text-md-left mt-4">
-                    <h4 class="fs-16 text-dark fw-600 pb-2 mb-1">Customer Service</h4>
+                    <h1 class="fs-16 text-dark fw-600 pb-2 mb-1">Customer Service</h4>
                     <ul class="list-unstyled">
                          <li class="mb-2"><a href="/faq" class="text-dark hov-opacity-100 text-reset">FAQs</a></li>
                          <li class="mb-2"><a href="/terms" class="text-dark hov-opacity-100 text-reset">Terms & Conditions </a></li>  
@@ -158,9 +158,9 @@
                 
                  @if (get_setting('vendor_system_activation') == 1)
                     <div class="text-left text-md-left mt-4 mb-4">
-                        <h4 class="fs-16 text-dark fw-600 pb-2 mb-1">
+                        <h1 class="fs-16 text-dark fw-600 pb-2 mb-1">
                             {{ translate('Be a Seller') }}
-                        </h4>
+                        </h1>
                         <a href="{{ route('shops.create') }}" class="btn btn-primary btn-sm shadow-md">
                             {{ translate('Apply Now') }}
                         </a>

@@ -611,13 +611,13 @@ your feelings</h3>
 			<div id="testiminials-texture" class="owl-carousel owl-theme">
 				<div class="item">
 					<div class="handwriting_img">
-					<img class="w-100 rounded-3" src="/public/assets/img/testi_handwriting1.webp" />
+					<img class="w-100 rounded-3" src="/public/assets/img/testi_handwriting1.webp" alt="certificate of appreciation"/>
 					</div>
 				</div>
 				
 				<div class="item">
 					<div class="handwriting_img">
-					<img class="w-100 b" src="/public/assets/img/testi_handwriting2.webp" />
+					<img class="w-100 b" src="/public/assets/img/testi_handwriting2.webp" alt="certificate of appreciation" />
 					</div>
 				</div>
 			</div>

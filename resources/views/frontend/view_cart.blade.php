@@ -134,7 +134,7 @@
                                                         class="fw-600 fs-16 text-primary">{{ single_price(cart_product_price($cartItem, $product, false) * $cartItem['quantity']) }}</span>
                                                 </div>
                                                 <div class="col-lg-auto col-6 order-5 order-lg-0 text-right">
-                                                    <a href="javascript:void(0)"
+                                                    <a hrer="#"
                                                         onclick="removeFromCartView(event, {{ $cartItem['id'] }})"
                                                         class="btn btn-icon btn-sm btn-soft-primary btn-circle">
                                                         <i class="las la-trash"></i>
