@@ -10,7 +10,7 @@ if (auth()->user() != null) {
 }
 
 @endphp
-<a href="javascript:void(0)" class="d-flex align-items-center text-reset h-100" data-toggle="dropdown"
+<a hrer="#" class="d-flex align-items-center text-reset h-100" data-toggle="dropdown"
     data-display="static">
     <i class="la la-shopping-cart la-2x opacity-80"></i>
     <span class="flex-grow-1 ml-1">

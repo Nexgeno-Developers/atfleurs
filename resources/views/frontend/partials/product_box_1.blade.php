@@ -43,18 +43,18 @@
             @php
               $isWishlist = DB::table('wishlists')
                   ->where('user_id', auth()->user()->id)
-                  ->where('product_id', $product->id)
+                  ->where('product_id', $product->id)  
                   ->exists();
             @endphp
 
-            <a href="javascript:void(0)" onclick="addToWishList({{ $product->id }})" data-toggle="tooltip" data-title="{{ translate('Add to wishlist') }}" data-placement="left" data-id="{{ $product->id }}" class="wishlist @if($isWishlist) active @endif">
+            <a hrer="#" onclick="addToWishList({{ $product->id }})" data-toggle="tooltip" data-title="{{ translate('Add to wishlist') }}" data-placement="left" data-id="{{ $product->id }}" class="wishlist @if($isWishlist) active @endif">
                 <i class="la la-heart-o"></i>
             </a>
             @endif
-            <a class="display_none" href="javascript:void(0)" onclick="addToCompare({{ $product->id }})" data-toggle="tooltip" data-title="{{ translate('Add to compare') }}" data-placement="left">
+            <a class="display_none" hrer="#" onclick="addToCompare({{ $product->id }})" data-toggle="tooltip" data-title="{{ translate('Add to compare') }}" data-placement="left">
                 <i class="las la-sync"></i>
             </a>
-            <a class="display_none" href="javascript:void(0)" onclick="showAddToCartModal({{ $product->id }})" data-toggle="tooltip" data-title="{{ translate('Add to cart') }}" data-placement="left">
+            <a class="display_none" hrer="#" onclick="showAddToCartModal({{ $product->id }})" data-toggle="tooltip" data-title="{{ translate('Add to cart') }}" data-placement="left">
                 <i class="las la-shopping-cart"></i>
             </a>
         </div>
@@ -62,13 +62,13 @@
     <div class="p-md-3 p-2 bg-white">
         
          <div class="text-center display_none">
-            <a href="javascript:void(0)" onclick="addToWishList({{ $product->id }})" data-toggle="tooltip" data-title="{{ translate('Add to wishlist') }}" data-placement="left">
+            <a hrer="#" onclick="addToWishList({{ $product->id }})" data-toggle="tooltip" data-title="{{ translate('Add to wishlist') }}" data-placement="left">
                 <i class="la la-heart-o"></i>
             </a>
-            <a href="javascript:void(0)" onclick="addToCompare({{ $product->id }})" data-toggle="tooltip" data-title="{{ translate('Add to compare') }}" data-placement="left">
+            <a hrer="#" onclick="addToCompare({{ $product->id }})" data-toggle="tooltip" data-title="{{ translate('Add to compare') }}" data-placement="left">
                 <i class="las la-sync"></i>
             </a>
-            <a href="javascript:void(0)" onclick="showAddToCartModal({{ $product->id }})" data-toggle="tooltip" data-title="{{ translate('Add to cart') }}" data-placement="left">
+            <a hrer="#" onclick="showAddToCartModal({{ $product->id }})" data-toggle="tooltip" data-title="{{ translate('Add to cart') }}" data-placement="left">
                 <i class="las la-shopping-cart"></i>
             </a>
         </div>

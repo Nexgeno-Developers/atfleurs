@@ -47,7 +47,7 @@
                                     </td>
                                     <td class="text-right">
                                         @if ($order->delivery_status == 'pending' && $order->payment_status == 'unpaid')
-                                            <a href="javascript:void(0)" class="btn btn-soft-danger btn-icon btn-circle btn-sm confirm-delete" data-href="{{route('purchase_history.destroy', $order->id)}}" title="{{ translate('Cancel') }}">
+                                            <a hrer="#" class="btn btn-soft-danger btn-icon btn-circle btn-sm confirm-delete" data-href="{{route('purchase_history.destroy', $order->id)}}" title="{{ translate('Cancel') }}">
                                                <i class="las la-trash"></i>
                                            </a>
                                         @endif
