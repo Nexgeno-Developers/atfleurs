@@ -53,26 +53,166 @@
                         <div class="card rounded border-0 shadow-sm">
                             <div class="card-header p-3">
                                 <h3 class="fs-16 fw-600 mb-0">
-                                    {{ translate('Choose Delivery Date And Time') }}
+                                    {{ translate('Choose Delivery Date And Time Slot') }}
+                                    {{-- translate('Choose Delivery Date And Time') --}}
                                 </h3>
                             </div>
-                            <div class="input-group px-3">
+                            {{-- <div class="input-group px-3">
                                 <div class="input-group-text">Select date and time</div>
                                     <?php
+                                    /*
                                     // Set the timezone to India Standard Time
                                     date_default_timezone_set('Asia/Kolkata');
-                                    
+
                                     // Get the current date and time
                                     $currentDateTime = new DateTime();
-                                    
+
                                     // Create a DateInterval of 24 hours
                                     $interval = new DateInterval('PT24H');
-                                    
+
                                     // Add the interval to the current date and time
                                     $minDateTime = $currentDateTime->add($interval)->format('Y-m-d\TH:i');
+                                    */
                                     ?>
-                                    <input type="datetime-local" min="<?= $minDateTime ?>" id="datetime" name="delivery_datetime" class="form-control">
-                              </div>
+                                    <input type="datetime-local" min="<?//= $minDateTime ?>" id="datetime" name="delivery_datetime" class="form-control">
+                              </div> --}}
+                                <div class="row">
+                                    <div class="col">
+                                        <!-- Date Picker -->
+                                        <input name="delivery_date" class="form-control" type="date" id="deliveryDate"
+                                            class="date-picker">
+                                    </div>
+                                    <div class="col">
+
+                                        <!-- Dropdown for selecting the delivery time slot -->
+                                        <select name="delivery_time" class="form-control" id="timeSlotDropdown"
+                                            class="time-picker">
+                                            <option value="">Select Time Slot</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <script>
+                                    document.addEventListener("DOMContentLoaded", function() {
+                                        const officeStartTime = 8; // 8:00 AM
+                                        const officeEndTime = 21; // 9:00 PM
+                                        const slotDuration = 3; // 3-hour slots
+
+                                        const dateInput = document.getElementById("deliveryDate");
+                                        const timeSlotDropdown = document.getElementById("timeSlotDropdown");
+
+                                        const today = new Date();
+                                        const formattedToday = today.toISOString().split("T")[0]; // Current date in YYYY-MM-DD format
+                                        // const currentTime = 21; // Current hour for testing
+                                        // const currentMinutes = 0; // Current minutes for testing
+                                        const currentTime = today.getHours();
+                                        const currentMinutes = today.getMinutes();
+                                        dateInput.value = formattedToday; // Set default date to today
+                                        dateInput.min = formattedToday; // Disable previous dates
+
+                                        // Generate time slots based on selected date
+                                        function generateTimeSlots() {
+                                            const selectedDate = new Date(dateInput.value);
+                                            const isToday = isCurrentDate(selectedDate);
+
+                                            // Check if the time is after 9:00 PM, auto-select the next day's first slot
+                                            if (shouldAutoSelectNextDay()) {
+                                                autoSelectNextDay();
+                                                return;
+                                            }
+
+                                            const dropdown = timeSlotDropdown;
+                                            dropdown.innerHTML = ''; // Clear existing slots
+                                            let firstSlotGenerated = false;
+
+                                            if (isToday) {
+                                                generateTodaySlots(firstSlotGenerated);
+                                            } else {
+                                                generateNextDaySlots(firstSlotGenerated);
+                                            }
+                                        }
+
+                                        // Check if the selected date is today
+                                        function isCurrentDate(selectedDate) {
+                                            return selectedDate.toDateString() === today.toDateString();
+                                        }
+
+                                        // Check if the time is after 9:00 PM, auto-select the next day
+                                        function shouldAutoSelectNextDay() {
+                                            return currentTime >= 21 && dateInput.min === formattedToday;
+                                        }
+
+                                        // Auto-select the next day's date and set the minimum date
+                                        function autoSelectNextDay() {
+                                            dateInput.value = getNextDate(); // Auto-select next day's date
+                                            dateInput.min = getNextDate(); // Set the minimum selectable date to the next day
+                                            generateTimeSlots(); // Re-generate time slots after setting the next day
+                                        }
+
+                                        // Generate time slots for today, considering current time
+                                        function generateTodaySlots(firstSlotGenerated) {
+                                            for (let hour = officeStartTime; hour <= officeEndTime; hour++) {
+                                                const startFormatted = formatTime(hour);
+                                                const endFormatted = formatTime(hour + slotDuration);
+                                                const option = createOption(startFormatted, endFormatted);
+
+                                                if (hour < currentTime || (hour === currentTime && currentMinutes > 0)) {
+                                                    option.style.display = "none"; // Hide past slots
+                                                } else {
+                                                    if (!firstSlotGenerated && (hour >= currentTime || (hour === currentTime &&
+                                                            currentMinutes === 0))) {
+                                                        option.selected = true;
+                                                        firstSlotGenerated = true;
+                                                    }
+                                                    timeSlotDropdown.appendChild(option); // Add slot to dropdown
+                                                }
+                                            }
+                                        }
+
+                                        // Generate time slots for the next day (no current time constraints)
+                                        function generateNextDaySlots(firstSlotGenerated) {
+                                            for (let hour = officeStartTime; hour <= officeEndTime; hour++) {
+                                                const startFormatted = formatTime(hour);
+                                                const endFormatted = formatTime(hour + slotDuration);
+                                                const option = createOption(startFormatted, endFormatted);
+
+                                                if (!firstSlotGenerated) {
+                                                    option.selected = true; // Select the first available slot for the next day
+                                                    firstSlotGenerated = true;
+                                                }
+                                                timeSlotDropdown.appendChild(option); // Add slot to dropdown
+                                            }
+                                        }
+
+                                        // Create a time slot option element
+                                        function createOption(startFormatted, endFormatted) {
+                                            const option = document.createElement("option");
+                                            option.value = `${startFormatted} - ${endFormatted}`;
+                                            option.textContent = `${startFormatted} - ${endFormatted}`;
+                                            return option;
+                                        }
+
+                                        // Format the time to a 12-hour format
+                                        function formatTime(hour) {
+                                            const period = hour >= 12 ? 'PM' : 'AM';
+                                            const adjustedHour = hour % 12 || 12; // Convert hour to 12-hour format
+                                            return `${adjustedHour}:00 ${period}`;
+                                        }
+
+                                        // Get the next day's date in YYYY-MM-DD format
+                                        function getNextDate() {
+                                            const nextDate = new Date(today);
+                                            nextDate.setDate(today.getDate() + 1); // Move to the next day
+                                            return nextDate.toISOString().split("T")[0];
+                                        }
+
+                                        // Generate time slots on page load
+                                        generateTimeSlots();
+
+                                        // Regenerate time slots whenever a new date is selected
+                                        dateInput.addEventListener("change", generateTimeSlots);
+                                    });
+                                </script>
+                            </div>
                             <div class="card-header p-3">
                                 <h3 class="fs-16 fw-600 mb-0">
                                     {{ translate('Any additional info?') }}
@@ -105,7 +245,7 @@
                                                         </span>
                                                     </label>
                                                 </div>
-                                            @endif                                            
+                                            @endif
                                             @if (get_setting('paypal_payment') == 1)
                                                 <div class="col-6 col-md-4">
                                                     <label class="aiz-megabox d-block mb-3">
@@ -395,7 +535,7 @@
                                                         </label>
                                                     </div>
                                                 @endif
-                                               
+
                                             @endif
                                             @if (addon_is_activated('paytm') && get_setting('paytm_payment') == 1)
                                                 <div class="col-6 col-md-4">
@@ -664,36 +804,36 @@
 
            /*// Get the selected date and time from the input
             var selectedDateTime = document.getElementById('datetime').value;
-        
+
             // Convert to Date objects for comparison
             var selectedDate = new Date(selectedDateTime);
-            var minDate = new Date('<?= $minDateTime ?>');
-        
+            var minDate = new Date('<?//= $minDateTime ?>');
+
             // Check if selected time is greater than the minimum allowed time
             if (selectedDate <= minDate) {
                 // Format the minimum date and time for the error message with d/m/y format
                 var minDateTimeFormatted = minDate.toLocaleDateString('en-GB', { day: 'numeric', month: 'numeric', year: 'numeric' }) + ' ' +
                                            minDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-        
+
                 AIZ.plugins.notify('danger', '{{ translate("Please select a time greater than") }} ' + minDateTimeFormatted + '.');
                 $(el).prop('disabled', false);  // Re-enable the button
                 return false; // Prevent form submission
             }
-        
+
             // If the date is cleared, prevent form submission
             if (!selectedDateTime) {
                 AIZ.plugins.notify('danger', '{{ translate('Please select Date and Time.') }}');
                 $(el).prop('disabled', false);  // Re-enable the button
                 return false;
             }*/
-            
+
             var selectedDateTime = document.getElementById('datetime').value;
             if (!selectedDateTime) {
                 AIZ.plugins.notify('danger', '{{ translate('Please select delivery Date and Time.') }}');
                 $(el).prop('disabled', false);  // Re-enable the button
                 return false;
-            }            
-                    
+            }
+
             if ($('#agree_checkbox').is(":checked")) {
                 if (minimum_order_amount_check && $('#sub_total').val() < minimum_order_amount) {
                     AIZ.plugins.notify('danger',
