@@ -9,6 +9,9 @@
                 padding-bottom: 5px;
             }
         }
+        .pickup_point_id_admin .filter-option-inner-inner {
+            white-space: initial !important;
+        }
     </style>
     <section class="mb-4 pt-5">
         <div class="container">
