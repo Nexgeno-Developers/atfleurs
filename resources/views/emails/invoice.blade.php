@@ -119,9 +119,9 @@
 				<tr><td class="gry-color strong">{{ translate('To') }}: {{ $to_name }}</td></tr>
 				@endif
                 @if(!empty($order->delivery_datetime))
-                    <td class="text-right">{{ date('d-m-Y h:i A', strtotime($order->delivery_datetime)) }}</td>
+                    <tr><td class="gry-color strong">{{ translate('Date and Time') }} : {{ date('d-m-Y h:i A', strtotime($order->delivery_datetime)) }}</td></tr>
                 @elseif(!empty($order->delivery_date && $order->delivery_time))
-                    <td class="text-right">{{ date('d-m-Y', strtotime($order->delivery_date)) }} / {{ $order->delivery_time }}</td>
+                    <tr><td class="gry-color strong">{{ translate('Date and Time Slot') }} : {{ date('d-m-Y', strtotime($order->delivery_date)) }} / {{ $order->delivery_time }}</td></tr>
                 @endif
 			</table>
 		</div>
