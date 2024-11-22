@@ -2,19 +2,14 @@
 
 @section('content')
 
-<style>
- 
-
-@media(max-width:767px) {
-    h6.fs-15.fw-600.text-right.pt-3
-    {
-        text-align:start !important;
-        padding-bottom:5px;
-    }
-}
-
-
-</style>
+    <style>
+        @media(max-width:767px) {
+            h6.fs-15.fw-600.text-right.pt-3 {
+                text-align: start !important;
+                padding-bottom: 5px;
+            }
+        }
+    </style>
     <section class="mb-4 pt-5">
         <div class="container">
             <div class="row">
@@ -65,9 +60,9 @@
 
                         <!-- Shipping Info -->
                         <div class="card rounded-0 border shadow-none" style="margin-bottom: 1rem;">
-                            <div class="card-header border-bottom-0 py-3 py-xl-4 events_none" id="headingShippingInfo" type="button"
-                                data-toggle="collapse" data-target="#collapseShippingInfo" aria-expanded="true"
-                                aria-controls="collapseShippingInfo">
+                            <div class="card-header border-bottom-0 py-3 py-xl-4 events_none" id="headingShippingInfo"
+                                type="button" data-toggle="collapse" data-target="#collapseShippingInfo"
+                                aria-expanded="true" aria-controls="collapseShippingInfo">
                                 <div class="d-flex align-items-center">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                         viewBox="0 0 20 20">
@@ -89,79 +84,80 @@
                                         @if (Auth::check())
                                             <div class="bg-white rounded mb-4">
                                                 <div class="row justify-content-center gutters-5">
-                                                @if(Auth::user()->addresses != null && count(Auth::user()->addresses) != 0)
-                                                    <div class="col-md-10">
-                                                        <div class="row">
-                                                        @foreach (Auth::user()->addresses as $key => $address)
-                                                            <div class="col-md-6 mb-0 p-2">
-                                                                <label class="aiz-megabox d-block bg-white mb-0">
-                                                                    <input type="radio" name="address_id"
-                                                                        value="{{ $address->id }}"
-                                                                        @if ($address->set_default || (isset($carts[0]->address_id) && $carts[0]->address_id == $address->id)) checked @endif
-                                                                        required>
-                                                                    <span class="d-flex p-3 aiz-megabox-elem">
-                                                                        <span
-                                                                            class="aiz-rounded-check flex-shrink-0 mt-1"></span>
-                                                                        <span class="flex-grow-1 pl-2 text-left">
-                                                                            <div>
+                                                    @if (Auth::user()->addresses != null && count(Auth::user()->addresses) != 0)
+                                                        <div class="col-md-10">
+                                                            <div class="row">
+                                                                @foreach (Auth::user()->addresses as $key => $address)
+                                                                    <div class="col-md-6 mb-0 p-2">
+                                                                        <label class="aiz-megabox d-block bg-white mb-0">
+                                                                            <input type="radio" name="address_id"
+                                                                                value="{{ $address->id }}"
+                                                                                @if ($address->set_default || (isset($carts[0]->address_id) && $carts[0]->address_id == $address->id)) checked @endif
+                                                                                required>
+                                                                            <span class="d-flex p-3 aiz-megabox-elem">
                                                                                 <span
-                                                                                    class="opacity-60">{{ translate('Address') }}:</span>
-                                                                                <span
-                                                                                    class="fw-600 ml-2">{{ $address->address }}</span>
+                                                                                    class="aiz-rounded-check flex-shrink-0 mt-1"></span>
+                                                                                <span class="flex-grow-1 pl-2 text-left">
+                                                                                    <div>
+                                                                                        <span
+                                                                                            class="opacity-60">{{ translate('Address') }}:</span>
+                                                                                        <span
+                                                                                            class="fw-600 ml-2">{{ $address->address }}</span>
+                                                                                    </div>
+                                                                                    <div>
+                                                                                        <span
+                                                                                            class="opacity-60">{{ translate('Postal Code') }}:</span>
+                                                                                        <span
+                                                                                            class="fw-600 ml-2">{{ $address->postal_code }}</span>
+                                                                                    </div>
+                                                                                    <div>
+                                                                                        <span
+                                                                                            class="opacity-60">{{ translate('City') }}:</span>
+                                                                                        <span
+                                                                                            class="fw-600 ml-2">{{ optional($address->city)->name }}</span>
+                                                                                    </div>
+                                                                                    <div>
+                                                                                        <span
+                                                                                            class="opacity-60">{{ translate('State') }}:</span>
+                                                                                        <span
+                                                                                            class="fw-600 ml-2">{{ optional($address->state)->name }}</span>
+                                                                                    </div>
+                                                                                    <div>
+                                                                                        <span
+                                                                                            class="opacity-60">{{ translate('Country') }}:</span>
+                                                                                        <span
+                                                                                            class="fw-600 ml-2">{{ optional($address->country)->name }}</span>
+                                                                                    </div>
+                                                                                    <div>
+                                                                                        <span
+                                                                                            class="opacity-60">{{ translate('Phone') }}:</span>
+                                                                                        <span
+                                                                                            class="fw-600 ml-2">{{ $address->phone }}</span>
+                                                                                    </div>
+                                                                                </span>
+                                                                            </span>
+                                                                        </label>
+                                                                        <div
+                                                                            class="dropdown position-absolute right-20 top-15">
+                                                                            <button class="btn bg-gray px-2" type="button"
+                                                                                data-toggle="dropdown">
+                                                                                <i class="la la-ellipsis-v"></i>
+                                                                            </button>
+                                                                            <div class="dropdown-menu dropdown-menu-right"
+                                                                                aria-labelledby="dropdownMenuButton">
+                                                                                <a class="dropdown-item"
+                                                                                    onclick="edit_address('{{ $address->id }}')">
+                                                                                    {{ translate('Edit') }}
+                                                                                </a>
                                                                             </div>
-                                                                            <div>
-                                                                                <span
-                                                                                    class="opacity-60">{{ translate('Postal Code') }}:</span>
-                                                                                <span
-                                                                                    class="fw-600 ml-2">{{ $address->postal_code }}</span>
-                                                                            </div>
-                                                                            <div>
-                                                                                <span
-                                                                                    class="opacity-60">{{ translate('City') }}:</span>
-                                                                                <span
-                                                                                    class="fw-600 ml-2">{{ optional($address->city)->name }}</span>
-                                                                            </div>
-                                                                            <div>
-                                                                                <span
-                                                                                    class="opacity-60">{{ translate('State') }}:</span>
-                                                                                <span
-                                                                                    class="fw-600 ml-2">{{ optional($address->state)->name }}</span>
-                                                                            </div>
-                                                                            <div>
-                                                                                <span
-                                                                                    class="opacity-60">{{ translate('Country') }}:</span>
-                                                                                <span
-                                                                                    class="fw-600 ml-2">{{ optional($address->country)->name }}</span>
-                                                                            </div>
-                                                                            <div>
-                                                                                <span
-                                                                                    class="opacity-60">{{ translate('Phone') }}:</span>
-                                                                                <span
-                                                                                    class="fw-600 ml-2">{{ $address->phone }}</span>
-                                                                            </div>
-                                                                        </span>
-                                                                    </span>
-                                                                </label>
-                                                                <div class="dropdown position-absolute right-20 top-15">
-                                                                    <button class="btn bg-gray px-2" type="button"
-                                                                        data-toggle="dropdown">
-                                                                        <i class="la la-ellipsis-v"></i>
-                                                                    </button>
-                                                                    <div class="dropdown-menu dropdown-menu-right"
-                                                                        aria-labelledby="dropdownMenuButton">
-                                                                        <a class="dropdown-item"
-                                                                            onclick="edit_address('{{ $address->id }}')">
-                                                                            {{ translate('Edit') }}
-                                                                        </a>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
+                                                                @endforeach
+
+
                                                             </div>
-                                                        @endforeach
-
-
                                                         </div>
-                                                    </div>
-                                                @endif
+                                                    @endif
                                                     <input type="hidden" name="checkout_type" value="logged">
                                                     <div class="col-md-2 pl-3 pt-2">
                                                         <div class="border p-3 rounded mb-3 c-pointer text-center bg-white"
@@ -169,7 +165,7 @@
                                                             <i class="las la-plus la-2x mb-3"></i>
                                                             <div class="alpha-7">{{ translate('Add New Address') }}</div>
                                                         </div>
-                                                    
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -190,8 +186,7 @@
                                     </form>
 
                                     <form class="form-default delivery-type-form d-none"
-                                        action="{{ route('checkout.store_delivery_info') }}" role="form"
-                                        method="POST">
+                                        action="{{ route('checkout.store_delivery_info') }}" role="form" method="POST">
                                         @csrf
                                         @php
                                             $admin_products = [];
@@ -607,9 +602,9 @@
 
                         <!-- Payment Info -->
                         <div class="card rounded-0 mb-0 border shadow-none">
-                            <div class="card-header border-bottom-0 py-3 py-xl-4 events_none" id="headingPaymentInfo" type="button"
-                                data-toggle="collapse" data-target="#collapsePaymentInfo" aria-expanded="true"
-                                aria-controls="collapsePaymentInfo">
+                            <div class="card-header border-bottom-0 py-3 py-xl-4 events_none" id="headingPaymentInfo"
+                                type="button" data-toggle="collapse" data-target="#collapsePaymentInfo"
+                                aria-expanded="true" aria-controls="collapsePaymentInfo">
                                 <div class="d-flex align-items-center">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                         viewBox="0 0 20 20">
@@ -631,41 +626,199 @@
                                         <input type="hidden" name="owner_id" value="{{ $carts[0]['owner_id'] }}">
                                         <div class="card rounded border-0 shadow-sm">
 
-                                        <div class="row">
+                                            {{-- <div class="row">
                                             <div class="col-md-12 mb-4">
                                                 <h3 class="fs-16 fw-600 mb-0 pb-2">
                                                     {{ translate('Choose Delivery Date And Time') }}
                                                 </h3>
                                                <div class="input-group date_time1">
                                                     <label for="datetime" class="clickable-box">
-                                                        <?php
+                                                        <?php/*
                                                         // Set the timezone to India Standard Time
                                                         date_default_timezone_set('Asia/Kolkata');
-                                                        
+
                                                         // Get the current date and time
                                                         $currentDateTime = new DateTime();
-                                                        
+
                                                         // Create a DateInterval of 24 hours
                                                         $interval = new DateInterval('PT24H');
-                                                        
+
                                                         // Add the interval to the current date and time
                                                         $minDateTime = $currentDateTime->add($interval)->format('Y-m-d\TH:i');
-                                                        ?>
-                                                        <input type="datetime-local" min="<?= $minDateTime ?>" id="datetime"
+                                                        */
+                                                                                                                                                                        ?> ?> ?>
+                                                        <input type="datetime-local" min="<?/*= $minDateTime */?>" id="datetime"
                                                             name="delivery_datetime" class="form-control" style="pointer-events: none;">
                                                     </label>
                                                 </div>
                                             </div>
 
 
-                                           
-                                        </div>
 
-                                        
-                                           
-                                          
+                                        </div> --}}
+
+                                            <div class="row">
+                                                <div class="col-md-12 mb-4">
+                                                    <h3 class="fs-16 fw-600 mb-0 pb-2">
+                                                        {{ translate('Choose Delivery Date And Time Slot') }}
+                                                    </h3>
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <!-- Date Picker -->
+                                                            <input name="delivery_date" class="form-control" type="date" id="deliveryDate"
+                                                                class="date-picker">
+                                                        </div>
+                                                        <div class="col">
+
+                                                            <!-- Dropdown for selecting the delivery time slot -->
+                                                            <select name="delivery_time" class="form-control" id="timeSlotDropdown"
+                                                                class="time-picker">
+                                                                <option value="">Select Time Slot</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <script>
+                                                        document.addEventListener("DOMContentLoaded", function() {
+                                                            const officeStartTime = 8; // 8:00 AM
+                                                            const officeEndTime = 21; // 9:00 PM
+                                                            const slotDuration = 3; // 3-hour slots
+
+                                                            const dateInput = document.getElementById("deliveryDate");
+                                                            const timeSlotDropdown = document.getElementById("timeSlotDropdown");
+
+                                                            const today = new Date();
+                                                            const formattedToday = today.toISOString().split("T")[0]; // Current date in YYYY-MM-DD format
+                                                            // const currentTime = 21; // Current hour for testing
+                                                            // const currentMinutes = 0; // Current minutes for testing
+                                                            const currentTime = today.getHours();
+                                                            const currentMinutes = today.getMinutes();
+                                                            dateInput.value = formattedToday; // Set default date to today
+                                                            dateInput.min = formattedToday; // Disable previous dates
+
+                                                            // Generate time slots based on selected date
+                                                            function generateTimeSlots() {
+                                                                const selectedDate = new Date(dateInput.value);
+                                                                const isToday = isCurrentDate(selectedDate);
+
+                                                                // Check if the time is after 9:00 PM, auto-select the next day's first slot
+                                                                if (shouldAutoSelectNextDay()) {
+                                                                    autoSelectNextDay();
+                                                                    return;
+                                                                }
+
+                                                                const dropdown = timeSlotDropdown;
+                                                                dropdown.innerHTML = ''; // Clear existing slots
+                                                                let firstSlotGenerated = false;
+
+                                                                if (isToday) {
+                                                                    generateTodaySlots(firstSlotGenerated);
+                                                                } else {
+                                                                    generateNextDaySlots(firstSlotGenerated);
+                                                                }
+                                                            }
+
+                                                            // Check if the selected date is today
+                                                            function isCurrentDate(selectedDate) {
+                                                                return selectedDate.toDateString() === today.toDateString();
+                                                            }
+
+                                                            // Check if the time is after 9:00 PM, auto-select the next day
+                                                            function shouldAutoSelectNextDay() {
+                                                                return currentTime >= 21 && dateInput.min === formattedToday;
+                                                            }
+
+                                                            // Auto-select the next day's date and set the minimum date
+                                                            function autoSelectNextDay() {
+                                                                dateInput.value = getNextDate(); // Auto-select next day's date
+                                                                dateInput.min = getNextDate(); // Set the minimum selectable date to the next day
+                                                                generateTimeSlots(); // Re-generate time slots after setting the next day
+                                                            }
+
+                                                            // Generate time slots for today, considering current time
+                                                            function generateTodaySlots(firstSlotGenerated) {
+                                                                for (let hour = officeStartTime; hour <= officeEndTime; hour++) {
+                                                                    const startFormatted = formatTime(hour);
+                                                                    const endFormatted = formatTime(hour + slotDuration);
+                                                                    const option = createOption(startFormatted, endFormatted);
+
+                                                                    if (hour < currentTime || (hour === currentTime && currentMinutes > 0)) {
+                                                                        option.style.display = "none"; // Hide past slots
+                                                                    } else {
+                                                                        if (!firstSlotGenerated && (hour >= currentTime || (hour === currentTime &&
+                                                                                currentMinutes === 0))) {
+                                                                            option.selected = true;
+                                                                            firstSlotGenerated = true;
+                                                                        }
+                                                                        timeSlotDropdown.appendChild(option); // Add slot to dropdown
+                                                                    }
+                                                                }
+                                                            }
+
+                                                            // Generate time slots for the next day (no current time constraints)
+                                                            function generateNextDaySlots(firstSlotGenerated) {
+                                                                for (let hour = officeStartTime; hour <= officeEndTime; hour++) {
+                                                                    const startFormatted = formatTime(hour);
+                                                                    const endFormatted = formatTime(hour + slotDuration);
+                                                                    const option = createOption(startFormatted, endFormatted);
+
+                                                                    if (!firstSlotGenerated) {
+                                                                        option.selected = true; // Select the first available slot for the next day
+                                                                        firstSlotGenerated = true;
+                                                                    }
+                                                                    timeSlotDropdown.appendChild(option); // Add slot to dropdown
+                                                                }
+                                                            }
+
+                                                            // Create a time slot option element
+                                                            function createOption(startFormatted, endFormatted) {
+                                                                const option = document.createElement("option");
+                                                                option.value = `${startFormatted} - ${endFormatted}`;
+                                                                option.textContent = `${startFormatted} - ${endFormatted}`;
+                                                                return option;
+                                                            }
+
+                                                            // Format the time to a 12-hour format
+                                                            function formatTime(hour) {
+                                                                const period = hour >= 12 ? 'PM' : 'AM';
+                                                                const adjustedHour = hour % 12 || 12; // Convert hour to 12-hour format
+                                                                return `${adjustedHour}:00 ${period}`;
+                                                            }
+
+                                                            // Get the next day's date in YYYY-MM-DD format
+                                                            function getNextDate() {
+                                                                const nextDate = new Date(today);
+                                                                nextDate.setDate(today.getDate() + 1); // Move to the next day
+                                                                return nextDate.toISOString().split("T")[0];
+                                                            }
+
+                                                            // Generate time slots on page load
+                                                            generateTimeSlots();
+
+                                                            // Regenerate time slots whenever a new date is selected
+                                                            dateInput.addEventListener("change", generateTimeSlots);
+                                                        });
+                                                    </script>
+                                                    <div class="input-group date_time1">
+                                                        <label for="datetime" class="clickable-box">
+
+
+
+
+
+
+                                                        </label>
+                                                    </div>
+                                                </div>
+
+
+
+                                            </div>
+
+
+
+
                                             <div class="card-body text-center p-0">
-                                                
+
                                                 <div class="row">
 
                                                     <div class="col-md-12">
@@ -678,29 +831,36 @@
                                                             <div class="col-md-6">
                                                                 <div class="mb-3 text-left">
                                                                     <label for="fromPerson" class="form-label">
-                                                                        Sender's Name <small class="text-muted">(Person sending the flowers)</small>
+                                                                        Sender's Name <small class="text-muted">(Person
+                                                                            sending the flowers)</small>
                                                                     </label>
-                                                                    <input type="text" name="from_name" class="form-control" id="fromPerson" placeholder="Enter sender's name">
+                                                                    <input type="text" name="from_name"
+                                                                        class="form-control" id="fromPerson"
+                                                                        placeholder="Enter sender's name">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6">
                                                                 <div class="mb-3 text-left">
                                                                     <label for="toPerson" class="form-label">
-                                                                        Recipient's Name <small class="text-muted">(Person receiving the flowers)</small>
+                                                                        Recipient's Name <small class="text-muted">(Person
+                                                                            receiving the flowers)</small>
                                                                     </label>
-                                                                    <input type="text" name="to_name" class="form-control" id="toPerson" placeholder="Enter recipient's name">
+                                                                    <input type="text" name="to_name"
+                                                                        class="form-control" id="toPerson"
+                                                                        placeholder="Enter recipient's name">
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="form-group text-left">
                                                             <label for="additional_info" class="form-label">
-                                                                Additional Notes 
-                                                                <small class="text-muted">(Provide any extra information for us or a message for the recipient)</small>
+                                                                Additional Notes
+                                                                <small class="text-muted">(Provide any extra information
+                                                                    for us or a message for the recipient)</small>
                                                             </label>
                                                             <textarea name="additional_info" id="additional_info" rows="4" class="form-control"
                                                                 placeholder="Type your message here"></textarea>
                                                         </div>
-                                               
+
                                                     </div>
 
 
@@ -1448,15 +1608,17 @@
                     url: "{{ url(route('get-deliverable-session')) }}", // Proper Blade syntax for route
                     method: 'GET',
                     success: function(response) {
-                        const isDeliverable = response.deliverable === true || response.deliverable === 'true'; // Ensure it works for boolean and string
+                        const isDeliverable = response.deliverable === true || response.deliverable ===
+                            'true'; // Ensure it works for boolean and string
 
                         if (isDeliverable) {
-                            $('.delivery-type-form').removeClass('d-none'); // Show the form if deliverable is true
+                            $('.delivery-type-form').removeClass(
+                                'd-none'); // Show the form if deliverable is true
                         } else {
                             setTimeout(function() {
                                 flushDeliverableSession();
                                 window.location.href = cart_page_url;
-                            }, 1000); 
+                            }, 1000);
                         }
                     },
                     error: function() {
@@ -1465,7 +1627,7 @@
                 });
             }
 
-            @if(!Session::has('deliverable'))
+            @if (!Session::has('deliverable'))
                 $('input[name="address_id"]').prop('checked', false);
             @endif
 
@@ -1478,13 +1640,14 @@
                     method: 'POST',
                     success: function(response) {
                         // if (response.status === 'success') {
-                        //     AIZ.plugins.notify('success', '{{ translate("Session cleared successfully.") }}');
+                        //     AIZ.plugins.notify('success', '{{ translate('Session cleared successfully.') }}');
                         // } else {
-                        //     AIZ.plugins.notify('danger', '{{ translate("Failed to clear session.") }}');
+                        //     AIZ.plugins.notify('danger', '{{ translate('Failed to clear session.') }}');
                         // }
                     },
                     error: function() {
-                        AIZ.plugins.notify('danger', '{{ translate("An error occurred. Please try again.") }}');
+                        AIZ.plugins.notify('danger',
+                            '{{ translate('An error occurred. Please try again.') }}');
                     }
                 });
             }
@@ -1497,13 +1660,16 @@
                     },
                     url: "{{ url(route('set-deliverable-session')) }}", // Proper Blade syntax for route
                     method: 'POST',
-                    data: { deliverable: condition },
+                    data: {
+                        deliverable: condition
+                    },
                     success: function() {
                         if (condition === false) {
                             // Take 10 seconds then reload
                             setTimeout(function() {
                                 flushDeliverableSession();
-                                window.location.href = cart_page_url; // Reload the page after 10 sec
+                                window.location.href =
+                                    cart_page_url; // Reload the page after 10 sec
                             }, 1000); // 10000 ms = 10 sec
                         } else {
                             location.reload(); // Reload immediately if true
@@ -1520,10 +1686,12 @@
                 url: "{{ url(route('get-deliverable-session')) }}", // Proper Blade syntax for route
                 method: 'GET',
                 success: function(response) {
-                    const isDeliverable = response.deliverable === true || response.deliverable === 'true'; // Ensure it works 
+                    const isDeliverable = response.deliverable === true || response.deliverable ===
+                        'true'; // Ensure it works
 
                     if (isDeliverable) {
-                        $('.delivery-type-form').removeClass('d-none'); // Show the form if deliverable is true
+                        $('.delivery-type-form').removeClass(
+                            'd-none'); // Show the form if deliverable is true
                     }
                 }
             });
@@ -1575,8 +1743,8 @@
                         } else {
                             AIZ.plugins.notify('danger', 'Your cart is empty. Please try again.');
                             setTimeout(function() {
-                              flushDeliverableSession();
-                              window.location.href = cart_page_url;
+                                flushDeliverableSession();
+                                window.location.href = cart_page_url;
                             }, 1000);
                         }
                     },
@@ -1585,8 +1753,8 @@
                         // Handle errors here
                         AIZ.plugins.notify('danger', 'Something went wrong, Please Try Again');
                         setTimeout(function() {
-                              flushDeliverableSession();
-                              window.location.href = home_page_url;
+                            flushDeliverableSession();
+                            window.location.href = home_page_url;
                         }, 1000);
                     }
                 });
@@ -1625,8 +1793,8 @@
                         } else {
                             AIZ.plugins.notify('danger', 'Your cart is empty. Please try again.');
                             setTimeout(function() {
-                              flushDeliverableSession();
-                              window.location.href = cart_page_url;
+                                flushDeliverableSession();
+                                window.location.href = cart_page_url;
                             }, 1000);
                         }
                     },
@@ -1635,8 +1803,8 @@
                         // Handle errors here
                         AIZ.plugins.notify('danger', 'Something went wrong, Please Try Again');
                         setTimeout(function() {
-                              flushDeliverableSession();
-                              window.location.href = home_page_url;
+                            flushDeliverableSession();
+                            window.location.href = home_page_url;
                         }, 1000);
                     }
                 });
@@ -1791,13 +1959,13 @@
                 method: 'POST',
                 success: function(response) {
                     // if (response.status === 'success') {
-                    //     AIZ.plugins.notify('success', '{{ translate("Session cleared successfully.") }}');
+                    //     AIZ.plugins.notify('success', '{{ translate('Session cleared successfully.') }}');
                     // } else {
-                    //     AIZ.plugins.notify('danger', '{{ translate("Failed to clear session.") }}');
+                    //     AIZ.plugins.notify('danger', '{{ translate('Failed to clear session.') }}');
                     // }
                 },
                 error: function() {
-                    AIZ.plugins.notify('danger', '{{ translate("An error occurred. Please try again.") }}');
+                    AIZ.plugins.notify('danger', '{{ translate('An error occurred. Please try again.') }}');
                 }
             });
         }
@@ -1823,8 +1991,8 @@
                             allIsOk = true;
                             flushDeliverableSession();
                         } else {
-                            @if(!Session::has('deliverable'))
-                                AIZ.plugins.notify('danger', '{{ translate("Please select your address.") }}');
+                            @if (!Session::has('deliverable'))
+                                AIZ.plugins.notify('danger', '{{ translate('Please select your address.') }}');
                             @else
                                 AIZ.plugins.notify('danger', '{{ translate('Please fill in all mandatory fields!') }}');
                             @endif
@@ -1862,7 +2030,7 @@
 
         //         // Convert to Date objects for comparison
         //         var selectedDate = new Date(selectedDateTime);
-        //         var minDate = new Date('<?= $minDateTime ?>');
+        //         var minDate = new Date('<?/*= $minDateTime */?>');
 
         //         // Check if selected time is greater than the minimum allowed time
         //         if (selectedDate <= minDate) {
@@ -1938,7 +2106,7 @@
             })
         });
 
-        
+
         $(document).on("click", "#coupon-remove", function() {
             var data = new FormData($('#remove-coupon-form')[0]);
 

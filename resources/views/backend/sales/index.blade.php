@@ -132,11 +132,17 @@
                             <span class="badge badge-inline badge-danger">{{translate('Unpaid')}}</span>
                             @endif
                         </td>
-                        <td>
-                            @if($order->delivery_datetime)
+                        @if($order->delivery_datetime)
+                            <td>
                                 {{ date('Y-m-d h:i A', strtotime($order->delivery_datetime)) }}
-                            @endif
-                        </td>
+                            </td>
+                        @elseif($order->delivery_date && $order->delivery_time)
+                            <td>
+                                {{ date('Y-m-d h:i A', strtotime($order->delivery_date)) }}
+                            <br>
+                                {{ $order->delivery_time }}
+                            </td>
+                        @endif
                         @if (addon_is_activated('refund_request'))
                         <td>
                             @if (count($order->refund_requests) > 0)

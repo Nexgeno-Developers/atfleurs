@@ -16,7 +16,7 @@
         <div class="card-body">
             <div class="row">
 
-                <div class="col-lg-6">
+                <div class="col-lg-5">
                     <table class="table-borderless table">
                         <tr>
                             <td class="w-50 fw-600">{{ translate('Order Code') }}</td>
@@ -42,7 +42,7 @@
                         </tr>
                     </table>
                 </div>
-                <div class="col-lg-6">
+                <div class="col-lg-7">
                     <table class="table-borderless table">
                         <tr>
                             <td class="w-50 fw-600">{{ translate('Order date') }}:</td>
@@ -79,10 +79,21 @@
                         </tr>
 
                         {{--@if($order->delivery_datetime)--}}
-                                <tr>
+                                {{-- <tr>
                                     <td class="text-main fw-600 text-bold">{{ translate('Delivery At') }}:</td>
                                     <!--<td class="text-right">{{ $order->delivery_datetime }}</td>-->
-                                    <td class="text-left">{{ $order->delivery_datetime ? date('d-m-Y h:i A', strtotime($order->delivery_datetime)) : ''; }}</td>
+                                    <td class="text-left">{{ $order->delivery_datetime ? date('d-m-Y h:i A', strtotime($order->delivery_datetime)) : '' }}</td>
+                                </tr> --}}
+                                <tr>
+                                    <td class="text-main fw-600 text-bold">{{ translate('Delivery At') }}:</td>
+                                    <!--<td class="text-right">{{-- $order->delivery_datetime --}}</td>-->
+                                    @if($order->delivery_datetime)
+                                        <td class="text-right">{{ date('d-m-Y h:i A', strtotime($order->delivery_datetime)) }}</td>
+                                    @elseif($order->delivery_date && $order->delivery_time)
+                                        <td class="text-right">{{ date('d-m-Y', strtotime($order->delivery_date)) }} / {{ $order->delivery_time }}</td>
+                                    @else
+                                        <td class="text-right" colspan="2"></td> <!-- Assuming 2 columns for the delivery info -->
+                                    @endif
                                 </tr>
                         {{--@endif--}}
                         @if ($order->tracking_code)
