@@ -18,7 +18,7 @@
 
                 <!--Assign Delivery Boy-->
                 @if ($order->seller_id == $admin_user_id || get_setting('product_manage_by_admin') == 1)
-                    
+
                     @if (addon_is_activated('delivery_boy'))
                         <div class="col-md-3 ml-auto">
                             <label for="assign_deliver_boy">{{ translate('Assign Deliver Boy') }}</label>
@@ -134,7 +134,7 @@
                         </a>
                     @endif
                 </div>
-                <div class="col-md-4 ml-auto">
+                <div class="col-md-5 ml-auto">
                     <table>
                         <tbody>
                             <tr>
@@ -188,8 +188,15 @@
                             {{--@if($order->delivery_datetime)--}}
                                 <tr>
                                     <td class="text-main fw-600 text-bold">{{ translate('Delivery At') }}:</td>
-                                    <!--<td class="text-right">{{ $order->delivery_datetime }}</td>-->
-                                    <td class="text-right">{{ $order->delivery_datetime ? date('d-m-Y h:i A', strtotime($order->delivery_datetime)) : '' }}</td>
+                                    <!--<td class="text-right">{{-- $order->delivery_datetime --}}</td>-->
+                                    @if($order->delivery_datetime)
+                                        <td class="text-right">{{ date('d-m-Y h:i A', strtotime($order->delivery_datetime)) }}</td>
+                                    @elseif($order->delivery_date && $order->delivery_time)
+                                        <td class="text-right">{{ date('d-m-Y', strtotime($order->delivery_date)) }} / </td>
+                                        <td class="text-right">{{ $order->delivery_time }}</td>
+                                    @else
+                                        <td class="text-right" colspan="2"></td> <!-- Assuming 2 columns for the delivery info -->
+                                    @endif
                                 </tr>
                             {{--@endif--}}
                         </tbody>

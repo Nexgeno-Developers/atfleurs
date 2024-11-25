@@ -180,7 +180,9 @@ class OrderController extends Controller
             $order->to_name = $request->to_name;
 
             $order->additional_info = $request->additional_info;
-            $order->delivery_datetime = $request->delivery_datetime;
+            // $order->delivery_datetime = $request->delivery_datetime;
+            $order->delivery_date = $request->delivery_date;
+            $order->delivery_time = $request->delivery_time;
 
             //======== Closed By Kiron ==========
             // $order->shipping_type = $carts[0]['shipping_type'];
@@ -242,7 +244,7 @@ class OrderController extends Controller
                 if (addon_is_activated('club_point')) {
                     $order_detail->earn_point = $product->earn_point;
                 }
-                
+
                 $order_detail->save();
 
                 $product->num_of_sale += $cartItem['quantity'];

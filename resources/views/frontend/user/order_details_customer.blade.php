@@ -16,34 +16,32 @@
     <div class="card-body">
         <div class="row">
 
-            <div class="col-lg-6">
-                <table class="table-borderless table">
-                    <tr>
-                        <td class="w-50 fw-600">{{ translate('Order Code') }}</td>
-                        <td>{{ $order->code }}</td>
-                    </tr>
-                    <tr>
-                        <td class="w-50 fw-600">{{ translate('Customer') }}:</td>
-                        <td>{{ json_decode($order->shipping_address)->name }}</td>
-                    </tr>
-                    <tr>
-                        <td class="w-50 fw-600">{{ translate('Email') }}:</td>
-                        @if ($order->user_id != null)
-                        <td>{{ $order->user->email }}</td>
-                        @endif
-                    </tr>
-                    <tr>
-                        <td class="w-50 fw-600">{{ translate('Shipping address') }}:</td>
-                        <td>{{ json_decode($order->shipping_address)->address }},
-                            {{ json_decode($order->shipping_address)->city }},
-                            @if(isset(json_decode($order->shipping_address)->state))
-                            {{ json_decode($order->shipping_address)->state }} - @endif
-                            {{ json_decode($order->shipping_address)->postal_code }},
-                            {{ json_decode($order->shipping_address)->country }}</td>
-                    </tr>
-
-                    <!--<tr>
-                            <td class="w-50 fw-600">{{ translate('Local Pickup address') }}:</td>
+                <div class="col-lg-6">
+                    <table class="table-borderless table">
+                        <tr>
+                            <td class="w-50 fw-600">{{ translate('Order Code') }}</td>
+                            <td>{{ $order->code }}</td>
+                        </tr>
+                        <tr>
+                            <td class="w-50 fw-600">{{ translate('Customer') }}:</td>
+                            <td>{{ json_decode($order->shipping_address)->name }}</td>
+                        </tr>
+                        <tr>
+                            <td class="w-50 fw-600">{{ translate('Email') }}:</td>
+                            @if ($order->user_id != null)
+                                <td>{{ $order->user->email }}</td>
+                            @endif
+                        </tr>
+                        <tr>
+                            <td class="w-50 fw-600">{{ translate('Shipping address') }}:</td>
+                            <td>{{ json_decode($order->shipping_address)->address }},
+                                {{ json_decode($order->shipping_address)->city }},
+                                @if(isset(json_decode($order->shipping_address)->state)) {{ json_decode($order->shipping_address)->state }} - @endif
+                                {{ json_decode($order->shipping_address)->postal_code }},
+                                {{ json_decode($order->shipping_address)->country }}</td>
+                        </tr>
+						
+						 <!--<tr><td class="w-50 fw-600">{{ translate('Local Pickup address') }}:</td>
                              <td>
         @if (!empty($pickup_point_list) && count($pickup_point_list) > 0)
             @foreach ($pickup_point_list as $pick_up_point)
@@ -57,68 +55,65 @@
         @else
             {{ translate('No pickup points available.') }}
         @endif
-    </td>
-                        </tr>-->
+    </td></tr>-->
+						
+						
+                    </table>
+                </div>
+                <div class="col-lg-6">
+                    <table class="table-borderless table">
+                        <tr>
+                            <td class="w-50 fw-600">{{ translate('Order date') }}:</td>
+                            <td>{{ date('d-m-Y H:i A', $order->date) }}</td>
+                        </tr>
+                        <tr>
+                            <td class="w-50 fw-600">{{ translate('Order status') }}:</td>
+                            <td>{{ translate(ucfirst(str_replace('_', ' ', $order->delivery_status))) }}</td>
+                        </tr>
+                        <tr>
+                            <td class="w-50 fw-600">{{ translate('Total order amount') }}:</td>
+                            <td>{{ single_price($order->orderDetails->sum('price') + $order->orderDetails->sum('tax')) }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="w-50 fw-600">{{ translate('Shipping method') }}:</td>
+                            <td>{{ translate('Flat shipping rate') }}</td>
+                        </tr>
+                        <tr>
+                            <td class="w-50 fw-600">{{ translate('Payment method') }}:</td>
+                            <td>{{ translate(ucfirst(str_replace('_', ' ', $order->payment_type))) }}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-main fw-600 text-bold">{{ translate('Sender’s Name') }}:</td>
+                            <td>{{ $order->from_name }}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-main fw-600 text-bold">{{ translate('Recipient’s Name') }}:</td>
+                            <td>{{ $order->to_name }}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-main fw-600 text-bold">{{ translate('Additional Note') }}:</td>
+                            <td>{{ $order->additional_info }}</td>
+                        </tr>
 
-
-                </table>
-            </div>
-            <div class="col-lg-6">
-                <table class="table-borderless table">
-                    <tr>
-                        <td class="w-50 fw-600">{{ translate('Order date') }}:</td>
-                        <td>{{ date('d-m-Y H:i A', $order->date) }}</td>
-                    </tr>
-                    <tr>
-                        <td class="w-50 fw-600">{{ translate('Order status') }}:</td>
-                        <td>{{ translate(ucfirst(str_replace('_', ' ', $order->delivery_status))) }}</td>
-                    </tr>
-                    <tr>
-                        <td class="w-50 fw-600">{{ translate('Total order amount') }}:</td>
-                        <td>{{ single_price($order->orderDetails->sum('price') + $order->orderDetails->sum('tax')) }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="w-50 fw-600">{{ translate('Shipping method') }}:</td>
-                        <td>{{ translate('Flat shipping rate') }}</td>
-                    </tr>
-                    <tr>
-                        <td class="w-50 fw-600">{{ translate('Payment method') }}:</td>
-                        <td>{{ translate(ucfirst(str_replace('_', ' ', $order->payment_type))) }}</td>
-                    </tr>
-                    <tr>
-                        <td class="text-main fw-600 text-bold">{{ translate('Sender’s Name') }}:</td>
-                        <td>{{ $order->from_name }}</td>
-                    </tr>
-                    <tr>
-                        <td class="text-main fw-600 text-bold">{{ translate('Recipient’s Name') }}:</td>
-                        <td>{{ $order->to_name }}</td>
-                    </tr>
-                    <tr>
-                        <td class="text-main fw-600 text-bold">{{ translate('Additional Note') }}:</td>
-                        <td>{{ $order->additional_info }}</td>
-                    </tr>
-
-                    {{--@if($order->delivery_datetime)--}}
-                    <tr>
-                        <td class="text-main fw-600 text-bold">{{ translate('Delivery At') }}:</td>
-                        <!--<td class="text-right">{{ $order->delivery_datetime }}</td>-->
-                        <td class="text-left">
-                            {{ $order->delivery_datetime ? date('d-m-Y h:i A', strtotime($order->delivery_datetime)) : ''; }}
-                        </td>
-                    </tr>
-                    {{--@endif--}}
-                    @if ($order->tracking_code)
-                    <tr>
-                        <td class="w-50 fw-600">{{ translate('Tracking code') }}:</td>
-                        <td>{{ $order->tracking_code }}</td>
-                    </tr>
-                    @endif
-                </table>
+                        {{--@if($order->delivery_datetime)--}}
+                                <tr>
+                                    <td class="text-main fw-600 text-bold">{{ translate('Delivery At') }}:</td>
+                                    <!--<td class="text-right">{{ $order->delivery_datetime }}</td>-->
+                                    <td class="text-left">{{ $order->delivery_datetime ? date('d-m-Y h:i A', strtotime($order->delivery_datetime)) : ''; }}</td>
+                                </tr>
+                        {{--@endif--}}
+                        @if ($order->tracking_code)
+                            <tr>
+                                <td class="w-50 fw-600">{{ translate('Tracking code') }}:</td>
+                                <td>{{ $order->tracking_code }}</td>
+                            </tr>
+                        @endif
+                    </table>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
 <div class="row">
     <div class="col-md-9">
