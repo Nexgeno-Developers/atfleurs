@@ -9,6 +9,7 @@
                 src="{{ static_asset('assets/img/placeholder-rect.jpg') }}"
                 data-src="{{ uploaded_asset($flash_deal->banner) }}"
                 alt="{{ $flash_deal->title }}"
+                loading="lazy"
                 class="img-fit w-100 lazyload"
             >
         </section>

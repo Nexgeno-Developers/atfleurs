@@ -575,7 +575,7 @@
     @yield('modal')
     
     <!-- SCRIPTS -->
-    <script src="{{ static_asset('assets/js/vendors.js') }}"></script> 
+    <script src="{{ static_asset('assets/js/vendors.js') }}" defer></script> 
     <script src="{{ static_asset('assets/js/aiz-core.min.js') }}" defer></script>
     <!--<script src="{{ static_asset('assets/js/aiz-core.js') }}" defer></script>-->
     <!--<script src="{{ static_asset('assets/js/owl.carousel.js') }}"></script>-->

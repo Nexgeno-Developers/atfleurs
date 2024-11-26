@@ -31,7 +31,7 @@
                 <p class="fs-14 fw-700" style="color: #8d8d8d;">{{ translate('Deleting Account Means:')}}</p>
                 <div class="row bg-soft-warning py-2 mb-2 ml-0 mr-0 border-left border-width-2 border-danger">
                     <div class="col-1">
-                        <img src="{{ static_asset('assets/img/warning.png') }}" class="h-20px">
+                        <img src="{{ static_asset('assets/img/warning.png') }}" loading="lazy" class="h-20px">
                     </div>
                     <div class="col">
                         <p class="fw-600 mb-0">{{ translate('If you create any classified ptoducts, after deleting your account, those products will no longer in our system') }}</p>
@@ -39,7 +39,7 @@
                 </div>
                 <div class="row bg-soft-warning py-3 ml-0 mr-0 border-left border-width-2 border-danger">
                     <div class="col-1">
-                        <img src="{{ static_asset('assets/img/warning.png') }}" class="h-20px">
+                        <img src="{{ static_asset('assets/img/warning.png') }}" loading="lazy" class="h-20px">
                     </div>
                     <div class="col">
                         <p class="fw-600 mb-0">{{ translate('After deleting your account, wallet balance no longer in our system') }}</p>

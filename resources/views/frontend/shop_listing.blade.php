@@ -33,6 +33,7 @@
                                             src="{{ static_asset('assets/img/placeholder-rect.jpg') }}"
                                             data-src="{{ uploaded_asset($shop->logo) }}"
                                             alt="{{ $shop->name }}"
+                                            loading="lazy"
                                             class="img-fluid lazyload"
                                             onerror="this.onerror=null;this.src='{{ static_asset('assets/img/placeholder-rect.jpg') }}';"
                                         >

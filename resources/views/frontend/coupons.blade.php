@@ -47,6 +47,7 @@
                                                             src="{{ uploaded_asset($product->thumbnail_img) }}"
                                                             data-src="{{ uploaded_asset($product->thumbnail_img) }}"
                                                             onerror="this.onerror=null;this.src='{{ static_asset('assets/img/placeholder.jpg') }}';"
+                                                            loading="lazy"
                                                             alt="">
                                                             
                                                         <div class="lh-1-2">
