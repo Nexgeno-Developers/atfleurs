@@ -40,7 +40,7 @@ class CheckoutController extends Controller
         // Minumum order amount check
         if(get_setting('minimum_order_amount_check') == 1){
             $subtotal = 0;
-            foreach (Cart::where('user_id', Auth::user()->id)->get() as $key => $cartItem){ 
+            foreach (Cart::where('user_id', Auth::user()->id)->get() as $key => $cartItem){
                 $product = Product::find($cartItem['product_id']);
                 $subtotal += cart_product_price($cartItem, $product, false, false) * $cartItem['quantity'];
             }
@@ -50,12 +50,12 @@ class CheckoutController extends Controller
             }
         }
         // Minumum order amount check end
-        
+
         if ($request->payment_option != null) {
             (new OrderController)->store($request);
 
             $request->session()->put('payment_type', 'cart_payment');
-            
+
             $data['combined_order_id'] = $request->session()->get('combined_order_id');
             $request->session()->put('payment_data', $data);
 
@@ -130,12 +130,12 @@ class CheckoutController extends Controller
         //     flash(translate('Your cart is empty'))->warning();
         //     return redirect()->route('home');
         // }
-        
+
         // //zipcode availibility check
         // if ($carts && count($carts) > 0 && !empty($request->address_id)) {
         //     $zp_error = [];
         //     $shipping_info = Address::where('id', $request->address_id)->first();
-        
+
         //     foreach ($carts as $key => $cartItem) {
         //         $product = Product::find($cartItem['product_id']);
         //         // $zp = DB::table('zipcode_availibility')->where('id', $product->zipcode_availibility_id)->first();
@@ -143,7 +143,7 @@ class CheckoutController extends Controller
         //         if (isset($zp->id)) {
         //             $type = $zp->type;
         //             $zipcodes = json_decode($zp->zipcode);
-        
+
         //             if ($type == 'allow') {
         //                 if (!in_array($shipping_info->postal_code, $zipcodes)) {
         //                     $zp_error[] = $product->name . ' Not deliverable at ' . $shipping_info->postal_code;
@@ -151,15 +151,15 @@ class CheckoutController extends Controller
         //             }
         //         }
         //     }
-        
+
         //     if (!empty($zp_error)) {
         //         foreach ($zp_error as $error) {
         //             flash(translate($error))->error();
         //         }
         //         return redirect()->route('cart');
         //     }
-        // }       
-        
+        // }
+
         // foreach ($carts as $key => $cartItem) {
         //     $cartItem->address_id = $request->address_id;
         //     $cartItem->save();
@@ -176,7 +176,7 @@ class CheckoutController extends Controller
         //     })->orWhere('free_shipping', 1);
         //     $carrier_list = $carrier_query->get();
         // }
-        
+
         // return view('frontend.delivery_info', compact('carts','carrier_list'));
 
 
@@ -186,7 +186,7 @@ class CheckoutController extends Controller
                 'errors' => ['Please add shipping address']
             ]);
         }
-    
+
         $carts = Cart::where('user_id', Auth::user()->id)->get();
         if($carts->isEmpty()) {
             return response()->json([
@@ -194,26 +194,26 @@ class CheckoutController extends Controller
                 'errors' => ['Your cart is empty']
             ]);
         }
-    
+
         // Zipcode availability check
         $zp_error = [];
         if (!empty($request->address_id)) {
             $shipping_info = Address::where('id', $request->address_id)->first();
-    
+
             foreach ($carts as $cartItem) {
                 $product = Product::find($cartItem->product_id);
                 $zp = DB::table('zipcode_availibility')->where('id', json_decode($product->zipcode_availibility_id))->first();
-    
+
                 if ($zp) {
                     $type = $zp->type;
                     $zipcodes = json_decode($zp->zipcode);
-    
+
                     if ($type == 'allow' && !in_array($shipping_info->postal_code, $zipcodes)) {
                         $zp_error[] = $product->name . ' Not deliverable at ' . $shipping_info->postal_code;
                     }
                 }
             }
-    
+
             if (!empty($zp_error)) {
                 return response()->json([
                     'success' => false,
@@ -221,16 +221,16 @@ class CheckoutController extends Controller
                 ]);
             }
         }
-    
+
         foreach ($carts as $cartItem) {
             $cartItem->address_id = $request->address_id;
             $cartItem->save();
         }
-    
+
         $carrier_list = [];
         if (get_setting('shipping_type') == 'carrier_wise_shipping') {
             $zone = \App\Models\Country::where('id', $carts[0]->address->country_id)->first()->zone_id;
-    
+
             $carrier_query = Carrier::query();
             $carrier_query->whereIn('id', function ($query) use ($zone) {
                 $query->select('carrier_id')->from('carrier_range_prices')
@@ -238,7 +238,7 @@ class CheckoutController extends Controller
             })->orWhere('free_shipping', 1);
             $carrier_list = $carrier_query->get();
         }
-    
+
         return response()->json([
             'success' => true,
             'view' => view('frontend.partials.cart_summary2', compact('carts', 'carrier_list'))->render()
@@ -265,30 +265,30 @@ class CheckoutController extends Controller
         $subtotal = 0;
         $charges = 0; // Initialize charges
         $a=0;
-        
-        
+
+
         if ($carts && count($carts) > 0) {
-            
-            
+
+
            /*$zipcode_availability = DB::table('zipcode_availibility')
             ->whereJsonContains('zipcode', ["$shipping_info->postal_code"])
             ->orderBy('charges', 'desc')
             ->select('charges')
             ->first();
 
-    
+
             if ($zipcode_availability) {
                 $charges = intval($zipcode_availability->charges);
                 // Log the charges
                 \Illuminate\Support\Facades\Log::info('Charges retrieved from zipcode_availibility: ' . $charges);
-                
+
             } else {
                 // Log if no charges found
                 \Illuminate\Support\Facades\Log::info('No charges found for zipcode: ' . $shipping_info->postal_code);
             }*/
                 // Add charges to shipping
-                $shipping += $charges;  
-            
+                $shipping += $charges;
+
             foreach ($carts as $key => $cartItem) {
                 $product = Product::find($cartItem['product_id']);
                 $tax += cart_product_tax($cartItem, $product,false) * $cartItem['quantity'];
@@ -303,7 +303,7 @@ class CheckoutController extends Controller
                     }
                     $cartItem['shipping_cost'] = 0;
                     if ($cartItem['shipping_type'] == 'home_delivery') {
-                        
+
                         // $cartItem['shipping_cost'] = getShippingCost($carts, $key);
                         if($a == 0){
                             if($product->shipping_type != 'free'){
@@ -357,37 +357,56 @@ class CheckoutController extends Controller
         $subtotal = 0;
         $subtotal_offer = 0;
         $charges = 0; // Initialize charges
+        $nightCharge = 0;
         $a=0;
-        
-        
+
+
         if ($carts && count($carts) > 0) {
-            
-            
+
+
            $zipcode_availability = DB::table('zipcode_availibility')
             ->whereJsonContains('zipcode', $shipping_info->postal_code ?? '')
             ->orderBy('charges', 'desc')
             ->select('charges')
             ->first();
 
-    
+
             if ($zipcode_availability) {
                 $charges = intval($zipcode_availability->charges);
                 // Log the charges
-                \Illuminate\Support\Facades\Log::info('Charges retrieved from zipcode_availibility: ' . $charges);
-                
+                // \Illuminate\Support\Facades\Log::info('Charges retrieved from zipcode_availibility: ' . $charges);
+
             } else {
                 // Log if no charges found
-                \Illuminate\Support\Facades\Log::info('No charges found for zipcode: ' . ($shipping_info->postal_code ?? ''));
+                // \Illuminate\Support\Facades\Log::info('No charges found for zipcode: ' . ($shipping_info->postal_code ?? ''));
             }
+                // Retrieve night charges based on delivery time selected
+                $selectedTimeSlot = $request->input('delivery_time');
+                // Log the selected delivery time
+                // \Illuminate\Support\Facades\Log::info('Selected delivery time: ' . $selectedTimeSlot);
+                $nightChargeSlots = ['8:00 PM - 11:00 PM', '9:00 PM - 12:00 PM'];
+
+
+                if (in_array($selectedTimeSlot, $nightChargeSlots)) {
+                    // Log the selected delivery time
+                    // \Illuminate\Support\Facades\Log::info('Selected delivery time2: ' . $selectedTimeSlot);
+                    // \Illuminate\Support\Facades\Log::info('Night Charge slots: ' . json_encode($nightChargeSlots));
+                    $nightCharge = $this->getNightCharge();
+                    // \Illuminate\Support\Facades\Log::info('Night Charge: ' . $nightCharge);
+                }
+
+
+                // Add Night charges to shipping
+                $shipping += $nightCharge;
                 // Add charges to shipping
-                $shipping += $charges;  
+                $shipping += $charges;
 
             foreach ($carts as $key => $cartItem) {
                 $product = Product::find($cartItem['product_id']);
                 $tax += cart_product_tax($cartItem, $product,false) * $cartItem['quantity'];
                 $subtotal_offer += cart_product_price($cartItem, $product, false, false) * $cartItem['quantity'];
             }
-            
+
             foreach ($carts as $key => $cartItem) {
                 $product = Product::find($cartItem['product_id']);
                 $tax += cart_product_tax($cartItem, $product,false) * $cartItem['quantity'];
@@ -402,7 +421,7 @@ class CheckoutController extends Controller
                     }
                     $cartItem['shipping_cost'] = 0;
                     if ($cartItem['shipping_type'] == 'home_delivery') {
-                        
+
                         // $cartItem['shipping_cost'] = getShippingCost($carts, $key);
 
                         // if($a == 0){
@@ -416,7 +435,7 @@ class CheckoutController extends Controller
 
                         if ($a == 0) {
                             if ($product->shipping_type != 'free') {
-                        
+
                                 $current_date = time();
                                 $offer_start_date = strtotime('2024-10-28 00:00:00');
                                 $offer_end_date = strtotime('2024-11-03 23:59:59');
@@ -425,7 +444,7 @@ class CheckoutController extends Controller
                                 // var_dump($current_date);
                                 // var_dump($offer_start_date);
                                 // var_dump($offer_end_date);
-                        
+
                                 if ($subtotal_offer >= 10000 && $current_date >= $offer_start_date && $current_date <= $offer_end_date) {
 
                                     // var_dump('working');
@@ -436,10 +455,10 @@ class CheckoutController extends Controller
 
                                     // var_dump('not working');
 
-                                    $cartItem['shipping_cost'] = getShippingCost($carts, $key) + $charges;
+                                    $cartItem['shipping_cost'] = getShippingCost($carts, $key) + $charges + $nightCharge;
                                     $a++;
                                 }
-                        
+
                             } else {
                                 $cartItem['shipping_cost'] = getShippingCost($carts, $key);
                             }
@@ -458,7 +477,13 @@ class CheckoutController extends Controller
                 $shipping += $cartItem['shipping_cost'];
                 $cartItem->save();
             }
-            $total = $subtotal + $tax + $shipping + $charges;
+             \Illuminate\Support\Facades\Log::info(' Subtotal before total: ' . $subtotal);
+             \Illuminate\Support\Facades\Log::info(' Tax before total: ' . $tax);
+             \Illuminate\Support\Facades\Log::info(' Shipping before total: ' . $shipping);
+             \Illuminate\Support\Facades\Log::info(' Charge before total: ' . $charges);
+             \Illuminate\Support\Facades\Log::info('Night Charge before total: ' . $nightCharge);
+             $total = $subtotal + $tax + $shipping + $charges + $nightCharge;
+             \Illuminate\Support\Facades\Log::info(' Charge before total: ' . $total);
 
             return response()->json([
                 'success' => true,
@@ -475,6 +500,36 @@ class CheckoutController extends Controller
                 'errors' => ['Your cart is empty']
             ]);
         }
+    }
+    public function delivery_time_selected(Request $request)
+    {
+        // Retrieve the selected time slot
+        $selectedTimeSlot = $request->input('delivery_time');
+
+        // Define night charge hours (8:00 PM - 11:00 PM and 9:00 PM - 12:00 AM)
+        $nightChargeSlots = ['8:00 PM - 11:00 PM', '9:00 PM - 12:00 PM'];
+
+        // Check if the selected time slot matches any night charge time slot
+        if (in_array($selectedTimeSlot, $nightChargeSlots)) {
+            $nightCharge = $this->getNightCharge();
+        } else {
+            $nightCharge = 0;
+        }
+
+        return response()->json([
+            'success' => true,
+            'night_charge' => $nightCharge
+        ]);
+    }
+
+    // Function to retrieve night charge from the database
+    private function getNightCharge()
+    {
+        $nightChargeSetting = DB::table('business_settings')
+            ->where('type', 'night_charge')
+            ->first();
+
+        return $nightChargeSetting ? intval($nightChargeSetting->value) : 0;
     }
 
     public function apply_coupon_code(Request $request)
@@ -495,7 +550,7 @@ class CheckoutController extends Controller
 
                     $subtotal = 0;
 
-                    foreach ($carts as $key => $cartItem) { 
+                    foreach ($carts as $key => $cartItem) {
                         $product = Product::find($cartItem['product_id']);
                         $subtotal += cart_product_price($cartItem, $product, false, false) * $cartItem['quantity'];
                     }
@@ -503,12 +558,12 @@ class CheckoutController extends Controller
                     $sum = $subtotal;
                     $product = '';
 
-                    
+
                     if ($coupon->type == 'cart_base') {
                         $subtotal = 0;
                         $tax = 0;
                         $shipping = 0;
-                        foreach ($carts as $key => $cartItem) { 
+                        foreach ($carts as $key => $cartItem) {
                             $product = Product::find($cartItem['product_id']);
                             $subtotal += cart_product_price($cartItem, $product, false, false) * $cartItem['quantity'];
                             $tax += cart_product_tax($cartItem, $product,false) * $cartItem['quantity'];
@@ -527,7 +582,7 @@ class CheckoutController extends Controller
 
                         }
                     } elseif ($coupon->type == 'product_base') {
-                        foreach ($carts as $key => $cartItem) { 
+                        foreach ($carts as $key => $cartItem) {
                             $product = Product::find($cartItem['product_id']);
                             foreach ($coupon_details as $key => $coupon_detail) {
                                 if ($coupon_detail->product_id == $cartItem['product_id']) {
@@ -536,11 +591,11 @@ class CheckoutController extends Controller
                                         $current_date = time();
                                         $offer_start_date = strtotime('2024-10-28 00:00:00');
                                         $offer_end_date = strtotime('2024-11-03 23:59:59');
-        
+
                                         if ($sum >= 10000 && $current_date >= $offer_start_date && $current_date <= $offer_end_date) {
-        
+
                                             // var_dump('working 1');
-        
+
                                             $coupon_discount += (cart_product_price($cartItem, $product, false, false) * 10 / 100) * $cartItem['quantity'];
 
                                         } elseif ( $sum <= 10000 && $current_date >= $offer_start_date && $current_date <= $offer_end_date ) {
@@ -548,7 +603,7 @@ class CheckoutController extends Controller
                                             // var_dump('working 2');
 
                                             $coupon_discount += (cart_product_price($cartItem, $product, false, false) * 5 / 100) * $cartItem['quantity'];
-            
+
                                         } else {
 
                                             // var_dump('working 3');
@@ -556,7 +611,7 @@ class CheckoutController extends Controller
                                             $coupon_discount += (cart_product_price($cartItem, $product, false, false) * $coupon->discount / 100) * $cartItem['quantity'];
 
                                         }
-        
+
                                         // $coupon_discount += (cart_product_price($cartItem, $product, false, false) * $coupon->discount / 100) * $cartItem['quantity'];
 
                                     } elseif ($coupon->discount_type == 'amount') {
@@ -586,7 +641,7 @@ class CheckoutController extends Controller
                         $response_message['response'] = 'warning';
                         $response_message['message'] = translate('This coupon is not applicable to your cart products!');
                     }
-                    
+
                 } else {
                     $response_message['response'] = 'warning';
                     $response_message['message'] = translate('You already used this coupon!');
@@ -658,7 +713,7 @@ class CheckoutController extends Controller
 
         //Session::forget('club_point');
         //Session::forget('combined_order_id');
-        
+
         foreach($combined_order->orders as $order){
             NotificationUtility::sendOrderPlacedNotification($order);
         }
@@ -666,3 +721,4 @@ class CheckoutController extends Controller
         return view('frontend.order_confirmed', compact('combined_order'));
     }
 }
+

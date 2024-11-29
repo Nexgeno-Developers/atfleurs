@@ -191,6 +191,7 @@
                                     <form class="form-default delivery-type-form d-none"
                                         action="{{ route('checkout.store_delivery_info') }}" role="form" method="POST">
                                         @csrf
+                                        <input type="hidden" value="" name="delivery_time" />
                                         @php
                                             $admin_products = [];
                                             $seller_products = [];
@@ -800,17 +801,40 @@
                                                             // Regenerate time slots whenever a new date is selected
                                                             dateInput.addEventListener("change", generateTimeSlots);
                                                         });
+//                                                         document.getElementById("timeSlotDropdown").addEventListener("change", function() {
+//     const selectedSlot = this.value; // Get the selected time slot
+
+//     // Create a new XMLHttpRequest object
+//     const xhr = new XMLHttpRequest();
+
+//     xhr.open("POST", "{{ route('checkout.delivery_time_selected') }}", true);
+//     xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8"); // Set header for JSON data
+
+//     // Handle the response
+//     xhr.onload = function() {
+//         if (xhr.status === 200) {
+//             const response = JSON.parse(xhr.responseText);
+//             if (response.success) {
+//                 console.log('Night charge applied:', response.night_charge);
+//                 // Update the UI or hidden field as needed
+//             } else {
+//                 console.error('Error:', response.errors);
+//             }
+//         } else {
+//             console.error('Request failed:', xhr.statusText);
+//         }
+//     };
+
+//     // Prepare and send the request with CSRF token and selected slot
+//     const data = JSON.stringify({
+//         _token: "{{ csrf_token() }}",
+//         delivery_time: selectedSlot
+//     });
+
+//     xhr.send(data);
+// });
+
                                                     </script>
-                                                    <div class="input-group date_time1">
-                                                        <label for="datetime" class="clickable-box">
-
-
-
-
-
-
-                                                        </label>
-                                                    </div>
                                                 </div>
 
 
@@ -1842,6 +1866,38 @@
             // $('.address-form').show();
         });
         $(document).ready(function() {
+            $('#timeSlotDropdown').on('change', function() {
+                const selectedSlot = $(this).val(); // Get the selected time slot
+
+                // Get the form element
+                const form = $(".delivery-type-form");
+
+                // Set the value of the hidden input 'delivery_time' with the selected slot value
+                form.find("input[name='delivery_time']").val(selectedSlot);
+
+                // Prepare data to be sent in the AJAX request
+                const formData = form.serialize(); // Serialize the form data
+
+                // Perform AJAX request
+                $.ajax({
+                    url: form.attr('action'), // Use the action URL from the form
+                    type: 'POST',
+                    data: formData, // Send the serialized form data
+                    success: function(response) {
+                        if (response.success) {
+                            console.log('Night charge applied:', response.night_charge);
+                            // Optionally, you can update the UI here based on the response
+                        } else {
+                            console.error('Error:', response.errors);
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Request failed:', status, error);
+                    }
+                });
+            });
+
+
             // Check if the shipping type is 'home_delivery'
             var isHomeDelivery =
                 {{ isset($carts[0]->shipping_type) && $carts[0]->shipping_type == 'home_delivery' ? 'true' : 'false' }};
