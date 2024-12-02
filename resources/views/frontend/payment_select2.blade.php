@@ -692,7 +692,7 @@
 
                                                             const today = new Date();
                                                             const formattedToday = today.toISOString().split("T")[0]; // Current date in YYYY-MM-DD format
-                                                            // const currentTime = 21; // Current hour for testing
+                                                            // const currentTime = 20; // Current hour for testing
                                                             // const currentMinutes = 0; // Current minutes for testing
                                                             const currentTime = today.getHours();
                                                             const currentMinutes = today.getMinutes();
@@ -751,12 +751,24 @@
                                                                         if (!firstSlotGenerated && (hour >= currentTime || (hour === currentTime &&
                                                                                 currentMinutes === 0))) {
                                                                             option.selected = true;
+                                                                            firstSlotValue = option.value;
                                                                             firstSlotGenerated = true;
                                                                         }
                                                                         timeSlotDropdown.appendChild(option); // Add slot to dropdown
                                                                     }
                                                                 }
+                                                                if (firstSlotValue) {
+                                                                    updateFormDeliveryTime(firstSlotValue); // Set the first slot by default
+                                                                }
                                                             }
+
+                                                            function updateFormDeliveryTime(slot) {
+                                                                const form = $(".delivery-type-form");
+                                                                form.find("input[name='delivery_time']").val(slot); // Update the hidden input
+                                                            }
+                                                            timeSlotDropdown.addEventListener("change", function() {
+                                                                updateFormDeliveryTime(this.value);
+                                                            });
 
                                                             // Generate time slots for the next day (no current time constraints)
                                                             function generateNextDaySlots(firstSlotGenerated) {
