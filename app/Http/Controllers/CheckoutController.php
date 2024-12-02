@@ -399,8 +399,9 @@ class CheckoutController extends Controller
                 // Add Night charges to shipping
                 $shipping += $nightCharge;
                 // Add charges to shipping
+                \Illuminate\Support\Facades\Log::info('charges: ' . $charges);
                 $shipping += $charges;
-
+                \Illuminate\Support\Facades\Log::info('shipping cost after adding night + charges: ' . $shipping);
             foreach ($carts as $key => $cartItem) {
                 $product = Product::find($cartItem['product_id']);
                 $tax += cart_product_tax($cartItem, $product,false) * $cartItem['quantity'];
@@ -454,7 +455,6 @@ class CheckoutController extends Controller
                                 } else {
 
                                     // var_dump('not working');
-
                                     $cartItem['shipping_cost'] = getShippingCost($carts, $key) + $charges + $nightCharge;
                                     $a++;
                                 }
@@ -477,13 +477,7 @@ class CheckoutController extends Controller
                 $shipping += $cartItem['shipping_cost'];
                 $cartItem->save();
             }
-             \Illuminate\Support\Facades\Log::info(' Subtotal before total: ' . $subtotal);
-             \Illuminate\Support\Facades\Log::info(' Tax before total: ' . $tax);
-             \Illuminate\Support\Facades\Log::info(' Shipping before total: ' . $shipping);
-             \Illuminate\Support\Facades\Log::info(' Charge before total: ' . $charges);
-             \Illuminate\Support\Facades\Log::info('Night Charge before total: ' . $nightCharge);
              $total = $subtotal + $tax + $shipping + $charges + $nightCharge;
-             \Illuminate\Support\Facades\Log::info(' Charge before total: ' . $total);
 
             return response()->json([
                 'success' => true,
@@ -500,26 +494,6 @@ class CheckoutController extends Controller
                 'errors' => ['Your cart is empty']
             ]);
         }
-    }
-    public function delivery_time_selected(Request $request)
-    {
-        // Retrieve the selected time slot
-        $selectedTimeSlot = $request->input('delivery_time');
-
-        // Define night charge hours (8:00 PM - 11:00 PM and 9:00 PM - 12:00 AM)
-        $nightChargeSlots = ['8:00 PM - 11:00 PM', '9:00 PM - 12:00 PM'];
-
-        // Check if the selected time slot matches any night charge time slot
-        if (in_array($selectedTimeSlot, $nightChargeSlots)) {
-            $nightCharge = $this->getNightCharge();
-        } else {
-            $nightCharge = 0;
-        }
-
-        return response()->json([
-            'success' => true,
-            'night_charge' => $nightCharge
-        ]);
     }
 
     // Function to retrieve night charge from the database
