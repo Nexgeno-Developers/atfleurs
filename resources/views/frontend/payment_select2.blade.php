@@ -801,38 +801,6 @@
                                                             // Regenerate time slots whenever a new date is selected
                                                             dateInput.addEventListener("change", generateTimeSlots);
                                                         });
-//                                                         document.getElementById("timeSlotDropdown").addEventListener("change", function() {
-//     const selectedSlot = this.value; // Get the selected time slot
-
-//     // Create a new XMLHttpRequest object
-//     const xhr = new XMLHttpRequest();
-
-//     xhr.open("POST", "{{ route('checkout.delivery_time_selected') }}", true);
-//     xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8"); // Set header for JSON data
-
-//     // Handle the response
-//     xhr.onload = function() {
-//         if (xhr.status === 200) {
-//             const response = JSON.parse(xhr.responseText);
-//             if (response.success) {
-//                 console.log('Night charge applied:', response.night_charge);
-//                 // Update the UI or hidden field as needed
-//             } else {
-//                 console.error('Error:', response.errors);
-//             }
-//         } else {
-//             console.error('Request failed:', xhr.statusText);
-//         }
-//     };
-
-//     // Prepare and send the request with CSRF token and selected slot
-//     const data = JSON.stringify({
-//         _token: "{{ csrf_token() }}",
-//         delivery_time: selectedSlot
-//     });
-
-//     xhr.send(data);
-// });
 
                                                     </script>
                                                 </div>
