@@ -72,4 +72,24 @@ class RazorpayController extends Controller
             }
         }
     }
+    class RazorpayController extends Controller 
+    { 
+        public function handleWebhook(Request $request) 
+        { 
+            \Log::info('Webhook received'); 
+            \Log::info('Razorpay Webhook: ', $request->all()); 
+            
+            // Process the webhook payload 
+            // $event = $request->event; 
+            // switch ($event) { 
+            //      case 'payment.captured': 
+            //          //Handle payment captured event 
+            //          break; 
+            //      case 'payment.failed': 
+            //          //Handle payment failed event 
+            //          break; 
+            //          // Add more cases for other events you want to handle 
+            // } 
+            return response()->json(['status' => 'success'], 200); } 
+        }
 }
