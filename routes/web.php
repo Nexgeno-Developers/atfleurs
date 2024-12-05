@@ -382,7 +382,7 @@ Route::resource('shops', ShopController::class);
 Route::get('/instamojo/payment/pay-success', [InstamojoController::class, 'success'])->name('instamojo.success');
 
 Route::post('rozer/payment/pay-success', [RazorpayController::class, 'payment'])->name('payment.rozer');
-Route::post('/razorpay/webhook', 'RazorpayController@handleWebhook')->name('razorpay.webhook');
+Route::post('/razorpay/webhook', [RazorpayController::class, 'handleWebhook'])->name('razorpay.webhook');
 
 Route::get('/paystack/payment/callback', [PaystackController::class, 'handleGatewayCallback']);
 Route::get('/paystack/new-callback', [PaystackController::class, 'paystackNewCallback']);
