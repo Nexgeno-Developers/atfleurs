@@ -59,14 +59,14 @@ use App\Http\Controllers\MarketingController;
   | contains the "web" middleware group. Now create something great!
   |
  */
- 
+
 Route::get('/sitemap', [SiteMapController::class, 'newSitemap'])->name('sitemap');
 Route::get('/clear-cache', function () {
     Artisan::call('cache:clear');
     Artisan::call('config:clear');
     Artisan::call('view:clear');
     Artisan::call('route:clear');
-}); 
+});
 
 // Route::get('/test-otp', function () {
 //     $sessionData = Session()->all();
@@ -77,7 +77,7 @@ Route::get('/clear-cache', function () {
 
 Route::get('/key-generate', function () {
     Artisan::call('key:generate');
-}); 
+});
 
 Route::controller(DemoController::class)->group(function () {
     Route::get('/demo/cron_1', 'cron_1');
@@ -115,7 +115,7 @@ Route::controller(LoginController::class)->group(function () {
     //Apple Callback
     Route::post('/apple-callback', 'handleAppleCallback');
     Route::get('/account-deletion', 'account_deletion')->name('account_delete');
-    
+
     Route::post('/users/login-via-otp', 'login_via_mobile_otp')->name('user.login.via.otp');
     Route::post('/users/verify-mobile-otp', 'verify_mobile_otp')->name('user.login.via.otp.verify');
 });
@@ -222,7 +222,7 @@ Route::controller(MercadopagoController::class)->group(function () {
     Route::any('/mercadopago/payment/done', 'paymentstatus')->name('mercadopago.done');
     Route::any('/mercadopago/payment/cancel', 'callback')->name('mercadopago.cancel');
 });
-//Mercadopago 
+//Mercadopago
 
 // SSLCOMMERZ Start
 Route::controller(SslcommerzController::class)->group(function () {
@@ -263,7 +263,7 @@ Route::group(['middleware' => ['user', 'verified', 'unbanned']], function() {
         Route::post('/new-user-email', 'update_email')->name('user.change.email');
         Route::post('/user/update-profile', 'userProfileUpdate')->name('user.profile.update');
     });
-    
+
     Route::get('/all-notifications', [NotificationController::class, 'index'])->name('all-notifications');
 
 });
@@ -288,7 +288,7 @@ Route::group(['middleware' => ['customer', 'verified', 'unbanned']], function() 
             Route::post('/remove_coupon_code', 'remove_coupon_code')->name('checkout.remove_coupon_code');
             //Club point
             Route::post('/apply-club-point', 'apply_club_point')->name('checkout.apply_club_point');
-            Route::post('/remove-club-point', 'remove_club_point')->name('checkout.remove_club_point'); 
+            Route::post('/remove-club-point', 'remove_club_point')->name('checkout.remove_club_point');
         });
     });
 
@@ -296,7 +296,7 @@ Route::group(['middleware' => ['customer', 'verified', 'unbanned']], function() 
         session(['deliverable' => $request->input('deliverable')]);
         return response()->json(['status' => 'success']);
     })->name('set-deliverable-session');
-    
+
     Route::get('/get-deliverable-session', function () {
         return response()->json(['deliverable' => session('deliverable', false)]);
     })->name('get-deliverable-session');
@@ -346,21 +346,21 @@ Route::group(['middleware' => ['customer', 'verified', 'unbanned']], function() 
 });
 
 Route::group(['middleware' => ['auth']], function() {
-    
+
     Route::get('invoice/{order_id}', [InvoiceController::class, 'invoice_download'])->name('invoice.download');
-    
+
     Route::get('gst-invoice/{order_id}', [InvoiceController::class, 'invoice_gst_download'])->name('gst-invoice.download');
 
     // Reviews
     Route::resource('/reviews', ReviewController::class);
-    
+
     // Product Conversation
     Route::resource('conversations', ConversationController::class);
     Route::controller(ConversationController::class)->group(function () {
         Route::get('/conversations/destroy/{id}', 'destroy')->name('conversations.destroy');
         Route::post('conversations/refresh', 'refresh')->name('conversations.refresh');
     });
-    
+
     // Product Query
     Route::resource('product-queries', ProductQueryController::class);
 
@@ -472,33 +472,33 @@ Route::controller(BlogController::class)->group(function () {
 });
 
 Route::controller(PageController::class)->group(function () {
-    
-    
+
+
      //custome page created by mak
-    Route::get('/about-us', 'aboutpage')->name('custom-pages.aboutpage'); 
-    
+    Route::get('/about-us', 'aboutpage')->name('custom-pages.aboutpage');
+
     //custome page created by mak
-    Route::get('/contact-us', 'contactpage')->name('custom-pages.contactpage'); 
-    
+    Route::get('/contact-us', 'contactpage')->name('custom-pages.contactpage');
+
     //test created by mak
     Route::get('/newsletter', 'index')->name('newsletters.index');
     Route::post('/newsletter/send', 'send')->name('newsletters.send');
-    Route::post('/email', 'sendEmail')->name('custom-pages.sendemail'); 
-    
-    
+    Route::post('/email', 'sendEmail')->name('custom-pages.sendemail');
+
+
 
     //custome page created by mak
-    Route::get('/partners', 'partnerspage')->name('custom-pages.partnerspage'); 
-    
+    Route::get('/partners', 'partnerspage')->name('custom-pages.partnerspage');
+
      //custome page created by mak
-    Route::get('/services', 'servicespage')->name('custom-pages.servicespage'); 
-    
+    Route::get('/services', 'servicespage')->name('custom-pages.servicespage');
+
     //custome page created by mak
-    Route::get('/faq', 'faqpage')->name('custom-pages.faqpage'); 
-    
+    Route::get('/faq', 'faqpage')->name('custom-pages.faqpage');
+
     //custome page created by mak
-    Route::get('/careers', 'careerspage')->name('custom-pages.careerspage'); 
-    
+    Route::get('/careers', 'careerspage')->name('custom-pages.careerspage');
+
     //mobile app balnk page for webview
     Route::get('/mobile-page/{slug}', 'mobile_custom_page')->name('mobile.custom-pages');
 

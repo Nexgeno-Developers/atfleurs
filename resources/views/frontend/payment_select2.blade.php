@@ -191,6 +191,7 @@
                                     <form class="form-default delivery-type-form d-none"
                                         action="{{ route('checkout.store_delivery_info') }}" role="form" method="POST">
                                         @csrf
+                                        <input type="hidden" value="" name="delivery_time" />
                                         @php
                                             $admin_products = [];
                                             $seller_products = [];
@@ -691,7 +692,7 @@
 
                                                             const today = new Date();
                                                             const formattedToday = today.toISOString().split("T")[0]; // Current date in YYYY-MM-DD format
-                                                            // const currentTime = 21; // Current hour for testing
+                                                            // const currentTime = 20; // Current hour for testing
                                                             // const currentMinutes = 0; // Current minutes for testing
                                                             const currentTime = today.getHours();
                                                             const currentMinutes = today.getMinutes();
@@ -750,12 +751,24 @@
                                                                         if (!firstSlotGenerated && (hour >= currentTime || (hour === currentTime &&
                                                                                 currentMinutes === 0))) {
                                                                             option.selected = true;
+                                                                            firstSlotValue = option.value;
                                                                             firstSlotGenerated = true;
                                                                         }
                                                                         timeSlotDropdown.appendChild(option); // Add slot to dropdown
                                                                     }
                                                                 }
+                                                                if (firstSlotValue) {
+                                                                    updateFormDeliveryTime(firstSlotValue); // Set the first slot by default
+                                                                }
                                                             }
+
+                                                            function updateFormDeliveryTime(slot) {
+                                                                const form = $(".delivery-type-form");
+                                                                form.find("input[name='delivery_time']").val(slot); // Update the hidden input
+                                                            }
+                                                            timeSlotDropdown.addEventListener("change", function() {
+                                                                updateFormDeliveryTime(this.value);
+                                                            });
 
                                                             // Generate time slots for the next day (no current time constraints)
                                                             function generateNextDaySlots(firstSlotGenerated) {
@@ -800,17 +813,8 @@
                                                             // Regenerate time slots whenever a new date is selected
                                                             dateInput.addEventListener("change", generateTimeSlots);
                                                         });
+
                                                     </script>
-                                                    <div class="input-group date_time1">
-                                                        <label for="datetime" class="clickable-box">
-
-
-
-
-
-
-                                                        </label>
-                                                    </div>
                                                 </div>
 
 
@@ -1834,7 +1838,15 @@
             $('.delivery-type-form').on('change', 'input, select, textarea', function() {
                 delivery_typeForm($(this).closest('form'));
             });
+            $('#timeSlotDropdown').on('change', function() {
+                const selectedSlot = $(this).val(); // Get the selected time slot
+                // Get the form element
+                const form = $(".delivery-type-form");
+                // Set the value of the hidden input 'delivery_time' with the selected slot value
+                form.find("input[name='delivery_time']").val(selectedSlot);
+                delivery_typeForm($(".delivery-type-form"));
 
+            });
             // Initially hide all forms
             // $('.form-default').hide();
 
