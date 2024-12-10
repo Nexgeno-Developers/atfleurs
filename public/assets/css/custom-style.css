@@ -1583,20 +1583,20 @@ iframe.location-map {
     padding: 22px 100px 22px 10px;
   }
 
-  .wcs_fixed_right { 
+  .wcs_fixed_right {
     bottom: 80px !important;
     left: 10px !important;
   }
 
-  section.call-buton { 
+  section.call-buton {
     bottom: 50px !important;
   }
 
-  .call-buton .cc-calto-action-ripple i { 
-    width: 50px !important; 
+  .call-buton .cc-calto-action-ripple i {
+    width: 50px !important;
     left: 28px !important;
     height: 50px !important;
-    padding: 12px !important; 
+    padding: 12px !important;
     font-size: 26px !important;
   }
 
@@ -1637,7 +1637,7 @@ iframe.location-map {
     padding-top: 2rem;
   }
 
-  
+
   .aiz-p-hov-icon a {
     transform: none !important;
   }
@@ -2240,7 +2240,8 @@ table.table.aiz-table.mb-0.footable.footable-1.breakpoint-lg span.badge.badge-in
 .social-media-links {
   display: flex;
   justify-content: start;
-  gap: 10px; /* Space between icons */
+  gap: 10px;
+  /* Space between icons */
   padding: 5px 0;
   margin-left: 30px;
 }
@@ -2272,7 +2273,7 @@ table.table.aiz-table.mb-0.footable.footable-1.breakpoint-lg span.badge.badge-in
   background-color: #0077B5;
 }
 
-.social-icon:hover { 
+.social-icon:hover {
   transition: all 0.1s linear;
 }
 
@@ -2305,7 +2306,7 @@ table.table.aiz-table.mb-0.footable.footable-1.breakpoint-lg span.badge.badge-in
   margin-bottom: 0px;
 }
 
-.aiz-p-hov-icon a:hover i{
+.aiz-p-hov-icon a:hover i {
   color: #ff0000;
   font-weight: 900 !important;
 }
@@ -2324,7 +2325,7 @@ table.table.aiz-table.mb-0.footable.footable-1.breakpoint-lg span.badge.badge-in
 }
 
 .tooltip_none {
-  display: none !important; 
+  display: none !important;
 }
 
 /* zuber css end*/

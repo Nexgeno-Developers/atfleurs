@@ -1,4 +1,4 @@
-<div class="aiz-card-box border border-light rounded hov-shadow-md mt-1 mb-2 has-transition balsamiq_font">
+<div class="aiz-card-box mt-1 mb-2 has-transition balsamiq_font">
     <!--@if(discount_in_percentage($product) > 0)-->
     <!--    <span class="badge-custom">{{ translate('OFF') }}<span class="box ml-1 mr-0">&nbsp;{{discount_in_percentage($product)}}%</span></span>-->
     <!--@endif-->
@@ -21,7 +21,7 @@
             }
         @endphp
         <a href="{{ $product_url }}" class="d-block">
-            @if($product_tag_name != null)<p class="badges_box animationEffect" > {{$product_tag_name->name}} </p> @endif
+            @if($product_tag_name != null)<p class="badges_box fs-16 animationEffect green_color" > {{$product_tag_name->name}} </p> @endif
             <img loading="lazy"
                 class="img-fit lazyload mx-auto"
                 src="{{ static_asset('assets/img/spinner.webp') }}"
@@ -59,6 +59,10 @@
             </a>
         </div>
     </div>
+
+
+    <div class="d-flex">
+
     <div class="p-md-3 p-2 bg-white">
         
          <div class="text-center display_none">
@@ -74,8 +78,8 @@
         </div>
         
         
-        <h3 class="fw-600 fs-14 text-truncate-2 lh-1-6 mb-2 leter_space">
-            <a href="{{ $product_url }}" class="d-block text-reset">{{ ucwords($product->getTranslation('name')) }}</a>
+        <h3 class="fw-600 fs-14 text-truncate-2 lh-1-6 mb-1 leter_space">
+            <a href="{{ $product_url }}" class="d-block text-reset fs-16 green_color">{{ ucwords($product->getTranslation('name')) }}</a>
             <!--<a href="{{ $product_url }}" class="d-block text-reset">{{  $product->getTranslation('name')  }}</a>-->
         </h3>
         
@@ -87,7 +91,7 @@
         
         <div class="fs-20 mt-1">
             <!--<span class="fw-700">{{ home_discounted_base_price($product) }}</span>-->
-            <span class="fw-700">{{ home_discounted_price($product) }}</span> <!-- simple as well as varaint price (from / to) -->
+            <span class="fw-700 fs-20 green_color">{{ home_discounted_price($product) }}</span> <!-- simple as well as varaint price (from / to) -->
             @if(home_base_price($product) != home_discounted_base_price($product))
                 <del class="fw-600 fs-14 opacity-60 ml-2">{{ home_base_price($product) }}</del>
             <span class="text-center mx-1 discount_off"><span class="fs-14 fw-600 box" style="color:#f00;">&nbsp;{{discount_in_percentage($product)}}% Off</span></span>
@@ -102,8 +106,14 @@
         @if (addon_is_activated('club_point'))
             <div class="rounded px-2 mt-2 bg-soft-primary border-soft-primary border">
                 {{ translate('Club Point') }}:
-                <span class="fw-700 float-right">{{ $product->earn_point }}</span>
+                <span class="fw-900 float-right green_color fs-20">{{ $product->earn_point }}</span>
             </div>
         @endif
     </div>
+
+   <div class="arrow_area">
+
+   </div>
+        </div>
+
 </div>

@@ -14,6 +14,9 @@
                 data-image="{{ uploaded_asset(get_setting('header_logo')) }}"
                 data-prefill.name="{{ Auth::user()->name}}"
                 data-prefill.email="{{ Auth::user()->email ?? ''}}"
+                data-notes.combined_order_id="{{ $combined_order->id }}"
+                data-notes.user_id="{{ Auth::id() }}"
+                data-notes.payment_type="{{ $paymentType }}"
                 data-theme.color="#ff7529">
         </script>
         <input type="hidden" name="_token" value="{!!csrf_token()!!}">
