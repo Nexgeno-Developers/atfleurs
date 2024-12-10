@@ -41,17 +41,49 @@
             </div>
     </div>
   
-<!--<section>
+<section class="pt-5 pb-5">
     <div class="container ">
-        <div class="row pt-4 p-xl-5 p-md-5 p-lg-5 pb-4">
+        <div class="row">
             <div class="col-md-12 ">
-                
-                <h2 class="text-center about-us-home">About Us</h2>
-                <p class="text-center about-us-home">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Unde sint voluptatum dolore magnam! Explicabo corporis delectus nostrum. Atque reprehenderit itaque tempore tenetur voluptatibus libero vero iusto, voluptas nihil non iure perspiciatis repellat accusantium est illo veniam, sequi rem in. Necessitatibus temporibus similique deserunt, dolore animi ea ratione nisi fugiat commodi.</p>
+
+            <div class="mx-auto text-center mb-3">
+                <img src="assets/img/flower_icon.svg" />
             </div>
-        </div><div class="footer-divider"></div>
+                <h4 class="heading_one heading_font1 green_color text-capitalize text-center">Welcome to <span class="yellow_color">our colourful world.</span></h4>
+           
+                <p class="text-center">Floral greetings from At Fleurs, a boutique flower studio in suburban Mumbai! <span class="d-block">
+Our skilled team of passionate floral designers create exquisite arrangements with buds and blossoms for all occasions. Our collective </span>years in the industry allow us the luxury of acquired expertise, an eye for detail and, most importantly, impeccable service.</p>
+
+<div class="text-center">
+    <a class="green_color fs-bold" href="#"><b><u>Read Story</u></b></a>
+</div>
+            </div>
+        </div>
     </div>
-</section>-->
+</section>
+
+
+<section class="elegant_blooms_sec orange_light_bg">
+        <div class="row align-items-center">
+            <div class="col-md-6 ">
+                <div class="mx-auto text-center mb-3">
+                <img src="assets/img/flower_icon.svg" />
+                </div>
+
+                <h4 class="heading_one1 heading_font1 yellow_color text-capitalize text-center pb-3">Elegant Blooms, <span class="green_color d-lg-block">Artfully Curated for</span>Unique <span class="green_color">Moments</span></h4>
+                <p class="text-center body_text_vw width_70 mx-auto">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,</p>
+                <div class="text-center button_effects">
+                <a class="green_color fs-bold" href="#">Discover More</a>
+               </div>
+           </div>
+
+            <div class="col-md-6 ">
+                <div class="">
+                <img class="w-100" src="assets/img/elegant_blooms_vide.svg" />
+                </div>
+           </div>
+        </div>
+</section>
 
      <div class="product_category shop_collection pt-xl-6 pt-lg-6 pt-md-6 pt-5 pb-5 ">
         <div class="container">
@@ -236,19 +268,19 @@
 
 
 
-    <div id="section_newest" class="dark-orange-bg display_none">
+    <div id="section_newest">
         @if (count($newest_products) > 0)
             <section class="section-padding">
                 <div class="container">
                     <div class="">
                         <div class="mb-4 align-items-baseline">
-                           <h3 class="h2 fw-700 text-center lora_font">
-                                {{ translate('Latest Flowers') }}
-                            </h3>
+                         
+                            <h4 class="heading_one heading_font1 green_color text-capitalize text-center">New <span class="yellow_color">In</span></h4>
+           
                         </div>
                         
                         <!--<div class="anniversary_bg"></div>-->
-                        <div class="aiz-carousel gutters-10 half-outside-arrow" data-items="6" data-xl-items="4" data-lg-items="4"  data-md-items="3" data-sm-items="2" data-xs-items="2" data-arrows='true'>
+                        <div class="aiz-carousel gutters-10 half-outside-arrow" data-items="4" data-xl-items="4" data-lg-items="4"  data-md-items="3" data-sm-items="2" data-xs-items="2" data-arrows='true'>
                             @foreach ($newest_products as $key => $new_product)
                             <div class="carousel-box">
                                 @include('frontend.partials.product_box_1',['product' => $new_product])
@@ -261,6 +293,52 @@
             </section>   
         @endif
     </div>
+
+
+    
+
+    <section class="elegant_blooms_sec">
+        <div class="row align-items-center">
+            <div class="col-md-6 ">
+                <div class="">
+                <img class="w-100" src="assets/img/bloomin_img2.svg" />
+                </div>
+           </div>
+            <div class="col-md-6 ">
+                <div class="mx-auto text-center mb-3">
+                <img src="assets/img/flower_icon.svg" />
+                </div>
+
+                <h4 class="heading_one1 heading_font1 green_color text-capitalize text-center pb-3">Blossoming Tradition:  <span class="d-lg-block">Honoring Nature’s </span>Timeless Art Moments</h4>
+                <p class="text-center body_text_vw width_70 mx-auto">Our floral practice embraces the beauty of tradition, connecting deeply with nature’s cycles and the language of each bloom. Inspired by centuries-old techniques and cultural rituals, each arrangement honors the timeless artistry of nature. Through mindful selection and craftsmanship, we cultivate a practice rooted in respect, intention, and the transformative power of flowers.</p>
+               
+           </div>
+
+            
+        </div>
+</section>
+
+<section class="elegant_blooms_sec">
+        <div class="row align-items-center">
+            <div class="col-md-6 ">
+                <div class="mx-auto text-center mb-3">
+                <img src="assets/img/flower_icon.svg" />
+                </div>
+
+                <h4 class="heading_one1 heading_font1 green_color text-capitalize text-center pb-3">Artistry in Bloom: Where<span class=" d-lg-block">Creativity Meets Craft</span></h4>
+                <p class="text-center body_text_vw width_70 mx-auto">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,</p>
+       
+           </div>
+
+            <div class="col-md-6 ">
+                <div class="">
+                <img class="w-100" src="assets/img/bloomin_img3.svg" />
+                </div>
+           </div>
+        </div>
+</section>
+
+
 
     {{-- Featured Section --}}
     <div id="section_featured" class="display_none">
@@ -703,47 +781,55 @@ your feelings</h3>
         </div>
     </div>
 </section>-->
-    
-<div class="free-delivery-section section-padding balsamiq_font">
+   <div class="section-padding">
 <div class="container">
    
      <div class="mb-4 text-center position_relative align-items-baseline">
-                   <h3 class="h2 fw-700 mb-0 heading_font1">
-                            <span class="border-bottom border-primary border-width-2 pb-2 d-inline-block">{{ translate('Why Atfleurs') }}</span>
-                        </h3>
+                 
+                        <h4 class="heading_one heading_font1 green_color text-capitalize text-center">Why<span class="yellow_color">Atfleurs</span></h4>
                     
                             
                 </div>
 <div class="row gutters-10 position-relative pt-2">
 
 <div class="col-lg-3 col-6">
-    <div class="free-delivery-box">
+    <div class="free-delivery-box bg-light-orange ">
+         <div class="mx-auto text-center mb-3">
         <img loading="lazy" class="img-fit" src="{{ static_asset('assets/img/delivery_icon.png') }}" alt="Free Delivery">
-        <h4>Free Delivery</h4>
+        </div>
+        <h4 class="heading_font1 green_color">Free Delivery</h4>
         <p>Free shipping around the world for all orders on select products.</p>
     </div>
 </div>
 
 <div class="col-lg-3 col-6">
-    <div class="free-delivery-box fdb2">
+    <div class="free-delivery-box bg-light-orange ">
+         <div class="mx-auto text-center mb-3">
        <img loading="lazy" class="img-fit" src="{{ static_asset('assets/img/cart_icon.png') }}" alt="Online Order">
-        <h4>Online Order</h4>
+       </div>
+        <h4 class="heading_font1 green_color">Online Order</h4>
         <p>Don’t worry you can order Online by our Site</p>
     </div>
 </div>
 
 <div class="col-lg-3 col-6">
-    <div class="free-delivery-box fdb3">
-        <img loading="lazy" class="img-fit" src="{{ static_asset('assets/img/flowers_icon.png') }}" alt="Freshness">
-        <h4>Freshness</h4>
+    <div class="free-delivery-box bg-light-orange ">
+        <div class="mx-auto text-center mb-3">
+                 <img loading="lazy" class="img-fit" src="{{ static_asset('assets/img/flowers_icon.png') }}" alt="Freshness">
+                 
+                </div>
+       
+        <h4 class="heading_font1 green_color">Freshness</h4>
         <p>You have freshness flowers every single order</p>
     </div>
 </div>
 
 <div class="col-lg-3 col-6">
-    <div class="free-delivery-box fdb2">
+    <div class="free-delivery-box bg-light-orange ">
+         <div class="mx-auto text-center mb-3">
         <img loading="lazy" class="img-fit" src="{{ static_asset('assets/img/men_icon.png') }}" alt="Made By Artists">
-        <h4>Made By Indian Artists</h4>
+        </div>
+        <h4 class="heading_font1 green_color">Made By Indian Artists</h4>
         <p>World for all made by artists orders over now</p>
     </div>
 </div>

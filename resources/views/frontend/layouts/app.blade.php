@@ -47,10 +47,11 @@
     <!----------------- canonical ------------------->
     <link rel="canonical" href="{{ url()->current() }}">
     
-    <!-- Google Fonts 
-    <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@400;700&display=swap" rel="stylesheet">-->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Domine:wght@400;500;600;700&display=swap" rel="stylesheet">
+     <!-- body font-->
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+
+<!-- heading font--->
+ <link href="https://fonts.googleapis.com/css2?family=Forum&display=swap" rel="stylesheet">
 
     <!-- CSS Files -->
     <link rel="stylesheet" href="{{ static_asset('assets/css/vendors.css') }}">
@@ -100,20 +101,7 @@
     </script>
 
     <style>
-        body{
-            font-family: 'Poppins', sans-serif;
-            font-weight: 400;
-        }
-        .heading_font1
-        {
-            font-family: 'Domine', serif;
-        }
-        :root{
-            --primary: {{ get_setting('base_color', '#e62d04') }};
-            --hov-primary: {{ get_setting('base_hov_color', '#c52907') }};
-            --soft-primary: {{ hex2rgba(get_setting('base_color','#e62d04'),.15) }};
-        }
-
+       
         #map{
             width: 100%;
             height: 250px;
