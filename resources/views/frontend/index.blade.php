@@ -49,43 +49,9 @@
             <div class="mx-auto text-center mb-3">
                 <img src="assets/img/flower_icon.svg" />
             </div>
-                <h4 class="heading_one heading_font1 green_color text-capitalize text-center">Welcome to <span class="yellow_color">our colourful world.</span></h4>
-           
-                <p class="text-center">Floral greetings from At Fleurs, a boutique flower studio in suburban Mumbai! <span class="d-block">
-Our skilled team of passionate floral designers create exquisite arrangements with buds and blossoms for all occasions. Our collective </span>years in the industry allow us the luxury of acquired expertise, an eye for detail and, most importantly, impeccable service.</p>
-
-<div class="text-center">
-    <a class="green_color fs-bold" href="#"><b><u>Read Story</u></b></a>
-</div>
-            </div>
-        </div>
+        </div><div class="footer-divider"></div>
     </div>
-</section>
-
-
-<section class="elegant_blooms_sec orange_light_bg">
-        <div class="row align-items-center">
-            <div class="col-md-6 ">
-                <div class="mx-auto text-center mb-3">
-                <img src="assets/img/flower_icon.svg" />
-                </div>
-
-                <h4 class="heading_one1 heading_font1 yellow_color text-capitalize text-center pb-3">Elegant Blooms, <span class="green_color d-lg-block">Artfully Curated for</span>Unique <span class="green_color">Moments</span></h4>
-                <p class="text-center body_text_vw width_70 mx-auto">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,</p>
-                <div class="text-center button_effects">
-                <a class="green_color fs-bold" href="#">Discover More</a>
-               </div>
-           </div>
-
-            <div class="col-md-6 ">
-               <div class="blooms_video">
-                <video class="embed-responsive embed-responsive-16by9" autoplay="" muted="" loop="" id="myVideo2">
-                        <source src="assets/img/elegant_blooms.mp4" type="video/mp4">
-                    </video>
-                </div>
-           </div>
-        </div>
-</section>
+</section>-->
 
      <div class="product_category shop_collection pt-xl-6 pt-lg-6 pt-md-6 pt-5 pb-5 ">
         <div class="container">
@@ -268,7 +234,8 @@ Our skilled team of passionate floral designers create exquisite arrangements wi
 
 
 
-    <div id="section_newest">
+
+    <div id="section_newest" class="dark-orange-bg display_none">
         @if (count($newest_products) > 0)
             <section class="section-padding">
                 <div class="container">
@@ -293,89 +260,6 @@ Our skilled team of passionate floral designers create exquisite arrangements wi
             </section>   
         @endif
     </div>
-
-
-    
-<section class="ocasssion_video">
-        <div class="row align-items-center">
-          <div class="video-background">
-  <video class="embed-responsive embed-responsive-16by9" autoplay="" muted="" loop="" id="myVideo2">
-                        <source src="assets/img/occassion_video.mp4" type="video/mp4">
-                    </video>
-  <div class="content">
-     <div class="mx-auto text-center mb-3">
-                <img src="assets/img/flower_icon.svg" />
-                </div>
-
-   <h4 class="heading_one heading_font1 green_color text-capitalize">Artful Floral Creations <span class="yellow_color d-lg-block">for Every Occasion</span></h4>
-   <div class="text-center button_effects">
-                <a class="green_color fs-bold" href="#">Discover More</a>
-               </div>  
-</div>
-</div>
-        </div>
-</section>
-
-
-
-
-
-
-
-    <section class="elegant_blooms_sec pt-5 ">
-        <div class="row align-items-center">
-
-
-        <div class="col-md-12">
-             <div class="mx-auto text-center mb-3">
-                <img src="assets/img/flower_icon.svg" />
-                </div>
-            <h4 class="heading_one heading_font1 green_color text-capitalize text-center pb-3"> In petals’ grace, <span class="yellow_color">stories bloom,</span><span class="d-lg-block">Nature’s whispers fill the room. </span><span class="d-lg-block">Crafted beauty, a heartfelt art,</span>Floral wonders, soul and heart.</h4>
-           
-
-
-
-        </div>
-            <div class="col-md-6 ">
-                <div class="">
-                <img class="w-100" src="assets/img/bloomin_img2.svg" />
-                </div>
-           </div>
-            <div class="col-md-6 ">
-                <div class="mx-auto text-center mb-3">
-                <img src="assets/img/flower_icon.svg" />
-                </div>
-
-                <h4 class="heading_one heading_font1 green_color text-capitalize text-center pb-3">Blossoming Tradition:  <span class="d-lg-block">Honoring Nature’s </span>Timeless Art Moments</h4>
-                <p class="text-center body_text_vw width_70 mx-auto">Our floral practice embraces the beauty of tradition, connecting deeply with nature’s cycles and the language of each bloom. Inspired by centuries-old techniques and cultural rituals, each arrangement honors the timeless artistry of nature. Through mindful selection and craftsmanship, we cultivate a practice rooted in respect, intention, and the transformative power of flowers.</p>
-               
-           </div>
-
-            
-        </div>
-</section>
-
-<section class="elegant_blooms_sec">
-        <div class="row align-items-center">
-            <div class="col-md-6 ">
-                <div class="mx-auto text-center mb-3">
-                <img src="assets/img/flower_icon.svg" />
-                </div>
-
-                <h4 class="heading_one heading_font1 green_color text-capitalize text-center pb-3">Artistry in Bloom: Where<span class=" d-lg-block">Creativity Meets Craft</span></h4>
-                <p class="text-center body_text_vw width_70 mx-auto">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,</p>
-       
-           </div>
-
-            <div class="col-md-6 ">
-                <div class="">
-                <img class="w-100" src="assets/img/bloomin_img3.svg" />
-                </div>
-           </div>
-        </div>
-</section>
-
-
 
     {{-- Featured Section --}}
     <div id="section_featured" class="display_none">
