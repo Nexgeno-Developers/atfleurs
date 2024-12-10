@@ -176,11 +176,11 @@ ul.social.colored [class*="google"] {
 }
 
 .heading_one {
-  font-size: 48px;
+  font-size: 3.5vw;
 }
 
 .heading_one1 {
-  font-size: 3.5vw;
+  font-size: 4.7vw;
 }
 
 .body_text_vw {
@@ -892,13 +892,7 @@ h2.text-center.about-us-home {
   top: 6px;
 }
 
-.main_category img:hover {
-  margin-top: 0;
-}
-
 .main_category img {
-  border-radius: 200px 200px 0 0;
-  margin-top: 10px;
   transition: 0.5s all;
   height: auto;
 }
@@ -945,9 +939,6 @@ h2.text-center.about-us-home {
   overflow: inherit;
 }
 
-.best_selling_img .product_bg {
-  box-shadow: 19px 13px 11px -4px #0000001c;
-}
 
 .best_selling_img .product_bg img {
   background: #fff;
@@ -958,7 +949,7 @@ h2.text-center.about-us-home {
 }
 
 div#section_best_selling .slick-slide {
-  padding: 0 10px;
+  padding: 0 0px;
 }
 
 .blog_section {
@@ -1000,8 +991,8 @@ div#section_best_selling .slick-slide {
 }
 
 .shop_collection .gutters-10>[class*="col-"] {
-  padding-right: 22px;
-  padding-left: 22px;
+  padding-right: 8px;
+  padding-left: 8px;
 }
 
 .shop_collection h4.text-truncate.fw-600 {
@@ -1628,7 +1619,7 @@ iframe.location-map {
     padding-top: 2rem;
   }
 
-  <<<<<<< HEAD=======>>>>>>>bdae82f28f9f485344a403280de0b0473358e53c .aiz-p-hov-icon a {
+  .aiz-p-hov-icon a {
     transform: none !important;
   }
 }
@@ -1639,11 +1630,6 @@ iframe.location-map {
   overflow: inherit;
 }
 
-.best_selling_img .product_bg {
-  box-shadow: 19px 13px 11px -4px #0000001c;
-}
-
-.product_bg {}
 
 .best_selling_img .product_bg img {
   background: #fff;
@@ -2188,7 +2174,6 @@ table.table.aiz-table.mb-0.footable.footable-1.breakpoint-lg span.badge.badge-in
   display: flex;
   justify-content: start;
   gap: 10px;
-  /* Space between icons */
   padding: 5px 0;
   margin-left: 30px;
 }
@@ -2282,4 +2267,214 @@ table.table.aiz-table.mb-0.footable.footable-1.breakpoint-lg span.badge.badge-in
 
 .width_70 {
   width: 70%;
+}
+
+.blooms_video {
+  position: relative;
+  overflow: hidden;
+}
+
+.blooms_video video {
+  width: 80vw;
+  left: -40%;
+}
+
+.ocasssion_video .video-background video {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.ocasssion_video .content {
+  position: absolute;
+  z-index: 1;
+  color: white;
+  text-align: left;
+  padding-left: 5.9vw;
+  width: 40vw;
+  top: 40%;
+}
+
+.video-background {
+  position: relative;
+}
+
+.border_radius_ct:nth-child(1) .main_category img,
+.border_radius_ct:nth-child(1) .main_category {
+  border-radius: 0px 0px 55px 0px !important;
+}
+
+.border_radius_ct:nth-child(2) .main_category img,
+.border_radius_ct:nth-child(2) .main_category {
+  border-radius: 0px 0px 55px 55px !important;
+}
+
+.border_radius_ct:nth-child(3) .main_category img,
+.border_radius_ct:nth-child(3) .main_category {
+  border-radius: 0px 0px 0px 55px !important;
+}
+
+.border_radius_ct:nth-child(4) .main_category img,
+.border_radius_ct:nth-child(4) .main_category {
+  border-radius: 0px 55px 55px 0px !important;
+}
+
+
+.border_radius_ct:nth-child(5) .main_category img,
+.border_radius_ct:nth-child(5) .main_category {
+  border-radius: 55px 55px 55px 55px !important;
+}
+
+
+
+.border_radius_ct:nth-child(6) .main_category img,
+.border_radius_ct:nth-child(6) .main_category {
+  border-radius: 55px 0px 0px 55px !important;
+}
+
+.border_radius_ct:nth-child(7) .main_category img,
+.border_radius_ct:nth-child(7) .main_category {
+  border-radius: 0px 55px 0px 0px !important;
+}
+
+.border_radius_ct:nth-child(8) .main_category img,
+.border_radius_ct:nth-child(8) .main_category {
+  border-radius: 55px 55px 0px 0px !important;
+}
+
+.border_radius_ct:nth-child(9) .main_category img,
+.border_radius_ct:nth-child(9) .main_category {
+  border-radius: 55px 0px 0px 0px !important;
+}
+
+.main_category {
+  position: relative;
+  overflow: hidden;
+}
+
+.category_content_sec {
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+  z-index: 99;
+  width: 100%;
+}
+
+.border_radius_ct img {
+  height: 500px !important;
+}
+
+.main_category::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgb(50 83 61 / 40%);
+  /* Initial overlay with 0.35 opacity */
+  transition: background 0.3s ease;
+  /* Smooth transition */
+  z-index: 1;
+}
+
+.main_category:hover::before {
+  background: rgb(50 83 61 / 70%);
+  /* Overlay on hover with 0.7 opacity */
+}
+
+.category_image {
+  position: relative;
+  z-index: 0;
+  /* Ensure the image is behind the overlay */
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.arrow_category img {
+  width: 20px;
+  height: auto !important;
+}
+
+.arrow_category {
+  position: relative;
+  right: 60px;
+  z-index: 999;
+  float: right;
+  width: 42px;
+  height: 42px;
+  line-height: 38px;
+  border: 1px solid #fff;
+  border-radius: 50px;
+  text-align: center;
+  transition: 0.5s all;
+}
+
+.arrow_category:hover {
+  background-color: #32533D;
+  transition: 0.5s all;
+}
+
+.border_radius_ct:nth-child(2)::before,
+.border_radius_ct:nth-child(3)::before,
+.border_radius_ct:nth-child(5)::before,
+.border_radius_ct:nth-child(6)::before {
+  content: '';
+  position: absolute;
+  background-image: url('/assets/img/flower_icon.svg');
+  bottom: -25px;
+  left: -14px;
+  width: 30px;
+  height: 30px;
+  z-index: 1;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.button_effects a {
+  background: #32533D;
+  color: #fff !important;
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-size: 12px;
+}
+
+.button_effects a:hover {
+  background: #fff;
+  color: #32533D !important;
+}
+
+.button_effects a i {
+  padding-left: 13px;
+  transform: rotate(324deg);
+  position: relative;
+  top: 4px;
+}
+
+.arrow_area:hover {
+  background-color: #32533D;
+}
+
+.arrow_area:hover img {
+  filter: brightness(0) invert(1);
+  transition: 0.5s all;
+}
+
+.arrow_area img {
+  display: inline !important;
+}
+
+.arrow_area {
+  position: relative;
+  right: 60px;
+  z-index: 999;
+  float: right;
+  width: 38px;
+  height: 38px;
+  line-height: 33px;
+  border: 1px solid #32533D;
+  border-radius: 50px;
+  text-align: center;
+  transition: 0.5s all;
 }

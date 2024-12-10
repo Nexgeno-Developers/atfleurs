@@ -49,9 +49,43 @@
             <div class="mx-auto text-center mb-3">
                 <img src="assets/img/flower_icon.svg" />
             </div>
-        </div><div class="footer-divider"></div>
+                <h4 class="heading_one heading_font1 green_color text-capitalize text-center">Welcome to <span class="yellow_color">our colourful world.</span></h4>
+           
+                <p class="text-center">Floral greetings from At Fleurs, a boutique flower studio in suburban Mumbai! <span class="d-block">
+Our skilled team of passionate floral designers create exquisite arrangements with buds and blossoms for all occasions. Our collective </span>years in the industry allow us the luxury of acquired expertise, an eye for detail and, most importantly, impeccable service.</p>
+
+<div class="text-center">
+    <a class="green_color fs-bold" href="#"><b><u>Read Story</u></b></a>
+</div>
+            </div>
+        </div>
     </div>
-</section>-->
+</section>
+
+
+<section class="elegant_blooms_sec orange_light_bg">
+        <div class="row align-items-center">
+            <div class="col-md-6 ">
+                <div class="mx-auto text-center mb-3">
+                <img src="assets/img/flower_icon.svg" />
+                </div>
+
+                <h4 class="heading_one1 heading_font1 yellow_color text-capitalize text-center pb-3">Elegant Blooms, <span class="green_color d-lg-block">Artfully Curated for</span>Unique <span class="green_color">Moments</span></h4>
+                <p class="text-center body_text_vw width_70 mx-auto">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,</p>
+                <div class="text-center button_effects mt-5">
+                <a class="green_color fs-bold" href="#">Discover More <i class="fa-solid fa-arrow-right"></i></a>
+               </div>
+           </div>
+
+            <div class="col-md-6 ">
+               <div class="blooms_video">
+                <video class="embed-responsive embed-responsive-16by9" autoplay="" muted="" loop="" id="myVideo2">
+                        <source src="assets/img/elegant_blooms.mp4" type="video/mp4">
+                    </video>
+                </div>
+           </div>
+        </div>
+</section>
 
      <div class="product_category shop_collection pt-xl-6 pt-lg-6 pt-md-6 pt-5 pb-5 ">
         <div class="container">
@@ -67,7 +101,7 @@
                     @if (count($featured_categories) > 0)
                          <div class="row gutters-10 position-relative">
                          @foreach ($featured_categories as $key => $category)
-                                <div class="minw-0 col-lg-3 col-6 mt-3 balsamiq_font">
+                                <div class="minw-0 col-lg-4 col-6 mt-3 border_radius_ct position-relative">
                                     <a href="{{ route('products.category', $category->slug) }}" class="d-block rounded text-reset ">
                                         
                                         <div class="main_category">
@@ -79,7 +113,24 @@
                                             onerror="this.onerror=null;this.src='{{ static_asset('assets/img/spinner.webp') }}';"
                                         >
                                         </div>
-                                        <h4 class="text-truncate fw-600 mt-3 mt-lg-4 text-center pb-0 pb-lg-3">{{ $category->getTranslation('name') }}</h4>
+                                        
+                                        <div class="category_content_sec">
+                                        <div class="row align-items-center">
+                                            <div class="col-md-8">
+                                                <h4 class="text-truncate text-white text-start fw-400 fs-20 text-uppercase mt-3 mt-lg-4 pb-0">{{ $category->getTranslation('name') }}</h4>
+                                               <p class="text-white fs-12">Lorem ipsum dolor sit amet</p>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="arrow_category"><img src="assets/img/left_arrow_1.svg" /></div>
+                                               
+                                            </div>
+
+                                        </div>
+                                        </div>
+                                        
+
+
+
                                     </a>
                                 </div>
                             @endforeach
@@ -234,8 +285,7 @@
 
 
 
-
-    <div id="section_newest" class="dark-orange-bg display_none">
+    <div id="section_newest">
         @if (count($newest_products) > 0)
             <section class="section-padding">
                 <div class="container">
@@ -260,6 +310,89 @@
             </section>   
         @endif
     </div>
+
+
+    
+<section class="ocasssion_video">
+        <div class="row align-items-center">
+          <div class="video-background">
+  <video class="embed-responsive embed-responsive-16by9" autoplay="" muted="" loop="" id="myVideo2">
+                        <source src="assets/img/occassion_video.mp4" type="video/mp4">
+                    </video>
+  <div class="content">
+     <div class="mx-auto text-center mb-3">
+                <img src="assets/img/flower_icon.svg" />
+                </div>
+
+   <h4 class="heading_one heading_font1 green_color text-capitalize">Artful Floral Creations <span class="yellow_color d-lg-block">for Every Occasion</span></h4>
+   <div class="text-center button_effects mt-4">
+                <a class="green_color fs-bold" href="#">Discover More <i class="fa-solid fa-arrow-right"></i></a>
+               </div>  
+</div>
+</div>
+        </div>
+</section>
+
+
+
+
+
+
+
+    <section class="elegant_blooms_sec pt-5 ">
+        <div class="row align-items-center">
+
+
+        <div class="col-md-12">
+             <div class="mx-auto text-center mb-3">
+                <img src="assets/img/flower_icon.svg" />
+                </div>
+            <h4 class="heading_one heading_font1 green_color text-capitalize text-center pb-3"> In petals’ grace, <span class="yellow_color">stories bloom,</span><span class="d-lg-block">Nature’s whispers fill the room. </span><span class="d-lg-block">Crafted beauty, a heartfelt art,</span>Floral wonders, soul and heart.</h4>
+           
+
+
+
+        </div>
+            <div class="col-md-6 ">
+                <div class="">
+                <img class="w-100" src="assets/img/bloomin_img2.svg" />
+                </div>
+           </div>
+            <div class="col-md-6 ">
+                <div class="mx-auto text-center mb-3">
+                <img src="assets/img/flower_icon.svg" />
+                </div>
+
+                <h4 class="heading_one heading_font1 green_color text-capitalize text-center pb-3">Blossoming Tradition:  <span class="d-lg-block">Honoring Nature’s </span>Timeless Art Moments</h4>
+                <p class="text-center body_text_vw width_70 mx-auto">Our floral practice embraces the beauty of tradition, connecting deeply with nature’s cycles and the language of each bloom. Inspired by centuries-old techniques and cultural rituals, each arrangement honors the timeless artistry of nature. Through mindful selection and craftsmanship, we cultivate a practice rooted in respect, intention, and the transformative power of flowers.</p>
+               
+           </div>
+
+            
+        </div>
+</section>
+
+<section class="elegant_blooms_sec">
+        <div class="row align-items-center">
+            <div class="col-md-6 ">
+                <div class="mx-auto text-center mb-3">
+                <img src="assets/img/flower_icon.svg" />
+                </div>
+
+                <h4 class="heading_one heading_font1 green_color text-capitalize text-center pb-3">Artistry in Bloom: Where<span class=" d-lg-block">Creativity Meets Craft</span></h4>
+                <p class="text-center body_text_vw width_70 mx-auto">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,</p>
+       
+           </div>
+
+            <div class="col-md-6 ">
+                <div class="">
+                <img class="w-100" src="assets/img/bloomin_img3.svg" />
+                </div>
+           </div>
+        </div>
+</section>
+
+
 
     {{-- Featured Section --}}
     <div id="section_featured" class="display_none">
@@ -628,10 +761,11 @@ your feelings</h3>
 
 <section class="blog_section">
    <div class="container">
-      <div class="mb-3 pt-2 text-center position_relative align-items-baseline">
-      
-                 <h4 class="heading_one heading_font1 green_color text-capitalize text-center pb-3"> News &<span class="yellow_color">Blog</span></h4>
+      <div class="mb-5 pt-2 text-center position_relative align-items-baseline">
+       
+          <h4 class="heading_one heading_font1 green_color text-capitalize text-center pb-3"> News & <span class="yellow_color">Blog</span></h4>
            
+                    
       </div>
       <div class="row">
         @php DB::table('blogs')->orderBy('created_at', 'desc')->limit(3)->get(); @endphp
@@ -761,9 +895,15 @@ your feelings</h3>
 </div>
 </div>
     
+    <section class="instagram_section">
+          <h4 class="heading_one heading_font1 green_color text-capitalize text-center pb-3"> Check Our <span class="yellow_color">instagram</span></h4>
+        
+        <div class="container">
+            <img src="assets/img/instagraan_img.png" class="w-100"/>
+        </div>
+    </section>
     
-    
-<section class="seosection pt-5 pb-5">
+<!-- <section class="seosection pt-5 pb-5">
     <div class="container">
         <div class="row">
             <div class="col-md-6">
@@ -814,7 +954,7 @@ your feelings</h3>
             </div>
         </div>
     </div>
-</section>
+</section> -->
 
 @endsection
 

@@ -61,9 +61,9 @@
     </div>
 
 
-    <div class="d-flex">
+    <div class="row align-items-center">
 
-    <div class="p-md-3 p-2 bg-white">
+    <div class="col-md-8 p-md-3 p-2 bg-white">
         
          <div class="text-center display_none">
             <a hrer="#" onclick="addToWishList({{ $product->id }})" data-toggle="tooltip" data-title="{{ translate('Add to wishlist') }}" data-placement="left">
@@ -111,9 +111,13 @@
         @endif
     </div>
 
-   <div class="arrow_area">
 
+    <div class="col-md-4">
+<div class="arrow_area">
+      <a href="{{ $product_url }}" class="d-block text-reset fs-16 green_color"><img src="assets/img/green_arrow_left.svg" /></a>
    </div>
+    </div>
+   
         </div>
 
 </div>
