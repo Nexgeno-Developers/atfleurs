@@ -2422,7 +2422,7 @@ table.table.aiz-table.mb-0.footable.footable-1.breakpoint-lg span.badge.badge-in
 .border_radius_ct:nth-child(6)::before {
   content: '';
   position: absolute;
-  background-image: url('/assets/img/flower_icon.svg');
+  background-image: url('/public/assets/img/flower_icon.svg');
   bottom: -25px;
   left: -14px;
   width: 30px;

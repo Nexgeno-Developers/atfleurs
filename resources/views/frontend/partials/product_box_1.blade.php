@@ -114,7 +114,7 @@
 
     <div class="col-md-4">
 <div class="arrow_area">
-      <a href="{{ $product_url }}" class="d-block text-reset fs-16 green_color"><img src="assets/img/green_arrow_left.svg" /></a>
+      <a href="{{ $product_url }}" class="d-block text-reset fs-16 green_color"><img src="/public/assets/img/green_arrow_left.svg" /></a>
    </div>
     </div>
    

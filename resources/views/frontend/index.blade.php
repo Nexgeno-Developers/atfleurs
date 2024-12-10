@@ -47,7 +47,7 @@
             <div class="col-md-12 ">
 
             <div class="mx-auto text-center mb-3">
-                <img src="assets/img/flower_icon.svg" />
+                <img src="{{ static_asset('assets/img/flower_icon.svg ') }}" />
             </div>
                 <h4 class="heading_one heading_font1 green_color text-capitalize text-center">Welcome to <span class="yellow_color">our colourful world.</span></h4>
            
@@ -67,7 +67,7 @@ Our skilled team of passionate floral designers create exquisite arrangements wi
         <div class="row align-items-center">
             <div class="col-md-6 ">
                 <div class="mx-auto text-center mb-3">
-                <img src="assets/img/flower_icon.svg" />
+                <img src="{{ static_asset('assets/img/flower_icon.svg ') }}" />
                 </div>
 
                 <h4 class="heading_one1 heading_font1 yellow_color text-capitalize text-center pb-3">Elegant Blooms, <span class="green_color d-lg-block">Artfully Curated for</span>Unique <span class="green_color">Moments</span></h4>
@@ -80,7 +80,7 @@ Our skilled team of passionate floral designers create exquisite arrangements wi
             <div class="col-md-6 ">
                <div class="blooms_video">
                 <video class="embed-responsive embed-responsive-16by9" autoplay="" muted="" loop="" id="myVideo2">
-                        <source src="assets/img/elegant_blooms.mp4" type="video/mp4">
+                        <source src="{{ static_asset('assets/img/elegant_blooms.mp4 ') }}" type="video/mp4">
                     </video>
                 </div>
            </div>
@@ -121,7 +121,7 @@ Our skilled team of passionate floral designers create exquisite arrangements wi
                                                <p class="text-white fs-12">Lorem ipsum dolor sit amet</p>
                                             </div>
                                             <div class="col-md-4">
-                                                <div class="arrow_category"><img src="assets/img/left_arrow_1.svg" /></div>
+                                                <div class="arrow_category"><img src="{{ static_asset('assets/img/left_arrow_1.svg ') }}" /></div>
                                                
                                             </div>
 
@@ -317,11 +317,11 @@ Our skilled team of passionate floral designers create exquisite arrangements wi
         <div class="row align-items-center">
           <div class="video-background">
   <video class="embed-responsive embed-responsive-16by9" autoplay="" muted="" loop="" id="myVideo2">
-                        <source src="assets/img/occassion_video.mp4" type="video/mp4">
+                        <source src="{{ static_asset('assets/img/occassion_video.mp4 ') }}" type="video/mp4">
                     </video>
   <div class="content">
      <div class="mx-auto text-center mb-3">
-                <img src="assets/img/flower_icon.svg" />
+                <img src="{{ static_asset('assets/img/flower_icon.svg ') }}" />
                 </div>
 
    <h4 class="heading_one heading_font1 green_color text-capitalize">Artful Floral Creations <span class="yellow_color d-lg-block">for Every Occasion</span></h4>
@@ -345,7 +345,7 @@ Our skilled team of passionate floral designers create exquisite arrangements wi
 
         <div class="col-md-12">
              <div class="mx-auto text-center mb-3">
-                <img src="assets/img/flower_icon.svg" />
+                <img src="{{ static_asset('assets/img/flower_icon.svg ') }}" />
                 </div>
             <h4 class="heading_one heading_font1 green_color text-capitalize text-center pb-3"> In petals’ grace, <span class="yellow_color">stories bloom,</span><span class="d-lg-block">Nature’s whispers fill the room. </span><span class="d-lg-block">Crafted beauty, a heartfelt art,</span>Floral wonders, soul and heart.</h4>
            
@@ -355,12 +355,12 @@ Our skilled team of passionate floral designers create exquisite arrangements wi
         </div>
             <div class="col-md-6 ">
                 <div class="">
-                <img class="w-100" src="assets/img/bloomin_img2.svg" />
+                <img class="w-100" src="{{ static_asset('assets/img/bloomin_img2.svg ') }}" />
                 </div>
            </div>
             <div class="col-md-6 ">
                 <div class="mx-auto text-center mb-3">
-                <img src="assets/img/flower_icon.svg" />
+                <img src="{{ static_asset('assets/img/flower_icon.svg ') }}" />
                 </div>
 
                 <h4 class="heading_one heading_font1 green_color text-capitalize text-center pb-3">Blossoming Tradition:  <span class="d-lg-block">Honoring Nature’s </span>Timeless Art Moments</h4>
@@ -376,7 +376,7 @@ Our skilled team of passionate floral designers create exquisite arrangements wi
         <div class="row align-items-center">
             <div class="col-md-6 ">
                 <div class="mx-auto text-center mb-3">
-                <img src="assets/img/flower_icon.svg" />
+                <img src="{{ static_asset('assets/img/flower_icon.svg ') }}" />
                 </div>
 
                 <h4 class="heading_one heading_font1 green_color text-capitalize text-center pb-3">Artistry in Bloom: Where<span class=" d-lg-block">Creativity Meets Craft</span></h4>
@@ -386,7 +386,7 @@ Our skilled team of passionate floral designers create exquisite arrangements wi
 
             <div class="col-md-6 ">
                 <div class="">
-                <img class="w-100" src="assets/img/bloomin_img3.svg" />
+                <img class="w-100" src="{{ static_asset('assets/img/bloomin_img3.svg ') }}" />
                 </div>
            </div>
         </div>
@@ -895,11 +895,11 @@ your feelings</h3>
 </div>
 </div>
     
-    <section class="instagram_section">
+    <section class="instagram_section pb-5 ">
           <h4 class="heading_one heading_font1 green_color text-capitalize text-center pb-3"> Check Our <span class="yellow_color">instagram</span></h4>
         
         <div class="container">
-            <img src="assets/img/instagraan_img.png" class="w-100"/>
+            <img src="{{ static_asset('assets/img/instagraan_img.png ') }}" class="w-100"/>
         </div>
     </section>
     
