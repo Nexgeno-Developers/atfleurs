@@ -47,8 +47,8 @@ class RazorpayController extends Controller
         $payment = $api->payment->fetch($input['razorpay_payment_id']);
         $notes = $payment['notes'] ?? [];
         $payment_detalis = json_encode($input);
-        $userId = $notes['notes']['user_id'] ?? null;
-        $combinedOrderId = $notes['notes']['combined_order_id'] ?? null;
+        $userId = $notes['user_id'] ?? null;
+        $combinedOrderId = $notes['combined_order_id'] ?? null;
         $paymentType = $notes['payment_type'] ?? null;
 
         if (!Auth::check()) {
@@ -60,7 +60,6 @@ class RazorpayController extends Controller
         }
 
         if (count($input) && !empty($input['razorpay_payment_id'])) {
-            $payment_detalis = null;
             try {
                 $response = $api->payment->fetch($input['razorpay_payment_id'])->capture(array('amount' => $payment['amount']));
                 //$payment_detalis = json_encode(array('id' => $response['id'],'method' => $response['method'],'amount' => $response['amount'],'currency' => $response['currency']));
