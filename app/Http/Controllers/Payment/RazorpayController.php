@@ -90,6 +90,14 @@ class RazorpayController extends Controller
         \Log::info('Razorpay Webhook: ', $request->all());
         $event = $request->event;
 
+        $directoryPath = public_path('webhook_logs');
+        if (!file_exists($directoryPath)) {
+            mkdir($directoryPath, 0755, true);
+        }
+
+        $filePath = $directoryPath . '/webhook_' . date('Y-m-d_H-i-s') . '.log';
+        file_put_contents($filePath, json_encode($request->all(), JSON_PRETTY_PRINT), FILE_APPEND);
+
         if ($event === 'payment.captured' /** || $event === 'payment.authorized'*/) {
             if (isset($request->data['payment']['entity'])) {
                 $payment_detalis = json_encode($request->all());
