@@ -69,21 +69,34 @@
       </div>
 --}}     
       
-<header class="@if(get_setting('header_stikcy') == 'on') sticky-top @endif z-1020 bg-white border-bottom shadow-sm balsamiq_font bg_wwhite">
+<header class="@if(get_setting('header_stikcy') == 'on') sticky-top @endif z-1020 ">
     <div class="position-relative logo-bar-area z-1">
         <div class="container">
             <div class="d-flex align-items-center justify-content-between">
     
   
-   
-     
-      <div class="d-lg-none col-4 col-lg-2 mr-0 serach_mobile">
-                    <button class="p-2 d-block text-reset" aria-labelledby="search" data-toggle="class-toggle" data-target=".front-header-search" style="background: transparent; border: 0;">
-                        <i class="las la-search la-flip-horizontal la-2x"></i>
-                    </button>
+    <div class="col-md-1 col-4 pddright">
+                     @include('frontend.partials.mega_menu_nav')
                 </div>
-                
-                <div class="col-4 col-lg-3 col-xl-2 pl-0 align-items-left text-left logo">
+     
+                <div class="col-md-4 col-4 pddright">
+                    <ul class="list-inline mb-0 h-100 d-flex">
+                  
+                        <li class="list-inline-item">
+                            <a href="" class="text-reset d-inline-block py-2 px-2"> BOUQUETS</a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="" class="text-reset d-inline-block py-2 px-2"> ARRANGEMENTS</a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="" class="text-reset d-inline-block py-2 px-2"> GIFTS</a>
+                        </li>
+                 
+                </ul>
+                </div>
+     
+
+      <div class="col-4 col-lg-3 col-xl-2 pl-0 align-items-left text-center logo">
                     <a class="d-block py-5px ml-0" href="{{ route('home') }}" aria-label="Logo Link">
                         @php
                             $header_logo = get_setting('header_logo');
@@ -105,12 +118,10 @@
                         </div>
                     @endif
                 </div>
-                
-  
     
-              
+             
 
-                <div class="col-auto col-xl-6 pl-0 flex-grow-1 front-header-search d-flex align-items-center bg-white serch_box">
+                <!-- <div class="col-auto col-xl-6 pl-0 flex-grow-1 front-header-search d-flex align-items-center bg-white serch_box">
                     <div class="position-relative flex-grow-1">
                         <form action="{{ route('search') }}" method="GET" class="stop-propagation">
                             <div class="d-flex position-relative align-items-center">
@@ -141,7 +152,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
                
 
                 <div class="col-xl-2 pl-0 col-3 text-right d-none d-lg-block login_regst">
@@ -170,7 +181,12 @@
                 </ul>
             </div>
             
-            
+            <div class="serach_mobile">
+                     <button class="p-2 d-block text-reset" aria-labelledby="search" data-toggle="class-toggle" data-target=".front-header-search" style="background: transparent; border: 0;">
+                        <i class="las la-search la-flip-horizontal la-2x"></i>
+                    </button>
+                </div>
+
                 <div class="col-xl-1 pl-0 col-3 col-lg-1  d-none d-lg-block  align-self-stretch ml-3 mr-0" data-hover="dropdown">
                     <div class="nav-cart-box dropdown h-100" id="cart_items">
                         @include('frontend.partials.cart')
@@ -178,9 +194,7 @@
                 </div>
                 
 
-                <div class="col-md-1 col-4 pddright">
-                     @include('frontend.partials.mega_menu_nav')
-                </div>
+               
 
                 
             </div>
@@ -199,12 +213,12 @@
     </div>
     
      @if ( get_setting('header_menu_labels') !=  null )
-        <div class="bg-light-orange border-top border-gray-200 py-1 navingation_link d-none d-lg-block">
+        <div class="bg-light-orange py-1 navingation_link d-none d-lg-block">
             <div class="container">
                 <ul class="list-inline mb-0 pl-0 mobile-hor-swipe text-center">
                     @foreach (json_decode( get_setting('header_menu_labels'), true) as $key => $value)
                     <li class="list-inline-item mr-0">
-                        <a href="{{ json_decode( get_setting('header_menu_links'), true)[$key] }}" class="opacity-90 fs-14 px-4 text-uppercase py-2 d-inline-block fw-600 hov-opacity-100 text-reset">
+                        <a href="{{ json_decode( get_setting('header_menu_links'), true)[$key] }}" class="opacity-90 fs-14 px-4 text-uppercase py-2 d-inline-block fw-500 hov-opacity-100 text-reset">
                             {{ translate($value) }}
                         </a>
                     </li>

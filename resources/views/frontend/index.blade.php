@@ -13,7 +13,7 @@
     border-radius: 31px;
 }
 </style>
-    {{-- Categories , Sliders . Today's deal --}}
+    <!-- {{-- Categories , Sliders . Today's deal --}}
     <div class="home-banner-area">
         <div class="row gutters-10 position-relative">
                
@@ -39,8 +39,49 @@
 
 
             </div>
-    </div>
+    </div> -->
   
+<div class="main_banner_slider">
+    <div class="slick-banner-mian">
+    <div class="slide" style="background-image: url('{{ static_asset('assets/img/banner_main_1.webp ') }}');">
+      <div class="slide-content">
+        <h4>Astronomia & Lily <span class="d-md-block">Flower Bouquets</span> </h4>
+        <p>Shop collections you can live in</p>
+        <div class=" button_effects mt-5">
+                <a class="green_color fs-bold" href="#">Discover More <i class="fa-solid fa-arrow-right"></i></a>
+         </div>
+      </div>
+    </div>
+    <div class="slide" style="background-image: url('{{ static_asset('assets/img/banner_main_2.webp ') }}');">
+      <div class="slide-content">
+        <h4>Artificial Tulips  <span class="d-md-block">Flower With Dry Stick</span> </h4>
+        <p>Shop collections you can live in</p>
+        <div class=" button_effects mt-5">
+                <a class="green_color fs-bold" href="#">Discover More <i class="fa-solid fa-arrow-right"></i></a>
+         </div>
+      </div>
+    </div>
+     <div class="slide" style="background-image: url('{{ static_asset('assets/img/banner_main_3.webp ') }}');">
+      <div class="slide-content">
+        <h4>Pink Rose Flower <span class="d-md-block">Arrangement</span> </h4>
+        <p>Shop collections you can live in</p>
+        <div class=" button_effects mt-5">
+                <a class="green_color fs-bold" href="#">Discover More <i class="fa-solid fa-arrow-right"></i></a>
+         </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- <div class="custom-pagination">
+  <span class="current-slide">01</span>
+  <div class="pagination-line"></div>
+  <span class="total-slides">04</span>
+</div> -->
+  </div>
+
+
+
 <section class="pt-5 pb-5">
     <div class="container ">
         <div class="row">
@@ -287,7 +328,7 @@ Our skilled team of passionate floral designers create exquisite arrangements wi
 
     <div id="section_newest">
         @if (count($newest_products) > 0)
-            <section class="section-padding">
+            <section class="section-padding pb-0 pt-4">
                 <div class="container">
                     <div class="">
                         <div class="mb-4 align-items-baseline">
@@ -324,8 +365,8 @@ Our skilled team of passionate floral designers create exquisite arrangements wi
                 <img src="{{ static_asset('assets/img/flower_icon.svg ') }}" />
                 </div>
 
-   <h4 class="heading_one heading_font1 green_color text-capitalize">Artful Floral Creations <span class="yellow_color d-lg-block">for Every Occasion</span></h4>
-   <div class="text-center button_effects mt-4">
+   <h4 class="heading_one heading_font1 green_color text-capitalize">Artful Floral Creations <span class="yellow_color d-lg-block ml-50">for Every Occasion</span></h4>
+   <div class="text-center button_effects mt-4 ml-5">
                 <a class="green_color fs-bold" href="#">Discover More <i class="fa-solid fa-arrow-right"></i></a>
                </div>  
 </div>
@@ -364,7 +405,9 @@ Our skilled team of passionate floral designers create exquisite arrangements wi
                 </div>
 
                 <h4 class="heading_one heading_font1 green_color text-capitalize text-center pb-3">Blossoming Tradition:  <span class="d-lg-block">Honoring Nature’s </span>Timeless Art Moments</h4>
-                <p class="text-center body_text_vw width_70 mx-auto">Our floral practice embraces the beauty of tradition, connecting deeply with nature’s cycles and the language of each bloom. Inspired by centuries-old techniques and cultural rituals, each arrangement honors the timeless artistry of nature. Through mindful selection and craftsmanship, we cultivate a practice rooted in respect, intention, and the transformative power of flowers.</p>
+                <p class="text-center body_text_vw width_70 mx-auto">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+
+</p>
                
            </div>
 
@@ -646,7 +689,7 @@ your feelings</h3>
     <section class="reviews_section">
         <div class="container">
             
-             <div class="mb-5 pt-2 text-center position_relative align-items-baseline">
+             <div class="mb-4 pt-2 text-center position_relative align-items-baseline">
                    
                          <h4 class="heading_one heading_font1 green_color text-capitalize text-center pb-3"> Our <span class="yellow_color">Testimonials</span></h4>
            
@@ -759,9 +802,9 @@ your feelings</h3>
 
 
 
-<section class="blog_section">
+<section class="blog_section pb-0">
    <div class="container">
-      <div class="mb-5 pt-2 text-center position_relative align-items-baseline">
+      <div class="mb-4 pt-2 text-center position_relative align-items-baseline">
        
           <h4 class="heading_one heading_font1 green_color text-capitalize text-center pb-3"> News & <span class="yellow_color">Blog</span></h4>
            
@@ -850,7 +893,7 @@ your feelings</h3>
 
 <div class="col-lg-3 col-6">
     <div class="free-delivery-box bg-light-orange ">
-         <div class="mx-auto text-center mb-3">
+         <div class="mx-auto text-center mb-1">
         <img loading="lazy" class="img-fit" src="{{ static_asset('assets/img/delivery_icon.png') }}" alt="Free Delivery">
         </div>
         <h4 class="heading_font1 green_color">Free Delivery</h4>
@@ -860,7 +903,7 @@ your feelings</h3>
 
 <div class="col-lg-3 col-6">
     <div class="free-delivery-box bg-light-orange ">
-         <div class="mx-auto text-center mb-3">
+         <div class="mx-auto text-center mb-1">
        <img loading="lazy" class="img-fit" src="{{ static_asset('assets/img/cart_icon.png') }}" alt="Online Order">
        </div>
         <h4 class="heading_font1 green_color">Online Order</h4>
@@ -870,7 +913,7 @@ your feelings</h3>
 
 <div class="col-lg-3 col-6">
     <div class="free-delivery-box bg-light-orange ">
-        <div class="mx-auto text-center mb-3">
+        <div class="mx-auto text-center mb-1">
                  <img loading="lazy" class="img-fit" src="{{ static_asset('assets/img/flowers_icon.png') }}" alt="Freshness">
                  
                 </div>
@@ -882,7 +925,7 @@ your feelings</h3>
 
 <div class="col-lg-3 col-6">
     <div class="free-delivery-box bg-light-orange ">
-         <div class="mx-auto text-center mb-3">
+         <div class="mx-auto text-center mb-1">
         <img loading="lazy" class="img-fit" src="{{ static_asset('assets/img/men_icon.png') }}" alt="Made By Artists">
         </div>
         <h4 class="heading_font1 green_color">Made By Indian Artists</h4>

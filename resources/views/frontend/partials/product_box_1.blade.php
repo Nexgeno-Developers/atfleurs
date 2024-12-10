@@ -91,7 +91,7 @@
         
         <div class="fs-20 mt-1">
             <!--<span class="fw-700">{{ home_discounted_base_price($product) }}</span>-->
-            <span class="fw-700 fs-20 green_color">{{ home_discounted_price($product) }}</span> <!-- simple as well as varaint price (from / to) -->
+            <span class="fw-900 fs-20 green_color">{{ home_discounted_price($product) }}</span> <!-- simple as well as varaint price (from / to) -->
             @if(home_base_price($product) != home_discounted_base_price($product))
                 <del class="fw-600 fs-14 opacity-60 ml-2">{{ home_base_price($product) }}</del>
             <span class="text-center mx-1 discount_off"><span class="fs-14 fw-600 box" style="color:#f00;">&nbsp;{{discount_in_percentage($product)}}% Off</span></span>
@@ -114,7 +114,7 @@
 
     <div class="col-md-4">
 <div class="arrow_area">
-      <a href="{{ $product_url }}" class="d-block text-reset fs-16 green_color"><img src="/public/assets/img/green_arrow_left.svg" /></a>
+      <a href="{{ $product_url }}" class="d-block text-reset fs-16 green_color"><img src="{{ static_asset('assets/img/green_arrow_left.svg') }}" /></a>
    </div>
     </div>
    

@@ -415,7 +415,7 @@ ul.social.colored [class*="google"] {
 }
 
 .free-delivery-box {
-  padding: 35px 20px;
+  padding: 30px 20px;
   border-radius: 25px;
   text-align: center;
 }
@@ -2299,7 +2299,7 @@ table.table.aiz-table.mb-0.footable.footable-1.breakpoint-lg span.badge.badge-in
   position: relative;
 }
 
-.border_radius_ct:nth-child(1) .main_category img,
+/* .border_radius_ct:nth-child(1) .main_category img,
 .border_radius_ct:nth-child(1) .main_category {
   border-radius: 0px 0px 55px 0px !important;
 }
@@ -2345,7 +2345,7 @@ table.table.aiz-table.mb-0.footable.footable-1.breakpoint-lg span.badge.badge-in
 .border_radius_ct:nth-child(9) .main_category img,
 .border_radius_ct:nth-child(9) .main_category {
   border-radius: 55px 0px 0px 0px !important;
-}
+} */
 
 .main_category {
   position: relative;
@@ -2416,7 +2416,7 @@ table.table.aiz-table.mb-0.footable.footable-1.breakpoint-lg span.badge.badge-in
   transition: 0.5s all;
 }
 
-.border_radius_ct:nth-child(2)::before,
+/* .border_radius_ct:nth-child(2)::before,
 .border_radius_ct:nth-child(3)::before,
 .border_radius_ct:nth-child(5)::before,
 .border_radius_ct:nth-child(6)::before {
@@ -2430,7 +2430,7 @@ table.table.aiz-table.mb-0.footable.footable-1.breakpoint-lg span.badge.badge-in
   z-index: 1;
   background-repeat: no-repeat;
   background-size: contain;
-}
+} */
 
 .button_effects a {
   background: #32533D;
@@ -2467,7 +2467,7 @@ table.table.aiz-table.mb-0.footable.footable-1.breakpoint-lg span.badge.badge-in
 
 .arrow_area {
   position: relative;
-  right: 60px;
+  right: 10px;
   z-index: 999;
   float: right;
   width: 38px;
@@ -2477,4 +2477,145 @@ table.table.aiz-table.mb-0.footable.footable-1.breakpoint-lg span.badge.badge-in
   border-radius: 50px;
   text-align: center;
   transition: 0.5s all;
+}
+
+.ml-50 {
+  margin-left: 70px;
+}
+
+.main_banner_slider .slick-banner-mian {
+  position: relative;
+}
+
+.main_banner_slider .slide {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  background-size: cover;
+  background-position: center;
+}
+
+.main_banner_slider .slide-content {
+  position: absolute;
+  left: 150px;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: left;
+}
+
+.main_banner_slider .slide-content h1,
+.main_banner_slider .slide-content h2 {
+  margin: 0;
+}
+
+.main_banner_slider .slide-content h1 {
+  font-size: 3rem;
+}
+
+.main_banner_slider .slide-content h2 {
+  font-size: 2rem;
+  margin: 10px 0;
+}
+
+.main_banner_slider .slide-content p {
+  margin: 15px 0;
+}
+
+.main_banner_slider .slide-content .btn {
+  padding: 10px 20px;
+  background-color: #fff;
+  color: #000;
+  text-decoration: none;
+  border-radius: 5px;
+  display: inline-block;
+}
+
+.main_banner_slider .slick-dots {
+  position: absolute;
+  right: 50px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex !important;
+  flex-direction: column;
+}
+
+.main_banner_slider .slick-dots li {
+  margin: 5px 0;
+}
+
+.main_banner_slider .slick-dots li button:before {
+  content: counter(li);
+  color: #fff;
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+  counter-increment: li;
+}
+
+.main_banner_slider .slick-dots .slick-active button:before {
+  font-weight: bold;
+}
+
+.main_banner_slider .button_effects a {
+  background-color: #fff;
+  color: #32533D !important;
+}
+
+.main_banner_slider .slide-content h4 {
+  font-size: 40px;
+  line-height: 57px;
+  font-weight: 500;
+}
+
+.main_banner_slider .slide-content p {
+  font-size: 20px;
+  font-weight: 200;
+}
+
+.custom-pagination {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  color: #fff;
+}
+
+.current-slide,
+.total-slides {
+  font-size: 16px;
+}
+
+.pagination-line {
+  width: 2px;
+  height: 50px;
+  background-color: #fff;
+  margin: 10px 0;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.pagination-line::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  /* Bold border */
+  height: 100%;
+  background-color: transparent;
+  /* Default state */
+  transition: background-color 0.3s ease, width 0.3s ease;
+}
+
+.pagination-line.active::before {
+  background-color: #fff;
+  /* Bold color */
+  width: 8px;
+  /* Width for bold border */
 }

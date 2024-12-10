@@ -1055,7 +1055,52 @@ jQuery(document).ready(function($){
 </script> -->
 
 
+ <script>
 
+$(document).ready(function () {
+  const $slider = $('.slick-banner-mian');
+  const $currentSlide = $('.current-slide');
+  const $totalSlides = $('.total-slides');
+  const $paginationLine = $('.pagination-line');
+
+  $slider.on('init', function (event, slick) {
+    // Set the total number of slides
+    $totalSlides.text(slick.slideCount.toString().padStart(2, '0'));
+
+    // Set the initial current slide
+    $currentSlide.text((slick.currentSlide + 1).toString().padStart(2, '0'));
+
+    // Highlight the active pagination line
+    $paginationLine.removeClass('active');
+    $paginationLine.eq(slick.currentSlide).addClass('active');
+  });
+
+  $slider.on('afterChange', function (event, slick, currentSlide) {
+    // Update the current slide number
+    $currentSlide.text((currentSlide + 1).toString().padStart(2, '0'));
+
+    // Highlight the active pagination line
+    $paginationLine.removeClass('active');
+    $paginationLine.eq(currentSlide).addClass('active');
+  });
+
+  $slider.slick({
+    dots: false,
+    arrows: false,
+    infinite: true,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    speed: 800,
+    fade: true,
+    cssEase: 'linear',
+  });
+
+  // Dynamically create pagination lines based on the number of slides
+  for (let i = 0; i < $slider.slick('getSlick').slideCount; i++) {
+    $('.custom-pagination').append('<div class="pagination-line"></div>');
+  }
+});
+  </script>
 
 </body>
 </html>
