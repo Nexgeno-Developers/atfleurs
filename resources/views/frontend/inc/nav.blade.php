@@ -43,31 +43,65 @@
     </div>
 </div>
 <!-- END Top Bar -->
-{{--
-<div class="top_br">
+<div class="top_br greenbg">
     <div class="container">
-   <div class="col-lg-12">
-          <div class="position_set">
-              <ul>
+        <div class="row">
+        <div class="col-lg-3">
+           <div class="social_icons">
+                    
+                   
+                     <ul class="list-inline">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://www.facebook.com/atfleurs" aria-label="Facebook Link" target="_blank" class="facebook"><i class="fa fa-facebook"></i></a>
+                    </li>
+                    
+                    <li class="list-inline-item">
+                        <a href="https://instagram.com/atfleurs?igshid=MzNlNGNkZWQ4Mg==" aria-label="Instagram Link" target="_blank" class="instagram"><i class="fa fa-instagram"></i></a>
+                    </li>
+                    
+                    <li class="list-inline-item">
+                        <a href="https://x.com/Atfleurss" aria-label="Twitter X Link" target="_blank" class="twitter-x"><i class="fa fa-x-twitter"></i></a>
+                    </li>
+
+                    <li class="list-inline-item">
+                        <a href="https://www.linkedin.com/in/at-fleurs-39749b273/" aria-label="Linkedin Link" target="_blank" class="linkedin"><i class="fa fa-linkedin"></i></a>
+                    </li>
+               
+                </ul>
+                </div>
+            </div>
+
+             <!-- <div class="col-lg-3">
+            <div class="position_set">
+                <ul>
                     <li>
-                                <i class="las la-phone"></i> 
-                                <a onclick="return gtag_report_conversion('tel:+91 7070070716');" href="tel:+91 7070070716">+91 7070070716</a> <span style="color:#000;">/</span>
-                                <a onclick="return gtag_report_conversion('tel:+91 9808867777');" href="tel:+91 9808867777">+91 9808867777</a>
-                                
-                            </li>
-                            
-                             <li>
-                               <i class="las la-envelope"></i> 
-                               <a onclick="return gtag_report_conversion('mailto:atfleurss@gmail.com');" href="mailto:atfleurss@gmail.com">atfleurss@gmail.com </a>
-                            
-                              
-                            </li>
-                    </ul>
-          </div>
-          </div>
-      </div>
-      </div>
---}}     
+                        <i class="las la-phone"></i> 
+                        <a onclick="return gtag_report_conversion('tel:+91 7070070716');" href="tel:+91 7070070716">+91 7070070716</a> <span style="color:#000;">/</span>
+                        <a onclick="return gtag_report_conversion('tel:+91 9808867777');" href="tel:+91 9808867777">+91 9808867777</a>
+                    </li>
+
+                    <li>
+                        <i class="las la-envelope"></i> 
+                        <a onclick="return gtag_report_conversion('mailto:atfleurss@gmail.com');" href="mailto:atfleurss@gmail.com">atfleurss@gmail.com </a>
+                    </li>
+                </ul>
+            </div>
+            </div> -->
+
+
+            <div class="col-md-6">
+                <div class="top_news">
+                    <p class="text-center mb-0 pb-0 fs-12 top_baar_color pt-1">Free domestic shipping on orders over <span class="text-white">$75,</span> and international orders over <span class="text-white">$195,</span></p>
+                </div>
+            </div>
+
+             <div class="col-md-3">
+               
+            </div>
+        </div>
+    </div>
+</div>
       
 <header class="@if(get_setting('header_stikcy') == 'on') sticky-top @endif z-1020 ">
     <div class="position-relative logo-bar-area z-1">
@@ -75,11 +109,11 @@
             <div class="d-flex align-items-center justify-content-between">
     
   
-    <div class="col-md-1 col-4 pddright">
+    <div class="col-md-1 col-4 pl-0">
                      @include('frontend.partials.mega_menu_nav')
                 </div>
      
-                <div class="col-md-4 col-4 pddright">
+                <div class="col-md-4 col-4 pl-0">
                     <ul class="list-inline mb-0 h-100 d-flex">
                   
                         <li class="list-inline-item">
@@ -96,7 +130,7 @@
                 </div>
      
 
-      <div class="col-4 col-lg-3 col-xl-2 pl-0 align-items-left text-center logo">
+      <div class="col-4 col-lg-3 col-xl-2 pl-0 align-items-left logo">
                     <a class="d-block py-5px ml-0" href="{{ route('home') }}" aria-label="Logo Link">
                         @php
                             $header_logo = get_setting('header_logo');
@@ -154,18 +188,33 @@
                     </div>
                 </div> -->
                
+                <div class="col-md-4">
+                    <div class="serach_mobile d-flex">
+                     <button class="p-2 d-block text-reset" aria-labelledby="search" data-toggle="class-toggle" data-target=".front-header-search" style="background: transparent; border: 0;">
+                        <i class="las la-search la-flip-horizontal la-2x"></i>
+                    </button>
+                     <div class="p-2 nav-cart-box dropdown h-100" id="cart_items">
+                        @include('frontend.partials.cart')
+                    </div>
+                      <!-- Wishlist -->
+                        <div class="d-none d-lg-block p-2">
+                            <div class="" id="wishlist">
+                                @include('frontend.partials.wishlist')
+                            </div>
+                        </div>
 
-                <div class="col-xl-2 pl-0 col-3 text-right d-none d-lg-block login_regst">
-                <ul class="list-inline mb-0 h-100 d-flex justify-content-end align-items-center">
+
+                        <div class="login_panel_1">
+                            <ul class="list-inline mb-0 h-100 d-flex align-items-center">
                   
                     @auth
                         @if(isAdmin())
                         @else
  <li class="list-inline-item mr-3 border-right border-left-0 pr-3 pl-0">
                                 @if (Auth::user()->user_type == 'seller')
-                                    <a href="{{ route('seller.dashboard') }}" class="text-reset d-inline-block py-2">{{ translate('My Panel')}}</a>
+                                    <a href="{{ route('seller.dashboard') }}" class="text-reset d-inline-block py-2 fs-13">{{ translate('My Panel')}}</a>
                                 @else
-                                    <a href="{{ route('dashboard') }}" class="text-reset d-inline-block py-2">{{ translate('My Panel')}}</a>
+                                    <a href="{{ route('dashboard') }}" class="text-reset d-inline-block py-2 fs-13">{{ translate('My Panel')}}</a>
                                 @endif
                             </li>
                         @endif
@@ -174,29 +223,14 @@
                         </li>
                     @else
                         <li class="list-inline-item mr-0 border-left-0 pr-0 pl-0">
-                            <a href="{{ route('user.login') }}" class="text-reset d-inline-block py-2"> <i class="las la-user la-2x text-primary mb1 position_1"></i> {{ translate('Login')}}</a> <span class="pddleft">/</span> 
-                            <a href="{{ route('user.registration') }}" class="text-reset d-inline-block py-2"> {{ translate('Registration')}}</a>
+                            <a href="{{ route('user.login') }}" class="text-reset d-inline-block py-2 fs-13"> <i class="las la-user la-2x mb1 text-reset position_1"></i> {{ translate('Login')}}</a> <span class="pddleft">/</span> 
+                            <a href="{{ route('user.registration') }}" class="text-reset d-inline-block py-2 fs-13"> {{ translate('Registration')}}</a>
                         </li>
                     @endauth
                 </ul>
-            </div>
-            
-            <div class="serach_mobile">
-                     <button class="p-2 d-block text-reset" aria-labelledby="search" data-toggle="class-toggle" data-target=".front-header-search" style="background: transparent; border: 0;">
-                        <i class="las la-search la-flip-horizontal la-2x"></i>
-                    </button>
+                        </div>
                 </div>
-
-                <div class="col-xl-1 pl-0 col-3 col-lg-1  d-none d-lg-block  align-self-stretch ml-3 mr-0" data-hover="dropdown">
-                    <div class="nav-cart-box dropdown h-100" id="cart_items">
-                        @include('frontend.partials.cart')
-                    </div>
-                </div>
-                
-
-               
-
-                
+                </div>  
             </div>
         </div>
         @if(Route::currentRouteName() != 'home')

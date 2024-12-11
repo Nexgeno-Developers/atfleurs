@@ -13,7 +13,7 @@ if (auth()->user() != null) {
 <a hrer="#" class="d-flex align-items-center text-reset h-100" data-toggle="dropdown"
     data-display="static">
     <i class="la la-shopping-cart la-2x opacity-80"></i>
-    <span class="flex-grow-1 ml-1">
+    <span class="flex-grow-1">
         @if (isset($cart) && count($cart) > 0)
             <span class="badge badge-primary badge-inline badge-pill cart-count">
                 {{ count($cart) }}

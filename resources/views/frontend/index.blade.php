@@ -405,7 +405,7 @@ Our skilled team of passionate floral designers create exquisite arrangements wi
                 </div>
 
                 <h4 class="heading_one heading_font1 green_color text-capitalize text-center pb-3">Blossoming Tradition:  <span class="d-lg-block">Honoring Nature’s </span>Timeless Art Moments</h4>
-                <p class="text-center body_text_vw width_70 mx-auto">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                <p class="text-center body_text_vw width_70 mx-auto">Our floral practice embraces the beauty of tradition, connecting deeply with nature’s cycles and the language of each bloom. Inspired by centuries-old techniques and cultural rituals, each arrangement honors the timeless artistry of nature. Through mindful selection and craftsmanship, we cultivate a practice rooted in respect, intention, and the transformative power of flowers.
 
 </p>
                
@@ -423,7 +423,7 @@ Our skilled team of passionate floral designers create exquisite arrangements wi
                 </div>
 
                 <h4 class="heading_one heading_font1 green_color text-capitalize text-center pb-3">Artistry in Bloom: Where<span class=" d-lg-block">Creativity Meets Craft</span></h4>
-                <p class="text-center body_text_vw width_70 mx-auto">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,</p>
+                <p class="text-center body_text_vw width_70 mx-auto">At the heart of our studio is a passion for creative expression, blending artistry with precision. Each floral piece is crafted to tell a unique story, marrying color, form, and texture in unexpected ways. Our culture celebrates the fusion of traditional techniques with contemporary design, creating arrangements that are as evocative as they are elegant.</p>
        
            </div>
 
@@ -806,30 +806,46 @@ your feelings</h3>
    <div class="container">
       <div class="mb-4 pt-2 text-center position_relative align-items-baseline">
        
-          <h4 class="heading_one heading_font1 green_color text-capitalize text-center pb-3"> News & <span class="yellow_color">Blog</span></h4>
+          <h4 class="heading_one heading_font1 green_color text-capitalize text-center pb-3"> Latest <span class="yellow_color">News & Blog</span></h4>
            
                     
       </div>
       <div class="row">
         @php DB::table('blogs')->orderBy('created_at', 'desc')->limit(3)->get(); @endphp
         @foreach($blogs as $blog)          
-         <div class="col-md-4">
+         <div class="col-md-3 pl-2 pr-2">
             <div class="blog_box">
                <div class="blog_img">
                   <a aria-label="Read More About Blog" href="{{ url("blog").'/'. $blog->slug }}">
-                      {{--
+                      
                         <img loading="lazy"
                             src="{{ static_asset('assets/img/placeholder-rect.jpg') }}"
                             data-src="{{ uploaded_asset($blog->banner) }}"
                             alt="{{ $blog->title }}"
                             class="img-fluid-1 lazyload "
-                        > --}}
+                        > 
                     </a>
                </div>
                <div class="blog_content">
-                  <h4>{{ $blog->title }}</h4>
-                  <p class="two-lines">{{ $blog->short_description }}</p>
-                  <a aria-label="Read More About Blog" class="read-color" href="{{ url("blog").'/'. $blog->slug }}">Read More...</a>
+
+                  <div class="row justify-content-between">
+                    <div class="col-md-6">
+                        <div class="date_section d-flex align-items-center">
+                            <img src="{{ static_asset('assets/img/calender_icons.svg') }}" />
+                            <p class="mb-0 pb-0 pl-2 pt-1 fs-13">10-04-2024</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                         <div class="date_section d-flex align-items-center">
+                            <img src="{{ static_asset('assets/img/user_icons.svg') }}" />
+                            <p class="mb-0 pb-0 pl-2 pt-1 fs-13">Aryan Gupta</p>
+                        </div>
+                    </div>
+                  </div>
+
+                  <h4 class="green_color pt-3">{{ $blog->title }}</h4>
+                  <p class="two-lines mt-3 mb-3">{{ $blog->short_description }}</p>
+                  <a aria-label="Read More About Blog" class="green_color" href="{{ url("blog").'/'. $blog->slug }}"><b><u>Read More</u></b></a>
                </div>
             </div>
          </div>
