@@ -174,18 +174,27 @@ Our skilled team of passionate floral designers create exquisite arrangements wi
 
                                     </a>
                                 </div>
+
+
+                                @if ($loop->iteration === 4)
+                                 <div class="minw-0 col-lg-4 col-6 mt-3 border_radius_ct position-relative">
+                    <div class="greenbg text-center h-100 align-items-center d-flex w-100">
+                        
+                    <div class="category_boxex_action w-100">
+                    <h4 class="heading_one heading_font1 text-white text-capitalize text-center">Shop your <span class="d-lg-block">favourite <span class="yellow_color">items of</span> </span><span class="yellow_color">the</span> season</h4>
+                        <div class="mt-5 reversebg_btn">
+                        <a class="green_color fs-bold" href="#">Discover More <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                        </div>
+                    </div>                 
+                </div>
+
+                              
+                            @endif    
                             @endforeach
                             </div>
                     @endif
                 </div>
-
-                <!--<div class="col-md-12 text-center">
-                     <a href="/categories" class="btn btn-primary balsamiq_font allcateogry mt-3">View All Category</a>
-                </div>-->
-               
-               
-                
-
             </div>
         </div>
     </div>
@@ -686,22 +695,74 @@ your feelings</h3>
 
     
     
-    <section class="reviews_section">
-        <div class="container">
-            
-             <div class="mb-4 pt-2 text-center position_relative align-items-baseline">
-                   
+
+
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
                          <h4 class="heading_one heading_font1 green_color text-capitalize text-center pb-3"> Our <span class="yellow_color">Testimonials</span></h4>
            
                     
-                            
-                </div>
-                
-  <div id="owl-carousel" class="owl-carousel owl-theme">
-    <div class="item">
-      <img loading="lazy" class="imgss" src="https://www.atfleurs.com/public/uploads/all/S0IKTuNSOGzaaq5VG4puI5GKjHLkDwXXg8ZODDC3.webp" alt="David">
-      <h3>Sarah T</h3>
-      <div class="rating1">
+      <div class="row">
+        <div class="col-sm-12">
+          <div id="customers-testimonials" class="owl-carousel">
+
+            <!--TESTIMONIAL 1 -->
+            <div class="item">
+              <div class="shadow-effect">
+                 <div class="quote_icon"> <img src="{{ static_asset('assets/img/quote.svg') }}"/></div>
+                <div class="rating1">
+         <i class="las la-star green_color"></i>
+       <i class="las la-star green_color"></i>
+       <i class="las la-star green_color"></i>
+       <i class="las la-star green_color"></i>
+       <i class="las la-star green_color"></i>
+    </div>
+      <p>I recently ordered a bouquet of flowers from this amazing flower website, and I was blown away by the beauty and freshness of the arrangement. The flowers were absolutely stunning and brought so much joy to the recipient. I highly recommend their services for any occasion!</p>
+    <p class="mb-0 pb-0">Lorem Ipsum</p>
+     <p class="fs-13">Developer</p>
+    </div>
+            </div>
+            <!--END OF TESTIMONIAL 1 -->
+            <!--TESTIMONIAL 2 -->
+           <div class="item">
+              <div class="shadow-effect">
+                 <div class="quote_icon"> <img src="{{ static_asset('assets/img/quote.svg') }}"/></div>
+                <div class="rating1 text-left">
+         <i class="las la-star green_color"></i>
+       <i class="las la-star green_color"></i>
+       <i class="las la-star green_color"></i>
+       <i class="las la-star green_color"></i>
+       <i class="las la-star green_color"></i>
+    </div>
+      <p>I recently ordered a bouquet of flowers from this amazing flower website, and I was blown away by the beauty and freshness of the arrangement. The flowers were absolutely stunning and brought so much joy to the recipient. I highly recommend their services for any occasion!</p>
+    <p class="mb-0 pb-0">Lorem Ipsum</p>
+     <p class="fs-13">Developer</p>
+    </div>
+            </div>
+            <!--END OF TESTIMONIAL 2 -->
+            <!--TESTIMONIAL 3 -->
+           <div class="item">
+              <div class="shadow-effect">
+                 <div class="quote_icon"> <img src="{{ static_asset('assets/img/quote.svg') }}"/></div>
+                <div class="rating1 text-left">
+         <i class="las la-star green_color"></i>
+       <i class="las la-star green_color"></i>
+       <i class="las la-star green_color"></i>
+       <i class="las la-star green_color"></i>
+       <i class="las la-star green_color"></i>
+    </div>
+      <p>I recently ordered a bouquet of flowers from this amazing flower website, and I was blown away by the beauty and freshness of the arrangement. The flowers were absolutely stunning and brought so much joy to the recipient. I highly recommend their services for any occasion!</p>
+    <p class="mb-0 pb-0">Lorem Ipsum</p>
+     <p class="fs-13">Developer</p>
+    </div>
+            </div>
+            <!--END OF TESTIMONIAL 3 -->
+            <!--TESTIMONIAL 4 -->
+            <div class="item">
+              <div class="shadow-effect">
+                 <div class="quote_icon"> <img src="{{ static_asset('assets/img/quote.svg') }}"/></div>
+                <div class="rating1 text-left">
          <i class="las la-star"></i>
        <i class="las la-star"></i>
        <i class="las la-star"></i>
@@ -709,71 +770,34 @@ your feelings</h3>
        <i class="las la-star"></i>
     </div>
       <p>I recently ordered a bouquet of flowers from this amazing flower website, and I was blown away by the beauty and freshness of the arrangement. The flowers were absolutely stunning and brought so much joy to the recipient. I highly recommend their services for any occasion!</p>
+    <p class="mb-0 pb-0">Lorem Ipsum</p>
+     <p class="fs-13">Developer</p>
     </div>
-    <div class="item">
-      <img loading="lazy" class="imgss" src="https://www.atfleurs.com/public/uploads/all/bjcAqrjq5LwhNkjfL8laP8FuY6V8ArkChTGy1bgM.webp" alt="David">
-      <h3>David M</h3>
-      <div class="rating1">
-        <i class="las la-star"></i>
-       <i class="las la-star"></i>
-       <i class="las la-star"></i>
-       <i class="las la-star"></i>
-       <i class="las la-star"></i>
-    </div>
-      <p>If you're looking for a reliable and talented florist, look no further. I have ordered multiple bouquets from this flower shop, and each one has been a work of art. The attention to detail and the selection of unique flowers sets them apart. Their arrangements have always brought smiles and happiness to the recipients. I highly recommend their services!</p>
-    </div>
-    <div class="item">
-    
-       <img loading="lazy" class="imgss" src="https://www.atfleurs.com/public/uploads/all/HmLwo8YVlRegthlQCiaHFmhNOsvlp7vUCKwc1yVd.webp" alt="Jennifer">
-      <h3>Jennifer L</h3>
-      <div class="rating1">
+            </div>
+            <!--END OF TESTIMONIAL 4 -->
+            <!--TESTIMONIAL 5 -->
+            <div class="item">
+              <div class="shadow-effect">
+                <div class="quote_icon"> <img src="{{ static_asset('assets/img/quote.svg') }}"/></div>
+                <div class="rating1 text-left">
          <i class="las la-star"></i>
        <i class="las la-star"></i>
        <i class="las la-star"></i>
        <i class="las la-star"></i>
        <i class="las la-star"></i>
     </div>
-      <p>I wanted to surprise my mother on her birthday, so I decided to order a bouquet from this flower shop. The entire experience was seamless, from browsing their website to placing the order. When the flowers arrived, they were absolutely breathtaking. My mother was overjoyed and couldn't stop raving about how beautiful they were. Thank you for making her day so special!</p>
+      <p>I recently ordered a bouquet of flowers from this amazing flower website, and I was blown away by the beauty and freshness of the arrangement. The flowers were absolutely stunning and brought so much joy to the recipient. I highly recommend their services for any occasion!</p>
+    <p class="mb-0 pb-0">Lorem Ipsum</p>
+     <p class="fs-13">Developer</p>
     </div>
-    <div class="item">
-      <img loading="lazy" class="imgss" src="https://www.atfleurs.com/public/uploads/all/Mq0Pec2Lnh71G0jZV6wWIFR3pLdAZBA33AD20SB0.webp" alt="Mark">
-      <h3>Mark S</h3>
-      <div class="rating1">
-        <i class="las la-star"></i>
-       <i class="las la-star"></i>
-       <i class="las la-star"></i>
-       <i class="las la-star"></i>
-       <i class="las la-star"></i>
-    </div>
-      <p>I recently received a bouquet of flowers from this flower website, and I was amazed by the quality and freshness of the arrangement. The colors were vibrant, and the fragrance filled the room. It was evident that great care had been taken in creating the bouquet. I will definitely be recommending this flower shop to all my friends and family.</p>
-    </div>
-     <div class="item">
-      <img loading="lazy" class="imgss" src="https://www.atfleurs.com/public/uploads/all/646IMIsuUbqhruHQgsRHM7bKsY3tDmWeZKBQrZEI.webp" alt="Andrew">
-      <h3>Andrew W</h3>
-      <div class="rating1">
-        <i class="las la-star"></i>
-       <i class="las la-star"></i>
-       <i class="las la-star"></i>
-       <i class="las la-star"></i>
-       <i class="las la-star"></i>
-    </div>
-      <p>I was searching for a unique bouquet for my wife's anniversary gift, and this flower shop delivered beyond my expectations. The arrangement was absolutely gorgeous, with a perfect blend of colors and textures. My wife was thrilled and couldn't stop gushing about the flowers. Thank you for helping me make our anniversary even more special!</p>
-    </div>
-    <div class="item">
-      <img loading="lazy" class="imgss" src="https://www.atfleurs.com/public/uploads/all/olofBD9m8Sev79MagnS0rSM8cgtih71UsZ3Zr9zS.webp" alt="Rachel">
-      <h3>Rachel K.</h3>
-      <div class="rating1">
-       <i class="las la-star"></i>
-       <i class="las la-star"></i>
-       <i class="las la-star"></i>
-       <i class="las la-star"></i>
-       <i class="las la-star"></i>
-    </div>
-      <p>I wanted to send flowers to a friend who was feeling down, and this flower shop created the most uplifting bouquet. The vibrant colors and the thoughtful combination of flowers brought a smile to her face. The ordering process was easy, and the delivery was prompt. I appreciate the excellent service and the positive impact these flowers had on my friend's mood. Highly recommended!</p>
-    </div>
-  </div>
-</div>
-</section>
+            </div>
+            <!--END OF TESTIMONIAL 5 -->
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- END OF TESTIMONIALS -->
+
 <!-- 
 <section class="texture_section pt-5">
 		<div class="container">

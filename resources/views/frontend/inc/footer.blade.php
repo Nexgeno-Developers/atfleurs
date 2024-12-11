@@ -30,10 +30,59 @@
 </section>
 
                     
-<section class="bg_grey py-lg-5 py-md-5 py-xl-5 py-3 text-light footer-widget balsamiq_font">
+<section class="greenbg pt-5 pb-4 text-light footer-widget footer_links1">
     <div class="container">
         
         <div class="row">
+
+          <div class="col-lg-3 col-md-3">
+                <div class="contact_footer">
+                     <h4 class="footer_headings pb-2">Quick Contact Now</h4>
+                    <ul>
+                    <li>
+                                <i class="las la-phone"></i> 
+                                
+                                <a class="text-white" onclick="return gtag_report_conversion('tel:+91 7070070716');" href="tel:+91 7070070716">+91 7070070716</a> <span style="color:#fff;">/</span> 
+                                <a class="text-white" onclick="return gtag_report_conversion('tel:+91 9808867777');" href="tel:+91 9808867777">+91 9808867777</a>
+                              
+                            </li>
+                            
+                             <li>
+                               <i class="las la-envelope"></i>
+                               <a class="text-white" onclick="return gtag_report_conversion('mailto:atfleurss@gmail.com');" href="mailto:atfleurss@gmail.com">atfleurss@gmail.com </a>
+                            
+                            </li>
+                    </ul>
+                 
+                </div>
+
+                 <div class="social_icons">
+                    
+                   
+                     <ul class="list-inline my-3 my-md-0 text-left">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://www.facebook.com/atfleurs" aria-label="Facebook Link" target="_blank" class="facebook"><i class="fa fa-facebook class="text-white""></i></a>
+                    </li>
+                    
+                    <li class="list-inline-item">
+                        <a href="https://instagram.com/atfleurs?igshid=MzNlNGNkZWQ4Mg==" aria-label="Instagram Link" target="_blank" class="instagram class="text-white""><i class="fa fa-instagram"></i></a>
+                    </li>
+                    
+                    <li class="list-inline-item">
+                        <a href="https://x.com/Atfleurss" aria-label="Twitter X Link" target="_blank" class="twitter-x"><i class="fa fa-x-twitter class="text-white""></i></a>
+                    </li>
+
+                    <li class="list-inline-item">
+                        <a href="https://www.linkedin.com/in/at-fleurs-39749b273/" aria-label="Linkedin Link" target="_blank" class="linkedin class="text-white""><i class="fa fa-linkedin"></i></a>
+                    </li>
+                    
+                    
+                </ul>
+            </div>
+            </div>
+
+
             <div class="col-lg-6 text-left text-md-left display_none">
                 <div class="mt-4">
                     <a href="{{ route('home') }}" class="d-block">
@@ -43,7 +92,7 @@
                             <img class="lazyload" src="{{ static_asset('assets/img/placeholder-rect.jpg') }}" data-src="{{ static_asset('assets/img/logo.png') }}" alt="{{ env('APP_NAME') }}" height="90">
                         @endif
                     </a>
-                    <div class="my-3 text-dark pd-right-60">
+                    <div class="my-3 text-white pd-right-60">
                         {!! get_setting('about_us_description',null,App::getLocale()) !!}
                     </div>
                     
@@ -92,7 +141,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 ml-xl-auto col-md-4 mr-0 display_none">
+            <div class="col-lg-4 ml-xl-auto col-md-4 mr-0 display_none">
                 <div class="text-left text-md-left mt-4">
                     <h4 class="fs-13 text-uppercase fw-600 border-bottom border-gray-900 pb-2 mb-4">
                         {{ translate('Contact Info') }}
@@ -117,16 +166,16 @@
             </div>
             
             
-            <div class="col-lg-2 col-md-4 col-6">
-                <div class="text-left text-md-left mt-4">
-                    <h1 class="fs-16 text-dark fw-600 pb-2 mb-1">
-                        {{ get_setting('widget_one',null,App::getLocale()) }}
-                    </h1>
+            <div class="col-lg-3 col-md-3 col-6">
+                <div class="text-left text-md-left">
+                    <h4 class="footer_headings pb-2">
+                       About Us
+                    </h4>
                     <ul class="list-unstyled">
                         @if ( get_setting('widget_one_labels',null,App::getLocale()) !=  null )
                             @foreach (json_decode( get_setting('widget_one_labels',null,App::getLocale()), true) as $key => $value)
                             <li class="mb-2">
-                                <a href="{{ json_decode( get_setting('widget_one_links'), true)[$key] }}" class="text-dark hov-opacity-100 text-reset">
+                                <a href="{{ json_decode( get_setting('widget_one_links'), true)[$key] }}" class="text-white hov-opacity-100 text-reset">
                                     {{ $value }}
                                 </a>
                             </li>
@@ -139,52 +188,37 @@
                 </div>
             </div>
             
-           <div class="col-lg-2 col-md-4 col-6">
-                <div class="text-left text-md-left mt-4">
-                    <h1 class="fs-16 text-dark fw-600 pb-2 mb-1">Customer Service</h4>
+           <div class="col-lg-3 col-md-3 col-6">
+                <div class="text-left text-md-left">
+                    <h4 class="footer_headings pb-2">Customer Service</h4>
                     <ul class="list-unstyled">
-                         <li class="mb-2"><a href="/faq" class="text-dark hov-opacity-100 text-reset">FAQs</a></li>
-                         <li class="mb-2"><a href="/terms" class="text-dark hov-opacity-100 text-reset">Terms & Conditions </a></li>  
+                         <li class="mb-2"><a href="/faq" class="text-white hov-opacity-100 text-reset">FAQs</a></li>
+                         <li class="mb-2"><a href="/terms" class="text-white hov-opacity-100 text-reset">Terms & Conditions </a></li>  
                        
-                         <li class="mb-2"><a href="https://atfleurs.com/return-policy" class="text-dark hov-opacity-100 text-reset">Returns & Refunds</a></li> 
-                         <li class="mb-2"><a href="/privacy-policy" class="text-dark hov-opacity-100 text-reset">Privacy Policy</a></li>
+                         <li class="mb-2"><a href="https://atfleurs.com/return-policy" class="text-white hov-opacity-100 text-reset">Returns & Refunds</a></li> 
+                         <li class="mb-2"><a href="/privacy-policy" class="text-white hov-opacity-100 text-reset">Privacy Policy</a></li>
                          
                     </ul>
                     
                 </div>
             </div>
-            
-              <div class="col-lg-2 col-md-4 col-12">
-                
-                 @if (get_setting('vendor_system_activation') == 1)
-                    <div class="text-left text-md-left mt-4 mb-4">
-                        <h1 class="fs-16 text-dark fw-600 pb-2 mb-1">
-                            {{ translate('Be a Seller') }}
-                        </h1>
-                        <a href="{{ route('shops.create') }}" class="btn btn-primary btn-sm shadow-md">
-                            {{ translate('Apply Now') }}
-                        </a>
-                    </div>
-                @endif
-            </div>
-            
-            
-            
-            <div class="col-lg-6  col-md-8">
-        <div class="newsletter_box mt-lg-4">
+
+            <div class="col-lg-3  col-md-3">
+        <div class="newsletter_box">
         <div class="row col-md-12 col-12">
              <div class="col-lg-12">
-               <h4 class="lora_font">Newsletter </h4>
-               <p>Sign up to our mailing list to stay updated on the latest special offers!</p>
+               <h4 class="footer_headings pb-2">Unlock 10% off </h4>
+               <p>Your first order when you sign up to
+our newsletter</p>
             </div>
                 <form class="form-inline" method="POST" action="{{ route('subscribers.store') }}">
                 @csrf
-                <div class="col-md-12">
+                <div class="col-md-9 pr-0">
                 <div class="form-group mb-0">
                 <input type="email" class="form-control" placeholder="{{ translate('Your Email here...') }}" name="email" required>
                 </div>
                 </div>
-                <div class="col-md-12">
+                <div class="col-md-3">
                     <button type="submit" class="btn btn-primary">
                     {{ translate('Subscribe') }}
                     </button>
@@ -195,58 +229,20 @@
             
             </div>
             
-            
-             <div class="col-lg-4 col-md-4">
-                <div class="contact_footer">
-                     <p><b>Quick Contact Now</b></p>
-                    <ul>
-                    <li>
-                                <i class="las la-phone"></i> 
-                                
-                                <a onclick="return gtag_report_conversion('tel:+91 7070070716');" href="tel:+91 7070070716">+91 7070070716</a> <span style="color:#000;">/</span> 
-                                <a onclick="return gtag_report_conversion('tel:+91 9808867777');" href="tel:+91 9808867777">+91 9808867777</a>
-                              
-                            </li>
-                            
-                             <li>
-                               <i class="las la-envelope"></i>
-                               <a onclick="return gtag_report_conversion('mailto:atfleurss@gmail.com');" href="mailto:atfleurss@gmail.com">atfleurss@gmail.com </a>
-                            
-                            </li>
-                    </ul>
-                 
-                </div>
+              <div class="col-lg-4 col-md-4 col-12 d-none">
+                
+                 @if (get_setting('vendor_system_activation') == 1)
+                    <div class="text-left text-md-left mt-4 mb-4">
+                        <h4 class="fs-16 text-white fw-600 pb-2 mb-1">
+                            {{ translate('Be a Seller') }}
+                        </h4>
+                        <a href="{{ route('shops.create') }}" class="btn btn-primary btn-sm shadow-md">
+                            {{ translate('Apply Now') }}
+                        </a>
+                    </div>
+                @endif
             </div>
             
-            <div class="col-lg-8 col-md-4">
-                <div class="social_icons">
-                    
-                   
-                     <ul class="list-inline my-3 my-md-0 text-left">
-                    
-                    <li class="list-inline-item">
-                        <a href="https://www.facebook.com/atfleurs" aria-label="Facebook Link" target="_blank" class="facebook"><i class="fa fa-facebook"></i></a>
-                    </li>
-                    
-                    <li class="list-inline-item">
-                        <a href="https://instagram.com/atfleurs?igshid=MzNlNGNkZWQ4Mg==" aria-label="Instagram Link" target="_blank" class="instagram"><i class="fa fa-instagram"></i></a>
-                    </li>
-                    
-                    <li class="list-inline-item">
-                        <a href="https://x.com/Atfleurss" aria-label="Twitter X Link" target="_blank" class="twitter-x"><i class="fa fa-x-twitter"></i></a>
-                    </li>
-
-                    <li class="list-inline-item">
-                        <a href="https://www.linkedin.com/in/at-fleurs-39749b273/" aria-label="Linkedin Link" target="_blank" class="linkedin"><i class="fa fa-linkedin"></i></a>
-                    </li>
-                    
-                    <li class="list-inline-item">
-                        <a class="togeter">Let’s Get Together</a>
-                    </li>
-                    
-                </ul>
-                </div>
-            </div>
 
         <div class="col-md-4 col-lg-2 display_none">
                 <div class="text-left text-md-left mt-4">
@@ -303,9 +299,9 @@
         </div>
             
         <!--categories and its sub-categories-->
-        <div class="text-left text-md-left border-top pt-3 mt-3 our_category">
-            <h4 class="fs-20 text-dark fw-600 pb-2 mb-1">Our Category</h4>
-            <!--<ul class="list-unstyled">-->
+        <div class="text-left text-md-left border-top pt-3 mt-3 our_category d-none">
+            <h4 class="fs-20 text-white fw-600 pb-2 mb-1">Our Category</h4>
+            <ul class="list-unstyled">
                 
                 @php
                     $main_Catg = DB::table('categories')->where('parent_id', 0)->orderBy('id', 'asc')->get(['id', 'name', 'slug']);
@@ -317,11 +313,11 @@
                             @php
                                 $sub_Catg = DB::table('categories')->where('parent_id', $row->id)->orderBy('id', 'asc')->get(['id', 'name', 'slug']);
                             @endphp
-                            <a href="/category/{{ $row->slug }}" class="text-dark hov-opacity-100 text-reset">
+                            <a href="/category/{{ $row->slug }}" class="text-white hov-opacity-100 text-reset">
                                 <b>{{ ucfirst($row->name) }}{{ $sub_Catg->count() > 0 ? ':' : '' }}</b>
                             </a>
                             @foreach($sub_Catg as $item)
-                                <a href="/category/{{ $item->slug }}" class="text-dark hov-opacity-100 text-reset">
+                                <a href="/category/{{ $item->slug }}" class="text-white hov-opacity-100 text-reset">
                                     {{ ucfirst($item->name) }}
                                 </a>
                             @endforeach
@@ -330,80 +326,124 @@
                 </ul>
                 
                 <!--<li class="mb-2">-->
-                <!--    <a href="/category/floral-arrangements" class="text-dark hov-opacity-100 text-reset"><b>Floral Arrangements: </b></a>-->
-                <!--    <a href="/category/birthday-floral-arrangments-events-mumbai" class="text-dark hov-opacity-100 text-reset">Birthday</a>-->
-                <!--    <a href="/category/engagement-flower-bouquet-mumbai" class="text-dark hov-opacity-100 text-reset">Engagement</a>-->
-                <!--    <a href="/category/wedding-flower-bouquet-mumbai" class="text-dark hov-opacity-100 text-reset">Wedding</a>-->
-                <!--    <a href="/category/anniversary-floral-arrangments-mumbai" class="text-dark hov-opacity-100 text-reset">Anniversary</a>-->
-                <!--    <a href="/category/corporate-flower-bouquet-mumbai" class="text-dark hov-opacity-100 text-reset">Corporate Flower Bouquet</a>-->
-                <!--    <a href="/category/festivals-gifts-flowers-bouquet-mumbai" class="text-dark hov-opacity-100 text-reset">Festivals</a>-->
-                <!--    <a href="/category/flower-arrangements-every-occasion-mumbai" class="text-dark hov-opacity-100 text-reset">Events</a>-->
+                <!--    <a href="/category/floral-arrangements" class="text-white hov-opacity-100 text-reset"><b>Floral Arrangements: </b></a>-->
+                <!--    <a href="/category/birthday-floral-arrangments-events-mumbai" class="text-white hov-opacity-100 text-reset">Birthday</a>-->
+                <!--    <a href="/category/engagement-flower-bouquet-mumbai" class="text-white hov-opacity-100 text-reset">Engagement</a>-->
+                <!--    <a href="/category/wedding-flower-bouquet-mumbai" class="text-white hov-opacity-100 text-reset">Wedding</a>-->
+                <!--    <a href="/category/anniversary-floral-arrangments-mumbai" class="text-white hov-opacity-100 text-reset">Anniversary</a>-->
+                <!--    <a href="/category/corporate-flower-bouquet-mumbai" class="text-white hov-opacity-100 text-reset">Corporate Flower Bouquet</a>-->
+                <!--    <a href="/category/festivals-gifts-flowers-bouquet-mumbai" class="text-white hov-opacity-100 text-reset">Festivals</a>-->
+                <!--    <a href="/category/flower-arrangements-every-occasion-mumbai" class="text-white hov-opacity-100 text-reset">Events</a>-->
 
                 <!--</li> -->
                 <!--<li class="mb-2">-->
-                <!--    <a href="/category/gifts" class="text-dark hov-opacity-100 text-reset"><b>Gifts: </b></a>-->
-                <!--    <a href="/category/order-cake-online-mumbai" class="text-dark hov-opacity-100 text-reset">Birthday Cake</a>-->
-                <!--    <a href="/category/chocolate-gift-hamper-mumbai" class="text-dark hov-opacity-100 text-reset">Chocolates Gift Hamper</a>-->
-                <!--    <a href="/category/perfume-gift-hamper-mumbai" class="text-dark hov-opacity-100 text-reset">Perfume Gift Hamper</a>-->
-                <!--    <a href="/category/gifts-hamper" class="text-dark hov-opacity-100 text-reset">Gift Hamper</a>-->
-                <!--    <a href="/category/ballons-gift-hamper-mumbai" class="text-dark hov-opacity-100 text-reset">Balloons Gift Hamper</a>-->
+                <!--    <a href="/category/gifts" class="text-white hov-opacity-100 text-reset"><b>Gifts: </b></a>-->
+                <!--    <a href="/category/order-cake-online-mumbai" class="text-white hov-opacity-100 text-reset">Birthday Cake</a>-->
+                <!--    <a href="/category/chocolate-gift-hamper-mumbai" class="text-white hov-opacity-100 text-reset">Chocolates Gift Hamper</a>-->
+                <!--    <a href="/category/perfume-gift-hamper-mumbai" class="text-white hov-opacity-100 text-reset">Perfume Gift Hamper</a>-->
+                <!--    <a href="/category/gifts-hamper" class="text-white hov-opacity-100 text-reset">Gift Hamper</a>-->
+                <!--    <a href="/category/ballons-gift-hamper-mumbai" class="text-white hov-opacity-100 text-reset">Balloons Gift Hamper</a>-->
                 <!--</li> -->
                 <!--<li class="mb-2">-->
-                <!--    <a href="/category/fresh-flower-bouquet-mumbai" class="text-dark hov-opacity-100 text-reset"><b>Flowers: </b></a>-->
-                <!--    <a href="/category/roses-flower-bouquet-mumbai" class="text-dark hov-opacity-100 text-reset">Roses</a>-->
-                <!--    <a href="/category/red-roses-flower-bouquet-mumbai" class="text-dark hov-opacity-100 text-reset">Red Roses</a>-->
-                <!--    <a href="/category/pink-roses-flower-bouquet-mumbai" class="text-dark hov-opacity-100 text-reset">Pink Roses</a>-->
-                <!--    <a href="/category/white-roses-flower-bouquet" class="text-dark hov-opacity-100 text-reset">White Roses</a>-->
-                <!--    <a href="/category/carnation-flower-bouquet-mumbai" class="text-dark hov-opacity-100 text-reset">Carnations</a>-->
-                <!--    <a href="/category/orchids-flower-bouquet-mumbai" class="text-dark hov-opacity-100 text-reset">Orchids</a>-->
-                <!--    <a href="/category/lilies-flower-bouquet-mumbai" class="text-dark hov-opacity-100 text-reset">Lilies</a>-->
-                <!--    <a href="/category/gerberas-flower-bouquet-mumbai" class="text-dark hov-opacity-100 text-reset">Gerberas</a>-->
-                <!--    <a href="/category/mixed-flower-bouquet-mumbai" class="text-dark hov-opacity-100 text-reset">Mixed Flowers</a>-->
-                <!--    <a href="/category/exotic-flowers-bouquets-mumbai" class="text-dark hov-opacity-100 text-reset">Exotic Flowers</a>-->
-                <!--    <a href="/category/Sunflower-oIgtb" class="text-dark hov-opacity-100 text-reset">Sunflower</a>-->
+                <!--    <a href="/category/fresh-flower-bouquet-mumbai" class="text-white hov-opacity-100 text-reset"><b>Flowers: </b></a>-->
+                <!--    <a href="/category/roses-flower-bouquet-mumbai" class="text-white hov-opacity-100 text-reset">Roses</a>-->
+                <!--    <a href="/category/red-roses-flower-bouquet-mumbai" class="text-white hov-opacity-100 text-reset">Red Roses</a>-->
+                <!--    <a href="/category/pink-roses-flower-bouquet-mumbai" class="text-white hov-opacity-100 text-reset">Pink Roses</a>-->
+                <!--    <a href="/category/white-roses-flower-bouquet" class="text-white hov-opacity-100 text-reset">White Roses</a>-->
+                <!--    <a href="/category/carnation-flower-bouquet-mumbai" class="text-white hov-opacity-100 text-reset">Carnations</a>-->
+                <!--    <a href="/category/orchids-flower-bouquet-mumbai" class="text-white hov-opacity-100 text-reset">Orchids</a>-->
+                <!--    <a href="/category/lilies-flower-bouquet-mumbai" class="text-white hov-opacity-100 text-reset">Lilies</a>-->
+                <!--    <a href="/category/gerberas-flower-bouquet-mumbai" class="text-white hov-opacity-100 text-reset">Gerberas</a>-->
+                <!--    <a href="/category/mixed-flower-bouquet-mumbai" class="text-white hov-opacity-100 text-reset">Mixed Flowers</a>-->
+                <!--    <a href="/category/exotic-flowers-bouquets-mumbai" class="text-white hov-opacity-100 text-reset">Exotic Flowers</a>-->
+                <!--    <a href="/category/Sunflower-oIgtb" class="text-white hov-opacity-100 text-reset">Sunflower</a>-->
                 <!--</li> -->
                 <!--<li class="mb-2">-->
-                <!--    <a href="/category/artificial-flower-bouquet-mumbai" class="text-dark hov-opacity-100 text-reset"><b>Artificial Flowers</b></a>-->
+                <!--    <a href="/category/artificial-flower-bouquet-mumbai" class="text-white hov-opacity-100 text-reset"><b>Artificial Flowers</b></a>-->
                 <!--</li> -->
             <!--</ul>-->
         </div>
     
-        <br>
-        <div class="border-top pt-3 footer_location">
-            <b class="text-dark ">Mumbai Location</b>
+       
+
+     
+        <div class="border-top-dark pt-4 mt-4 footer_location">
+
+           <div class="footer_nav">
+            <ul class="list-inline mb-0 pl-0 mobile-hor-swipe text-center">
+                                        <li class="list-inline-item mr-0">
+                        <a href="/category/birthday-flower-bouquet-mumbai" class=" fs-14 px-4 text-uppercase py-2 d-inline-block fw-400 hov-opacity-100 text-reset">
+                            Birthday
+                        </a>
+                    </li>
+                                        <li class="list-inline-item mr-0">
+                        <a href="/category/anniversary-flower-bouquet-mumbai" class="fs-14 px-4 text-uppercase py-2 d-inline-block fw-400 hov-opacity-100 text-reset">
+                            Anniversary
+                        </a>
+                    </li>
+                                        <li class="list-inline-item mr-0">
+                        <a href="/category/special-occasions-flowers-mumbai" class="fs-14 px-4 text-uppercase py-2 d-inline-block fw-400 hov-opacity-100 text-reset">
+                            Special Occasions
+                        </a>
+                    </li>
+                                        <li class="list-inline-item mr-0">
+                        <a href="/category/artificial-flower-bouquet-mumbai" class="fs-14 px-4 text-uppercase py-2 d-inline-block fw-400 hov-opacity-100 text-reset">
+                            Artificial
+                        </a>
+                    </li>
+                                        <li class="list-inline-item mr-0">
+                        <a href="/category/subscription-products" class="fs-14 px-4 text-uppercase py-2 d-inline-block fw-400 hov-opacity-100 text-reset">
+                            Subscriptions
+                        </a>
+                    </li>
+                                        <li class="list-inline-item mr-0">
+                        <a href="/category/offers" class="fs-14 px-4 text-uppercase py-2 d-inline-block fw-400 hov-opacity-100 text-reset">
+                            Offers
+                        </a>
+                    </li>
+                                        <li class="list-inline-item mr-0">
+                        <a href="#" class=" fs-14 px-4 text-uppercase py-2 d-inline-block fw-400 hov-opacity-100 text-reset">
+                            Flowers
+                        </a>
+                    </li>
+                                    </ul>
+        </div>
+
+
+            <h5 class="footer_headings mt-4 pb-2">Mumbai Location</h5>
             <ul class="list-group list-group-horizontal">
-                <li class="list-group-item text-dark">Florist in Churchgate</li>
-                <li class="list-group-item text-dark">Florist in Mumbai Central</li>
-                <li class="list-group-item text-dark">Florist in Marine Lines</li>
-                <li class="list-group-item text-dark">Florist in Charni Road</li>
-                <li class="list-group-item text-dark">Florist in Tardeo</li>
-                <li class="list-group-item text-dark">Florist in Colaba</li>
-                <li class="list-group-item text-dark">Florist in Fort</li>
-                <li class="list-group-item text-dark">Florist in Malhabar Hills</li>
-                <li class="list-group-item text-dark">Florist in Breach Candy</li>
-                <li class="list-group-item text-dark">Florist in Mahalaxmi</li>
-                <li class="list-group-item text-dark">Florist in Lower Parel</li>
-                <li class="list-group-item text-dark">Florist in Matunga Road</li>
-                <li class="list-group-item text-dark">Florist in Mahim</li>
-                <li class="list-group-item text-dark">Florist in Bandra</li>
-                <li class="list-group-item text-dark">Florist in Andheri</li>
-                <li class="list-group-item text-dark">Florist in Borivali</li>
-                <li class="list-group-item text-dark">Florist in Khar</li>
-                <li class="list-group-item text-dark">Florist in Santacruz</li>
-                <li class="list-group-item text-dark">Florist in Vile Parle</li>
-                <li class="list-group-item text-dark">Florist in Jogeshwari</li>
-                <li class="list-group-item text-dark">Florist in Ram Mandir</li>
-                <li class="list-group-item text-dark">Florist in Goregaon</li>
-                <li class="list-group-item text-dark">Florist in Malad</li>
-                <li class="list-group-item text-dark">Florist in Kandivali</li>
-                <li class="list-group-item text-dark">Florist in Hiranandani Powai</li>
-                <li class="list-group-item text-dark">Florist in Lokhandwala</li>
-                <li class="list-group-item text-dark">Florist in Versova</li>
-                <li class="list-group-item text-dark">Florist in Juhu</li>
-                <li class="list-group-item text-dark">Florist in Worli</li>
-                <li class="list-group-item text-dark">Florist in Sakinaka</li>
-                <li class="list-group-item text-dark">Florist in Marol</li>
-                <li class="list-group-item text-dark">Florist in Shivaji Park Dadar West</li>
+                <li class="list-group-item text-white">Florist in Churchgate</li>
+                <li class="list-group-item text-white">Florist in Mumbai Central</li>
+                <li class="list-group-item text-white">Florist in Marine Lines</li>
+                <li class="list-group-item text-white">Florist in Charni Road</li>
+                <li class="list-group-item text-white">Florist in Tardeo</li>
+                <li class="list-group-item text-white">Florist in Colaba</li>
+                <li class="list-group-item text-white">Florist in Fort</li>
+                <li class="list-group-item text-white">Florist in Malhabar Hills</li>
+                <li class="list-group-item text-white">Florist in Breach Candy</li>
+                <li class="list-group-item text-white">Florist in Mahalaxmi</li>
+                <li class="list-group-item text-white">Florist in Lower Parel</li>
+                <li class="list-group-item text-white">Florist in Matunga Road</li>
+                <li class="list-group-item text-white">Florist in Mahim</li>
+                <li class="list-group-item text-white">Florist in Bandra</li>
+                <li class="list-group-item text-white">Florist in Andheri</li>
+                <li class="list-group-item text-white">Florist in Borivali</li>
+                <li class="list-group-item text-white">Florist in Khar</li>
+                <li class="list-group-item text-white">Florist in Santacruz</li>
+                <li class="list-group-item text-white">Florist in Vile Parle</li>
+                <li class="list-group-item text-white">Florist in Jogeshwari</li>
+                <li class="list-group-item text-white">Florist in Ram Mandir</li>
+                <li class="list-group-item text-white">Florist in Goregaon</li>
+                <li class="list-group-item text-white">Florist in Malad</li>
+                <li class="list-group-item text-white">Florist in Kandivali</li>
+                <li class="list-group-item text-white">Florist in Hiranandani Powai</li>
+                <li class="list-group-item text-white">Florist in Lokhandwala</li>
+                <li class="list-group-item text-white">Florist in Versova</li>
+                <li class="list-group-item text-white">Florist in Juhu</li>
+                <li class="list-group-item text-white">Florist in Worli</li>
+                <li class="list-group-item text-white">Florist in Sakinaka</li>
+                <li class="list-group-item text-white">Florist in Marol</li>
+                <li class="list-group-item text-white">Florist in Shivaji Park Dadar West</li>
             </ul>
 
         </div>
@@ -412,11 +452,11 @@
 </section>
 
 <!-- FOOTER -->
-<footer class="pt-2 pb-0 pb-xl-0 bg_grey text-light border-top border-dark-900 balsamiq_font copyright" style="font-size:13px;">
+<footer class="pt-2 pb-0 pb-xl-0 dark_greenbg text-light copyright">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-12">
-                <div class="text-center text-dark footer_bottom" current-verison="{{get_setting("current_version")}}">
+                <div class="text-center text-white footer_bottom" current-verison="{{get_setting("current_version")}}">
                     {!! get_setting('frontend_copyright_text',null,App::getLocale()) !!}
                 </div>
             </div>
