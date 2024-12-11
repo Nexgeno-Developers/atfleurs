@@ -711,7 +711,7 @@ your feelings</h3>
             <div class="item">
               <div class="shadow-effect">
                  <div class="quote_icon"> <img src="{{ static_asset('assets/img/quote.svg') }}"/></div>
-                <div class="rating1">
+                <div class="rating1 text-left">
          <i class="las la-star green_color"></i>
        <i class="las la-star green_color"></i>
        <i class="las la-star green_color"></i>
