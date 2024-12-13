@@ -87,7 +87,6 @@ class RazorpayController extends Controller
 
     public function handleWebhook(Request $request)
     {
-        \Log::info('Razorpay Webhook: ', $request->all());
         $event = $request->event;
 
         $directoryPath = public_path('webhook_logs');
@@ -98,20 +97,37 @@ class RazorpayController extends Controller
         $filePath = $directoryPath . '/webhook_' . date('Y-m-d_H-i-s') . '.log';
         file_put_contents($filePath, json_encode($request->all(), JSON_PRETTY_PRINT), FILE_APPEND);
 
-        if ($event === 'payment.captured' /** || $event === 'payment.authorized'*/) {
-            if (isset($request->data['payment']['entity'])) {
-                $payment_detalis = json_encode($request->all());
-                $entity = $request->data['payment']['entity'];
-                $combinedOrderId = $entity['notes']['combined_order_id'] ?? null;
+        if (isset($request->data['payment']['entity'])) {
+            $payment_detalis = json_encode($request->all());
+            $entity = $request->data['payment']['entity'];
+            $combinedOrderId = $entity['notes']['combined_order_id'] ?? null;
 
-                if ($combinedOrderId) {
-                    $order = CombinedOrder::where('combined_order_id', $combinedOrderId)->first();
-                    if ($order && $order->payment_status === 'unpaid') {
-                        return (new CheckoutController)->checkout_done($combinedOrderId, $payment_detalis);
+            if ($combinedOrderId) {
+                $order = CombinedOrder::where('combined_order_id', $combinedOrderId)->first();
+
+                if ($order) {
+                    if ($event === 'payment.captured') {
+                        if ($order->payment_status === 'unpaid') {
+                            $order->payment_status = 'paid';
+                            $order->save();
+                            //return (new CheckoutController)->checkout_done($combinedOrderId, $payment_detalis);
+                        }
+                    } else if ($event === 'payment.authorized') {
+                        if ($order->payment_status === 'unpaid') {
+                            //$order->payment_status = 'authorized';
+                            $order->save();
+
+                            \log::info("Payment authorized for order: $combinedOrderId");
+                        }
+                    } elseif ($event === 'payment.failed') {
+                        //$order->payment_status = 'failed';
+                        $order->save();
+
+                        \log::error("Payment failed for order: $combinedOrderId");
                     }
                 }
             }
-            return response()->json(['status' => 'success'], 200);
         }
+        return response()->json(['status' => 'success'], 200);
     }
 }
