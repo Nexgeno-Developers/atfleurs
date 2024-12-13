@@ -22,13 +22,13 @@
         <input type="hidden" name="_token" value="{!!csrf_token()!!}">
     </form>
 
-    <section class="mb-4"> 
+    {{-- <section class="mb-4"> 
         <div class="container"> 
             <div class="p-4 bg-white rounded shadow-sm overflow-hidden mw-100 text-left" style="margin-top: 20px; display: flex; justify-content: center; align-items: center;"> 
                 <a href="{{ route('cart') }}" class="btn btn-primary" style="padding: 10px 20px; font-size: 14px;">Back To Cart</a> 
             </div> 
         </div> 
-    </section>
+    </section> --}}
 
 @endsection
 
