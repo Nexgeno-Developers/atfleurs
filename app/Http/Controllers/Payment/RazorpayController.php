@@ -108,22 +108,14 @@ class RazorpayController extends Controller
                 if ($order) {
                     if ($event === 'payment.captured') {
                         if ($order->payment_status === 'unpaid') {
-                            $order->payment_status = 'paid';
-                            $order->save();
-                            //return (new CheckoutController)->checkout_done($combinedOrderId, $payment_detalis);
+                            // $order->payment_status = 'paid';
+                            // $order->save();
+                            return (new CheckoutController)->checkout_done($combinedOrderId, $payment_detalis);
                         }
                     } else if ($event === 'payment.authorized') {
                         if ($order->payment_status === 'unpaid') {
-                            //$order->payment_status = 'authorized';
-                            $order->save();
-
-                            \log::info("Payment authorized for order: $combinedOrderId");
                         }
                     } elseif ($event === 'payment.failed') {
-                        //$order->payment_status = 'failed';
-                        $order->save();
-
-                        \log::error("Payment failed for order: $combinedOrderId");
                     }
                 }
             }
