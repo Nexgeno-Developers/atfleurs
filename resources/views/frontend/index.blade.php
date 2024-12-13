@@ -47,7 +47,7 @@
       <div class="slide-content">
         <h4>Astronomia & Lily <span class="d-md-block">Flower Bouquets</span> </h4>
         <p>Shop collections you can live in</p>
-        <div class=" button_effects mt-5">
+        <div class=" button_effects mt-lg-5 mt-4">
                 <a class="green_color fs-bold" href="#">Discover More <i class="fa-solid fa-arrow-right"></i></a>
          </div>
       </div>
@@ -56,8 +56,8 @@
       <div class="slide-content">
         <h4>Artificial Tulips  <span class="d-md-block">Flower With Dry Stick</span> </h4>
         <p>Shop collections you can live in</p>
-        <div class=" button_effects mt-5">
-                <a class="green_color fs-bold" href="#">Discover More <i class="fa-solid fa-arrow-right"></i></a>
+        <div class=" button_effects mt-lg-5 mt-4">
+                <a class="green_color fs-bold" href="/product/artificial-tulips-flower-dry-stick-online-mumbai">Discover More <i class="fa-solid fa-arrow-right"></i></a>
          </div>
       </div>
     </div>
@@ -65,22 +65,36 @@
       <div class="slide-content">
         <h4>Pink Rose Flower <span class="d-md-block">Arrangement</span> </h4>
         <p>Shop collections you can live in</p>
-        <div class=" button_effects mt-5">
-                <a class="green_color fs-bold" href="#">Discover More <i class="fa-solid fa-arrow-right"></i></a>
+        <div class=" button_effects mt-lg-5 mt-4">
+                <a class="green_color fs-bold" href="/product/pink-rose-flower-arrangement-online-mumbai">Discover More <i class="fa-solid fa-arrow-right"></i></a>
+         </div>
+      </div>
+    </div>
+
+     <div class="slide" style="background-image: url('{{ static_asset('assets/img/banner_main_4.webp ') }}');">
+      <div class="slide-content">
+        <h4>Gerbera Daisy Pink <span class="d-md-block">Flower Bouquet</span> </h4>
+        <p>Shop collections you can live in</p>
+        <div class=" button_effects mt-lg-5 mt-4">
+                <a class="green_color fs-bold" href="/product/gerbera-flower-bouquet-online-mumbai">Discover More <i class="fa-solid fa-arrow-right"></i></a>
          </div>
       </div>
     </div>
 
   </div>
 
-  <!-- <div class="custom-pagination">
-  <span class="current-slide">01</span>
-  <div class="pagination-line"></div>
-  <span class="total-slides">04</span>
-</div> -->
-  </div>
-
-
+<div class="custom-pagination">
+  <ul class="pagination">
+    <p>01</p>
+    <li class="active" data-slide="0"></li>
+    <li data-slide="1"></li>
+    <li data-slide="2"></li>
+    <li data-slide="3"></li>
+    <li data-slide="4"></li>
+    <p class="last_number_pegination">04</p>
+  </ul>
+</div>
+</div>
 
 <section class="pt-5 pb-5">
     <div class="container ">
@@ -92,11 +106,11 @@
             </div>
                 <h4 class="heading_one heading_font1 green_color text-capitalize text-center">Welcome to <span class="yellow_color">our colourful world.</span></h4>
            
-                <p class="text-center">Floral greetings from At Fleurs, a boutique flower studio in suburban Mumbai! <span class="d-block">
+                <p class="text-center">Floral greetings from At Fleurs, a boutique flower studio in suburban Mumbai! <span class="d-md-block">
 Our skilled team of passionate floral designers create exquisite arrangements with buds and blossoms for all occasions. Our collective </span>years in the industry allow us the luxury of acquired expertise, an eye for detail and, most importantly, impeccable service.</p>
 
 <div class="text-center">
-    <a class="green_color fs-bold" href="#"><b><u>Read Story</u></b></a>
+    <a class="green_color fs-bold" href="/about-us"><b><u>Read Story</u></b></a>
 </div>
             </div>
         </div>
@@ -106,19 +120,19 @@ Our skilled team of passionate floral designers create exquisite arrangements wi
 
 <section class="elegant_blooms_sec orange_light_bg">
         <div class="row align-items-center">
-            <div class="col-md-6 ">
+            <div class="col-md-6 order-md-1 order-2 pt-md-0 pb-md-0 pt-4 pb-5">
                 <div class="mx-auto text-center mb-3">
                 <img src="{{ static_asset('assets/img/flower_icon.svg ') }}" />
                 </div>
 
-                <h4 class="heading_one1 heading_font1 yellow_color text-capitalize text-center pb-3">Elegant Blooms, <span class="green_color d-lg-block">Artfully Curated for</span>Unique <span class="green_color">Moments</span></h4>
+                <h4 class="heading_one1 heading_font1 yellow_color text-capitalize text-center pb-md-3 pb-0">Elegant Blooms, <span class="green_color d-lg-block">Artfully Curated for</span>Unique <span class="green_color">Moments</span></h4>
                 <p class="text-center body_text_vw width_70 mx-auto">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,</p>
-                <div class="text-center button_effects mt-5">
+                <div class="text-center button_effects mt-md-5 mt-4">
                 <a class="green_color fs-bold" href="#">Discover More <i class="fa-solid fa-arrow-right"></i></a>
                </div>
            </div>
 
-            <div class="col-md-6 ">
+            <div class="col-md-6 order-md-2 order-1 ">
                <div class="blooms_video">
                 <video class="embed-responsive embed-responsive-16by9" autoplay="" muted="" loop="" id="myVideo2">
                         <source src="{{ static_asset('assets/img/elegant_blooms.mp4 ') }}" type="video/mp4">
@@ -129,75 +143,90 @@ Our skilled team of passionate floral designers create exquisite arrangements wi
 </section>
 
      <div class="product_category shop_collection pt-xl-6 pt-lg-6 pt-md-6 pt-5 pb-5 ">
-        <div class="container">
-             <h4 class="heading_one heading_font1  green_color text-capitalize text-center pb-3">Discover our <span class="yellow_color">exquisite array</span></h4>
-            <div class="row gutters-10 position-relative">
-                
+    <div class="container">
+        <h4 class="heading_one heading_font1 green_color text-capitalize text-center pb-md-3">
+            Discover our <span class="yellow_color">exquisite array</span>
+        </h4>
+        <div class="row gutters-10 position-relative">
+            @php
+                $num_todays_deal = count($todays_deal_products);
+            @endphp
 
-                @php
-                    $num_todays_deal = count($todays_deal_products);
-                @endphp
-
-                <div class="@if($num_todays_deal > 0) col-lg-12 @else col-lg-12 @endif">
-                    @if (count($featured_categories) > 0)
-                         <div class="row gutters-10 position-relative">
-                         @foreach ($featured_categories as $key => $category)
-                                <div class="minw-0 col-lg-4 col-6 mt-3 border_radius_ct position-relative">
-                                    <a href="{{ route('products.category', $category->slug) }}" class="d-block rounded text-reset ">
-                                        
-                                        <div class="main_category">
+            <div class="@if($num_todays_deal > 0) col-lg-12 @else col-lg-12 @endif">
+                @if (count($featured_categories) > 0)
+                    <div class="row gutters-10 position-relative">
+                        @foreach ($featured_categories as $key => $category)
+                            <div class="minw-0 col-lg-4 col-6 mt-3 border_radius_ct position-relative">
+                                <a href="{{ route('products.category', $category->slug) }}" class="d-block rounded text-reset">
+                                    <div class="main_category">
                                         <img loading="lazy"
-                                            src="{{ static_asset('assets/img/spinner.webp') }}"
-                                            data-src="{{ uploaded_asset($category->banner) }}"
-                                            alt="{{ $category->getTranslation('name') }} - Category Image"
-                                            class="lazyload img-fit category_image" 
-                                            onerror="this.onerror=null;this.src='{{ static_asset('assets/img/spinner.webp') }}';"
-                                        >
-                                        </div>
-                                        
-                                        <div class="category_content_sec">
+                                             src="{{ static_asset('assets/img/spinner.webp') }}"
+                                             data-src="{{ uploaded_asset($category->banner) }}"
+                                             alt="{{ $category->getTranslation('name') }} - Category Image"
+                                             class="lazyload img-fit category_image"
+                                             onerror="this.onerror=null;this.src='{{ static_asset('assets/img/spinner.webp') }}';">
+                                    </div>
+                                    <div class="category_content_sec">
                                         <div class="row align-items-center">
-                                            <div class="col-md-8">
-                                                <h4 class="text-truncate text-white text-start fw-400 fs-20 text-uppercase mt-3 mt-lg-4 pb-0">{{ $category->getTranslation('name') }}</h4>
-                                               <p class="text-white fs-12">Lorem ipsum dolor sit amet</p>
+                                            <div class="col-md-8 col-12">
+                                                <h4 class=" text-white ctg_head text-uppercase mt-3 mt-lg-4 pb-0">
+                                                    {{ $category->getTranslation('name') }}
+                                                </h4>
                                             </div>
                                             <div class="col-md-4">
-                                                <div class="arrow_category"><img src="{{ static_asset('assets/img/left_arrow_1.svg ') }}" /></div>
-                                               
+                                                <div class="arrow_category">
+                                                    <img src="{{ static_asset('assets/img/left_arrow_1.svg ') }}" />
+                                                </div>
                                             </div>
-
                                         </div>
-                                        </div>
-                                        
-
-
-
-                                    </a>
-                                </div>
-
-
-                                @if ($loop->iteration === 4)
-                                 <div class="minw-0 col-lg-4 col-6 mt-3 border_radius_ct position-relative">
-                    <div class="greenbg text-center h-100 align-items-center d-flex w-100">
-                        
-                    <div class="category_boxex_action w-100">
-                    <h4 class="heading_one heading_font1 text-white text-capitalize text-center">Shop your <span class="d-lg-block">favourite <span class="yellow_color">items of</span> </span><span class="yellow_color">the</span> season</h4>
-                        <div class="mt-5 reversebg_btn">
-                        <a class="green_color fs-bold" href="#">Discover More <i class="fa-solid fa-arrow-right"></i></a>
-                        </div>
-                        </div>
-                    </div>                 
-                </div>
-
-                              
-                            @endif    
-                            @endforeach
+                                    </div>
+                                </a>
                             </div>
-                    @endif
-                </div>
+
+                            @if ($loop->iteration === 4)
+                                <!-- For larger screens: Show in 4th position -->
+                                <div class="d-lg-block d-none minw-0 col-lg-4 col-6 mt-3 border_radius_ct position-relative">
+                                    <div class="greenbg text-center h-100 align-items-center d-flex w-100">
+                                        <div class="category_boxex_action w-100">
+                                            <h4 class="heading_one heading_font1 text-white text-capitalize text-center">
+                                                Shop your <span class="d-lg-block">favourite <span class="yellow_color">items of</span></span>
+                                                <span class="yellow_color">the</span> season
+                                            </h4>
+                                            <div class="mt-5 reversebg_btn">
+                                                <a class="green_color fs-bold" href="#">
+                                                    Discover More <i class="fa-solid fa-arrow-right"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
+
+                            @if ($loop->iteration === 8)
+                                <!-- For smaller screens: Show in 9th position -->
+                                <div class="d-lg-none d-block minw-0 col-lg-4 col-12 mt-3 border_radius_ct position-relative">
+                                    <div class="greenbg text-center h-100 align-items-center d-flex w-100">
+                                        <div class="category_boxex_action w-100">
+                                            <h4 class="heading_one heading_font1 text-white text-capitalize text-center">
+                                                Shop your <span class="d-block">favourite <span class="yellow_color">items of</span></span>
+                                                <span class="yellow_color">the</span> season
+                                            </h4>
+                                            <div class="mt-lg-5 mt-4 reversebg_btn">
+                                                <a class="green_color fs-bold" href="#">
+                                                    Discover More <i class="fa-solid fa-arrow-right"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
+                        @endforeach
+                    </div>
+                @endif
             </div>
         </div>
     </div>
+</div>
     
     <!-- <div class="pb-4 today_deals">
         <div class="container">
@@ -376,7 +405,7 @@ Our skilled team of passionate floral designers create exquisite arrangements wi
 
    <h4 class="heading_one heading_font1 green_color text-capitalize">Artful Floral Creations <span class="yellow_color d-lg-block ml-50">for Every Occasion</span></h4>
    <div class="text-center button_effects mt-4 ml-5">
-                <a class="green_color fs-bold" href="#">Discover More <i class="fa-solid fa-arrow-right"></i></a>
+                <a class="green_color fs-bold" href="/category/floral-arrangements-events-mumbai">Discover More <i class="fa-solid fa-arrow-right"></i></a>
                </div>  
 </div>
 </div>
@@ -397,24 +426,24 @@ Our skilled team of passionate floral designers create exquisite arrangements wi
              <div class="mx-auto text-center mb-3">
                 <img src="{{ static_asset('assets/img/flower_icon.svg ') }}" />
                 </div>
-            <h4 class="heading_one heading_font1 green_color text-capitalize text-center pb-3"> In petals’ grace, <span class="yellow_color">stories bloom,</span><span class="d-lg-block">Nature’s whispers fill the room. </span><span class="d-lg-block">Crafted beauty, a heartfelt art,</span>Floral wonders, soul and heart.</h4>
+            <h4 class="heading_one heading_font1 green_color text-capitalize text-center pb-3 pl-md-0 pl-3 pr-md-0 pr-3"> In petals’ grace, <span class="yellow_color">stories bloom,</span><span class="d-lg-block">Nature’s whispers fill the room. </span><span class="d-lg-block">Crafted beauty, a heartfelt art,</span>Floral wonders, soul and heart.</h4>
            
 
 
 
         </div>
-            <div class="col-md-6 ">
+            <div class="col-md-6 p-0">
                 <div class="">
                 <img class="w-100" src="{{ static_asset('assets/img/bloomin_img2.svg ') }}" />
                 </div>
            </div>
-            <div class="col-md-6 ">
+            <div class="col-md-6 pt-md-0 pt-5 pb-md-0 pb-5">
                 <div class="mx-auto text-center mb-3">
                 <img src="{{ static_asset('assets/img/flower_icon.svg ') }}" />
                 </div>
 
-                <h4 class="heading_one heading_font1 green_color text-capitalize text-center pb-3">Blossoming Tradition:  <span class="d-lg-block">Honoring Nature’s </span>Timeless Art Moments</h4>
-                <p class="text-center body_text_vw width_70 mx-auto">Our floral practice embraces the beauty of tradition, connecting deeply with nature’s cycles and the language of each bloom. Inspired by centuries-old techniques and cultural rituals, each arrangement honors the timeless artistry of nature. Through mindful selection and craftsmanship, we cultivate a practice rooted in respect, intention, and the transformative power of flowers.
+                <h4 class="heading_one heading_font1 green_color text-capitalize text-center pb-md-3">Blossoming Tradition:  <span class="d-lg-block">Honoring Nature’s </span>Timeless Art Moments</h4>
+                <p class="text-center body_text_vw width_70 mx-auto mb-0">Our floral practice embraces the beauty of tradition, connecting deeply with nature’s cycles and the language of each bloom. Inspired by centuries-old techniques and cultural rituals, each arrangement honors the timeless artistry of nature. Through mindful selection and craftsmanship, we cultivate a practice rooted in respect, intention, and the transformative power of flowers.
 
 </p>
                
@@ -426,17 +455,17 @@ Our skilled team of passionate floral designers create exquisite arrangements wi
 
 <section class="elegant_blooms_sec">
         <div class="row align-items-center">
-            <div class="col-md-6 ">
+            <div class="col-md-6 pt-md-0 pt-5 pb-md-0 pb-5 order-md-1 order-2">
                 <div class="mx-auto text-center mb-3">
                 <img src="{{ static_asset('assets/img/flower_icon.svg ') }}" />
                 </div>
 
-                <h4 class="heading_one heading_font1 green_color text-capitalize text-center pb-3">Artistry in Bloom: Where<span class=" d-lg-block">Creativity Meets Craft</span></h4>
+                <h4 class="heading_one heading_font1 green_color text-capitalize text-center pb-md-3">Artistry in Bloom: Where<span class=" d-lg-block">Creativity Meets Craft</span></h4>
                 <p class="text-center body_text_vw width_70 mx-auto">At the heart of our studio is a passion for creative expression, blending artistry with precision. Each floral piece is crafted to tell a unique story, marrying color, form, and texture in unexpected ways. Our culture celebrates the fusion of traditional techniques with contemporary design, creating arrangements that are as evocative as they are elegant.</p>
        
            </div>
 
-            <div class="col-md-6 ">
+            <div class="col-md-6 p-0 order-md-2 order-1">
                 <div class="">
                 <img class="w-100" src="{{ static_asset('assets/img/bloomin_img3.svg ') }}" />
                 </div>
@@ -452,7 +481,7 @@ Our skilled team of passionate floral designers create exquisite arrangements wi
     </div>
 
 {{-- Category wise Products --}}
-    <div id="section_home_categories" class="mb-5">
+    <div id="section_home_categories">
 
     </div>
 
@@ -719,8 +748,7 @@ your feelings</h3>
        <i class="las la-star green_color"></i>
     </div>
       <p>I recently ordered a bouquet of flowers from this amazing flower website, and I was blown away by the beauty and freshness of the arrangement. The flowers were absolutely stunning and brought so much joy to the recipient. I highly recommend their services for any occasion!</p>
-    <p class="mb-0 pb-0">Lorem Ipsum</p>
-     <p class="fs-13">Developer</p>
+    <p class="mb-0 pb-0">Sarah T</p>
     </div>
             </div>
             <!--END OF TESTIMONIAL 1 -->
@@ -735,9 +763,8 @@ your feelings</h3>
        <i class="las la-star green_color"></i>
        <i class="las la-star green_color"></i>
     </div>
-      <p>I recently ordered a bouquet of flowers from this amazing flower website, and I was blown away by the beauty and freshness of the arrangement. The flowers were absolutely stunning and brought so much joy to the recipient. I highly recommend their services for any occasion!</p>
-    <p class="mb-0 pb-0">Lorem Ipsum</p>
-     <p class="fs-13">Developer</p>
+      <p>If you're looking for a reliable and talented florist, look no further. I have ordered multiple bouquets from this flower shop, and each one has been a work of art. The attention to detail and the selection of unique flowers sets them apart. Their arrangements have always brought smiles and happiness to the recipients. I highly recommend their services!</p>
+    <p class="mb-0 pb-0">David M</p>
     </div>
             </div>
             <!--END OF TESTIMONIAL 2 -->
@@ -752,9 +779,8 @@ your feelings</h3>
        <i class="las la-star green_color"></i>
        <i class="las la-star green_color"></i>
     </div>
-      <p>I recently ordered a bouquet of flowers from this amazing flower website, and I was blown away by the beauty and freshness of the arrangement. The flowers were absolutely stunning and brought so much joy to the recipient. I highly recommend their services for any occasion!</p>
-    <p class="mb-0 pb-0">Lorem Ipsum</p>
-     <p class="fs-13">Developer</p>
+      <p>I wanted to surprise my mother on her birthday, so I decided to order a bouquet from this flower shop. The entire experience was seamless, from browsing their website to placing the order. When the flowers arrived, they were absolutely breathtaking. My mother was overjoyed and couldn't stop raving about how beautiful they were. Thank you for making her day so special!</p>
+    <p class="mb-0 pb-0">Jennifer L</p>
     </div>
             </div>
             <!--END OF TESTIMONIAL 3 -->
@@ -769,9 +795,8 @@ your feelings</h3>
        <i class="las la-star"></i>
        <i class="las la-star"></i>
     </div>
-      <p>I recently ordered a bouquet of flowers from this amazing flower website, and I was blown away by the beauty and freshness of the arrangement. The flowers were absolutely stunning and brought so much joy to the recipient. I highly recommend their services for any occasion!</p>
-    <p class="mb-0 pb-0">Lorem Ipsum</p>
-     <p class="fs-13">Developer</p>
+      <p>I recently received a bouquet of flowers from this flower website, and I was amazed by the quality and freshness of the arrangement. The colors were vibrant, and the fragrance filled the room. It was evident that great care had been taken in creating the bouquet. I will definitely be recommending this flower shop to all my friends and family.</p>
+    <p class="mb-0 pb-0">Mark S</p>
     </div>
             </div>
             <!--END OF TESTIMONIAL 4 -->
@@ -786,12 +811,28 @@ your feelings</h3>
        <i class="las la-star"></i>
        <i class="las la-star"></i>
     </div>
-      <p>I recently ordered a bouquet of flowers from this amazing flower website, and I was blown away by the beauty and freshness of the arrangement. The flowers were absolutely stunning and brought so much joy to the recipient. I highly recommend their services for any occasion!</p>
-    <p class="mb-0 pb-0">Lorem Ipsum</p>
-     <p class="fs-13">Developer</p>
+      <p>I was searching for a unique bouquet for my wife's anniversary gift, and this flower shop delivered beyond my expectations. The arrangement was absolutely gorgeous, with a perfect blend of colors and textures. My wife was thrilled and couldn't stop gushing about the flowers. Thank you for helping me make our anniversary even more special!</p>
+    <p class="mb-0 pb-0">Andrew W</p>
     </div>
             </div>
             <!--END OF TESTIMONIAL 5 -->
+
+             <div class="item">
+              <div class="shadow-effect">
+                 <div class="quote_icon"> <img src="{{ static_asset('assets/img/quote.svg') }}"/></div>
+                <div class="rating1 text-left">
+         <i class="las la-star"></i>
+       <i class="las la-star"></i>
+       <i class="las la-star"></i>
+       <i class="las la-star"></i>
+       <i class="las la-star"></i>
+    </div>
+      <p>I wanted to send flowers to a friend who was feeling down, and this flower shop created the most uplifting bouquet. The vibrant colors and the thoughtful combination of flowers brought a smile to her face. The ordering process was easy, and the delivery was prompt. I appreciate the excellent service and the positive impact these flowers had on my friend's mood. Highly recommended!</p>
+    <p class="mb-0 pb-0">Rachel K.</p>
+    </div>
+            </div>
+
+
           </div>
         </div>
       </div>
@@ -834,10 +875,10 @@ your feelings</h3>
            
                     
       </div>
-      <div class="row">
-        @php DB::table('blogs')->orderBy('created_at', 'desc')->limit(3)->get(); @endphp
+      <div class="row gutters-10">
+        @php DB::table('blogs')->orderBy('created_at', 'desc')->limit(4)->get(); @endphp
         @foreach($blogs as $blog)          
-         <div class="col-md-3 pl-2 pr-2">
+         <div class="col-md-3">
             <div class="blog_box">
                <div class="blog_img">
                   <a aria-label="Read More About Blog" href="{{ url("blog").'/'. $blog->slug }}">
@@ -853,13 +894,13 @@ your feelings</h3>
                <div class="blog_content">
 
                   <div class="row justify-content-between">
-                    <div class="col-md-6">
+                    <div class="col-md-6 col-6">
                         <div class="date_section d-flex align-items-center">
                             <img src="{{ static_asset('assets/img/calender_icons.svg') }}" />
                             <p class="mb-0 pb-0 pl-2 pt-1 fs-13">10-04-2024</p>
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-6 col-6">
                          <div class="date_section d-flex align-items-center">
                             <img src="{{ static_asset('assets/img/user_icons.svg') }}" />
                             <p class="mb-0 pb-0 pl-2 pt-1 fs-13">Aryan Gupta</p>
@@ -925,7 +966,7 @@ your feelings</h3>
    
      <div class="mb-4 text-center position_relative align-items-baseline">
                  
-                        <h4 class="heading_one heading_font1 green_color text-capitalize text-center">Why<span class="yellow_color">Atfleurs</span></h4>
+                        <h4 class="heading_one heading_font1 green_color text-capitalize text-center">Why <span class="yellow_color">Atfleurs</span></h4>
                     
                             
                 </div>
@@ -978,13 +1019,13 @@ your feelings</h3>
 </div>
 </div>
     
-    <section class="instagram_section pb-5 ">
+    <!-- <section class="instagram_section pb-5 ">
           <h4 class="heading_one heading_font1 green_color text-capitalize text-center pb-3"> Check Our <span class="yellow_color">instagram</span></h4>
         
         <div class="container">
             <img src="{{ static_asset('assets/img/instagraan_img.png ') }}" class="w-100"/>
         </div>
-    </section>
+    </section> -->
     
 <!-- <section class="seosection pt-5 pb-5">
     <div class="container">

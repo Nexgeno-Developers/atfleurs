@@ -6,7 +6,7 @@
     <div class="container text-center">
         <div class="row">
             <div class="col-lg-6 text-center text-lg-left">
-                <h1 class="fw-600 h4">{{ translate('Blog')}}</h1>
+                <h4 class="heading_one heading_font1 green_color text-capitalize text-left pt-3">Latest  <span class="yellow_color"> News & Blog</span></h4>
             </div>
             <div class="col-lg-6">
                 <ul class="breadcrumb bg-transparent p-0 justify-content-center justify-content-lg-end">

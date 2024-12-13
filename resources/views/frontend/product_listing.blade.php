@@ -38,7 +38,7 @@
     
     <style>
         .aiz-main-wrapper {
-    background-color: #e18a1424 !important;
+    background-color: #fff !important;
 }
     </style>
 @endsection

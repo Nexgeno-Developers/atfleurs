@@ -101,9 +101,7 @@ flex-direction: column;
     <div class="container">
         <div class="row d-flex justify-content-center">
             <div class="pt-5 text-center position_relative align-items-">
-                   <h3 class="h2 fw-700 mb-0 heading_font1">
-                            <span class="border-bottom border-primary border-width-2 pb-2 d-inline-block">Careers</span>
-                        </h3>
+                         <h4 class="heading_one heading_font1 green_color text-capitalize text-left">Careers</h4>
                     
                             
                 </div>

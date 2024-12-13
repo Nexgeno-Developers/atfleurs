@@ -5,8 +5,8 @@
 <section class="pt-5 pb-9 dark-orange-bg balsamiq_font faq_section">
     
     <div class="mainhed text-center pb-4">
-        <h3>Find answers to your questions</h3>
-        
+        <h4 class="heading_one heading_font1 green_color text-capitalize text-center">Frequently Asked 
+<span class="yellow_color"> Questions</span></h4>
     </div>
     <div class="container">
          <div class="row justify-content-center">

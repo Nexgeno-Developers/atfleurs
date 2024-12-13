@@ -57,7 +57,7 @@
 
         </ul>
 
-        <div class="bg-white shadow-sm rounded p-3">
+        <div class="bg-white">
             <div class="row">
                 <div class="col-xl-5 col-lg-6 mb-4">
                     <div class="sticky-top z-3 row gutters-10">
@@ -117,7 +117,7 @@
 
                 <div class="col-xl-7 col-lg-6">
                     <div class="text-left">
-                        <h1 class="mb-2 fs-20 fw-600 dthead">
+                        <h1 class="mb-2 dthead product-dt-head heading_font1  green_color ">
                             {{ $detailedProduct->getTranslation('name') }}
                         </h1>
 
@@ -135,7 +135,7 @@
                                     {{ translate('reviews') }})</span>
                             </div>
                             @if ($detailedProduct->est_shipping_days)
-                            <div class="col-auto ml">
+                            <div class="col-auto ml pt-2">
                                 <small class="mr-2 opacity-90">{{ translate('Estimate Shipping Time') }}:
                                 </small>{{ $detailedProduct->est_shipping_days }} {{ translate('Days') }}
                             </div>
@@ -263,7 +263,7 @@
                         <!--    </div>-->
                         <!--</div>-->
                         @else
-                        <div class="row no-gutters mt-3">
+                        <!-- <div class="row no-gutters mt-3">
                             <div class="col-sm-2">
                                 <div class="opacity-90 my-2">{{ translate('Price') }}:</div>
                             </div>
@@ -272,13 +272,13 @@
                                     <strong class="h2 fw-600 text-primary">
                                         {{ home_discounted_price($detailedProduct) }}
                                     </strong>
-                                    <!--@if ($detailedProduct->unit != null)-->
-                                    <!--    <span-->
-                                    <!--        class="opacity-70">/{{ $detailedProduct->getTranslation('unit') }}</span>-->
-                                    <!--@endif-->
+                                  @if ($detailedProduct->unit != null)
+                                       <span
+                                        class="opacity-70">/{{ $detailedProduct->getTranslation('unit') }}</span>
+                                    @endif
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         @endif
                         @endif
 
@@ -294,8 +294,6 @@
                             </div>
                         </div>
                         @endif
-
-                        <hr>
 
                         <form id="option-choice-form">
                             @csrf
@@ -354,14 +352,28 @@
                             <hr>
                             @endif
 
-                            <!-- Quantity + Add to cart -->
-                            <div class="row no-gutters">
-                                <div class="col-sm-2">
+                           
+                            <div class="row no-gutters pb-3 mt-4" id="chosen_price_div">
+                                <!-- <div class="col-sm-2">
+                                    <div class="opacity-90 my-1">{{ translate('INR') }}:</div>
+                                </div> -->
+                                <div class="col-sm-12">
+                                    <div class="product-price">
+                                        <strong id="chosen_price" class="h4 fw-700 gray_green_clr">
+
+                                        </strong>
+                                    </div>
+                                </div>
+                            </div>
+
+                             <!-- Quantity + Add to cart -->
+                            <div class="row no-gutters pb-4">
+                                <div class="col-sm-12">
                                     <div class="opacity-90 my-2">{{ translate('Quantity') }}:</div>
                                 </div>
-                                <div class="col-sm-10">
+                                <div class="col-sm-12">
                                     <div class="product-quantity d-flex align-items-center">
-                                        <div class="row no-gutters align-items-center aiz-plus-minus mr-3"
+                                        <div class="row no-gutters quantity_bg align-items-center aiz-plus-minus mr-3"
                                             style="width: 130px;">
                                             <button class="btn col-auto btn-icon btn-sm btn-circle btn-light"
                                                 type="button" data-type="minus" data-field="quantity" disabled="">
@@ -394,21 +406,6 @@
                                 </div>
                             </div>
 
-                            <hr>
-
-                            <div class="row no-gutters pb-3 d-none" id="chosen_price_div">
-                                <div class="col-sm-2">
-                                    <div class="opacity-90 my-1">{{ translate('Total Price') }}:</div>
-                                </div>
-                                <div class="col-sm-10">
-                                    <div class="product-price">
-                                        <strong id="chosen_price" class="h4 fw-600 text-primary">
-
-                                        </strong>
-                                    </div>
-                                </div>
-                            </div>
-
                         </form>
 
                         <div class="mt-3">
@@ -418,13 +415,14 @@
                                 <i class="la la-share"></i> {{ translate($detailedProduct->external_link_btn) }}
                             </a>
                             @else
-                            <button type="button" class="btn btn-soft-primary mr-2 add-to-cart fw-600 gtagaddtocart"
+                          
+                            <button type="button" class="btn btn-primary buy-now button_colors_1 greenbg fw-600" onclick="buyNow()">
+                                <i class="la la-shopping-cart"></i> {{ translate('Buy Now') }}
+                            </button>
+                              <button type="button" class="btn btn-soft-primary ml-2 add-to-cart button_colors_1 darkgray_bg fw-600 gtagaddtocart"
                                 data-url="{{ url()->current() }}" onclick="addToCart()">
                                 <i class="las la-shopping-bag"></i>
                                 <span class="d-none d-md-inline-block"> {{ translate('Add to cart') }}</span>
-                            </button>
-                            <button type="button" class="btn btn-primary buy-now fw-600" onclick="buyNow()">
-                                <i class="la la-shopping-cart"></i> {{ translate('Buy Now') }}
                             </button>
                             @endif
                             <button type="button" class="btn btn-secondary out-of-stock fw-600 d-none" disabled>
@@ -490,7 +488,7 @@
                                         src="{{ static_asset('assets/img/guarantee_shield.png')}}">
                                 </div>
                                 <div class="satisfaction_text_div">
-                                    <p class="satisfaction_text">We guarantee a 100% safe and secure payment experience
+                                    <p class="satisfaction_text gray_green_clr">We guarantee a 100% safe and secure payment experience
                                     </p>
                                 </div>
                             </div>
@@ -504,7 +502,7 @@
                                     <img class="guarantee_img" src="{{ static_asset('assets/img/flower_icon.png')}}">
                                 </div>
                                 <div class="satisfaction_text_div">
-                                    <p class="satisfaction_text">Freshness Guarantee for Every Bloom</p>
+                                    <p class="satisfaction_text gray_green_clr">Freshness Guarantee for Every Bloom</p>
                                 </div>
                             </div>
                             @endif
@@ -523,31 +521,31 @@
                                     <img src="{{ static_asset('assets/img/refund-sticker2.png') }}" height="36">
                                     @endif
                                 </a>
-                                <a href="{{ route('returnpolicy') }}" class="ml-4"
+                                <a href="{{ route('returnpolicy') }}" class="ml-1 fw-600 gray_green_clr"
                                     target="_blank">{{ translate('View Policy') }}</a>
                             </div>
                         </div>
                         @endif
                         <div class="row no-gutters mt-1">
-                            <div class="">
+                            <div class="col-md-12">
                                 <div class="opacity-90 my-2">{{ translate('Visit Us') }}:</div>
                             </div>
-                            <div class="">
+                            <div class="col-md-12">
                                 <!-- <div class="aiz-share"></div> -->
                                 <div class="social-media-links">
                                     <a target="_blank" href="https://www.instagram.com/atfleurs/"
-                                        class="social-icon instagram">
+                                        class="social-icon">
                                         <i class="fa fa-instagram"></i>
                                     </a>
-                                    <a target="_blank" href="https://x.com/Atfleurss" class="social-icon twitter-x">
+                                    <a target="_blank" href="https://x.com/Atfleurss" class="social-icon">
                                         <i class="fa fa-x-twitter"></i>
                                     </a>
                                     <a target="_blank" href="https://m.facebook.com/atfleurs/"
-                                        class="social-icon facebook">
+                                        class="social-icon">
                                         <i class="fa fa-facebook-f"></i>
                                     </a>
                                     <a target="_blank" href="https://www.linkedin.com/in/at-fleurs-39749b273/"
-                                        class="social-icon linkedin">
+                                        class="social-icon">
                                         <i class="fa fa-linkedin-in"></i>
                                     </a>
                                 </div>
@@ -680,7 +678,7 @@
                 </div>
             </div>
             <div class="col-xl-12 order-0 order-xl-1">
-                <div class="bg-white mb-3 shadow-sm rounded">
+                <div class="bg-white mb-3">
                     <!--<div class="nav border-bottom aiz-nav-tabs">-->
                     <!--    <a href="#tab_default_1" data-toggle="tab"-->
                     <!--        class="p-3 fs-16 fw-600 text-reset active show">{{ translate('Description') }}</a>-->
@@ -698,17 +696,16 @@
 
                     <div class="tab-content pt-0">
                         <div class="tab-pane fade active show" id="tab_default_1">
-                            <div class="pb-0 pl-4 pr-4 pt-4">
+                            <div class="">
                                 <div class="mw-100 overflow-auto text-left aiz-editor-data">
-                                    <h5 class="fs-18 fw-600 pb-1">{{ translate('Description') }}</h5>
+                                    <h5 class="fw-500 pb-1 heading_font1 green_color related_hed">{{ translate('Description') }}</h5>
                                     <?php echo $detailedProduct->getTranslation('description'); ?>
                                 </div>
                             </div>
 
-                            <hr>
 
-                            <div class="pb-5 pl-4 pr-4 pt-3">
-                                <h5 class="fs-18 fw-600 pb-1 text-capitalize">{{ translate('Reviews') }}</h5>
+                            <div class="pt-4">
+                                <h5 class="fw-500 pb-1 heading_font1 green_color related_hed text-capitalize">{{ translate('Reviews') }}</h5>
                                 <ul class="list-group list-group-flush">
                                     @foreach ($detailedProduct->reviews as $key => $review)
                                     @if ($review->user != null)
@@ -804,13 +801,11 @@
             }
             @endphp
             @if ($related_products->isNotEmpty())
-            <div class="bg-white rounded shadow-sm">
-                <div class="border-bottom p-3">
-                    <h3 class="fs-16 fw-600 mb-0">
-                        <span class="mr-4">{{ translate('Related products') }}</span>
-                    </h3>
+            <div class="bg-white">
+                <div class="pt-3">
+                    <h5 class="fw-500 pb-0 mb-1 heading_font1 green_color related_hed">Related <span class="yellow_color">Products</span></h5>
                 </div>
-                <div class="p-3">
+                <div class="">
                     <div class="aiz-carousel gutters-5 half-outside-arrow" data-items="5" data-xl-items="5"
                         data-lg-items="4" data-md-items="5" data-sm-items="2" data-xs-items="2" data-arrows='true'
                         data-infinite='true'>
@@ -819,7 +814,7 @@
                                 --}}
                         @foreach ($related_products as $key => $related_product)
                         <div class="carousel-box">
-                            <div class="aiz-card-box border border-light rounded hov-shadow-md my-2 has-transition">
+                            <div class="aiz-card-box my-2 has-transition">
                                 <div class="">
                                     <a href="{{ route('product', $related_product->slug) }}" class="d-block">
                                         <img class="img-fit lazyload mx-auto"
@@ -829,19 +824,22 @@
                                             onerror="this.onerror=null;this.src='{{ static_asset('assets/img/placeholder.jpg') }}';">
                                     </a>
                                 </div>
-                                <div class="p-md-3 p-2 text-left">
-                                    <h3 class="fw-500 fs-14 text-truncate-2 lh-1-7 mb-0 h-43px">
+
+  <div class="row align-items-center">
+     <div class="col-md-10 col-10 p-md-3 bg-white">
+                                <div class="text-left">
+                                    <h3 class="fw-500 fs-14 text-truncate-2 lh-1-7 mb-0 h-43px pt-md-0 pt-2">
                                         <a href="{{ route('product', $related_product->slug) }}"
-                                            class="d-block text-reset">{{ $related_product->getTranslation('name') }}</a>
+                                            class="d-block text-reset fs-16 green_color">{{ $related_product->getTranslation('name') }}</a>
                                     </h3>
-                                    <div class="pt-2 fs-15 text-center">
+                                    <div class="text-left">
                                         @if (home_base_price($related_product) !=
                                         home_discounted_base_price($related_product))
                                         <del
-                                            class="fw-600 opacity-90 mr-1">{{ home_base_price($related_product) }}</del>
+                                            class="fw-900 mobile-16 fs-20 green_color mr-1">{{ home_base_price($related_product) }}</del>
                                         @endif
                                         <span
-                                            class="fw-700 text-primary">{{ home_discounted_base_price($related_product) }}</span>
+                                            class="fw-900 mobile-16 fs-20 green_color">{{ home_discounted_base_price($related_product) }}</span>
                                     </div>
                                     <!--<div class="rating rating-sm mt-1">-->
                                     <!--    {{ renderStarRating($related_product->rating) }}-->
@@ -849,10 +847,23 @@
                                     @if (addon_is_activated('club_point'))
                                     <div class="rounded px-2 mt-2 bg-soft-primary border-soft-primary border">
                                         {{ translate('Club Point') }}:
-                                        <span class="fw-700 float-right">{{ $related_product->earn_point }}</span>
+                                        <span class="fw-900 green_color fs-20 float-right">{{ $related_product->earn_point }}</span>
                                     </div>
                                     @endif
                                 </div>
+                                </div>
+
+                                   <div class="col-md-2 col-2 d-lg-block d-none">
+<div class="arrow_area">
+      <a href="{{ route('product', $related_product->slug) }}" class="d-block text-reset fs-16 green_color"><img src="{{ static_asset('assets/img/green_arrow_left.svg') }}" /></a>
+   </div>
+    </div>
+
+
+                                </div>
+
+
+
                             </div>
                         </div>
                         @endforeach

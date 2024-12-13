@@ -63,7 +63,7 @@
 
     <div class="row align-items-center">
 
-    <div class="col-md-8 p-md-3 p-2 bg-white">
+    <div class="col-md-10 col-10 p-md-3 p-2 bg-white pl-2">
         
          <div class="text-center display_none">
             <a hrer="#" onclick="addToWishList({{ $product->id }})" data-toggle="tooltip" data-title="{{ translate('Add to wishlist') }}" data-placement="left">
@@ -78,7 +78,7 @@
         </div>
         
         
-        <h3 class="fw-600 fs-14 text-truncate-2 lh-1-6 mb-1 leter_space">
+        <h3 class="fw-600 fs-14 text-truncate-2 lh-1-6 mb-lg-1 mb-0 leter_space pl-2">
             <a href="{{ $product_url }}" class="d-block text-reset fs-16 green_color">{{ ucwords($product->getTranslation('name')) }}</a>
             <!--<a href="{{ $product_url }}" class="d-block text-reset">{{  $product->getTranslation('name')  }}</a>-->
         </h3>
@@ -89,9 +89,9 @@
             </div>
         @endif
         
-        <div class="fs-20 mt-1">
+        <div class="fs-20 mobile-16 mt-lg-1 mt-0 pl-2">
             <!--<span class="fw-700">{{ home_discounted_base_price($product) }}</span>-->
-            <span class="fw-900 fs-20 green_color">{{ home_discounted_price($product) }}</span> <!-- simple as well as varaint price (from / to) -->
+            <span class="fw-900 mobile-16 fs-20 green_color">{{ home_discounted_price($product) }}</span> <!-- simple as well as varaint price (from / to) -->
             @if(home_base_price($product) != home_discounted_base_price($product))
                 <del class="fw-600 fs-14 opacity-60 ml-2">{{ home_base_price($product) }}</del>
             <span class="text-center mx-1 discount_off"><span class="fs-14 fw-600 box" style="color:#f00;">&nbsp;{{discount_in_percentage($product)}}% Off</span></span>
@@ -106,13 +106,13 @@
         @if (addon_is_activated('club_point'))
             <div class="rounded px-2 mt-2 bg-soft-primary border-soft-primary border">
                 {{ translate('Club Point') }}:
-                <span class="fw-900 float-right green_color fs-20">{{ $product->earn_point }}</span>
+                <span class=" float-right fw-900 green_color fs-20">{{ $product->earn_point }}</span>
             </div>
         @endif
     </div>
 
 
-    <div class="col-md-4">
+    <div class="col-md-2 col-2 d-lg-block d-none">
 <div class="arrow_area">
       <a href="{{ $product_url }}" class="d-block text-reset fs-16 green_color"><img src="{{ static_asset('assets/img/green_arrow_left.svg') }}" /></a>
    </div>

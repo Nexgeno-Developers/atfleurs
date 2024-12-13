@@ -289,7 +289,7 @@
             <div class="row justify-content-center">
                 <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 d-flex justify-content-center second-coloum-of-GET-IN-TOUCH">
 
-                    <h2 class="heading_font1" ><b>Our Contacts</b><br></h2>
+                     <h4 class="heading_one heading_font1 green_color text-capitalize text-left">Our<span class="yellow_color"> Contacts</span></h4>
                     <div class="row">
                         <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 img-align col-2">
                             <i class="fa-solid fa-location-dot"></i>
@@ -336,7 +336,7 @@
                     </div>
 
                 </div>
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12  d-flex justify-content-center ">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pl-md-5 d-flex justify-content-center ">
 
 
                     <div class="container">
@@ -345,7 +345,7 @@
                             <form action="{{ url('/email') }}" method="POST" class="">
                             <!--<form action="{{ route('custom-pages.sendemail') }}" method="POST" class="">-->
                                 @csrf
-                                <h2 class="heading_font1 pb-1" >Request A Quote</h2>
+                                <h4 class="heading_one heading_font1 green_color text-capitalize text-left">Request A <span class="yellow_color"> Quote</span></h4>
                                
                                     <div class="row">
                                             <div class="col-md-6 mt-3">

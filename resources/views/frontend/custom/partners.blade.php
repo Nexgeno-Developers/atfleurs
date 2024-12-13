@@ -5,7 +5,7 @@
 <style>
 
 .balsamiq_font{
-    background: #e18a1424
+    background: #fff
 }
 .partner_heading {
   display: flex;

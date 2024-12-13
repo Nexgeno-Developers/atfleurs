@@ -12,7 +12,8 @@
              
              
              <div class="col-lg-6 about-fleurs">
-                  <h4 class="heading_font1 pt-lg-0 pt-4 pb-3" >About Us</h4>
+
+                  <h4 class="heading_one heading_font1 green_color text-capitalize text-left">About<span class="yellow_color"> Us</span></h4>
                   <p> 
                     Floral greetings from At Fleurs, a boutique flower studio in suburban Mumbai! 
 

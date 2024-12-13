@@ -31,11 +31,11 @@
 
 @section('content')
 
-<section class="pt-4 mb-4">
+<section class="pt-4 mb-lg-0 mt-4">
     <div class="container text-center">
-        <div class="row">
+        <div class="row align-items-center">
             <div class="col-lg-6 text-center text-lg-left">
-                <h1 class="fw-600 h4">{{ $page->getTranslation('title') }}</h1>
+                <h4 class="heading_one heading_font1 green_color text-capitalize text-left"> {{ $page->getTranslation('title') }}</h4>
             </div>
             <div class="col-lg-6">
                 <ul class="breadcrumb bg-transparent p-0 justify-content-center justify-content-lg-end">

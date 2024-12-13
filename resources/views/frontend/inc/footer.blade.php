@@ -62,19 +62,19 @@
                      <ul class="list-inline my-3 my-md-0 text-left">
                     
                     <li class="list-inline-item">
-                        <a href="https://www.facebook.com/atfleurs" aria-label="Facebook Link" target="_blank" class="facebook"><i class="fa fa-facebook class="text-white""></i></a>
+                        <a href="https://www.facebook.com/atfleurs" aria-label="Facebook Link" target="_blank" class="facebook"><i class="fa fa-facebook text-white" class=""></i></a>
                     </li>
                     
                     <li class="list-inline-item">
-                        <a href="https://instagram.com/atfleurs?igshid=MzNlNGNkZWQ4Mg==" aria-label="Instagram Link" target="_blank" class="instagram class="text-white""><i class="fa fa-instagram"></i></a>
+                        <a href="https://instagram.com/atfleurs?igshid=MzNlNGNkZWQ4Mg==" aria-label="Instagram Link" target="_blank" class="instagram "><i class="fa fa-instagram text-white"></i></a>
                     </li>
                     
                     <li class="list-inline-item">
-                        <a href="https://x.com/Atfleurss" aria-label="Twitter X Link" target="_blank" class="twitter-x"><i class="fa fa-x-twitter class="text-white""></i></a>
+                        <a href="https://x.com/Atfleurss" aria-label="Twitter X Link" target="_blank" class="twitter-x"><i class="fa fa-x-twitter text-white"></i></a>
                     </li>
 
                     <li class="list-inline-item">
-                        <a href="https://www.linkedin.com/in/at-fleurs-39749b273/" aria-label="Linkedin Link" target="_blank" class="linkedin class="text-white""><i class="fa fa-linkedin"></i></a>
+                        <a href="https://www.linkedin.com/in/at-fleurs-39749b273/" aria-label="Linkedin Link" target="_blank" class="linkedin "><i class="fa fa-linkedin text-white"></i></a>
                     </li>
                     
                     
@@ -195,7 +195,7 @@
                          <li class="mb-2"><a href="/faq" class="text-white hov-opacity-100 text-reset">FAQs</a></li>
                          <li class="mb-2"><a href="/terms" class="text-white hov-opacity-100 text-reset">Terms & Conditions </a></li>  
                        
-                         <li class="mb-2"><a href="https://atfleurs.com/return-policy" class="text-white hov-opacity-100 text-reset">Returns & Refunds</a></li> 
+                         <li class="mb-2"><a href="/return-policy" class="text-white hov-opacity-100 text-reset">Returns & Refunds</a></li> 
                          <li class="mb-2"><a href="/privacy-policy" class="text-white hov-opacity-100 text-reset">Privacy Policy</a></li>
                          
                     </ul>
@@ -205,20 +205,20 @@
 
             <div class="col-lg-3  col-md-3">
         <div class="newsletter_box">
-        <div class="row col-md-12 col-12">
-             <div class="col-lg-12">
+        <div class="row">
+             <div class="col-lg-12 pl-0">
                <h4 class="footer_headings pb-2">Unlock 10% off </h4>
                <p>Your first order when you sign up to
 our newsletter</p>
             </div>
                 <form class="form-inline" method="POST" action="{{ route('subscribers.store') }}">
                 @csrf
-                <div class="col-md-9 pr-0">
+                <div class="col-md-8 pr-0 pl-0">
                 <div class="form-group mb-0">
                 <input type="email" class="form-control" placeholder="{{ translate('Your Email here...') }}" name="email" required>
                 </div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-4 pl-md-2">
                     <button type="submit" class="btn btn-primary">
                     {{ translate('Subscribe') }}
                     </button>
@@ -367,51 +367,38 @@ our newsletter</p>
        
 
      
-        <div class="border-top-dark pt-4 mt-4 footer_location">
+	 <div class="row">
 
-           <div class="footer_nav">
+     <div class="col-md-12">
+        <div class="border-top-dark mt-3"></div>
+     </div>
+
+    @if ( get_setting('header_menu_labels') !=  null )
+        <div class="col-md-12 footer_location">
+           <div class="footer_nav pt-2 pb-2">
             <ul class="list-inline mb-0 pl-0 mobile-hor-swipe text-center">
-                                        <li class="list-inline-item mr-0">
-                        <a href="/category/birthday-flower-bouquet-mumbai" class=" fs-14 px-4 text-uppercase py-2 d-inline-block fw-400 hov-opacity-100 text-reset">
-                            Birthday
+                                        @foreach (json_decode( get_setting('header_menu_labels'), true) as $key => $value)
+                    <li class="list-inline-item mr-0">
+                        <a href="{{ json_decode( get_setting('header_menu_links'), true)[$key] }}" class="opacity-90 fs-14 px-4 text-uppercase py-2 d-inline-block fw-500 hov-opacity-100 text-reset">
+                            {{ translate($value) }}
                         </a>
                     </li>
-                                        <li class="list-inline-item mr-0">
-                        <a href="/category/anniversary-flower-bouquet-mumbai" class="fs-14 px-4 text-uppercase py-2 d-inline-block fw-400 hov-opacity-100 text-reset">
-                            Anniversary
-                        </a>
-                    </li>
-                                        <li class="list-inline-item mr-0">
-                        <a href="/category/special-occasions-flowers-mumbai" class="fs-14 px-4 text-uppercase py-2 d-inline-block fw-400 hov-opacity-100 text-reset">
-                            Special Occasions
-                        </a>
-                    </li>
-                                        <li class="list-inline-item mr-0">
-                        <a href="/category/artificial-flower-bouquet-mumbai" class="fs-14 px-4 text-uppercase py-2 d-inline-block fw-400 hov-opacity-100 text-reset">
-                            Artificial
-                        </a>
-                    </li>
-                                        <li class="list-inline-item mr-0">
-                        <a href="/category/subscription-products" class="fs-14 px-4 text-uppercase py-2 d-inline-block fw-400 hov-opacity-100 text-reset">
-                            Subscriptions
-                        </a>
-                    </li>
-                                        <li class="list-inline-item mr-0">
-                        <a href="/category/offers" class="fs-14 px-4 text-uppercase py-2 d-inline-block fw-400 hov-opacity-100 text-reset">
-                            Offers
-                        </a>
-                    </li>
-                                        <li class="list-inline-item mr-0">
-                        <a href="#" class=" fs-14 px-4 text-uppercase py-2 d-inline-block fw-400 hov-opacity-100 text-reset">
-                            Flowers
-                        </a>
-                    </li>
+                    @endforeach
                                     </ul>
         </div>
+		
+		</div>
+
+        @endif
+
+         <div class="col-md-12">
+        <div class="border-top-dark"></div>
+     </div>
 
 
-            <h5 class="footer_headings mt-4 pb-2">Mumbai Location</h5>
-            <ul class="list-group list-group-horizontal">
+        <div class="col-md-12"><h5 class="footer_headings mt-4 pb-2">Mumbai Location</h5></div>
+        <div class="col-md-3 col-6">
+<ul class="list-group list-group-horizontal list-style-footer">
                 <li class="list-group-item text-white">Florist in Churchgate</li>
                 <li class="list-group-item text-white">Florist in Mumbai Central</li>
                 <li class="list-group-item text-white">Florist in Marine Lines</li>
@@ -421,6 +408,12 @@ our newsletter</p>
                 <li class="list-group-item text-white">Florist in Fort</li>
                 <li class="list-group-item text-white">Florist in Malhabar Hills</li>
                 <li class="list-group-item text-white">Florist in Breach Candy</li>
+                
+            </ul>
+        </div>
+
+         <div class="col-md-3 col-6">
+<ul class="list-group list-group-horizontal list-style-footer">
                 <li class="list-group-item text-white">Florist in Mahalaxmi</li>
                 <li class="list-group-item text-white">Florist in Lower Parel</li>
                 <li class="list-group-item text-white">Florist in Matunga Road</li>
@@ -430,6 +423,12 @@ our newsletter</p>
                 <li class="list-group-item text-white">Florist in Borivali</li>
                 <li class="list-group-item text-white">Florist in Khar</li>
                 <li class="list-group-item text-white">Florist in Santacruz</li>
+                
+            </ul>
+        </div>
+
+         <div class="col-md-3 col-6">
+<ul class="list-group list-group-horizontal list-style-footer">
                 <li class="list-group-item text-white">Florist in Vile Parle</li>
                 <li class="list-group-item text-white">Florist in Jogeshwari</li>
                 <li class="list-group-item text-white">Florist in Ram Mandir</li>
@@ -439,13 +438,23 @@ our newsletter</p>
                 <li class="list-group-item text-white">Florist in Hiranandani Powai</li>
                 <li class="list-group-item text-white">Florist in Lokhandwala</li>
                 <li class="list-group-item text-white">Florist in Versova</li>
-                <li class="list-group-item text-white">Florist in Juhu</li>
+                
+            </ul>
+        </div>
+
+         <div class="col-md-3 col-6">
+<ul class="list-group list-group-horizontal list-style-footer">
+               <li class="list-group-item text-white">Florist in Juhu</li>
                 <li class="list-group-item text-white">Florist in Worli</li>
                 <li class="list-group-item text-white">Florist in Sakinaka</li>
                 <li class="list-group-item text-white">Florist in Marol</li>
                 <li class="list-group-item text-white">Florist in Shivaji Park Dadar West</li>
             </ul>
+        </div>
+            
+            
 
+        </div>
         </div>
         
     </div>
@@ -563,7 +572,7 @@ our newsletter</p>
             </a>
         @endif
         </div>
-    </div>
+    </div> 
 </div>
 @if (Auth::check() && !isAdmin())
     <div class="aiz-mobile-side-nav collapse-sidebar-wrap sidebar-xl d-xl-none z-1035">

@@ -3,7 +3,7 @@
 @section('content')
 <style>
 .balsamiq_font{
-    background: #e18a1424
+    background: #fff
 }
 .services_heading {
   display: flex;
@@ -56,7 +56,6 @@ flex-direction: column;
 }
 
 .textContainer {
-   
     margin-top: 2rem;
 }
 }
@@ -67,14 +66,15 @@ flex-direction: column;
       <div class="container">
         <div class="row px-3 px-md-5">
           <div class="col-12 services_heading">
-            <div class="mb-4  align-items-baseline text-center">
+            <div class="align-items-baseline text-center">
                    
-                 <h3 class="h2 fw-700 mb-0 heading_font1">
-                 <span class="border-bottom border-primary border-width-2 pb-2 d-inline-block">Our Services</span>
-                 </h3>
+
+                 <h4 class="heading_one heading_font1 green_color text-capitalize text-left">Our<span class="yellow_color"> Services</span></h4>
+
+
                 </div>
           </div>
-          <div class="row services_items">
+          <div class="row services_items mt-lg-4">
             <div class="col-md-5 order-md-1 order-2 textContainer">
               <h3 class="title heading_font1">Online Ordering</h3>
               <p class="desc">

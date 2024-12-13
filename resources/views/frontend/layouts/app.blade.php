@@ -1056,34 +1056,11 @@ jQuery(document).ready(function($){
 
 
  <script>
-
 $(document).ready(function () {
   const $slider = $('.slick-banner-mian');
-  const $currentSlide = $('.current-slide');
-  const $totalSlides = $('.total-slides');
-  const $paginationLine = $('.pagination-line');
+  const $paginationItems = $('.pagination li');
 
-  $slider.on('init', function (event, slick) {
-    // Set the total number of slides
-    $totalSlides.text(slick.slideCount.toString().padStart(2, '0'));
-
-    // Set the initial current slide
-    $currentSlide.text((slick.currentSlide + 1).toString().padStart(2, '0'));
-
-    // Highlight the active pagination line
-    $paginationLine.removeClass('active');
-    $paginationLine.eq(slick.currentSlide).addClass('active');
-  });
-
-  $slider.on('afterChange', function (event, slick, currentSlide) {
-    // Update the current slide number
-    $currentSlide.text((currentSlide + 1).toString().padStart(2, '0'));
-
-    // Highlight the active pagination line
-    $paginationLine.removeClass('active');
-    $paginationLine.eq(currentSlide).addClass('active');
-  });
-
+  // Initialize Slick slider
   $slider.slick({
     dots: false,
     arrows: false,
@@ -1095,16 +1072,27 @@ $(document).ready(function () {
     cssEase: 'linear',
   });
 
-  // Dynamically create pagination lines based on the number of slides
-  for (let i = 0; i < $slider.slick('getSlick').slideCount; i++) {
-    $('.custom-pagination').append('<div class="pagination-line"></div>');
-  }
+  // Update active state in pagination on slide change
+  $slider.on('afterChange', function (event, slick, currentSlide) {
+    $paginationItems.removeClass('active');
+    $paginationItems.eq(currentSlide).addClass('active');
+  });
+
+  // Navigate slides on pagination click
+  $paginationItems.on('click', function () {
+    const slideIndex = $(this).data('slide');
+    $slider.slick('slickGoTo', slideIndex);
+  });
+
+  // Trigger init manually for proper first-state pagination
+  $slider.slick('slickSetOption', 'init', true, true);
 });
 
 jQuery(document).ready(function($) {
         		"use strict";
         		//  TESTIMONIALS CAROUSEL HOOK
 		        $('#customers-testimonials').owlCarousel({
+                    stagePadding: 150,
 		            loop: true,
 		            center: true,
 		            items: 3,
@@ -1115,7 +1103,8 @@ jQuery(document).ready(function($) {
 		            smartSpeed: 450,
 		            responsive: {
 		              0: {
-		                items: 1
+		                items: 1,
+                        stagePadding: 10
 		              },
 		              768: {
 		                items: 2

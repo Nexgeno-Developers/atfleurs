@@ -9,7 +9,7 @@
 </div>
 @endif
 <!-- Top Bar -->
-<div class="top-navbar bg-white border-bottom border-soft-secondary z-1035 h-35px h-sm-auto balsamiq_font">
+<div class="top-navbar bg-white z-1035 h-35px h-sm-auto balsamiq_font">
     <div class="container">
         <div class="row">
             <div class="col-lg-7 col">
@@ -46,7 +46,7 @@
 <div class="top_br greenbg">
     <div class="container">
         <div class="row">
-        <div class="col-lg-3">
+        <div class="col-lg-3 d-lg-block d-none">
            <div class="social_icons">
                     
                    
@@ -90,9 +90,9 @@
             </div> -->
 
 
-            <div class="col-md-6">
+            <div class="col-md-6 col-12">
                 <div class="top_news">
-                    <p class="text-center mb-0 pb-0 fs-12 top_baar_color pt-1">Free domestic shipping on orders over <span class="text-white">$75,</span> and international orders over <span class="text-white">$195,</span></p>
+                    <p class="text-center mb-0 pb-0 fs-12 top_baar_color pt-1">Free domestic shipping on orders over <span class="text-white">₹ 75,</span> </p>
                 </div>
             </div>
 
@@ -104,7 +104,7 @@
 </div>
       
 <header class="@if(get_setting('header_stikcy') == 'on') sticky-top @endif z-1020 ">
-    <div class="position-relative logo-bar-area z-1">
+    <div class="position-relative logo-bar-area z-1 py-1">
         <div class="container">
             <div class="d-flex align-items-center justify-content-between">
     
@@ -113,17 +113,17 @@
                      @include('frontend.partials.mega_menu_nav')
                 </div>
      
-                <div class="col-md-4 col-4 pl-0">
+                <div class="col-md-4 col-4 pl-0 d-lg-block d-none">
                     <ul class="list-inline mb-0 h-100 d-flex">
                   
                         <li class="list-inline-item">
-                            <a href="" class="text-reset d-inline-block py-2 px-2"> BOUQUETS</a>
+                            <a href="/category/flower-bouquets-mumbai" class="text-reset d-inline-block py-2 px-2"> BOUQUETS</a>
                         </li>
                         <li class="list-inline-item">
-                            <a href="" class="text-reset d-inline-block py-2 px-2"> ARRANGEMENTS</a>
+                            <a href="/category/floral-arrangements-events-mumbai" class="text-reset d-inline-block py-2 px-2"> ARRANGEMENTS</a>
                         </li>
                         <li class="list-inline-item">
-                            <a href="" class="text-reset d-inline-block py-2 px-2"> GIFTS</a>
+                            <a href="/category/gifts-hampers-mumbai" class="text-reset d-inline-block py-2 px-2"> GIFTS</a>
                         </li>
                  
                 </ul>
@@ -155,11 +155,11 @@
     
              
 
-                <!-- <div class="col-auto col-xl-6 pl-0 flex-grow-1 front-header-search d-flex align-items-center bg-white serch_box">
+                <div class="col-auto col-xl-12 pl-0 flex-grow-1 front-header-search d-flex align-items-center bg-white serch_box">
                     <div class="position-relative flex-grow-1">
                         <form action="{{ route('search') }}" method="GET" class="stop-propagation">
                             <div class="d-flex position-relative align-items-center">
-                                <div class="d-lg-none" data-toggle="class-toggle" data-target=".front-header-search">
+                                <div class="" data-toggle="class-toggle" data-target=".front-header-search">
                                     <button aria-labelledby="search" class="btn px-2" type="button"><i class="la la-2x la-long-arrow-left"></i></button>
                                 </div>
                                 <div class="input-group">
@@ -186,14 +186,16 @@
                             </div>
                         </div>
                     </div>
-                </div> -->
+                </div>
                
-                <div class="col-md-4">
+
+
+                <div class="col-md-4 pr-md-3 pr-0">
                     <div class="serach_mobile d-flex">
-                     <button class="p-2 d-block text-reset" aria-labelledby="search" data-toggle="class-toggle" data-target=".front-header-search" style="background: transparent; border: 0;">
+                     <button class="p-md-2 p-0 d-block text-reset" aria-labelledby="search" data-toggle="class-toggle" data-target=".front-header-search" style="background: transparent; border: 0;">
                         <i class="las la-search la-flip-horizontal la-2x"></i>
                     </button>
-                     <div class="p-2 nav-cart-box dropdown h-100" id="cart_items">
+                     <div class="p-2 nav-cart-box dropdown h-100 d-lg-block d-none" id="cart_items">
                         @include('frontend.partials.cart')
                     </div>
                       <!-- Wishlist -->
@@ -204,7 +206,7 @@
                         </div>
 
 
-                        <div class="login_panel_1">
+                        <div class="login_panel_1 d-lg-block d-none">
                             <ul class="list-inline mb-0 h-100 d-flex align-items-center">
                   
                     @auth

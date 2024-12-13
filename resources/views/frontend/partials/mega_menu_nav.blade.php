@@ -68,7 +68,7 @@
   </div>
 </div>
 <!--No sideNav-->
-<div onclick="openNav()" class="menu_icons menu-360"><img src="{{ static_asset('assets/img/nav_menu_icons.svg ') }}" /> </div>
+<div onclick="openNav()" class="menu_icons menu-360">   <img src="{{ static_asset('assets/img/nav_menu_icons.svg ') }}" /> </div>
 <div id="whole-flex">
     
 </div>
