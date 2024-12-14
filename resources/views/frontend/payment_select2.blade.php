@@ -980,9 +980,9 @@
                                                                         <input value="razorpay" class="online_payment"
                                                                             type="radio" name="payment_option">
                                                                         <span class="d-block aiz-megabox-elem p-2">
-                                                                            <img src="{{ static_asset('assets/img/cards/rozarpay.png') }}"
+                                                                            <img src="{{ static_asset('assets/img/cards/razorpay.png') }}"
                                                                                 class="img-fluid mb-2 w-110">
-                                                                            <span class="d-block text-center">
+                                                                            <span class="d-block text-center">  
                                                                                 <span
                                                                                     class="d-block fw-600 fs-15">{{ translate('Razorpay') }}</span>
                                                                             </span>
