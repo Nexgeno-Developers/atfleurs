@@ -128,7 +128,7 @@ Our skilled team of passionate floral designers create exquisite arrangements wi
                 <h4 class="heading_one1 heading_font1 yellow_color text-capitalize text-center pb-md-3 pb-0">Elegant Blooms, <span class="green_color d-lg-block">Artfully Curated for</span>Unique <span class="green_color">Moments</span></h4>
                 <p class="text-center body_text_vw width_70 mx-auto">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,</p>
                 <div class="text-center button_effects mt-md-5 mt-4">
-                <a class="green_color fs-bold" href="#">Discover More <i class="fa-solid fa-arrow-right"></i></a>
+                <a class="green_color fs-bold" href="/category/artificial-flower-bouquet-mumbai">Discover More <i class="fa-solid fa-arrow-right"></i></a>
                </div>
            </div>
 
