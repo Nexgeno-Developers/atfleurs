@@ -875,7 +875,7 @@ your feelings</h3>
            
                     
       </div>
-      <div class="row gutters-10">
+      <div class="row p-md-3">
 
       <div id="blog-slick-slider" class="owl-carousel">
         @php DB::table('blogs')->orderBy('created_at', 'desc')->limit(4)->get(); @endphp
