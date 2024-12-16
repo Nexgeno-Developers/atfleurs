@@ -193,7 +193,7 @@ Our skilled team of passionate floral designers create exquisite arrangements wi
                                                 <span class="yellow_color">the</span> season
                                             </h4>
                                             <div class="mt-5 reversebg_btn">
-                                                <a class="green_color fs-bold" href="#">
+                                                <a class="green_color fs-bold" href="/category/seasonal-flowers">
                                                     Discover More <i class="fa-solid fa-arrow-right"></i>
                                                 </a>
                                             </div>
@@ -212,7 +212,7 @@ Our skilled team of passionate floral designers create exquisite arrangements wi
                                                 <span class="yellow_color">the</span> season
                                             </h4>
                                             <div class="mt-lg-5 mt-4 reversebg_btn">
-                                                <a class="green_color fs-bold" href="#">
+                                                <a class="green_color fs-bold" href="/category/seasonal-flowers">
                                                     Discover More <i class="fa-solid fa-arrow-right"></i>
                                                 </a>
                                             </div>
