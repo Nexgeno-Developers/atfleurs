@@ -59,7 +59,7 @@
 
         <div class="bg-white">
             <div class="row">
-                <div class="col-xl-5 col-lg-6 mb-4">
+                <div class="col-xl-6 col-lg-6 mb-4">
                     <div class="sticky-top z-3 row gutters-10">
                         @php
                         $photos = explode(',', $detailedProduct->photos);
@@ -87,13 +87,13 @@
                                 @endforeach
                             </div>
                         </div>
-                        <div class="col-12 col-md-auto w-md-80px order-2 order-md-1 mt-3 mt-md-0">
+                        <div class="col-12 col-md-auto w-md-140px order-2 order-md-1 mt-3 mt-md-0">
                             <div class="aiz-carousel product-gallery-thumb" data-items='5'
                                 data-nav-for='.product-gallery' data-vertical='true' data-vertical-sm='false'
                                 data-focus-select='true' data-arrows='true'>
                                 @foreach ($photos as $key => $photo)
                                 <div class="carousel-box c-pointer border p-1 rounded">
-                                    <img class="lazyload mw-100 size-50px mx-auto"
+                                    <img class="lazyload mw-160 size-100px mx-auto"
                                         src="{{ static_asset('assets/img/placeholder.jpg') }}"
                                         data-src="{{ uploaded_asset($photo) }}"
                                         onerror="this.onerror=null;this.src='{{ static_asset('assets/img/placeholder.jpg') }}';">
@@ -103,7 +103,7 @@
                                 @if ($stock->image != null)
                                 <div class="carousel-box c-pointer border p-1 rounded"
                                     data-variation="{{ $stock->variant }}">
-                                    <img class="lazyload mw-100 size-50px mx-auto"
+                                    <img class="lazyload mw-160 size-80px mx-auto"
                                         src="{{ static_asset('assets/img/placeholder.jpg') }}"
                                         data-src="{{ uploaded_asset($stock->image) }}"
                                         onerror="this.onerror=null;this.src='{{ static_asset('assets/img/placeholder.jpg') }}';">
@@ -115,8 +115,8 @@
                     </div>
                 </div>
 
-                <div class="col-xl-7 col-lg-6">
-                    <div class="text-left">
+                <div class="col-xl-6 col-lg-6">
+                    <div class="text-left pl-md-2">
                         <h1 class="mb-2 dthead product-dt-head heading_font1  green_color ">
                             {{ $detailedProduct->getTranslation('name') }}
                         </h1>
@@ -476,7 +476,7 @@
                         $refund_sticker = get_setting('refund_sticker');
                         @endphp
                         @if (addon_is_activated('refund_request'))
-                        <div class="row no-gutters mt-2 d">
+                        <div class="row no-gutters mt-3">
 
 
 

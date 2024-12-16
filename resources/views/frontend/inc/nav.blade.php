@@ -46,8 +46,8 @@
 <div class="top_br greenbg">
     <div class="container">
         <div class="row">
-        <div class="col-lg-3 d-lg-block d-none">
-           <div class="social_icons">
+        <div class="col-lg-12 d-lg-block d-none">
+           <div class="social_icons float-right">
                     
                    
                      <ul class="list-inline">
@@ -90,7 +90,7 @@
             </div> -->
 
 
-            <div class="col-md-6 col-12">
+            <!-- <div class="col-md-6 col-12">
                 <div class="top_news">
                     <p class="text-center mb-0 pb-0 fs-12 top_baar_color pt-1">Free domestic shipping on orders over <span class="text-white">₹ 75,</span> </p>
                 </div>
@@ -98,7 +98,7 @@
 
              <div class="col-md-3">
                
-            </div>
+            </div> -->
         </div>
     </div>
 </div>

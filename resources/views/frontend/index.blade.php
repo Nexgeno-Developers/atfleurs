@@ -144,7 +144,7 @@ Our skilled team of passionate floral designers create exquisite arrangements wi
 
      <div class="product_category shop_collection pt-xl-6 pt-lg-6 pt-md-6 pt-5 pb-5 ">
     <div class="container">
-        <h4 class="heading_one heading_font1 green_color text-capitalize text-center pb-md-3">
+        <h4 class="heading_one heading_font1 green_color text-capitalize text-center pb-md-2 mb-md-0">
             Discover our <span class="yellow_color">exquisite array</span>
         </h4>
         <div class="row gutters-10 position-relative">
@@ -453,7 +453,7 @@ Our skilled team of passionate floral designers create exquisite arrangements wi
         </div>
 </section>
 
-<section class="elegant_blooms_sec">
+<section class="elegant_blooms_sec pb-md-4">
         <div class="row align-items-center">
             <div class="col-md-6 pt-md-0 pt-5 pb-md-0 pb-5 order-md-1 order-2">
                 <div class="mx-auto text-center mb-3">
@@ -728,7 +728,7 @@ your feelings</h3>
 
 
 <!-- TESTIMONIALS -->
-<section class="testimonials">
+<section class="testimonials pt-md-4">
                          <h4 class="heading_one heading_font1 green_color text-capitalize text-center pb-3"> Our <span class="yellow_color">Testimonials</span></h4>
            
                     
@@ -871,11 +871,11 @@ your feelings</h3>
    <div class="container">
       <div class="mb-4 pt-2 text-center position_relative align-items-baseline">
        
-          <h4 class="heading_one heading_font1 green_color text-capitalize text-center pb-3"> Latest <span class="yellow_color">News & Blog</span></h4>
+          <h4 class="heading_one heading_font1 green_color text-capitalize text-center"> Latest <span class="yellow_color">News & Blog</span></h4>
            
                     
       </div>
-      <div class="row p-md-3 px-1">
+      <div class="row px-md-3 px-1">
 
       <div id="blog-slick-slider" class="owl-carousel">
         @php DB::table('blogs')->orderBy('created_at', 'desc')->limit(4)->get(); @endphp
@@ -895,7 +895,7 @@ your feelings</h3>
                </div>
                <div class="blog_content">
 
-                  <div class="row justify-content-between">
+                  <!-- <div class="row justify-content-between">
                     <div class="col-md-6 col-6">
                         <div class="date_section d-flex align-items-center">
                             <img src="{{ static_asset('assets/img/calender_icons.svg') }}" />
@@ -908,9 +908,9 @@ your feelings</h3>
                             <p class="mb-0 pb-0 pl-2 pt-1 fs-13">Aryan Gupta</p>
                         </div>
                     </div>
-                  </div>
+                  </div> -->
 
-                  <h4 class="green_color pt-3">{{ $blog->title }}</h4>
+                  <a aria-label="Read More About Blog" href="{{ url("blog").'/'. $blog->slug }}"> <h4 class="green_color pt-3">{{ $blog->title }}</h4></a>
                   <p class="two-lines mt-md-3 mb-3 text-left">{{ $blog->short_description }}</p>
                   <a aria-label="Read More About Blog" class="green_color" href="{{ url("blog").'/'. $blog->slug }}"><b><u>Read More</u></b></a>
                </div>
