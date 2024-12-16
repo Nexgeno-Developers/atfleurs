@@ -876,9 +876,11 @@ your feelings</h3>
                     
       </div>
       <div class="row gutters-10">
+
+      <div id="blog-slick-slider" class="owl-carousel">
         @php DB::table('blogs')->orderBy('created_at', 'desc')->limit(4)->get(); @endphp
         @foreach($blogs as $blog)          
-         <div class="col-md-3">
+         <div class="item">
             <div class="blog_box">
                <div class="blog_img">
                   <a aria-label="Read More About Blog" href="{{ url("blog").'/'. $blog->slug }}">
@@ -909,12 +911,13 @@ your feelings</h3>
                   </div>
 
                   <h4 class="green_color pt-3">{{ $blog->title }}</h4>
-                  <p class="two-lines mt-3 mb-3">{{ $blog->short_description }}</p>
+                  <p class="two-lines mt-md-3 mb-3 text-left">{{ $blog->short_description }}</p>
                   <a aria-label="Read More About Blog" class="green_color" href="{{ url("blog").'/'. $blog->slug }}"><b><u>Read More</u></b></a>
                </div>
             </div>
          </div>
          @endforeach
+</div>
       </div>
    </div>
 </section>

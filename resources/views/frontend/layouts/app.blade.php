@@ -1116,6 +1116,37 @@ jQuery(document).ready(function($) {
 		        });
         	});
 
+
+
+jQuery(document).ready(function($) {
+        		"use strict";
+		        $('#blog-slick-slider').owlCarousel({
+		            loop: true,
+		            center: true,
+		            items: 4,
+		            margin: 20,
+		            autoplay: true,
+		            dots:false,
+		            autoplayTimeout: 8500,
+		            smartSpeed: 450,
+		            responsive: {
+		              0: {
+		                items: 1,
+                        stagePadding: 10
+		              },
+		              768: {
+		                items: 2
+		              },
+		              1170: {
+		                items: 4
+		              }
+		            }
+		        });
+        	});
+
+
+            
+
   </script>
 
 </body>

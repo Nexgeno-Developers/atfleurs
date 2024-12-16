@@ -299,25 +299,25 @@ our newsletter</p>
         </div>
             
         <!--categories and its sub-categories-->
-        <div class="text-left text-md-left border-top pt-3 mt-3 our_category d-none">
-            <h4 class="fs-20 text-white fw-600 pb-2 mb-1">Our Category</h4>
+        <div class="text-left text-md-left border-top-dark pt-3 mt-3 our_category">
+            <h5 class="footer_headings mt-4 pb-2">Our Category</h5>
             <ul class="list-unstyled">
                 
                 @php
                     $main_Catg = DB::table('categories')->where('parent_id', 0)->orderBy('id', 'asc')->get(['id', 'name', 'slug']);
                 @endphp
                 
-                <ul class="p-0">
+                <ul class="p-0 category_lisitngs">
                     @foreach($main_Catg as $row)
                         <li class="mb-2">
                             @php
                                 $sub_Catg = DB::table('categories')->where('parent_id', $row->id)->orderBy('id', 'asc')->get(['id', 'name', 'slug']);
                             @endphp
-                            <a href="/category/{{ $row->slug }}" class="text-white hov-opacity-100 text-reset">
+                            <a href="/category/{{ $row->slug }}" class="text-white opacity-90 hov-opacity-90 text-reset">
                                 <b>{{ ucfirst($row->name) }}{{ $sub_Catg->count() > 0 ? ':' : '' }}</b>
                             </a>
                             @foreach($sub_Catg as $item)
-                                <a href="/category/{{ $item->slug }}" class="text-white hov-opacity-100 text-reset">
+                                <a href="/category/{{ $item->slug }}" class="text-white hov-opacity-100 text-reset fw-200 fs-14">
                                     {{ ucfirst($item->name) }}
                                 </a>
                             @endforeach

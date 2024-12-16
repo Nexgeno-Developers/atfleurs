@@ -276,7 +276,7 @@ ul.social.colored [class*="google"] {
   background: transparent;
   padding: 9px 12px 9px 12px !important;
   margin-top: 0;
-  border: 1px solid #fff;
+  border: 1px solid #fff !important;
   border-radius: 50px;
 }
 
@@ -327,7 +327,7 @@ ul.social.colored [class*="google"] {
 .blog_section .blog_img {
   border-radius: 0px 0 0;
   margin-bottom: 20px;
-  height: 400px;
+  height: 330px;
 }
 
 .blog_section .card.mb-3.overflow-hidden {
@@ -960,7 +960,7 @@ div#section_best_selling .slick-slide {
 
 .blog_img img {
   width: 100%;
-  height: 400px;
+  height: 330px;
   object-fit: cover;
 }
 
@@ -1350,7 +1350,7 @@ a.read-color {
 
 .button_colors_1 {
   border: 0;
-  border-radius: 50px;
+  border-radius: 50px !important;
   padding: 10px 40px;
   color: #fff;
   font-size: 18px;
@@ -1361,7 +1361,11 @@ a.read-color {
 }
 
 .buy-now:hover {
-  background-color: #5C5C5C;
+  background-color: #5C5C5C !important;
+}
+
+[data-vertical=true] .slick-current .carousel-box {
+  border-color: #32534f !important;
 }
 
 .darkgray_bg:hover {
@@ -1770,9 +1774,9 @@ footer.pt-1.pb-1.pb-xl-0.bg-white.text-light.border-top.border-dark-900.balsamiq
 }
 
 .our_category ul li a:not(:first-child) {
-  border-right: 1px solid #000;
+  border-right: 1px solid #ffffff6b;
   padding-right: 8px;
-  margin-right: 6px;
+  margin-right: 10px;
 }
 
 .our_category ul li a:first-child {
@@ -1801,6 +1805,11 @@ footer.pt-1.pb-1.pb-xl-0.bg-white.text-light.border-top.border-dark-900.balsamiq
 .footer_location {
   width: 100%;
   text-wrap: nowrap;
+}
+
+body .blog_section .blog_img img {
+  width: 100% !important;
+  max-width: 100%;
 }
 
 @media(max-width:767px) {
@@ -2728,6 +2737,8 @@ table.table.aiz-table.mb-0.footable.footable-1.breakpoint-lg span.badge.badge-in
 
 .date_section img {
   width: 11px;
+  max-width: 11px !important;
+  margin: 0 !important;
 }
 
 .main_banner_slider .slick-slide {
@@ -2943,6 +2954,45 @@ button.slick-next.slick-arrow {
   color: #e1c259 !important;
 }
 
+.aiz-megabox>input:checked~.aiz-megabox-elem,
+.form-control:focus {
+  border-color: #32533d !important;
+}
+
+.btn-outline-success:hover,
+.btn-soft-success:hover,
+.btn-success {
+  background-color: #32533D !important;
+  border-color: #32533D !important;
+  color: #fff !important;
+}
+
+.btn-outline-success {
+  border-color: #32533d !important;
+  color: #32533d !important;
+}
+
+.hov-text-success:hover,
+.text-success {
+  color: #32533d !important;
+}
+
+.text-success {
+  color: #32533d !important;
+}
+
+.category_lisitngs {
+  margin-left: 2px !important;
+}
+
+.category_lisitngs li {
+  list-style: none;
+}
+
+#blog-slick-slider .owl-nav.disabled {
+  display: none !important;
+}
+
 /* mobile device css */
 
 @media(max-width:767px) {
@@ -3086,7 +3136,7 @@ button.slick-next.slick-arrow {
   }
 
   .custom-pagination {
-    top: 28.5%;
+    top: 45%;
   }
 
   .last_number_pegination {
@@ -3132,6 +3182,203 @@ button.slick-next.slick-arrow {
 
   .main_banner_slider {
     height: 260px !important;
+    overflow: hidden;
+  }
+
+  .mobile-16 {
+    font-size: 16px !important;
+
+  }
+}
+
+
+@media(min-width:768px) and (max-width:991px) {
+  .border_radius_ct img {
+    height: 400px !important;
+  }
+
+  body .arrow_category img {
+    width: 12px;
+    height: auto !important;
+  }
+
+  .category_content_sec {
+    position: absolute;
+    bottom: 18px;
+    left: 18px;
+    z-index: 99;
+    width: 100%;
+    text-align: center;
+  }
+
+  .blooms_video video {
+    width: 100%;
+    left: 0;
+  }
+
+  .width_70 {
+    width: 92%;
+  }
+
+  .arrow_category {
+    position: relative;
+    right: initial;
+    z-index: 999;
+    float: initial;
+    width: 30px;
+    height: 30px;
+    line-height: 27px;
+    border: 1px solid #fff;
+    border-radius: 50px;
+    text-align: center;
+    display: inline-block;
+    transition: 0.5s all;
+  }
+
+  #customers-testimonials .shadow-effect p {
+    font-size: 14px;
+    font-weight: 500;
+    text-align: left;
+  }
+
+  .shadow-effect {
+    background: #FCF8F0;
+    padding: 25px 20px 20px 20px;
+    border-radius: 0;
+    text-align: center;
+    height: auto;
+  }
+
+  .quote_icon img {
+    width: 50px;
+  }
+
+  .ocasssion_video .content {
+    position: absolute;
+    z-index: 1;
+    color: white;
+    text-align: left;
+    padding-left: 5.9vw;
+    width: 295px;
+    top: 17%;
+  }
+
+  .list-style-footer li {
+    line-height: 26px;
+    padding: 0;
+    padding-left: 0;
+  }
+
+  .footer_headings {
+    font-size: 16px !important;
+    font-weight: 600;
+  }
+
+  .social_icons i {
+    font-size: 18px;
+    margin-top: 0px;
+    color: #fff;
+    font-weight: 200;
+    padding-bottom: 20px;
+  }
+
+  .newsletter_box button.btn.btn-primary {
+    background: transparent;
+    padding: 9px 12px 9px 12px !important;
+    margin-top: 0;
+    border: 1px solid #fff;
+    border-radius: 50px;
+    width: 47%;
+    margin-top: 13px;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+  }
+
+  .blog_content h4 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #333;
+    line-height: 24px;
+  }
+
+  .main_banner_slider .slide {
+    height: 400px;
+  }
+
+  .main_banner_slider .slide-content h4 {
+    font-size: 22px;
+    line-height: 35px;
+    font-weight: 500;
+  }
+
+  .main_banner_slider .slide-content p {
+    font-size: 16px;
+    font-weight: 200;
+    margin: 5px 0px;
+  }
+
+  .main_banner_slider .slide-content {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: left;
+    width: 85%;
+  }
+
+  .pagination li::before {
+    height: 70px;
+  }
+
+  .custom-pagination {
+    top: 45%;
+  }
+
+  .last_number_pegination {
+    padding-top: 60px !important;
+  }
+
+  .button_effects a {
+    padding: 6px 13px;
+  }
+
+  .pagination li.active::before {
+    background-color: #fff;
+    width: 3px;
+    height: 30px;
+    margin-left: 0.1px;
+  }
+
+  .pagination li:nth-child(3).active::before {
+    top: 3px;
+  }
+
+  .pagination li:nth-child(4).active::before {
+    top: 17px;
+  }
+
+  .pagination li:nth-child(5).active::before {
+    top: 31px;
+  }
+
+  .category_boxex_action.w-100 {
+    padding-top: 35px;
+    padding-bottom: 45px;
+  }
+
+  .reversebg_btn a {
+    padding: 6px 13px;
+  }
+
+  .ctg_head {
+    font-size: 18px !important;
+    text-align: left !important;
+  }
+
+  .main_banner_slider {
+    height: 400px !important;
     overflow: hidden;
   }
 
