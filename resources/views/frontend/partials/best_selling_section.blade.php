@@ -7,7 +7,7 @@
 @if (get_setting('best_selling') == 1)
     <section class="section-padding">
         <div class="container">
-            <div class="px-2 rounded hadow-sm rounded">
+            <div class="px-md-2 rounded hadow-sm rounded">
                 <div class="mb-4 pt-5 align-items-baseline text-center">
                    
                          <h4 class="heading_one heading_font1 green_color text-capitalize text-center">Best <span class="yellow_color">Selling</span></h4>

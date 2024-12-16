@@ -1104,7 +1104,7 @@ jQuery(document).ready(function($) {
 		            responsive: {
 		              0: {
 		                items: 1,
-                        stagePadding: 10
+                        stagePadding: 20
 		              },
 		              768: {
 		                items: 2
