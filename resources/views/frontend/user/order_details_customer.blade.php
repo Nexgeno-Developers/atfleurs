@@ -301,16 +301,15 @@
 @section('script')
 <script type="text/javascript">
 function show_make_payment_modal(order_id) {
-    // $.post('{{ route('
-    //     checkout.make_payment ') }}', {
-    //         _token: '{{ csrf_token() }}',
-    //         order_id: order_id
-    //     },
-    //     function(data) {
-    //         $('#payment_modal_body').html(data);
-    //         $('#payment_modal').modal('show');
-    //         $('input[name=order_id]').val(order_id);
-    //     });
+    $.post('', {
+            _token: '{{ csrf_token() }}',
+            order_id: order_id
+        },
+        function(data) {
+            $('#payment_modal_body').html(data);
+            $('#payment_modal').modal('show');
+            $('input[name=order_id]').val(order_id);
+        });
 }
 
 function product_review(product_id) {
