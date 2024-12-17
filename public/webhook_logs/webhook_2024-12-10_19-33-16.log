@@ -1,0 +1,64 @@
+{
+    "entity": "event",
+    "account_id": "acc_NzEnNYOQKdehlw",
+    "event": "payment.authorized",
+    "contains": [
+        "payment"
+    ],
+    "payload": {
+        "payment": {
+            "entity": {
+                "id": "pay_PVV1ytxiM4CETC",
+                "entity": "payment",
+                "amount": 409900,
+                "currency": "INR",
+                "status": "authorized",
+                "order_id": null,
+                "invoice_id": null,
+                "international": false,
+                "method": "card",
+                "amount_refunded": 0,
+                "refund_status": null,
+                "captured": false,
+                "description": "Cart Payment",
+                "card_id": "card_PVV1z0ANh3zBhJ",
+                "card": {
+                    "id": "card_PVV1z0ANh3zBhJ",
+                    "entity": "card",
+                    "name": null,
+                    "last4": "5449",
+                    "network": "MasterCard",
+                    "type": "credit",
+                    "issuer": "UTIB",
+                    "international": false,
+                    "emi": false,
+                    "sub_type": "consumer",
+                    "token_iin": null
+                },
+                "bank": null,
+                "wallet": null,
+                "vpa": null,
+                "email": "zaid.nexgeno@gmail.com",
+                "contact": "+918452891917",
+                "notes": {
+                    "combined_order_id": "298",
+                    "user_id": "191",
+                    "payment_type": "cart_payment"
+                },
+                "fee": null,
+                "tax": null,
+                "error_code": null,
+                "error_description": null,
+                "error_source": null,
+                "error_step": null,
+                "error_reason": null,
+                "acquirer_data": {
+                    "auth_code": "992494"
+                },
+                "created_at": 1733839390,
+                "reward": null
+            }
+        }
+    },
+    "created_at": 1733839394
+}

@@ -47,8 +47,8 @@ class RazorpayController extends Controller
         $payment = $api->payment->fetch($input['razorpay_payment_id']);
         $notes = $payment['notes'] ?? [];
         $payment_detalis = json_encode($input);
-        $userId = $notes['notes']['user_id'] ?? null;
-        $combinedOrderId = $notes['notes']['combined_order_id'] ?? null;
+        $userId = $notes['user_id'] ?? null;
+        $combinedOrderId = $notes['combined_order_id'] ?? null;
         $paymentType = $notes['payment_type'] ?? null;
 
         if (!Auth::check()) {
@@ -60,7 +60,6 @@ class RazorpayController extends Controller
         }
 
         if (count($input) && !empty($input['razorpay_payment_id'])) {
-            $payment_detalis = null;
             try {
                 $response = $api->payment->fetch($input['razorpay_payment_id'])->capture(array('amount' => $payment['amount']));
                 //$payment_detalis = json_encode(array('id' => $response['id'],'method' => $response['method'],'amount' => $response['amount'],'currency' => $response['currency']));
@@ -88,23 +87,39 @@ class RazorpayController extends Controller
 
     public function handleWebhook(Request $request)
     {
-        \Log::info('Razorpay Webhook: ', $request->all());
         $event = $request->event;
 
-        if ($event === 'payment.captured' /** || $event === 'payment.authorized'*/) {
-            if (isset($request->data['payment']['entity'])) {
-                $payment_detalis = json_encode($request->all());
-                $entity = $request->data['payment']['entity'];
-                $combinedOrderId = $entity['notes']['combined_order_id'] ?? null;
+        $directoryPath = public_path('webhook_logs');
+        if (!file_exists($directoryPath)) {
+            mkdir($directoryPath, 0755, true);
+        }
 
-                if ($combinedOrderId) {
-                    $order = CombinedOrder::where('combined_order_id', $combinedOrderId)->first();
-                    if ($order && $order->payment_status === 'unpaid') {
-                        return (new CheckoutController)->checkout_done($combinedOrderId, $payment_detalis);
+        $filePath = $directoryPath . '/webhook_' . date('Y-m-d_H-i-s') . '.log';
+        file_put_contents($filePath, json_encode($request->all(), JSON_PRETTY_PRINT), FILE_APPEND);
+
+        if (isset($request->data['payment']['entity'])) {
+            $payment_detalis = json_encode($request->all());
+            $entity = $request->data['payment']['entity'];
+            $combinedOrderId = $entity['notes']['combined_order_id'] ?? null;
+
+            if ($combinedOrderId) {
+                $order = CombinedOrder::where('combined_order_id', $combinedOrderId)->first();
+
+                if ($order) {
+                    if ($event === 'payment.captured') {
+                        if ($order->payment_status === 'unpaid') {
+                            // $order->payment_status = 'paid';
+                            // $order->save();
+                            return (new CheckoutController)->checkout_done($combinedOrderId, $payment_detalis);
+                        }
+                    } else if ($event === 'payment.authorized') {
+                        if ($order->payment_status === 'unpaid') {
+                        }
+                    } elseif ($event === 'payment.failed') {
                     }
                 }
             }
-            return response()->json(['status' => 'success'], 200);
         }
+        return response()->json(['status' => 'success'], 200);
     }
 }
