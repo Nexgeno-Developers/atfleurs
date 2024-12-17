@@ -380,7 +380,7 @@ color: #333 !important;
                                                 rows="6"></textarea>
                                         </div> 
 
-                                        <div class="form-button col-md-12 mt-2">
+                                        <div class="form-button col-md-12">
                                             <button type="submit"> Send Message 
                                                 </button>
                                         </div>
