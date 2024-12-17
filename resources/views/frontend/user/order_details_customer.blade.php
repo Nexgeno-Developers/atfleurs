@@ -301,8 +301,7 @@
 @section('script')
 <script type="text/javascript">
 function show_make_payment_modal(order_id) {
-    $.post('{{ route('
-        checkout.make_payment ') }}', {
+    $.post('{{ route('checkout.make_payment') }}', {
             _token: '{{ csrf_token() }}',
             order_id: order_id
         },
@@ -314,8 +313,7 @@ function show_make_payment_modal(order_id) {
 }
 
 function product_review(product_id) {
-    $.post('{{ route('
-        product_review_modal ') }}', {
+    $.post('{{ route('product_review_modal') }}', {
             _token: '{{ @csrf_token() }}',
             product_id: product_id
         },
