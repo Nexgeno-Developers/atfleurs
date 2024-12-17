@@ -63,15 +63,20 @@
     border-radius: 5px;
     border: 0px solid #d4540c;
     padding: 15px 40px;
-    background-color: rgb(213,148,60);
+    background-color: rgb(213, 148, 60);
+    background: #32533D;
+    color: #fff !important;
+    padding: 14px 30px;
+    border-radius: 50px;
+    font-size: 16px;
 
 
     }
 
    #contactus-intro  .row.contactus .form-button.col-md-12 button:hover {
-        color: rgb(255 255 255);
-        background-color: rgb(0 0 0);
-        transition: ease-in-out 0.4s
+color: #333 !important;
+    background-color: #E1C259;
+    transition: ease-in-out 0.4s;
     }
 
    #contactus-intro  .form-button.col-md-12 {
@@ -189,7 +194,6 @@
     }
 
     #contactus-intro .col-md-1.img-align i {
-        color: rgb(213 148 60);
         font-size: 28px;
         padding: 20px 0px 0px 0px;
     }
@@ -292,7 +296,7 @@
                      <h4 class="heading_one heading_font1 green_color text-capitalize text-left">Our<span class="yellow_color"> Contacts</span></h4>
                     <div class="row">
                         <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 img-align col-2">
-                            <i class="fa-solid fa-location-dot"></i>
+                            <i class="fa-solid fa-location-dot yellow_color"></i>
                         </div>
                         <div class="col-lg-11 col-md-11 col-sm-11 col-xs-11 all-text col-10">
                             <ul>
@@ -310,7 +314,7 @@
 
                     <div class="row">
                         <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 img-align col-2">
-                            <i class="fa-regular fa-envelope"></i>
+                            <i class="fa-regular fa-envelope yellow_color"></i>
                         </div>
                         <div class="col-lg-11 col-md-11 col-sm-11 col-xs-11 all-text col-10">
 
@@ -323,7 +327,7 @@
                     </div>
                     <div class="row">
                         <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 img-align col-2">
-                            <i class="fa-solid fa-phone"></i>
+                            <i class="fa-solid fa-phone yellow_color"></i>
                         </div>
                         <div class="col-lg-11 col-md-11 col-sm-11 col-xs-11 all-text col-10">
                             <ul>
