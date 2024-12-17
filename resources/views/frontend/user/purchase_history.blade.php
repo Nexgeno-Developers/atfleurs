@@ -1,3 +1,8 @@
+<style>
+    .badge {
+    width: auto !important;
+}
+</style>
 @extends('frontend.layouts.user_panel')
 
 @section('panel_content')
