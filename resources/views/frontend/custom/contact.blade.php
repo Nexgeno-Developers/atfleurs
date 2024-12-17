@@ -297,7 +297,7 @@
                         <div class="col-lg-11 col-md-11 col-sm-11 col-xs-11 all-text col-10">
                             <ul>
                                 <h3>Address</h3>
-                                <a href="http://maps.google.com/?q=P.O.Box : 455352 , Jeddah , Mina Road Chamber of Commerce building , 7th floor">
+                                <a >
                                     <li>Ground Floor, Title Waves, Road No.24, Opp Duruelo Convent School, Bandra West, Mumbai - 400050</li>
                                 </a>
 
