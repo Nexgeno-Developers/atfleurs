@@ -35,7 +35,7 @@
         
         <div class="row">
 
-          <div class="col-lg-3 col-md-3">
+          <div class="col-lg-3 col-md-6">
                 <div class="contact_footer">
                      <h4 class="footer_headings pb-2">Quick Contact Now</h4>
                     <ul>
@@ -203,7 +203,7 @@
                 </div>
             </div>
 
-            <div class="col-lg-3  col-md-3">
+            <div class="col-lg-3 col-md-12">
         <div class="newsletter_box">
         <div class="row">
              <div class="col-lg-12 pl-0">

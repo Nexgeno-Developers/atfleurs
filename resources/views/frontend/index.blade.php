@@ -120,19 +120,20 @@ Our skilled team of passionate floral designers create exquisite arrangements wi
 
 <section class="elegant_blooms_sec orange_light_bg">
         <div class="row align-items-center">
-            <div class="col-md-6 order-md-1 order-2 pt-md-0 pb-md-0 pt-4 pb-5">
+            <div class="col-lg-6 col-md-12 order-md-2 order-lg-1 order-2 pt-lg-0 pb-lg-0 pt-md-4 pb-md-5 pt-4 pb-5">
                 <div class="mx-auto text-center mb-3">
                 <img src="{{ static_asset('assets/img/flower_icon.svg ') }}" />
                 </div>
 
-                <h4 class="heading_one1 heading_font1 yellow_color text-capitalize text-center pb-md-3 pb-0">Elegant Blooms, <span class="green_color d-lg-block">Artfully Curated for</span>Unique <span class="green_color">Moments</span></h4>
-                <p class="text-center body_text_vw width_70 mx-auto">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,</p>
+                <h4 class="heading_one1 heading_font1 yellow_color text-capitalize text-center pb-md-3 pb-0">Elegant Blooms, <span class="green_color d-lg-block">Perfectly Crafted for Life’s </span> Special <span class="green_color">Moments</span></h4>
+                <p class="text-center body_text_vw width_70 mx-auto">Whether it’s a wedding, an anniversary, or simply a day to celebrate, our bespoke floral arrangements bring beauty and emotion to every occasion.</p>
+                <p class="text-center body_text_vw width_70 mx-auto">We take pride in curating stunning bouquets tailored to your unique needs. From vibrant peonies to classic roses, every bloom is hand-selected for freshness and elegance.</p>
                 <div class="text-center button_effects mt-md-5 mt-4">
                 <a class="green_color fs-bold" href="/category/artificial-flower-bouquet-mumbai">Discover More <i class="fa-solid fa-arrow-right"></i></a>
                </div>
            </div>
 
-            <div class="col-md-6 order-md-2 order-1 ">
+            <div class="col-lg-6 col-md-12 order-md-1 order-lg-2 order-1 ">
                <div class="blooms_video">
                 <video class="embed-responsive embed-responsive-16by9" autoplay="" muted="" loop="" id="myVideo2">
                         <source src="{{ static_asset('assets/img/elegant_blooms.mp4 ') }}" type="video/mp4">
@@ -442,8 +443,9 @@ Our skilled team of passionate floral designers create exquisite arrangements wi
                 <img src="{{ static_asset('assets/img/flower_icon.svg ') }}" />
                 </div>
 
-                <h4 class="heading_one heading_font1 green_color text-capitalize text-center pb-md-3">Blossoming Tradition:  <span class="d-lg-block">Honoring Nature’s </span>Timeless Art Moments</h4>
-                <p class="text-center body_text_vw width_70 mx-auto mb-0">Our floral practice embraces the beauty of tradition, connecting deeply with nature’s cycles and the language of each bloom. Inspired by centuries-old techniques and cultural rituals, each arrangement honors the timeless artistry of nature. Through mindful selection and craftsmanship, we cultivate a practice rooted in respect, intention, and the transformative power of flowers.
+                <h4 class="heading_one heading_font1 green_color text-capitalize text-center pb-md-3">Blossoming Tradition:  <span class="d-lg-block">Honoring Nature’s </span>Timeless Artistry</h4>
+                <p class="text-center body_text_vw width_70 mx-auto mb-0">Our floral creations are rooted in tradition and inspired by nature’s timeless rhythms. With handpicked blooms and thoughtful designs, we deliver flowers that reflect love, respect, and the beauty of connection. Perfect for weddings, gifts, and everyday elegance.
+
 
 </p>
                
@@ -460,8 +462,8 @@ Our skilled team of passionate floral designers create exquisite arrangements wi
                 <img src="{{ static_asset('assets/img/flower_icon.svg ') }}" />
                 </div>
 
-                <h4 class="heading_one heading_font1 green_color text-capitalize text-center pb-md-3">Artistry in Bloom: Where<span class=" d-lg-block">Creativity Meets Craft</span></h4>
-                <p class="text-center body_text_vw width_70 mx-auto">At the heart of our studio is a passion for creative expression, blending artistry with precision. Each floral piece is crafted to tell a unique story, marrying color, form, and texture in unexpected ways. Our culture celebrates the fusion of traditional techniques with contemporary design, creating arrangements that are as evocative as they are elegant.</p>
+                <h4 class="heading_one heading_font1 green_color text-capitalize text-center pb-md-3">Artistry in Bloom: Where<span class=" d-lg-block">Creativity and Craft Blossom</span></h4>
+                <p class="text-center body_text_vw width_70 mx-auto">Our passion lies in transforming fresh flowers into stunning works of art. Each arrangement is thoughtfully designed to marry color, texture, and elegance, making it perfect for weddings, celebrations, or adding charm to your home.</p>
        
            </div>
 

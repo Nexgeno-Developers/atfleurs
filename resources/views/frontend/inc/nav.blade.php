@@ -130,15 +130,15 @@
                 </div>
      
 
-      <div class="col-4 col-lg-3 col-xl-2 pl-0 align-items-left logo">
+      <div class="col-4 col-lg-3 col-md-6 col-xl-2 pl-0 align-items-left logo">
                     <a class="d-block py-5px ml-0" href="{{ route('home') }}" aria-label="Logo Link">
                         @php
                             $header_logo = get_setting('header_logo');
                         @endphp
                         @if($header_logo != null)
-                            <img src="{{ uploaded_asset($header_logo) }}" alt="{{ env('APP_NAME') }}" class="mw-100 h-60px h-md-70px" height="70">
+                            <img src="{{ uploaded_asset($header_logo) }}" alt="{{ env('APP_NAME') }}" class="mw-100 h-60px h-md-70px right_tablet" height="70">
                         @else
-                            <img src="{{ static_asset('assets/img/logo.png') }}" alt="{{ env('APP_NAME') }}" class="mw-100 h-30px h-md-70px" height="70">
+                            <img src="{{ static_asset('assets/img/logo.png') }}" alt="{{ env('APP_NAME') }}" class="mw-100 h-30px h-md-70px right_tablet" height="70">
                         @endif
                     </a>
 
@@ -190,9 +190,9 @@
                
 
 
-                <div class="col-md-4 pr-md-3 pr-0">
+                <div class="col-md-4 pr-lg-3 pr-0">
                     <div class="serach_mobile d-flex">
-                     <button class="p-md-2 p-0 d-block text-reset" aria-labelledby="search" data-toggle="class-toggle" data-target=".front-header-search" style="background: transparent; border: 0;">
+                     <button class="p-lg-2 p-0 d-block text-reset" aria-labelledby="search" data-toggle="class-toggle" data-target=".front-header-search" style="background: transparent; border: 0;">
                         <i class="las la-search la-flip-horizontal la-2x"></i>
                     </button>
                      <div class="p-2 nav-cart-box dropdown h-100 d-lg-block d-none" id="cart_items">
