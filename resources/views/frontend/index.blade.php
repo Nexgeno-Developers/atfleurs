@@ -135,9 +135,9 @@ Our skilled team of passionate floral designers create exquisite arrangements wi
 
             <div class="col-lg-6 col-md-12 order-md-1 order-lg-2 order-1 ">
                <div class="blooms_video">
-               
-
-                    <iframe width="100%" height="785" src="https://www.youtube.com/embed/U9eud0oLVdA" title="elegant blooms" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <video class="embed-responsive embed-responsive-16by9" autoplay="" muted="" loop="" id="myVideo2">
+                        <source src="{{ static_asset('assets/img/elegant_blooms.mp4 ') }}" type="video/mp4">
+                    </video>
                 </div>
            </div>
         </div>

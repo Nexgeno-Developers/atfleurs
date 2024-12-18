@@ -45,13 +45,13 @@
 
 @section('content')
 
-    <section class="mb-4 pt-5">
+    <section class="mb-4 pt-md-5 pt-4">
         <div class="container">
             <div class="row">
-                <div class="col-md-5">
+                <div class="col-md-5 col-12 ">
                     @if(isset($category_id))
                                 <h3>
-                                    <a class="d-inline-block text-dark fw-600 breadcrumb-item" href="{{ route('products.category', \App\Models\Category::find($category_id)->slug) }}">{{ \App\Models\Category::find($category_id)->getTranslation('name') }}</a>
+                                    <a class="d-inline-block text-dark fw-600 breadcrumb-item heading_font1 p-0 green_color" href="{{ route('products.category', \App\Models\Category::find($category_id)->slug) }}">{{ \App\Models\Category::find($category_id)->getTranslation('name') }}</a>
                                 </h3>
                             @endif
 
@@ -77,7 +77,7 @@
                         
                         </div>
                         @if($products->count() > 0)
-                            <div class="col-md-7 d-flex justify-content-end align-items-center">
+                            <div class="col-md-7 col-12 d-flex justify-content-md-end align-items-center">
                              <div class="d-flex align-items-center rounded mb-lg-3 mb-4">
                                     <div class="fs-15 fw-600 p-1"> Sort By: </div>
                                         <div class="p-1">
