@@ -3184,6 +3184,8 @@ button.slick-next.slick-arrow {
   .ctg_head {
     font-size: 14px !important;
     text-align: center !important;
+    padding-left: 10px;
+    padding-right: 10px;
   }
 
   .main_banner_slider {
