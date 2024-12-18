@@ -93,7 +93,7 @@
                                 data-focus-select='true' data-arrows='true'>
                                 @foreach ($photos as $key => $photo)
                                 <div class="carousel-box c-pointer border p-1 rounded">
-                                    <img class="lazyload mw-160 size-100px mx-auto"
+                                    <img class="lazyload mw-160 size-100px width_766 mx-auto"
                                         src="{{ static_asset('assets/img/placeholder.jpg') }}"
                                         data-src="{{ uploaded_asset($photo) }}"
                                         onerror="this.onerror=null;this.src='{{ static_asset('assets/img/placeholder.jpg') }}';">
@@ -416,10 +416,10 @@
                             </a>
                             @else
                           
-                            <button type="button" class="btn btn-primary buy-now button_colors_1 greenbg fw-600" onclick="buyNow()">
+                            <button type="button" class="btn btn-primary buy-now button_colors_1 greenbg fw-600 mb-md-0 mb-3" onclick="buyNow()">
                                 <i class="la la-shopping-cart"></i> {{ translate('Buy Now') }}
                             </button>
-                              <button type="button" class="btn btn-soft-primary ml-2 add-to-cart button_colors_1 darkgray_bg fw-600 gtagaddtocart"
+                              <button type="button" class="btn btn-soft-primary ml-2 add-to-cart button_colors_1 darkgray_bg fw-600 gtagaddtocart mb-md-0 mb-3"
                                 data-url="{{ url()->current() }}" onclick="addToCart()">
                                 <i class="las la-shopping-bag"></i>
                                 <span class="d-none d-md-inline-block"> {{ translate('Add to cart') }}</span>
@@ -476,7 +476,7 @@
                         $refund_sticker = get_setting('refund_sticker');
                         @endphp
                         @if (addon_is_activated('refund_request'))
-                        <div class="row no-gutters mt-3">
+                        <div class="row no-gutters mt-md-3">
 
 
 
