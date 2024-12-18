@@ -207,9 +207,10 @@
         <div class="newsletter_box">
         <div class="row">
              <div class="col-lg-12 pl-0">
-               <h4 class="footer_headings pb-2">Unlock 10% off </h4>
-               <p>Your first order when you sign up to
-our newsletter</p>
+               <!-- <h4 class="footer_headings pb-2">Unlock 10% off </h4> -->
+               <h4 class="footer_headings pb-2">Newsletter </h4>
+               <!-- <p>Your first order when you sign up to our newsletter</p> -->
+               <p>Sign up to our mailing list to stay updated on the latest special offers!</p>
             </div>
                 <form class="form-inline" method="POST" action="{{ route('subscribers.store') }}">
                 @csrf
@@ -220,7 +221,7 @@ our newsletter</p>
                 </div>
                 <div class="col-md-4 pl-md-2">
                     <button type="submit" class="btn btn-primary">
-                    {{ translate('Sign up') }}
+                    {{ translate('Subscribe') }}
                     </button>
                 </div>
                 </form>
