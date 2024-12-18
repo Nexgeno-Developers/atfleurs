@@ -1927,7 +1927,7 @@ section.call-buton {
 }
 
 .call-buton .cc-calto-action-ripple i {
-  background: #e18a14;
+  background: #E1C259;
   width: 55px;
   position: relative;
   left: 28px;
@@ -1957,7 +1957,7 @@ section.call-buton p {
   padding: 3px 7px;
   border-radius: 3px;
   margin-top: 5px;
-  color: #e18a14;
+  color: #E1C259;
   font-weight: 600;
 }
 
