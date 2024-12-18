@@ -225,8 +225,9 @@
                         </li>
                     @else
                         <li class="list-inline-item mr-0 border-left-0 pr-0 pl-0">
-                            <a href="{{ route('user.login') }}" class="text-reset d-inline-block py-2 fs-13"> <i class="las la-user la-2x mb1 text-reset position_1"></i> {{ translate('Login')}}</a> <span class="pddleft">/</span> 
-                            <a href="{{ route('user.registration') }}" class="text-reset d-inline-block py-2 fs-13"> {{ translate('Registration')}}</a>
+                            <a href="{{ route('user.login') }}" class="text-reset d-inline-block py-2 fs-13"> <i class="las la-user la-2x mb1 text-reset position_1"></i> {{ translate('Login')}}</a> 
+                            <!-- <span class="pddleft">/</span>  -->
+                            <!-- <a href="{{ route('user.registration') }}" class="text-reset d-inline-block py-2 fs-13"> {{ translate('Registration')}}</a> -->
                         </li>
                     @endauth
                 </ul>

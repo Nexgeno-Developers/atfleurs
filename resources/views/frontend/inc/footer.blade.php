@@ -220,7 +220,7 @@ our newsletter</p>
                 </div>
                 <div class="col-md-4 pl-md-2">
                     <button type="submit" class="btn btn-primary">
-                    {{ translate('Subscribe') }}
+                    {{ translate('Sign up') }}
                     </button>
                 </div>
                 </form>

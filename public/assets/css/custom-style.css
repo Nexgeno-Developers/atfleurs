@@ -308,6 +308,7 @@ ul.social.colored [class*="google"] {
 
 .free-delivery-box p {
   margin-bottom: 0;
+  padding: 0px 20px;
 }
 
 .serch_box input#search {
@@ -423,9 +424,10 @@ ul.social.colored [class*="google"] {
 }
 
 .free-delivery-box {
-  padding: 30px 35px;
+  padding: 20px 20px;
   border-radius: 0px;
   text-align: center;
+  height: 100%;
 }
 
 .free-delivery-box img {
@@ -1341,7 +1343,8 @@ a.read-color {
 }
 
 .free-delivery-box h4 {
-  font-size: 28px;
+  font-size: 26px;
+  padding-top: 7px;
 }
 
 .gray_green_clr {
@@ -2337,7 +2340,7 @@ table.table.aiz-table.mb-0.footable.footable-1.breakpoint-lg span.badge.badge-in
 }
 
 .width_70 {
-  width: 70%;
+  width: 75%;
 }
 
 .blooms_video {
