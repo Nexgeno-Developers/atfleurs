@@ -1088,6 +1088,34 @@ $(document).ready(function () {
   $slider.slick('slickSetOption', 'init', true, true);
 });
 
+
+jQuery(document).ready(function($) {
+    $('#blog-slick-slider').owlCarousel({
+        loop: true,
+        center: true,
+        stagePadding: 0,
+        items: 4,
+        margin: 20,
+        autoplay: true,
+        dots: false,
+        autoplayTimeout: 8500,
+        smartSpeed: 450,
+        responsive: {
+            0: {
+                items: 1,
+                stagePadding: 10
+            },
+            768: {
+                items: 2
+            },
+            1170: {
+                items: 4
+            }
+        }
+    });
+});
+
+
 jQuery(document).ready(function($) {
     // TESTIMONIALS CAROUSEL HOOK
     $('#customers-testimonials').owlCarousel({
@@ -1115,31 +1143,7 @@ jQuery(document).ready(function($) {
     });
 });
 
-jQuery(document).ready(function($) {
-    $('#blog-slick-slider').owlCarousel({
-        loop: true,
-        center: true,
-        stagePadding: 0,
-        items: 4,
-        margin: 20,
-        autoplay: true,
-        dots: false,
-        autoplayTimeout: 8500,
-        smartSpeed: 450,
-        responsive: {
-            0: {
-                items: 1,
-                stagePadding: 10
-            },
-            768: {
-                items: 2
-            },
-            1170: {
-                items: 4
-            }
-        }
-    });
-});
+
             
 
   </script>
