@@ -135,9 +135,9 @@ Our skilled team of passionate floral designers create exquisite arrangements wi
 
             <div class="col-lg-6 col-md-12 order-md-1 order-lg-2 order-1 ">
                <div class="blooms_video">
-                <video class="embed-responsive embed-responsive-16by9" autoplay="" muted="" loop="" id="myVideo2">
-                        <source src="{{ static_asset('assets/img/elegant_blooms.mp4 ') }}" type="video/mp4">
-                    </video>
+               
+
+                    <iframe width="100%" height="785" src="https://www.youtube.com/embed/U9eud0oLVdA" title="elegant blooms" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 </div>
            </div>
         </div>
@@ -367,7 +367,7 @@ Our skilled team of passionate floral designers create exquisite arrangements wi
 
     <div id="section_newest">
         @if (count($newest_products) > 0)
-            <section class="section-padding pb-0 pt-4">
+            <section class="section-padding pb-0 pt-md-4 pt-2">
                 <div class="container">
                     <div class="">
                         <div class="mb-4 align-items-baseline">
@@ -871,7 +871,7 @@ your feelings</h3>
 
 <section class="blog_section pb-0">
    <div class="container">
-      <div class="mb-4 pt-2 text-center position_relative align-items-baseline">
+      <div class="mb-md-4 mb-3 pt-2 text-center position_relative align-items-baseline">
        
           <h4 class="heading_one heading_font1 green_color text-capitalize text-center"> Latest <span class="yellow_color">News & Blog</span></h4>
            
@@ -969,15 +969,15 @@ your feelings</h3>
    <div class="section-padding">
 <div class="container">
    
-     <div class="mb-4 text-center position_relative align-items-baseline">
+     <div class="mb-md-4 mb-3 text-center position_relative align-items-baseline">
                  
                         <h4 class="heading_one heading_font1 green_color text-capitalize text-center">Why <span class="yellow_color">Atfleurs</span></h4>
                     
                             
                 </div>
-<div class="row gutters-10 position-relative pt-2">
+<div class="row gutters-10 position-relative pt-md-2">
 
-<div class="col-lg-3 col-6">
+<div class="col-lg-3 col-6 pb-md-0 pb-3">
     <div class="free-delivery-box bg-light-orange ">
          <div class="mx-auto text-center mb-1">
         <img loading="lazy" class="img-fit" src="{{ static_asset('assets/img/delivery_icon.png') }}" alt="Free Delivery">
@@ -987,7 +987,7 @@ your feelings</h3>
     </div>
 </div>
 
-<div class="col-lg-3 col-6">
+<div class="col-lg-3 col-6 pb-md-0 pb-3">
     <div class="free-delivery-box bg-light-orange ">
          <div class="mx-auto text-center mb-1">
        <img loading="lazy" class="img-fit" src="{{ static_asset('assets/img/cart_icon.png') }}" alt="Online Order">
