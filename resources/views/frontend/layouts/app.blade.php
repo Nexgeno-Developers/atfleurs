@@ -61,7 +61,7 @@
     
     <!--<link rel="stylesheet" href="{{ static_asset('assets/css/aiz-core.css') }}">-->
     <link rel="stylesheet" href="{{ static_asset('assets/css/aiz-core.min.css') }}">
-    <link rel="stylesheet" href="{{ static_asset('assets/css/custom-style.css?v-1.6.3') }}">
+    <link rel="stylesheet" href="{{ static_asset('assets/css/custom-style.css?v-1.6.4') }}">
     <link rel="stylesheet" href="{{ static_asset('assets/css/fancybox.min.css') }}">
 
     <link rel="preload" href="{{ static_asset('assets/css/owl.carousel.min.css') }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -1089,62 +1089,57 @@ $(document).ready(function () {
 });
 
 jQuery(document).ready(function($) {
-        		"use strict";
-        		//  TESTIMONIALS CAROUSEL HOOK
-		        $('#customers-testimonials').owlCarousel({
-                    stagePadding: 150,
-		            loop: true,
-		            center: true,
-		            items: 3,
-		            margin: 0,
-		            autoplay: true,
-		            dots:true,
-		            autoplayTimeout: 8500,
-		            smartSpeed: 450,
-		            responsive: {
-		              0: {
-		                items: 1,
-                        stagePadding: 20
-		              },
-		              768: {
-		                items: 2
-		              },
-		              1170: {
-		                items: 3
-		              }
-		            }
-		        });
-        	});
-
-
+    // TESTIMONIALS CAROUSEL HOOK
+    $('#customers-testimonials').owlCarousel({
+        stagePadding: 150,
+        loop: true,
+        center: true,
+        items: 3,
+        margin: 0,
+        autoplay: true,
+        dots: true,
+        autoplayTimeout: 8500,
+        smartSpeed: 450,
+        responsive: {
+            0: {
+                items: 1,
+                stagePadding: 20
+            },
+            768: {
+                items: 2
+            },
+            1170: {
+                items: 3
+            }
+        }
+    });
+});
 
 jQuery(document).ready(function($) {
-        		"use strict";
-		        $('#blog-slick-slider').owlCarousel({
-		            loop: true,
-		            center: true,
-		            items: 4,
-		            margin: 20,
-		            autoplay: true,
-		            dots:false,
-		            autoplayTimeout: 8500,
-		            smartSpeed: 450,
-		            responsive: {
-		              0: {
-		                items: 1,
-                        stagePadding: 10
-		              },
-		              768: {
-		                items: 2
-		              },
-		              1170: {
-		                items: 4
-		              }
-		            }
-		        });
-        	});
-
-
+    $('#blog-slick-slider').owlCarousel({
+        loop: true,
+        center: true,
+        stagePadding: 0,
+        items: 4,
+        margin: 20,
+        autoplay: true,
+        dots: false,
+        autoplayTimeout: 8500,
+        smartSpeed: 450,
+        responsive: {
+            0: {
+                items: 1,
+                stagePadding: 10
+            },
+            768: {
+                items: 2
+            },
+            1170: {
+                items: 4
+            }
+        }
+    });
+});
             
 
   </script>
