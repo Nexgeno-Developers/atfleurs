@@ -1088,6 +1088,32 @@ $(document).ready(function () {
   $slider.slick('slickSetOption', 'init', true, true);
 });
 
+jQuery(document).ready(function($) {
+    // TESTIMONIALS CAROUSEL HOOK
+    $('#customers-testimonials').owlCarousel({
+        stagePadding: 150,
+        loop: true,
+        center: true,
+        items: 3,
+        margin: 0,
+        autoplay: true,
+        dots: true,
+        autoplayTimeout: 8500,
+        smartSpeed: 450,
+        responsive: {
+            0: {
+                items: 1,
+                stagePadding: 20
+            },
+            768: {
+                items: 2
+            },
+            1170: {
+                items: 3
+            }
+        }
+    });
+});
 
 jQuery(document).ready(function($) {
     $('#blog-slick-slider').owlCarousel({
@@ -1114,36 +1140,6 @@ jQuery(document).ready(function($) {
         }
     });
 });
-
-
-// jQuery(document).ready(function($) {
-//     // TESTIMONIALS CAROUSEL HOOK
-//     $('#customers-testimonials').owlCarousel({
-//         stagePadding: 150,
-//         loop: true,
-//         center: true,
-//         items: 3,
-//         margin: 0,
-//         autoplay: true,
-//         dots: true,
-//         autoplayTimeout: 8500,
-//         smartSpeed: 450,
-//         responsive: {
-//             0: {
-//                 items: 1,
-//                 stagePadding: 20
-//             },
-//             768: {
-//                 items: 2
-//             },
-//             1170: {
-//                 items: 3
-//             }
-//         }
-//     });
-// });
-
-
             
 
   </script>
