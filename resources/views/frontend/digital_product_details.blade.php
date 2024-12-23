@@ -85,7 +85,22 @@
                             </h1>
 
                             <div class="row align-items-center">
-                                <div class="col-6">
+                                @php
+                                    $total = $detailedProduct->reviews->count(); // Directly count the reviews
+                                    // Alternatively, if you want to ensure $total is always set to 0 if no reviews exist:
+                                    $total = $total ?: 0; // If $total is empty (falsey value), set it to 0
+                                @endphp
+                                @if($total > 0 || $detailedProduct->rating > 0)
+                                <div class="col-12">
+                                    <span class="rating">
+                                        {{ renderStarRating($detailedProduct->rating) }}
+                                    </span>
+                                    <span class="ml-1 opacity-90">({{ $total }}
+                                        {{ translate('reviews') }})</span>
+                                </div>
+                                @endif
+
+                                {{-- <div class="col-6">
                                     @php
                                         $total = 0;
                                         $total += $detailedProduct->reviews->count();
@@ -94,7 +109,7 @@
                                         {{ renderStarRating($detailedProduct->rating) }}
                                     </span>
                                     <span class="ml-1 opacity-50">({{ $total }} {{ translate('reviews')}})</span>
-                                </div>
+                                </div> --}}
                                 <div class="col-6 text-right">
                                     @php
                                         $qty = 0;
@@ -139,7 +154,7 @@
                             <hr>
 
                             @if(home_price($detailedProduct) != home_discounted_price($detailedProduct))
-                                
+
                                 <div class="row no-gutters mt-3">
                                     <div class="col-2">
                                         <div class="opacity-50 mt-2">{{ translate('Price')}}:</div>
@@ -275,11 +290,11 @@
                                         <div class="opacity-50 mt-2">{{ translate('Refund')}}:</div>
                                     </div>
                                     <div class="col-10">
-                                        <a href="{{ route('returnpolicy') }}" target="_blank"> 
-                                            @if ($refund_sticker != null) 
-                                                <img src="{{ uploaded_asset($refund_sticker) }}" height="36"> 
-                                            @else 
-                                                <img src="{{ static_asset('assets/img/refund-sticker.jpg') }}" height="36"> 
+                                        <a href="{{ route('returnpolicy') }}" target="_blank">
+                                            @if ($refund_sticker != null)
+                                                <img src="{{ uploaded_asset($refund_sticker) }}" height="36">
+                                            @else
+                                                <img src="{{ static_asset('assets/img/refund-sticker.jpg') }}" height="36">
                                             @endif</a>
                                         <a href="{{ route('returnpolicy') }}" class="ml-2" target="_blank">{{ translate('View Policy') }}</a>
                                     </div>
