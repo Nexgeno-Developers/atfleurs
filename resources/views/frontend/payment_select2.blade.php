@@ -85,13 +85,13 @@
                                         method="POST">
                                         @csrf
                                         @if (Auth::check())
-                                            <div class="bg-white rounded mb-4">
+                                            <div class="bg-white rounded mb-2">
                                                 <div class="row justify-content-center gutters-5">
                                                     @if (Auth::user()->addresses != null && count(Auth::user()->addresses) != 0)
-                                                        <div class="col-md-10">
+                                                        <div class="col-md-12">
                                                             <div class="row">
                                                                 @foreach (Auth::user()->addresses as $key => $address)
-                                                                    <div class="col-md-6 mb-0 p-2">
+                                                                    <div class="col-md-12 mb-0 p-2">
                                                                         <label class="aiz-megabox d-block bg-white mb-0">
                                                                             <input type="radio" name="address_id"
                                                                                 value="{{ $address->id }}"
@@ -100,38 +100,38 @@
                                                                             <span class="d-flex p-3 aiz-megabox-elem">
                                                                                 <span
                                                                                     class="aiz-rounded-check flex-shrink-0 mt-1"></span>
-                                                                                <span class="flex-grow-1 pl-2 text-left">
+                                                                                <span class="flex-grow-1 pl-2 text-left pr-100">
                                                                                     <div>
+                                                                                        <!-- <span
+                                                                                            class="opacity-60">{{ translate('Address') }}:</span> -->
                                                                                         <span
-                                                                                            class="opacity-60">{{ translate('Address') }}:</span>
-                                                                                        <span
-                                                                                            class="fw-600 ml-2">{{ $address->address }}</span>
+                                                                                            class="fw-600 ml-2 d-block">{{ $address->address }}, {{ optional($address->city)->name }} - {{ $address->postal_code }}, {{ optional($address->state)->name }}, {{ optional($address->country)->name }}</span>
                                                                                     </div>
-                                                                                    <div>
+                                                                                    <!-- <div>
                                                                                         <span
                                                                                             class="opacity-60">{{ translate('Postal Code') }}:</span>
                                                                                         <span
-                                                                                            class="fw-600 ml-2">{{ $address->postal_code }}</span>
-                                                                                    </div>
-                                                                                    <div>
+                                                                                            class="fw-600 ml-2"></span>
+                                                                                    </div> -->
+                                                                                    <!-- <div>
                                                                                         <span
                                                                                             class="opacity-60">{{ translate('City') }}:</span>
                                                                                         <span
-                                                                                            class="fw-600 ml-2">{{ optional($address->city)->name }}</span>
-                                                                                    </div>
-                                                                                    <div>
+                                                                                            class="fw-600 ml-2"></span>
+                                                                                    </div> -->
+                                                                                    <!-- <div>
                                                                                         <span
                                                                                             class="opacity-60">{{ translate('State') }}:</span>
                                                                                         <span
-                                                                                            class="fw-600 ml-2">{{ optional($address->state)->name }}</span>
-                                                                                    </div>
-                                                                                    <div>
+                                                                                            class="fw-600 ml-2"></span>
+                                                                                    </div> -->
+                                                                                    <!-- <div>
                                                                                         <span
                                                                                             class="opacity-60">{{ translate('Country') }}:</span>
                                                                                         <span
                                                                                             class="fw-600 ml-2">{{ optional($address->country)->name }}</span>
-                                                                                    </div>
-                                                                                    <div>
+                                                                                    </div> -->
+                                                                                    <div class="ml-2 pt-2">
                                                                                         <span
                                                                                             class="opacity-60">{{ translate('Phone') }}:</span>
                                                                                         <span
@@ -144,15 +144,15 @@
                                                                             class="dropdown position-absolute right-20 top-15">
                                                                             <button class="btn bg-gray px-2" type="button"
                                                                                 data-toggle="dropdown">
-                                                                                <i class="la la-ellipsis-v"></i>
+                                                                                <p class="address_change" onclick="edit_address('{{ $address->id }}')">Change</p>
                                                                             </button>
-                                                                            <div class="dropdown-menu dropdown-menu-right"
+                                                                            <!-- <div class="dropdown-menu dropdown-menu-right"
                                                                                 aria-labelledby="dropdownMenuButton">
                                                                                 <a class="dropdown-item"
-                                                                                    onclick="edit_address('{{ $address->id }}')">
+                                                                                    >
                                                                                     {{ translate('Edit') }}
                                                                                 </a>
-                                                                            </div>
+                                                                            </div> -->
                                                                         </div>
                                                                     </div>
                                                                 @endforeach
@@ -162,11 +162,10 @@
                                                         </div>
                                                     @endif
                                                     <input type="hidden" name="checkout_type" value="logged">
-                                                    <div class="col-md-2 pl-3 pt-2">
-                                                        <div class="border p-3 rounded mb-3 c-pointer text-center bg-white"
+                                                    <div class="col-md-12 pl-3 pt-2">
+                                                        <div class=""
                                                             onclick="add_new_address()">
-                                                            <i class="las la-plus la-2x mb-3"></i>
-                                                            <div class="alpha-7">{{ translate('Add New Address') }}</div>
+                                                            <div class="alpha-7 add_adress"><i class="las la-plus la-1x mb-3"></i> {{ translate('Add New Address') }}</div>
                                                         </div>
 
                                                     </div>
@@ -251,14 +250,14 @@
                                                     </ul>
                                                     @if ($physical)
                                                         <div class="row ">
-                                                            <div class="col-md-5">
-                                                                <h6 class="fs-15 fw-600 text-right pt-3">
+                                                            <div class="col-md-8">
+                                                                <h6 class="fs-15 fw-600 text-right pt-2">
                                                                     {{ translate('Choose Delivery Type') }}</h6>
                                                             </div>
-                                                            <div class="col-md-7">
-                                                                <div class="row gutters-5">
+                                                            <div class="col-md-4">
+                                                                <div class="row justify-content-end">
                                                                     @if (get_setting('shipping_type') != 'carrier_wise_shipping')
-                                                                        <div class="col-6">
+                                                                        <div class="col-6 p-md-0">
                                                                             <label
                                                                                 class="aiz-megabox d-block bg-white mb-0">
                                                                                 <input type="radio"
@@ -269,16 +268,16 @@
                                                                                     data-target=".pickup_point_id_admin"
                                                                                     required
                                                                                     @if (isset($carts[0]->shipping_type) && $carts[0]->shipping_type == 'home_delivery') checked @endif>
-                                                                                <span class="d-flex p-3 aiz-megabox-elem">
+                                                                                <span class="d-flex p-2 aiz-megabox-elem">
                                                                                     <span
                                                                                         class="aiz-rounded-check flex-shrink-0 mt-1"></span>
                                                                                     <span
-                                                                                        class="flex-grow-1 pl-3 fw-600">{{ translate('Home Delivery') }}</span>
+                                                                                        class="flex-grow-1 pl-2 fw-600">{{ translate('Home Delivery') }}</span>
                                                                                 </span>
                                                                             </label>
                                                                         </div>
                                                                     @else
-                                                                        <div class="col-6">
+                                                                        <div class="col-6 pl-md-2 pr-md-0">
                                                                             <label
                                                                                 class="aiz-megabox d-block bg-white mb-0">
                                                                                 <input type="radio"
@@ -286,18 +285,18 @@
                                                                                     value="carrier"
                                                                                     onchange="show_pickup_point(this, 'admin')"
                                                                                     data-target=".pickup_point_id_admin">
-                                                                                <span class="d-flex p-3 aiz-megabox-elem">
+                                                                                <span class="d-flex p-2 aiz-megabox-elem">
                                                                                     <span
                                                                                         class="aiz-rounded-check flex-shrink-0 mt-1"></span>
                                                                                     <span
-                                                                                        class="flex-grow-1 pl-3 fw-600">{{ translate('Carrier') }}</span>
+                                                                                        class="flex-grow-1 pl-2 fw-600">{{ translate('Carrier') }}</span>
                                                                                 </span>
                                                                             </label>
                                                                         </div>
                                                                     @endif
 
                                                                     @if ($pickup_point_list)
-                                                                        <div class="col-6">
+                                                                        <div class="col-6 pl-md-2 pr-md-0">
                                                                             <label
                                                                                 class="aiz-megabox d-block bg-white mb-0">
                                                                                 <input type="radio"
@@ -308,11 +307,11 @@
                                                                                     data-target=".pickup_point_id_admin"
                                                                                     required
                                                                                     @if (isset($carts[0]->shipping_type) && $carts[0]->shipping_type == 'pickup_point') checked @endif>
-                                                                                <span class="d-flex p-3 aiz-megabox-elem">
+                                                                                <span class="d-flex p-2 aiz-megabox-elem">
                                                                                     <span
                                                                                         class="aiz-rounded-check flex-shrink-0 mt-1"></span>
                                                                                     <span
-                                                                                        class="flex-grow-1 pl-3 fw-600">{{ translate('Local Pickup') }}</span>
+                                                                                        class="flex-grow-1 pl-2 fw-600">{{ translate('Local Pickup') }}</span>
                                                                                 </span>
                                                                             </label>
                                                                         </div>
@@ -667,15 +666,15 @@
                                                         {{ translate('Choose Delivery Date And Time Slot') }}
                                                     </h3>
                                                     <div class="row">
-                                                        <div class="col">
+                                                        <div class="col pr-0">
                                                             <!-- Date Picker -->
-                                                            <input name="delivery_date" class="form-control" type="date" id="deliveryDate"
+                                                            <input name="delivery_date" class="form-control rounded-0 border-right-0" type="date" id="deliveryDate"
                                                                 class="date-picker">
                                                         </div>
-                                                        <div class="col">
+                                                        <div class="col pl-0">
 
                                                             <!-- Dropdown for selecting the delivery time slot -->
-                                                            <select name="delivery_time" class="form-control" id="timeSlotDropdown"
+                                                            <select name="delivery_time" class="form-control rounded-0" id="timeSlotDropdown"
                                                                 class="time-picker">
                                                                 <option value="">Select Time Slot</option>
                                                             </select>
@@ -826,32 +825,32 @@
 
                                             <div class="card-body text-center p-0">
 
-                                                <div class="row">
-
-                                                    <div class="col-md-12">
-                                                        <div class="pb-2">
+                                                <div class="">
+                                                    <div class="pb-2">
                                                             <h3 class="fs-16 fw-600 mb-0 text-left">
                                                                 {{ translate('Any additional info?') }}
                                                             </h3>
                                                         </div>
+                                                    <div class="additional_info_boxex">
+                                                       
                                                         <div class="row mt-2 mt-md-3">
-                                                            <div class="col-md-6">
-                                                                <div class="mb-3 text-left">
-                                                                    <label for="fromPerson" class="form-label">
+                                                            <div class="col-md-6 pr-0">
+                                                                <div class="text-left">
+                                                                    <!-- <label for="fromPerson" class="form-label">
                                                                         Sender's Name <small class="text-muted">(Person
                                                                             sending the flowers)</small>
-                                                                    </label>
+                                                                    </label> -->
                                                                     <input type="text" name="from_name"
-                                                                        class="form-control" id="fromPerson"
+                                                                        class="form-control border-right-0" id="fromPerson"
                                                                         placeholder="Enter sender's name">
                                                                 </div>
                                                             </div>
-                                                            <div class="col-md-6">
-                                                                <div class="mb-3 text-left">
-                                                                    <label for="toPerson" class="form-label">
+                                                            <div class="col-md-6 pl-0">
+                                                                <div class="text-left">
+                                                                    <!-- <label for="toPerson" class="form-label">
                                                                         Recipient's Name <small class="text-muted">(Person
                                                                             receiving the flowers)</small>
-                                                                    </label>
+                                                                    </label> -->
                                                                     <input type="text" name="to_name"
                                                                         class="form-control" id="toPerson"
                                                                         placeholder="Enter recipient's name">
@@ -859,19 +858,19 @@
                                                             </div>
                                                         </div>
                                                         <div class="form-group text-left">
-                                                            <label for="additional_info" class="form-label">
+                                                            <!-- <label for="additional_info" class="form-label">
                                                                 Additional Notes
                                                                 <small class="text-muted">(Provide any extra information
                                                                     for us or a message for the recipient)</small>
-                                                            </label>
-                                                            <textarea name="additional_info" id="additional_info" rows="4" class="form-control"
+                                                            </label> -->
+                                                            <textarea name="additional_info" id="additional_info" rows="1" class="border-top-0 form-control"
                                                                 placeholder="Type your message here"></textarea>
                                                         </div>
 
                                                     </div>
 
 
-                                                    <div class="col-xxl-12 col-xl-12 mx-auto">
+                                                    <div class="">
                                                         <div class="pb-2">
                                                             <h3 class="fs-16 fw-600 mb-0 text-left">
                                                                 {{ translate('Select a payment option') }}
@@ -881,9 +880,18 @@
                                                             @if (get_setting('ccavenue_payment') == 1)
                                                                 <div class="col-6 col-md-3">
                                                                     <label class="aiz-megabox d-block mb-3">
+                                                                    
                                                                         <input value="ccavenue" class="online_payment"
                                                                             type="radio" name="payment_option" checked>
                                                                         <span class="d-block aiz-megabox-elem p-2">
+                                                                            <div class="before_checked">   
+                                                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                                                            viewBox="0 0 20 20">
+                                                                            <path id="Path_42357" data-name="Path 42357"
+                                                                                d="M58,48A10,10,0,1,0,68,58,10,10,0,0,0,58,48ZM56.457,61.543a.663.663,0,0,1-.423.212.693.693,0,0,1-.428-.216l-2.692-2.692.856-.856,2.269,2.269,6-6.043.841.87Z"
+                                                                                transform="translate(-48 -48)" fill="#9d9da6" />
+                                                                        </svg>
+                                                                     </div>
                                                                             <img src="{{ static_asset('assets/img/cards/ccavenue.png') }}"
                                                                                 class="img-fluid mb-2 w-110">
                                                                             <span class="d-block text-center">
@@ -977,9 +985,18 @@
                                                             @if (get_setting('razorpay') == 1)
                                                                 <div class="col-6 col-md-3">
                                                                     <label class="aiz-megabox d-block mb-3">
+                                                                        
                                                                         <input value="razorpay" class="online_payment"
                                                                             type="radio" name="payment_option">
                                                                         <span class="d-block aiz-megabox-elem p-2">
+                                                                            <div class="before_checked">   
+                                                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                                                            viewBox="0 0 20 20">
+                                                                            <path id="Path_42357" data-name="Path 42357"
+                                                                                d="M58,48A10,10,0,1,0,68,58,10,10,0,0,0,58,48ZM56.457,61.543a.663.663,0,0,1-.423.212.693.693,0,0,1-.428-.216l-2.692-2.692.856-.856,2.269,2.269,6-6.043.841.87Z"
+                                                                                transform="translate(-48 -48)" fill="#9d9da6" />
+                                                                        </svg>
+                                                                     </div>
                                                                             <img src="{{ static_asset('assets/img/cards/razorpay.png') }}"
                                                                                 class="img-fluid mb-2 w-110">
                                                                             <span class="d-block text-center">  
@@ -1407,7 +1424,7 @@
                                         </div>
                                         {{-- <div class="pt-3">
                             <label class="aiz-checkbox">
-                                <input type="checkbox" required id="agree_checkbox">
+                                <input type="checkbox" required id="agree_checkbox" checked>
                                 <span class="aiz-square-check"></span>
                                 <span>{{ translate('I agree to the') }}</span>
                             </label>
@@ -1434,7 +1451,7 @@
                                     <div class="pt-2rem fs-14">
                                         <label class="aiz-checkbox">
                                             <input type="checkbox" required id="agree_checkbox"
-                                                onchange="stepCompletionPaymentInfo()">
+                                                onchange="stepCompletionPaymentInfo()" checked>
                                             <span class="aiz-square-check"></span>
                                             <span>{{ translate('I agree to the') }}</span>
                                         </label>

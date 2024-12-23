@@ -1402,7 +1402,9 @@ a.read-color {
   color: #45585E;
 }
 
-
+.pr-100 {
+  padding-right: 100px;
+}
 
 @media (max-width: 767px) {
   p.two-lines {
@@ -3008,6 +3010,63 @@ button.slick-next.slick-arrow {
 #blog-slick-slider .owl-nav.disabled {
   display: none !important;
 }
+
+.address_change {
+  background-color: #32533d;
+  padding: 5px 14px;
+  font-size: 12px;
+  border-radius: 2px;
+  color: #fff;
+
+}
+
+.aiz-rounded-check:after {
+  background: #32533d !important;
+}
+
+.add_adress {
+  float: right;
+  font-size: 14px;
+  color: #e18a14;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.additional_info_boxex {
+  border: 0px solid #e3e5ed !important;
+  padding: 0px 0px;
+  margin-bottom: 30px;
+  margin-top: -10px;
+}
+
+.additional_info_boxex input:focus,
+.additional_info_boxex textarea:focus {
+  border: 1px solid #e2e5ec !important;
+}
+
+.additional_info_boxex input,
+.additional_info_boxex textarea {
+  border-radius: 0;
+}
+
+.before_checked svg {
+  position: absolute;
+  right: 6px;
+  top: 8px;
+}
+
+.before_checked svg {
+  display: none;
+}
+
+.aiz-megabox>input:checked~.aiz-megabox-elem svg {
+  display: block;
+}
+
+.aiz-megabox>input:checked~.aiz-megabox-elem svg path {
+  fill: #15a405;
+}
+
 
 /* mobile device css */
 

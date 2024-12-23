@@ -68,7 +68,7 @@
                 <span class="mr-4">{{ translate('Frequently Bought Together')}}</span>
             </h3>
         </div>
-        <div class="p-3">
+        <div class="pt-3 ">
             <div class="aiz-carousel gutters-5 half-outside-arrow" data-items="2" data-xl-items="3" data-lg-items="4"  data-md-items="3" data-sm-items="2" data-xs-items="2" data-arrows='true' data-infinite='true'>
                 @foreach ($results as $key => $related_product)
                 {{-- @foreach (filter_products(\App\Models\Product::where('category_id', $product->category_id)->where('id', '!=', $product->id))->limit(10)->get() as $key => $related_product) --}}
@@ -77,7 +77,7 @@
                         <div class="">
                             <a href="{{ route('product', $related_product->slug) }}" class="d-block">
                                 <img
-                                    class="img-fit lazyload mx-auto h-140px h-md-210px"
+                                    class="img-fit lazyload mx-auto h-140px h-md-120px"
                                     src="{{ static_asset('assets/img/placeholder.jpg') }}"
                                     data-src="{{ uploaded_asset($related_product->thumbnail_img) }}"
                                     alt="{{ $related_product->getTranslation('name') }}"
@@ -92,9 +92,9 @@
                                 @endif
                                 <span class="fw-700 text-primary">{{ home_discounted_base_price($related_product) }}</span>
                             </div>
-                            <div class="rating rating-sm mt-1">
+                            <!-- <div class="rating rating-sm mt-1">
                                 {{ renderStarRating($related_product->rating) }}
-                            </div>
+                            </div> -->
                             <h3 class="fw-600 fs-13 text-truncate-2 lh-1-4 mb-0 h-35px">
                                 <a href="{{ route('product', $related_product->slug) }}" class="d-block text-reset">{{ $related_product->getTranslation('name') }}</a>
                             </h3>
