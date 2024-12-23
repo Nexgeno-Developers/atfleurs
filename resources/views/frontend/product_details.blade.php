@@ -123,17 +123,20 @@
 
 
                         <div class="row align-items-center">
+                            @php
+                                $total = $detailedProduct->reviews->count(); // Directly count the reviews
+                                // Alternatively, if you want to ensure $total is always set to 0 if no reviews exist:
+                                $total = $total ?: 0; // If $total is empty (falsey value), set it to 0
+                            @endphp
+                            @if($total > 0 || $detailedProduct->rating > 0)
                             <div class="col-12">
-                                @php
-                                $total = 0;
-                                $total += $detailedProduct->reviews->count();
-                                @endphp
                                 <span class="rating">
                                     {{ renderStarRating($detailedProduct->rating) }}
                                 </span>
                                 <span class="ml-1 opacity-90">({{ $total }}
                                     {{ translate('reviews') }})</span>
                             </div>
+                            @endif
                             @if ($detailedProduct->est_shipping_days)
                             <div class="col-auto ml pt-2">
                                 <small class="mr-2 opacity-90">{{ translate('Estimate Shipping Time') }}:
@@ -352,7 +355,7 @@
                             <hr>
                             @endif
 
-                           
+
                             <div class="row no-gutters pb-3 mt-4" id="chosen_price_div">
                                 <!-- <div class="col-sm-2">
                                     <div class="opacity-90 my-1">{{ translate('INR') }}:</div>
@@ -415,7 +418,7 @@
                                 <i class="la la-share"></i> {{ translate($detailedProduct->external_link_btn) }}
                             </a>
                             @else
-                          
+
                             <button type="button" class="btn btn-primary buy-now button_colors_1 greenbg fw-600 mb-md-0 mb-3" onclick="buyNow()">
                                 <i class="la la-shopping-cart"></i> {{ translate('Buy Now') }}
                             </button>
@@ -434,12 +437,12 @@
 
                         <div class="d-table width-100 mt-3">
                             <div class="d-table-cell">
-                                <!-- Add to wishlist button 
+                                <!-- Add to wishlist button
                                     <button type="button" class="btn pl-0 btn-link fw-600"
                                         onclick="addToWishList({{ $detailedProduct->id }})">
                                         {{ translate('Add to wishlist') }}
                                     </button>-->
-                                <!-- Add to compare button 
+                                <!-- Add to compare button
                                     <button type="button" class="btn btn-link btn-icon-left fw-600"
                                         onclick="addToCompare({{ $detailedProduct->id }})">
                                         {{ translate('Add to compare') }}

@@ -43,10 +43,10 @@
 
     <!-- Favicon -->
     <link rel="icon" href="{{ uploaded_asset(get_setting('site_icon')) }}">
-    
+
     <!----------------- canonical ------------------->
     <link rel="canonical" href="{{ url()->current() }}">
-    
+
      <!-- body font-->
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
 
@@ -58,7 +58,7 @@
     @if(\App\Models\Language::where('code', Session::get('locale', Config::get('app.locale')))->first()->rtl == 1)
     <link rel="stylesheet" href="{{ static_asset('assets/css/bootstrap-rtl.min.css') }}">
     @endif
-    
+
     <!--<link rel="stylesheet" href="{{ static_asset('assets/css/aiz-core.css') }}">-->
     <link rel="stylesheet" href="{{ static_asset('assets/css/aiz-core.min.css') }}">
     <link rel="stylesheet" href="{{ static_asset('assets/css/custom-style.css?v-1.6.6') }}">
@@ -72,7 +72,7 @@
     <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />-->
     <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">-->
     <!--<link rel="stylesheet" href="{{ static_asset('assets/css/whatsapp-chat-support.css') }}" />-->
-    
+
 
     <script>
         var AIZ = AIZ || {};
@@ -101,7 +101,7 @@
     </script>
 
     <style>
-       
+
         #map{
             width: 100%;
             height: 250px;
@@ -113,7 +113,7 @@
 
         .pac-container { z-index: 100000; }
     </style>
-    
+
     <style>
         div#welcomeModal .modal-content {
             background-image: url(/public/assets/img/login_bg_image.png);
@@ -122,11 +122,11 @@
             border: 0;
             border-radius: 0;
         }
-        
+
         div#welcomeModal .modal-dialog {
             max-width: 345px;
         }
-        
+
         div#welcomeModal h4 {
             text-align: center;
             font-size: 34px;
@@ -135,16 +135,16 @@
             font-weight: bold;
             color: #e18a14b3;
         }
-        
+
         div#welcomeModal p {
             text-align: center;
             font-size: 16px;
         }
-        
+
         div#welcomeModal  .modal-header {
             border: 0;
         }
-        
+
         div#welcomeModal button.close {
             opacity: 1;
             z-index: 99;
@@ -158,11 +158,11 @@
             padding-top: 12%;
     position: absolute !important;
         }
-        
+
         div#welcomeModal .modal-header .close:before {
             font-size: 12px;
         }
-        
+
         @keyframes confetti-slow {
                     0% {
                         transform: translate3d(0, 0, 0) rotateX(0) rotateY(0);
@@ -211,8 +211,8 @@
                 .confetti--animation-fast {
                     animation: confetti-fast 1.25s linear 1 forwards;
                 }
-        
-        
+
+
                  @media(max-width:767px)
                  {
                     div#welcomeModal .modal-dialog {
@@ -222,7 +222,7 @@
                  }
 
 
-                 
+
 
                   @keyframes  confetti-slow {
                     0% {
@@ -310,9 +310,9 @@
     color: #fff;
     }
 
-                
+
     </style>
-    
+
  <!-- Google tag (gtag.js) -->
 <!--<script async src="https://www.googletagmanager.com/gtag/js?id=AW-11362608793"></script>
 <script>
@@ -321,7 +321,7 @@
   gtag('js', new Date());
 
   gtag('config', 'AW-11362608793');
-</script>--> 
+</script>-->
 
 <!-- Google tag (gtag.js) -->
 <!--<script async src="https://www.googletagmanager.com/gtag/js?id=G-YEF663KSEP"></script>
@@ -374,7 +374,7 @@
 
 
 
-<!-- Event snippet for Add to cart conversion page In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. --> 
+<!-- Event snippet for Add to cart conversion page In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
 <!--<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>-->
   <script>
     // Define the function
@@ -390,12 +390,12 @@
       });
       return false;
     }
-    
+
     // Plain JavaScript click event handler
     document.addEventListener('DOMContentLoaded', function () {
       // Select all elements with the class 'gtagaddtocart'
       var elements = document.querySelectorAll('.gtagaddtocart');
-    
+
       // Loop through each element and attach a click event listener
       elements.forEach(function(element) {
         element.addEventListener('click', function () {
@@ -415,8 +415,8 @@
     //   });
     // });
   </script>
-  
-  
+
+
 <!-- Event snippet for Contact us conversion page In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
 <script>
    function gtag_report_conversion(url) {
@@ -460,21 +460,29 @@
 @endphp
 
 </head>
-<body>
-    
+<body class="{{ request()->is('checkout/*') || request()->is('cart') ? 'checkout-or-cart' : '' }}">
+<style>
+    /* Optional: Hide .footer-widget on screens smaller than 768px on checkout and cart pages */
+@media (max-width: 767px) {
+    .checkout-or-cart .footer-widget {
+        display: none;
+    }
+}
+</style>
+
     <!-- aiz-main-wrapper -->
     <div class="aiz-main-wrapper d-flex flex-column">
 
         <!-- Header -->
         @include('frontend.inc.nav')
-        
+
         @if(session('welcome_message'))
             <!-- Modal HTML structure -->
             <div id="welcomeModal" class="modal fade js-container" tabindex="-1" role="dialog" aria-labelledby="welcomeModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content ">
                         <div class="modal-header">
-                           
+
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -483,15 +491,15 @@
                             <h4>Welcome</h4>
                             <p>{{  Auth::user()->name . '!' }}</p>
                         </div>
-                        
+
                     </div>
                 </div>
             </div>
             @php session()->forget('welcome_message'); @endphp
         @endif
-        
+
         @yield('content')
-        
+
         @include('frontend.inc.footer')
 
     </div>
@@ -539,9 +547,9 @@
             </div>
         </div>
     @endif
-    
+
     @include('frontend.partials.modal')
-    
+
     @include('frontend.partials.account_delete_modal')
 
     <div class="modal fade" id="addToCart">
@@ -561,9 +569,9 @@
     </div>
 
     @yield('modal')
-    
+
     <!-- SCRIPTS -->
-    <script src="{{ static_asset('assets/js/vendors.js') }}"></script> 
+    <script src="{{ static_asset('assets/js/vendors.js') }}"></script>
     <script src="{{ static_asset('assets/js/aiz-core.min.js') }}" defer></script>
     <!--<script src="{{ static_asset('assets/js/aiz-core.js') }}" defer></script>-->
     <!--<script src="{{ static_asset('assets/js/owl.carousel.js') }}"></script>-->
@@ -572,6 +580,25 @@
    <script src="{{ static_asset('assets/js/moment.min.js') }}" defer></script>
    <script src="{{ static_asset('assets/js/whatsapp-chat-support.js') }}" defer></script>
    <script src="{{ static_asset('assets/js/fancybox.min.js') }}" defer></script>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Check if we're on the checkout or cart page
+        if (document.body.classList.contains('checkout-or-cart')) {
+            // Check if the screen width is less than 768px (mobile)
+            if (window.innerWidth < 768) {
+                // Find the footer widget and hide it
+                const footerWidget = document.querySelector('.footer-widget');
+                if (footerWidget) {
+                    footerWidget.style.display = 'none';
+                }
+            }
+        }
+    });
+</script>
+
+
 <script>
 jQuery(document).ready(function($){
 		$('#example_1').whatsappChatSupport();
@@ -601,7 +628,7 @@ jQuery(document).ready(function($){
           page_id="{{ env('FACEBOOK_PAGE_ID') }}">
         </div>
     @endif
-    
+
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             if (typeof AIZ !== 'undefined' && typeof AIZ.plugins !== 'undefined' && typeof AIZ.plugins.notify === 'function') {
@@ -612,7 +639,7 @@ jQuery(document).ready(function($){
                 console.log('AIZ.plugins.notify is not defined or not loaded yet.');
             }
         });
-        
+
             // @foreach (session('flash_notification', collect())->toArray() as $message)
             //     AIZ.plugins.notify('{{ $message['level'] }}', '{{ $message['message'] }}');
             // @endforeach
@@ -878,7 +905,7 @@ jQuery(document).ready(function($){
                 AIZ.plugins.notify('warning', "{{ translate('Please Login as a customer to add products to the Cart.') }}");
                 return false;
             @endif
-            
+
             if(checkAddToCartValidity()) {
                 $('#addToCart-modal-body').html(null);
                 $('#addToCart').modal();
@@ -1000,10 +1027,10 @@ jQuery(document).ready(function($){
 <!-- <div style="display:none" id="once-popup">
     <div class="offer_popup">
         <div id="popup-close" role="button">×</div>
-        <img src="public/assets/img/diwali_offer.jpg" 
-             data-coupon="DIWALI24" 
-             id="coupon-image" 
-             style="cursor: pointer;" 
+        <img src="public/assets/img/diwali_offer.jpg"
+             data-coupon="DIWALI24"
+             id="coupon-image"
+             style="cursor: pointer;"
              alt="Offer Image" />
     </div>
 </div>
@@ -1140,7 +1167,7 @@ jQuery(document).ready(function($) {
         }
     });
 });
-            
+
 
   </script>
 
