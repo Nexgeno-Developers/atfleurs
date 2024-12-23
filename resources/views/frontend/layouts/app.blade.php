@@ -463,11 +463,24 @@
 <body class="{{ request()->is('checkout/*') || request()->is('cart') ? 'checkout-or-cart' : '' }}">
 <style>
     /* Optional: Hide .footer-widget on screens smaller than 768px on checkout and cart pages */
-@media (max-width: 767px) {
+/* @media (max-width: 767px) {
     .checkout-or-cart .footer-widget {
         display: none;
     }
+} */
+
+ /* Hide multiple elements on mobile devices (below 768px) for checkout and cart pages */
+@media (max-width: 767px) {
+    .checkout-or-cart .footer-widget,
+    .checkout-or-cart .aiz-mobile-bottom-nav,
+    .checkout-or-cart header,
+    .checkout-or-cart footer,
+    .checkout-or-cart .section.call-buton,
+    .checkout-or-cart .whatsapp_chat_support {
+        display: none !important;
+    }
 }
+
 </style>
 
     <!-- aiz-main-wrapper -->
@@ -583,19 +596,19 @@
 
 
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        // Check if we're on the checkout or cart page
-        if (document.body.classList.contains('checkout-or-cart')) {
-            // Check if the screen width is less than 768px (mobile)
-            if (window.innerWidth < 768) {
-                // Find the footer widget and hide it
-                const footerWidget = document.querySelector('.footer-widget');
-                if (footerWidget) {
-                    footerWidget.style.display = 'none';
-                }
-            }
-        }
-    });
+    // document.addEventListener("DOMContentLoaded", function() {
+    //     // Check if we're on the checkout or cart page
+    //     if (document.body.classList.contains('checkout-or-cart')) {
+    //         // Check if the screen width is less than 768px (mobile)
+    //         if (window.innerWidth < 768) {
+    //             // Find the footer widget and hide it
+    //             const footerWidget = document.querySelector('.footer-widget');
+    //             if (footerWidget) {
+    //                 footerWidget.style.display = 'none';
+    //             }
+    //         }
+    //     }
+    // });
 </script>
 
 
