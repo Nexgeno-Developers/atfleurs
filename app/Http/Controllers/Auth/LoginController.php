@@ -62,10 +62,10 @@ class LoginController extends Controller
                 ->scopes(["name", "email"])
                 ->redirect();
         }
-        
+
         $redirectUri = request()->get('redirect') ? request()->get('redirect') : url()->previous();
         session()->put('link', $redirectUri);
-        
+
         return Socialite::driver($provider)->redirect();
     }
 
@@ -251,7 +251,7 @@ class LoginController extends Controller
     {
         $redirectUri = request()->get('redirect') ? request()->get('redirect') : null;
         session()->put('link', $redirectUri);
-        
+
         if ($request->get('phone') != null) {
             return ['phone' => $request['phone'], 'dial_code' => $request['country_code'], 'password' => $request->get('password')];
         } elseif ($request->get('email') != null) {
@@ -291,12 +291,18 @@ class LoginController extends Controller
             } else {
                 // Check if there's a redirect link stored in the session
                 if (session('redirect_to') != null) {
-                    // Redirect to the stored link (e.g., the cart page)
-                    return redirect(session('redirect_to'));
+                    // Retrieve the redirect URL
+                    $redirectUrl = session('redirect_to');
+
+                    // Forget the redirect URL from the session
                     session()->forget('redirect_to');
+
+                    // Redirect to the stored link (e.g., the cart page)
+                    return redirect($redirectUrl);
                 } else {
+                    return redirect()->to(url()->previous());
                     // Fallback to the default route
-                    return redirect()->route('dashboard');
+                    // return redirect()->route('dashboard');
                 }
                 //return redirect()->route('dashboard');
             }
@@ -354,11 +360,11 @@ class LoginController extends Controller
         // if (auth()->user()->provider) {
         //     $social_revoke =  new SocialRevoke;
         //     $revoke_output = $social_revoke->apply(auth()->user()->provider);
-            
+
         //     if ($revoke_output) {
         //     }
         // }
-        
+
         $auth_user = auth()->user();
         $auth_user->customer_products()->delete();
 
@@ -370,67 +376,67 @@ class LoginController extends Controller
         flash("Your account deletion successfully done.")->success();
         return redirect()->route($redirect_route);
     }
-    
+
     /* ------------------------- new ------------------------ */
     public function login_via_mobile_otp(Request $request){
         $validator = Validator::make($request->all(), [
             'phone' => 'required|regex:/^\d{10}$/',
         ]);
-        
+
         if ($validator->fails()) {
             return response()->json([
                 'status' => false,
                 'notification' => $validator->errors()->all()
             ], 200);
-        } 
-        
+        }
+
         $user = User::where('phone', $request->input('phone'))->first();
-        
+
         if($user != null){
-            
+
             $otp = mt_rand(100000, 999999);
             $timestamp = Carbon::now();
             Session()->put('otp_login', $otp);
             Session()->put('otp_timestamp', $timestamp);
             Session()->put('user_id', $user->id);
-            
+
             $user->verification_code = $otp;
             SmsUtility::login_verification($user);
-            
+
             $response = [
                 'status' => true,
                 'otp' => true,
                 'notification' => 'OTP has been sent to your Mobile Number',
             ];
-    
+
             return response()->json($response);
-            
+
         } else {
-            
+
             $response = [
                 'status' => false,
                 'notification' => 'Mobile Number Not Exist!',
             ];
-    
+
             return response()->json($response);
-            
+
         }
-        
+
     }
-    
-    
+
+
     public function verify_mobile_otp(Request $request){
         $validator = Validator::make($request->all(), [
             'otp' => 'required|regex:/^\d{6}$/',
         ]);
-        
+
         if ($validator->fails()) {
             return response()->json([
                 'status' => false,
                 'notification' => $validator->errors()->all()
             ], 200);
-        } 
-        
+        }
+
         $otp = Session()->get('otp_login');
         $timestamp = Session()->get('otp_timestamp');
         $user_id = Session()->get('user_id');
@@ -442,7 +448,7 @@ class LoginController extends Controller
                 'status' => false,
                 'notification' => 'OTP has expired. Please request a new one!',
             ];
-            
+
             return response()->json($response);
 
         }
@@ -450,9 +456,9 @@ class LoginController extends Controller
         if ($request->otp == $otp) {
 
             $user = User::findOrFail(($user_id));
-            
+
             auth()->login($user, true);
-            
+
             session()->forget('otp_timestamp');
             session()->forget('otp_login');
             session()->forget('user_id');
@@ -461,7 +467,7 @@ class LoginController extends Controller
                 'status' => true,
                 'notification' => 'Login successfully',
             ];
-            
+
             return response()->json($response);
 
         } else {
@@ -470,11 +476,11 @@ class LoginController extends Controller
                 'status' => false,
                 'notification' => 'Invalid OTP!',
             ];
-            
+
             return response()->json($response);
         }
-        
-        
+
+
     }
     /* ------------------------- new ------------------------ */
 
