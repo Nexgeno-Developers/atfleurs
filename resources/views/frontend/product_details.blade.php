@@ -36,10 +36,10 @@
 @endsection
 
 @section('content')
-<section class="mb-4 pt-md-5 pt-2">
+<section class="mb-4 pt-md-4 pt-2">
     <div class="container">
 
-        <ul class="breadcrumb bg-transparent p-0 d-lg-block d-none">
+        <ul class="breadcrumb bg-transparent p-0 display_m_none">
             <li class="breadcrumb-item opacity-90">
                 <a class="text-reset" href="{{ route('home') }}">{{ translate('Home')}}</a>
             </li>

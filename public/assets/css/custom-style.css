@@ -3558,4 +3558,8 @@ button.slick-next.slick-arrow {
     padding-top: 8px;
     font-size: 13px !important;
   }
+
+  .display_m_none {
+    display: none;
+  }
 }
