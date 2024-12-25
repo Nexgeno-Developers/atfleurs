@@ -2,41 +2,41 @@
 
 @section('content')
 
-    <section class="pt-5 mb-4">
+    <section class="pt-md-5 pt-3 mb-md-4 mb-0">
         <div class="container">
             <div class="row">
                 <div class="col-xl-8 mx-auto">
                     <div class="row aiz-steps arrow-divider">
                         <div class="col active">
-                            <div class="text-center text-primary">
+                            <div class="text-center text-primary mobile_crt_font">
                                 <i class="la-3x mb-2 las la-shopping-cart"></i>
-                                <h3 class="fs-14 fw-600 d-none d-lg-block">{{ translate('1. My Cart') }}</h3>
+                                <h3 class="fs-14 fw-600 d-lg-block">{{ translate('1. My Cart') }}</h3>
                             </div>
                         </div>
                         {{-- <div class="col">
-                            <div class="text-center">
+                            <div class="text-center mobile_crt_font">
                                 <i class="la-3x mb-2 opacity-50 las la-map"></i>
-                                <h3 class="fs-14 fw-600 d-none d-lg-block opacity-90">{{ translate('2. Shipping info') }}
+                                <h3 class="fs-14 fw-600 d-lg-block opacity-90">{{ translate('2. Shipping info') }}
                                 </h3>
                             </div>
                         </div>
                         <div class="col">
-                            <div class="text-center">
+                            <div class="text-center mobile_crt_font">
                                 <i class="la-3x mb-2 opacity-50 las la-truck"></i>
-                                <h3 class="fs-14 fw-600 d-none d-lg-block opacity-90">{{ translate('3. Delivery info') }}
+                                <h3 class="fs-14 fw-600 d-lg-block opacity-90">{{ translate('3. Delivery info') }}
                                 </h3>
                             </div>
                         </div> --}}
                         <div class="col">
-                            <div class="text-center">
+                            <div class="text-center mobile_crt_font">
                                 <i class="la-3x mb-2 opacity-50 las la-credit-card"></i>
-                                <h3 class="fs-14 fw-600 d-none d-lg-block opacity-90">{{ translate('2. Payment') }}</h3>
+                                <h3 class="fs-14 fw-600 d-lg-block opacity-90">{{ translate('2. Payment') }}</h3>
                             </div>
                         </div>
                         <div class="col">
-                            <div class="text-center">
+                            <div class="text-center mobile_crt_font">
                                 <i class="la-3x mb-2 opacity-50 las la-check-circle"></i>
-                                <h3 class="fs-14 fw-600 d-none d-lg-block opacity-90">{{ translate('3. Confirmation') }}
+                                <h3 class="fs-14 fw-600 d-lg-block opacity-90">{{ translate('3. Confirmation') }}
                                 </h3>
                             </div>
                         </div>
@@ -51,7 +51,7 @@
             @if ($carts && count($carts) > 0)
                 <div class="row">
                     <div class="col-xxl-8 col-xl-10 mx-auto">
-                        <div class="shadow-sm bg-white p-3 p-lg-4 rounded text-left">
+                        <div class="shadow-sm bg-white p-md-3 p-2 p-lg-4 rounded text-left">
                             <div class="mb-4">
                                 <div class="row gutters-5 d-none d-lg-flex border-bottom mb-3 pb-3">
                                     <div class="col-md-5 fw-600">{{ translate('Product') }}</div>
@@ -150,14 +150,14 @@
                                 <span class="opacity-60 fs-15">{{ translate('Subtotal') }}</span>
                                 <span class="fw-600 fs-17">{{ single_price($total) }}</span>
                             </div>
-                            <div class="row align-items-center">
-                                <div class="col-md-6 text-center text-md-left order-1 order-md-0">
+                            <div class="row align-items-center shipoping_bottom_sec">
+                                <div class="col-md-6 col-5 text-center text-md-left order-1 order-md-0">
                                     <a href="{{ route('home') }}" class="btn btn-link">
                                         <i class="las la-arrow-left"></i>
                                         {{ translate('Return to shop') }}
                                     </a>
                                 </div>
-                                <div class="col-md-6 text-center text-md-right">
+                                <div class="col-md-6 col-7 text-center text-md-right">
                                     @if (Auth::check())
                                         <a href="{{ route('checkout.store_delivery_info2') }}" class="btn btn-primary fw-600">
                                             {{ translate('Continue to Shipping') }}

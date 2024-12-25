@@ -25,7 +25,7 @@
                             </div>
                             <div class="col-md-10">
                                 <div class="mb-3">
-                                    <select class="form-control aiz-selectpicker" data-live-search="true" data-placeholder="{{ translate('Select your country') }}" name="country_id" required>
+                                    <select id="countrySelect" class="form-control aiz-selectpicker" data-live-search="true" data-placeholder="{{ translate('Select your country') }}" name="country_id" required>
                                         <option value="">{{ translate('Select your country') }}</option>
                                         @foreach (\App\Models\Country::where('status', 1)->get() as $key => $country)
                                             <option value="{{ $country->id }}">{{ $country->name }}</option>
@@ -130,4 +130,58 @@
         </div>
     </div>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+
+        function get_states_custom(country_id) {
+            $('[name="state"]').html("");
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: "{{route('get-state')}}",
+                type: 'POST',
+                data: {
+                    country_id  : country_id
+                },
+                success: function (response) {
+                    var obj = JSON.parse(response);
+                    if(obj != '') {
+                        $('[name="state_id"]').html(obj);
+                        AIZ.plugins.bootstrapSelect('refresh');
+                    }
+                }
+            });
+        }
+
+
+        // Add a 5-second delay
+        setTimeout(function () {
+            // Get the select element
+            const countrySelect = document.getElementById('countrySelect');
+
+            // Get the CSRF token from the meta tag
+            const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
+            // Loop through the options
+            for (let i = 0; i < countrySelect.options.length; i++) {
+                // Check if the country name matches "India" (case-insensitive)
+                if (countrySelect.options[i].text.toLowerCase() === 'india') {
+                    // Set the option as selected
+                    countrySelect.selectedIndex = i;
+
+                    console.log('India option selected!');
+
+                    // Refresh aiz-selectpicker to reflect the changes in the UI
+                    $('.aiz-selectpicker').selectpicker('refresh');
+
+                    get_states_custom(countrySelect.value);
+
+                    break;
+                }
+            }
+        }, 1000); // 5000ms = 5 seconds
+    });
+</script>
 

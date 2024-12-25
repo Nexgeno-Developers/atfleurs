@@ -36,10 +36,10 @@
 @endsection
 
 @section('content')
-<section class="mb-4 pt-5">
+<section class="mb-4 pt-md-5 pt-2">
     <div class="container">
 
-        <ul class="breadcrumb bg-transparent p-0">
+        <ul class="breadcrumb bg-transparent p-0 d-lg-block d-none">
             <li class="breadcrumb-item opacity-90">
                 <a class="text-reset" href="{{ route('home') }}">{{ translate('Home')}}</a>
             </li>
@@ -87,7 +87,7 @@
                                 @endforeach
                             </div>
                         </div>
-                        <div class="col-12 col-md-auto w-md-140px order-2 order-md-1 mt-3 mt-md-0">
+                        <div class="col-12 col-md-auto w-md-140px order-2 order-md-1 mt-1 mt-md-0">
                             <div class="aiz-carousel product-gallery-thumb" data-items='5'
                                 data-nav-for='.product-gallery' data-vertical='true' data-vertical-sm='false'
                                 data-focus-select='true' data-arrows='true'>
@@ -138,7 +138,7 @@
                             </div>
                             @endif
                             @if ($detailedProduct->est_shipping_days)
-                            <div class="col-auto ml pt-2">
+                            <div class="col-auto ml pt-md-2 pt-0">
                                 <small class="mr-2 opacity-90">{{ translate('Estimate Shipping Time') }}:
                                 </small>{{ $detailedProduct->est_shipping_days }} {{ translate('Days') }}
                             </div>
@@ -356,7 +356,7 @@
                             @endif
 
 
-                            <div class="row no-gutters pb-3 mt-4" id="chosen_price_div">
+                            <div class="row no-gutters pb-md-3 pb-1 mt-md-4 mt-2" id="chosen_price_div">
                                 <!-- <div class="col-sm-2">
                                     <div class="opacity-90 my-1">{{ translate('INR') }}:</div>
                                 </div> -->
@@ -370,7 +370,7 @@
                             </div>
 
                              <!-- Quantity + Add to cart -->
-                            <div class="row no-gutters pb-4">
+                            <div class="row no-gutters pb-md-4 pb-2">
                                 <div class="col-sm-12">
                                     <div class="opacity-90 my-2">{{ translate('Quantity') }}:</div>
                                 </div>

@@ -108,6 +108,8 @@ class CheckoutController extends Controller
 
     public function get_shipping_info(Request $request)
     {
+        return redirect()->route('checkout.store_delivery_info2');
+
         $carts = Cart::where('user_id', Auth::user()->id)->get();
 //        if (Session::has('cart') && count(Session::get('cart')) > 0) {
         if ($carts && count($carts) > 0) {

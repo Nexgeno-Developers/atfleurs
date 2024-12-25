@@ -2021,12 +2021,34 @@ span.num {
     padding-bottom: 5px;
   }
 
+  .mobile_crt_font h3 {
+    font-size: 11px !important;
+  }
+
+  .mobile_crt_font i {
+    font-size: 27px;
+  }
+
   .call-buton .cc-calto-action-ripple i {
     width: 40px;
     line-height: 40px;
     height: 40px;
     padding: 9px;
     font-size: 24px;
+  }
+
+  .pr-100 {
+    padding-right: 15px;
+  }
+
+  .address_change {
+    background-color: transparent;
+    padding: 0;
+    font-size: 20px;
+    border-radius: 2px;
+    color: #32533d;
+    position: relative;
+    left: 7px;
   }
 
   section.call-buton p {
@@ -2062,8 +2084,8 @@ span.num {
   }
 
   .dthead {
-    font-size: 16px !important;
-    line-height: 24px;
+    font-size: 24px !important;
+    line-height: 28px;
   }
 
   .seo_heading {
@@ -3067,6 +3089,18 @@ button.slick-next.slick-arrow {
   fill: #15a405;
 }
 
+.pickup_point_id_admin .bootstrap-select .dropdown-toggle {
+  color: #444;
+  background-color: transparent !important;
+  border-color: #32533d !important;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.pickup_point_id_admin .bootstrap-select>.dropdown-toggle:after {
+  margin-top: -1px;
+  display: none;
+}
 
 /* mobile device css */
 
@@ -3494,5 +3528,34 @@ button.slick-next.slick-arrow {
   .top_br {
     padding-top: 0px;
     padding-bottom: 0px;
+  }
+}
+
+
+@media(max-width:767px) {
+  .address_change {
+    background-color: transparent;
+    padding: 0;
+    font-size: 20px;
+    border-radius: 2px;
+    color: #32533d;
+    position: relative;
+    left: 7px;
+  }
+
+  .shipoping_bottom_sec .col-md-6 {
+    padding: 0;
+  }
+
+  .shipoping_bottom_sec .btn {
+    padding: 8px 14px;
+    font-size: 13px;
+  }
+
+  .order_buttons {
+    padding-left: 14px;
+    padding-right: 13px;
+    padding-top: 8px;
+    font-size: 13px !important;
   }
 }

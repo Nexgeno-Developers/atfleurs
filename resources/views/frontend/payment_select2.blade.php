@@ -8,44 +8,53 @@
                 text-align: start !important;
                 padding-bottom: 5px;
             }
+            .card .card-body {
+    padding: 20px 15px;
+}
+div#accordioncCheckoutInfo span {
+    font-size: 13px;
+}
+.card .card-header {
+    padding: 12px 15px;
+}
         }
         .pickup_point_id_admin .filter-option-inner-inner {
             white-space: initial !important;
         }
     </style>
-    <section class="mb-4 pt-5">
+    <section class="pt-md-5 pt-3 mb-md-4 mb-3">
         <div class="container">
             <div class="row">
                 <div class="col-xl-8 mx-auto">
                     <div class="row aiz-steps arrow-divider">
                         <div class="col done">
-                            <div class="text-success text-center">
+                            <div class="text-success text-center mobile_crt_font">
                                 <i class="la-3x las la-shopping-cart mb-2"></i>
-                                <h3 class="fs-14 fw-600 d-none d-lg-block">{{ translate('1. My Cart') }}</h3>
+                                <h3 class="fs-14 fw-600 d-lg-block">{{ translate('1. My Cart') }}</h3>
                             </div>
                         </div>
                         {{-- <div class="col done">
-                            <div class="text-success text-center">
+                            <div class="text-success text-center mobile_crt_font">
                                 <i class="la-3x las la-map mb-2"></i>
-                                <h3 class="fs-14 fw-600 d-none d-lg-block">{{ translate('2. Shipping info') }}</h3>
+                                <h3 class="fs-14 d-lg-block">{{ translate('2. Shipping info') }}</h3>
                             </div>
                         </div>
                         <div class="col done">
-                            <div class="text-success text-center">
+                            <div class="text-success text-center mobile_crt_font">
                                 <i class="la-3x las la-truck mb-2"></i>
-                                <h3 class="fs-14 fw-600 d-none d-lg-block">{{ translate('3. Delivery info') }}</h3>
+                                <h3 class="fs-14 d-lg-block">{{ translate('3. Delivery info') }}</h3>
                             </div>
                         </div> --}}
                         <div class="col active">
-                            <div class="text-primary text-center">
+                            <div class="text-primary text-center mobile_crt_font">
                                 <i class="la-3x las la-credit-card mb-2"></i>
-                                <h3 class="fs-14 fw-600 d-none d-lg-block">{{ translate('2. Payment') }}</h3>
+                                <h3 class="fs-14 d-lg-block">{{ translate('2. Payment') }}</h3>
                             </div>
                         </div>
                         <div class="col">
-                            <div class="text-center">
+                            <div class="text-center mobile_crt_font">
                                 <i class="la-3x las la-check-circle mb-2 opacity-50"></i>
-                                <h3 class="fs-14 fw-600 d-none d-lg-block opacity-50">{{ translate('3. Confirmation') }}
+                                <h3 class="fs-14 d-lg-block opacity-50">{{ translate('3. Confirmation') }}
                                 </h3>
                             </div>
                         </div>
@@ -80,112 +89,7 @@
                             <div id="collapseShippingInfo" class="collapse show" aria-labelledby="headingShippingInfo"
                                 data-parent="#accordioncCheckoutInfo">
                                 <div class="card-body py-0" id="shipping_info">
-                                    <form class="form-default address-form" data-toggle="validator"
-                                        action="{{ route('checkout.store_shipping_infostore') }}" role="form"
-                                        method="POST">
-                                        @csrf
-                                        @if (Auth::check())
-                                            <div class="bg-white rounded mb-2">
-                                                <div class="row justify-content-center gutters-5">
-                                                    @if (Auth::user()->addresses != null && count(Auth::user()->addresses) != 0)
-                                                        <div class="col-md-12">
-                                                            <div class="row">
-                                                                @foreach (Auth::user()->addresses as $key => $address)
-                                                                    <div class="col-md-12 mb-0 p-2">
-                                                                        <label class="aiz-megabox d-block bg-white mb-0">
-                                                                            <input type="radio" name="address_id"
-                                                                                value="{{ $address->id }}"
-                                                                                @if ($address->set_default || (isset($carts[0]->address_id) && $carts[0]->address_id == $address->id)) checked @endif
-                                                                                required>
-                                                                            <span class="d-flex p-3 aiz-megabox-elem">
-                                                                                <span
-                                                                                    class="aiz-rounded-check flex-shrink-0 mt-1"></span>
-                                                                                <span class="flex-grow-1 pl-2 text-left pr-100">
-                                                                                    <div>
-                                                                                        <!-- <span
-                                                                                            class="opacity-60">{{ translate('Address') }}:</span> -->
-                                                                                        <span
-                                                                                            class="fw-600 ml-2 d-block">{{ $address->address }}, {{ optional($address->city)->name }} - {{ $address->postal_code }}, {{ optional($address->state)->name }}, {{ optional($address->country)->name }}</span>
-                                                                                    </div>
-                                                                                    <!-- <div>
-                                                                                        <span
-                                                                                            class="opacity-60">{{ translate('Postal Code') }}:</span>
-                                                                                        <span
-                                                                                            class="fw-600 ml-2"></span>
-                                                                                    </div> -->
-                                                                                    <!-- <div>
-                                                                                        <span
-                                                                                            class="opacity-60">{{ translate('City') }}:</span>
-                                                                                        <span
-                                                                                            class="fw-600 ml-2"></span>
-                                                                                    </div> -->
-                                                                                    <!-- <div>
-                                                                                        <span
-                                                                                            class="opacity-60">{{ translate('State') }}:</span>
-                                                                                        <span
-                                                                                            class="fw-600 ml-2"></span>
-                                                                                    </div> -->
-                                                                                    <!-- <div>
-                                                                                        <span
-                                                                                            class="opacity-60">{{ translate('Country') }}:</span>
-                                                                                        <span
-                                                                                            class="fw-600 ml-2">{{ optional($address->country)->name }}</span>
-                                                                                    </div> -->
-                                                                                    <div class="ml-2 pt-2">
-                                                                                        <span
-                                                                                            class="opacity-60">{{ translate('Phone') }}:</span>
-                                                                                        <span
-                                                                                            class="fw-600 ml-2">{{ $address->phone }}</span>
-                                                                                    </div>
-                                                                                </span>
-                                                                            </span>
-                                                                        </label>
-                                                                        <div
-                                                                            class="dropdown position-absolute right-20 top-15">
-                                                                            <button class="btn bg-gray px-2" type="button"
-                                                                                data-toggle="dropdown">
-                                                                                <p class="address_change" onclick="edit_address('{{ $address->id }}')">Change</p>
-                                                                            </button>
-                                                                            <!-- <div class="dropdown-menu dropdown-menu-right"
-                                                                                aria-labelledby="dropdownMenuButton">
-                                                                                <a class="dropdown-item"
-                                                                                    >
-                                                                                    {{ translate('Edit') }}
-                                                                                </a>
-                                                                            </div> -->
-                                                                        </div>
-                                                                    </div>
-                                                                @endforeach
-
-
-                                                            </div>
-                                                        </div>
-                                                    @endif
-                                                    <input type="hidden" name="checkout_type" value="logged">
-                                                    <div class="col-md-12 pl-3 pt-2">
-                                                        <div class=""
-                                                            onclick="add_new_address()">
-                                                            <div class="alpha-7 add_adress"><i class="las la-plus la-1x mb-3"></i> {{ translate('Add New Address') }}</div>
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        @endif
-                                        {{--
-                                        <div class="row align-items-center">
-                                            <div class="col-md-6 text-center text-md-left order-1 order-md-0">
-                                                <a href="{{ route('home') }}" class="btn btn-link">
-                                                    <i class="las la-arrow-left"></i>
-                                                    {{ translate('Return to shop')}}
-                                                </a>
-                                            </div>
-                                            <div class="col-md-6 text-center text-md-right">
-                                                <button type="submit" class="btn btn-primary fw-600">{{ translate('Continue to Delivery Info')}}</a>
-                                            </div>
-                                        </div>
-                                        --}}
-                                    </form>
+                                    
 
                                     <form class="form-default delivery-type-form d-none"
                                         action="{{ route('checkout.store_delivery_info') }}" role="form" method="POST">
@@ -218,7 +122,7 @@
                                             }
                                         @endphp
                                         @if (!empty($admin_products))
-                                            <div class="card mb-3 border-0 rounded">
+                                            <div class="card mb-md-3 mb-0 border-0 rounded">
                                                 {{-- <div class="card-header p-3">
                                                     <h5 class="fs-16 fw-600 mb-0">{{ get_setting('site_name') }}
                                                         {{ translate('Products') }}</h5>
@@ -250,14 +154,14 @@
                                                     </ul>
                                                     @if ($physical)
                                                         <div class="row ">
-                                                            <div class="col-md-8">
-                                                                <h6 class="fs-15 fw-600 text-right pt-2">
+                                                            <div class="col-md-7">
+                                                                <h6 class="fs-15 fw-600 text-md-right pt-2 pb-md-0 pb-2">
                                                                     {{ translate('Choose Delivery Type') }}</h6>
                                                             </div>
-                                                            <div class="col-md-4">
+                                                            <div class="col-md-5">
                                                                 <div class="row justify-content-end">
                                                                     @if (get_setting('shipping_type') != 'carrier_wise_shipping')
-                                                                        <div class="col-6 p-md-0">
+                                                                        <div class="col-6">
                                                                             <label
                                                                                 class="aiz-megabox d-block bg-white mb-0">
                                                                                 <input type="radio"
@@ -270,14 +174,14 @@
                                                                                     @if (isset($carts[0]->shipping_type) && $carts[0]->shipping_type == 'home_delivery') checked @endif>
                                                                                 <span class="d-flex p-2 aiz-megabox-elem">
                                                                                     <span
-                                                                                        class="aiz-rounded-check flex-shrink-0 mt-1"></span>
+                                                                                        class="aiz-rounded-check flex-shrink-0 mt-0"></span>
                                                                                     <span
-                                                                                        class="flex-grow-1 pl-2 fw-600">{{ translate('Home Delivery') }}</span>
+                                                                                        class="flex-grow-1 pl-2 fw-600 fs-13">{{ translate('Home Delivery') }}</span>
                                                                                 </span>
                                                                             </label>
                                                                         </div>
                                                                     @else
-                                                                        <div class="col-6 pl-md-2 pr-md-0">
+                                                                        <div class="col-6">
                                                                             <label
                                                                                 class="aiz-megabox d-block bg-white mb-0">
                                                                                 <input type="radio"
@@ -296,7 +200,7 @@
                                                                     @endif
 
                                                                     @if ($pickup_point_list)
-                                                                        <div class="col-6 pl-md-2 pr-md-0">
+                                                                        <div class="col-6 pl-md-1 pl-0">
                                                                             <label
                                                                                 class="aiz-megabox d-block bg-white mb-0">
                                                                                 <input type="radio"
@@ -309,17 +213,21 @@
                                                                                     @if (isset($carts[0]->shipping_type) && $carts[0]->shipping_type == 'pickup_point') checked @endif>
                                                                                 <span class="d-flex p-2 aiz-megabox-elem">
                                                                                     <span
-                                                                                        class="aiz-rounded-check flex-shrink-0 mt-1"></span>
+                                                                                        class="aiz-rounded-check flex-shrink-0 mt-0"></span>
                                                                                     <span
-                                                                                        class="flex-grow-1 pl-2 fw-600">{{ translate('Local Pickup') }}</span>
+                                                                                        class="flex-grow-1 pl-2 fw-600 fs-13">{{ translate('Local Pickup') }}</span>
                                                                                 </span>
                                                                             </label>
                                                                         </div>
                                                                     @endif
 
                                                                 </div>
-                                                                @if ($pickup_point_list)
-                                                                    <div class="mt-4 pickup_point_id_admin d-none" style="pointer-events:none;">
+                                                               
+                                                            </div>
+
+                                                            <div class="col-md-12">
+                                                                 @if ($pickup_point_list)
+                                                                    <div class="mt-md-4 mt-3 pickup_point_id_admin d-none" style="pointer-events:none;">
                                                                         <select class="form-control aiz-selectpicker"
                                                                             name="pickup_point_id_{{ \App\Models\User::where('user_type', 'admin')->first()->id }}"
                                                                             data-live-search="true">
@@ -329,9 +237,9 @@
                                                                             @foreach ($pickup_point_list as $pick_up_point)
                                                                                 <option value="{{ $pick_up_point->id }}"
                                                                                     data-content="<span class='d-block'>
-                                                                                            <span class='d-block fs-16 fw-600 mb-2' style='color:#000;'>{{ $pick_up_point->getTranslation('name') }}</span>
-                                                                                            <span class='d-block fs-12' style='color:#000;'><i class='las la-map-marker'></i> {{ $pick_up_point->getTranslation('address') }}</span>
-                                                                                            <span class='d-block fs-12'  style='color:#000;'><i class='las la-phone'></i>{{ $pick_up_point->phone }}</span>
+                                                                                            <span class='d-block'>{{ $pick_up_point->getTranslation('name') }}</span>
+                                                                                            <span class='d-block'>{{ $pick_up_point->getTranslation('address') }}</span>
+                                                                                            <span class='d-block pt-1'>Phone: {{ $pick_up_point->phone }}</span>
                                                                                         </span>"
                                                                                     {{ $loop->first ? 'selected' : '' }}>
                                                                                 </option>
@@ -350,7 +258,7 @@
                                                                                 name="carrier_id_{{ \App\Models\User::where('user_type', 'admin')->first()->id }}"
                                                                                 value="{{ $carrier->id }}"
                                                                                 @if ($carrier_key == 0) checked @endif>
-                                                                            <span class="d-flex p-3 aiz-megabox-elem">
+                                                                            <span class="d-flex p-md-3 p-2 aiz-megabox-elem">
                                                                                 <span
                                                                                     class="aiz-rounded-check flex-shrink-0 mt-1"></span>
                                                                                 <span class="flex-grow-1 pl-3 fw-600">
@@ -427,7 +335,7 @@
                                                                                         onchange="show_pickup_point(this, {{ $key }})"
                                                                                         data-target=".pickup_point_id_{{ $key }}">
                                                                                     <span
-                                                                                        class="d-flex p-3 aiz-megabox-elem">
+                                                                                        class="d-flex p-md-3 p-2 aiz-megabox-elem">
                                                                                         <span
                                                                                             class="aiz-rounded-check flex-shrink-0 mt-1"></span>
                                                                                         <span
@@ -445,7 +353,7 @@
                                                                                         onchange="show_pickup_point(this, {{ $key }})"
                                                                                         data-target=".pickup_point_id_{{ $key }}">
                                                                                     <span
-                                                                                        class="d-flex p-3 aiz-megabox-elem">
+                                                                                        class="d-flex p-md-3 p-2 aiz-megabox-elem">
                                                                                         <span
                                                                                             class="aiz-rounded-check flex-shrink-0 mt-1"></span>
                                                                                         <span
@@ -465,7 +373,7 @@
                                                                                         onchange="show_pickup_point(this, {{ $key }})"
                                                                                         data-target=".pickup_point_id_{{ $key }}">
                                                                                     <span
-                                                                                        class="d-flex p-3 aiz-megabox-elem">
+                                                                                        class="d-flex p-md-3 p-2 aiz-megabox-elem">
                                                                                         <span
                                                                                             class="aiz-rounded-check flex-shrink-0 mt-1"></span>
                                                                                         <span
@@ -510,7 +418,7 @@
                                                                                     name="carrier_id_{{ $key }}"
                                                                                     value="{{ $carrier->id }}"
                                                                                     @if ($carrier_key == 0) checked @endif>
-                                                                                <span class="d-flex p-3 aiz-megabox-elem">
+                                                                                <span class="d-flex p-md-3 p-2 aiz-megabox-elem">
                                                                                     <span
                                                                                         class="aiz-rounded-check flex-shrink-0 mt-1"></span>
                                                                                     <span class="flex-grow-1 pl-3 fw-600">
@@ -543,6 +451,88 @@
                                                 {{ translate('Return to shop')}}
                                             </a>
                                             <button type="submit" class="btn fw-600 btn-primary">{{ translate('Continue to Payment')}}</button>
+                                        </div>
+                                        --}}
+                                    </form>
+
+                                    <form class="form-default address-form" data-toggle="validator"
+                                        action="{{ route('checkout.store_shipping_infostore') }}" role="form"
+                                        method="POST">
+                                        @csrf
+                                        @if (Auth::check())
+                                            <div class="bg-white rounded mb-2">
+                                                <div class="row justify-content-center gutters-5">
+                                                    @if (Auth::user()->addresses != null && count(Auth::user()->addresses) != 0)
+                                                        <div class="col-md-12">
+                                                            <div class="row">
+                                                                @foreach (Auth::user()->addresses as $key => $address)
+                                                                    <div class="col-md-12 mb-0 pb-1 pt-md-2 pt-3">
+                                                                        <label class="aiz-megabox d-block bg-white mb-0">
+                                                                            <input type="radio" name="address_id"
+                                                                                value="{{ $address->id }}"
+                                                                                @if ($address->set_default || (isset($carts[0]->address_id) && $carts[0]->address_id == $address->id)) checked @endif
+                                                                                required>
+                                                                            <span class="d-flex p-md-3 p-2 aiz-megabox-elem">
+                                                                                <span
+                                                                                    class="aiz-rounded-check flex-shrink-0 mt-1"></span>
+                                                                                <span class="flex-grow-1 pl-2 text-left pr-100">
+                                                                                    <div>
+                                                                                        <span
+                                                                                            class="fw-600 ml-2 d-block">{{ $address->address }}, {{ optional($address->city)->name }} - {{ $address->postal_code }}, {{ optional($address->state)->name }}, {{ optional($address->country)->name }}</span>
+                                                                                    </div>
+                                                                                   
+                                                                                    <div class="ml-2 pt-2">
+                                                                                        <span
+                                                                                            class="opacity-60">{{ translate('Phone') }}:</span>
+                                                                                        <span
+                                                                                            class="fw-600 ml-2">{{ $address->phone }}</span>
+                                                                                    </div>
+                                                                                </span>
+                                                                            </span>
+                                                                        </label>
+                                                                        <div
+                                                                            class="dropdown position-absolute right-20 top-15">
+                                                                            <button class="btn bg-gray px-2" type="button"
+                                                                                data-toggle="dropdown">
+                                                                                <p class="address_change" onclick="edit_address('{{ $address->id }}')"><i class="las la-edit la-1x d-block d-md-none"></i> <span class="d-md-block d-none">Change</span></p>
+                                                                            </button>
+                                                                            <!-- <div class="dropdown-menu dropdown-menu-right"
+                                                                                aria-labelledby="dropdownMenuButton">
+                                                                                <a class="dropdown-item"
+                                                                                    >
+                                                                                    {{ translate('Edit') }}
+                                                                                </a>
+                                                                            </div> -->
+                                                                        </div>
+                                                                    </div>
+                                                                @endforeach
+
+
+                                                            </div>
+                                                        </div>
+                                                    @endif
+                                                    <input type="hidden" name="checkout_type" value="logged">
+                                                    <div class="col-md-12 pl-3 pt-2">
+                                                        <div class=""
+                                                            onclick="add_new_address()">
+                                                            <div class="alpha-7 add_adress"><i class="las la-plus la-1x mb-3"></i> {{ translate('Add New Address') }}</div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endif
+                                        {{--
+                                        <div class="row align-items-center">
+                                            <div class="col-md-6 text-center text-md-left order-1 order-md-0">
+                                                <a href="{{ route('home') }}" class="btn btn-link">
+                                                    <i class="las la-arrow-left"></i>
+                                                    {{ translate('Return to shop')}}
+                                                </a>
+                                            </div>
+                                            <div class="col-md-6 text-center text-md-right">
+                                                <button type="submit" class="btn btn-primary fw-600">{{ translate('Continue to Delivery Info')}}</a>
+                                            </div>
                                         </div>
                                         --}}
                                     </form>
@@ -834,18 +824,18 @@
                                                     <div class="additional_info_boxex">
                                                        
                                                         <div class="row mt-2 mt-md-3">
-                                                            <div class="col-md-6 pr-0">
+                                                            <div class="col-md-6 pr-md-0">
                                                                 <div class="text-left">
                                                                     <!-- <label for="fromPerson" class="form-label">
                                                                         Sender's Name <small class="text-muted">(Person
                                                                             sending the flowers)</small>
                                                                     </label> -->
                                                                     <input type="text" name="from_name"
-                                                                        class="form-control border-right-0" id="fromPerson"
+                                                                        class="form-control border-right-md-0" id="fromPerson"
                                                                         placeholder="Enter sender's name">
                                                                 </div>
                                                             </div>
-                                                            <div class="col-md-6 pl-0">
+                                                            <div class="col-md-6 pl-md-0">
                                                                 <div class="text-left">
                                                                     <!-- <label for="toPerson" class="form-label">
                                                                         Recipient's Name <small class="text-muted">(Person
@@ -1474,7 +1464,7 @@
                                         <!-- Complete Ordert -->
                                         <div class="col-6 text-right">
                                             <button type="button" onclick="submitOrder(this)" id="submitOrderBtn"
-                                                class="btn btn-success fs-14 fw-700 rounded-0 px-4">{{ translate('Complete Order') }}</button>
+                                                class="order_buttons btn btn-success fs-14 fw-700 rounded-0 px-md-4">{{ translate('Complete Order') }}</button>
                                         </div>
                                     </div>
 
@@ -1903,8 +1893,10 @@
                 ).is(':checked');
                 if (isPickupPoint) {
                     $('.pickup_point_id_admin').removeClass('d-none');
+                    $('.address-form').addClass('d-none');
                 } else {
                     $('.pickup_point_id_admin').addClass('d-none');
+                    $('.address-form').removeClass('d-none');
                 }
             }
 

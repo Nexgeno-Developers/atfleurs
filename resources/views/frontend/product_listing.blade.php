@@ -45,7 +45,7 @@
 
 @section('content')
 
-    <section class="mb-4 pt-md-5 pt-4">
+    <section class="mb-4 pt-md-5 pt-2">
         <div class="container">
             <div class="row">
                 <div class="col-md-5 col-12 ">
@@ -55,7 +55,7 @@
                                 </h3>
                             @endif
 
-                        <ul class="breadcrumb bg-transparent p-0">
+                        <ul class="breadcrumb bg-transparent p-0 mb-0">
                             <li class="breadcrumb-item opacity-90">
                                 <a class="text-reset" href="{{ route('home') }}">{{ translate('Home')}}</a>
                             </li>
@@ -78,8 +78,8 @@
                         </div>
                         @if($products->count() > 0)
                             <div class="col-md-7 col-12 d-flex justify-content-md-end align-items-center">
-                             <div class="d-flex align-items-center rounded mb-lg-3 mb-4">
-                                    <div class="fs-15 fw-600 p-1"> Sort By: </div>
+                             <div class="d-flex align-items-center rounded mb-lg-3 mb-2">
+                                    <div class="fs-15 fw-600 p-md-1 p-0"> Sort By: </div>
                                         <div class="p-1">
                                             <div class="sortbar_tabs-container">
                                                 <div class="btn-group" role="group" aria-label="Sorting Options">

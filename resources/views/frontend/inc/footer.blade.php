@@ -529,14 +529,14 @@
             </a>
         </div>
         <div class="col">
-            <a href="{{ route('all-notifications') }}" class="text-reset d-block text-center pb-2 pt-3">
+            <a href="tel:+91 7070070716" class="text-reset d-block text-center pb-2 pt-3">
                 <span class="d-inline-block position-relative px-2">
-                    <i class="las la-bell fs-20 opacity-60 {{ areActiveRoutes(['all-notifications'],'opacity-100 text-primary')}}"></i>
-                    @if(Auth::check() && count(Auth::user()->unreadNotifications) > 0)
+                    <i class="las la-phone fs-20 opacity-60 {{ areActiveRoutes(['all-notifications'],'opacity-100 text-primary')}}"></i>
+                    <!-- @if(Auth::check() && count(Auth::user()->unreadNotifications) > 0)
                         <span class="badge badge-sm badge-dot badge-circle badge-primary position-absolute absolute-top-right" style="right: 7px;top: -2px;"></span>
-                    @endif
+                    @endif -->
                 </span>
-                <span class="d-block fs-10 fw-600 opacity-60 {{ areActiveRoutes(['all-notifications'],'opacity-100 fw-600')}}">{{ translate('Notifications') }}</span>
+                <span class="d-block fs-10 fw-600 opacity-60 {{ areActiveRoutes(['all-notifications'],'opacity-100 fw-600')}}">{{ translate('Talk to Expert') }}</span>
             </a>
         </div>
         <div class="col">
@@ -630,7 +630,7 @@
             </div>
  <!-- whatsapp -->
  
- <section class="call-buton"><a aria-label="Click to call executive" class="cc-calto-action-ripple" onclick="return gtag_report_conversion('tel:+91 7070070716');" href="tel:+91 7070070716"><i class="las la-phone"></i></a>
+ <section class="call-buton d-lg-block d-none"><a aria-label="Click to call executive" class="cc-calto-action-ripple" onclick="return gtag_report_conversion('tel:+91 7070070716');" href="tel:+91 7070070716"><i class="las la-phone"></i></a>
  <p>Talk to Expert</p>
  <span class="num"></span>
 </a>
