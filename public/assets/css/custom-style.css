@@ -3556,10 +3556,9 @@ button.slick-next.slick-arrow {
   }
 
   .bottom_fixed_prcd {
-    position: fixed;
-    bottom: 10px;
+    position: sticky;
+    bottom: -11px;
     background: #fff;
-    width: 99.5%;
     margin-left: -10px;
     padding-top: 10px;
   }
