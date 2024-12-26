@@ -151,7 +151,7 @@
                                 <span class="fw-600 fs-17">{{ single_price($total) }}</span>
                             </div>
                             <div class="row align-items-center shipoping_bottom_sec">
-                                <div class="col-md-6 col-5 text-center text-md-left order-1 order-md-0">
+                                <div class="col-md-6 col-5 text-center text-md-left">
                                     <a href="{{ route('home') }}" class="btn btn-link">
                                         <i class="las la-arrow-left"></i>
                                         {{ translate('Return to shop') }}
