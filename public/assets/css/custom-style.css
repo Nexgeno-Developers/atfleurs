@@ -3531,6 +3531,9 @@ button.slick-next.slick-arrow {
   }
 }
 
+.cart_after_checkout {
+  max-height: 94vh !important;
+}
 
 @media(max-width:767px) {
   .address_change {
@@ -3541,6 +3544,41 @@ button.slick-next.slick-arrow {
     color: #32533d;
     position: relative;
     left: 7px;
+  }
+
+  .cart_after_checkout {
+    padding: 10px !important;
+  }
+
+  .cart_after_checkout h3 {
+    font-size: 20px;
+    padding-top: 10px;
+  }
+
+  .bottom_fixed_prcd {
+    position: fixed;
+    bottom: 10px;
+    background: #fff;
+    width: 99%;
+    margin-left: -10px;
+    padding-top: 10px;
+  }
+
+  .h-m46 {
+    height: 46px !important;
+  }
+
+  .bottom_fixed_prcd .btn {
+    padding: 7px 10px !important;
+  }
+
+  .pb_80 {
+    padding-bottom: 55px !important;
+  }
+
+  .cart_after_checkout i.las.la-check-circle.la-3x {
+    font-size: 40px;
+    padding-top: 10px;
   }
 
   .shipoping_bottom_sec .col-md-6 {

@@ -19,14 +19,14 @@
 </script>
 
 
-<div class="modal-body p-4 added-to-cart">
+<div class="modal-body p-4 added-to-cart cart_after_checkout">
     <div class="text-center text-success mb-4">
         <i class="las la-check-circle la-3x"></i>
         <h3>{{ translate('Item added to your cart!')}}</h3>
     </div>
-    <div class="media mb-4">
+    <div class="media mb-md-4 mb-2">
         <img src="{{ static_asset('assets/img/placeholder.jpg') }}" data-src="{{ uploaded_asset($product->thumbnail_img) }}" class="mr-3 lazyload size-100px img-fit rounded" alt="Product Image">
-        <div class="media-body pt-3 text-left">
+        <div class="media-body pt-md-3 text-left">
             <h6 class="fw-600">
                 {{  $product->getTranslation('name')  }}
             </h6>
@@ -63,12 +63,12 @@
 
     @if(!$results->isEmpty())
     <div class="bg-white rounded shadow-sm">
-        <div class="border-bottom p-3">
+        <div class="border-bottom p-md-3 pb-md-3 pb-3">
             <h3 class="fs-16 fw-600 mb-0">
                 <span class="mr-4">{{ translate('Frequently Bought Together')}}</span>
             </h3>
         </div>
-        <div class="pt-3 ">
+        <div class="pt-3 pb_80">
             <div class="aiz-carousel gutters-5 half-outside-arrow" data-items="2" data-xl-items="3" data-lg-items="4"  data-md-items="3" data-sm-items="2" data-xs-items="2" data-arrows='true' data-infinite='true'>
                 @foreach ($results as $key => $related_product)
                 {{-- @foreach (filter_products(\App\Models\Product::where('category_id', $product->category_id)->where('id', '!=', $product->id))->limit(10)->get() as $key => $related_product) --}}
@@ -95,7 +95,7 @@
                             <!-- <div class="rating rating-sm mt-1">
                                 {{ renderStarRating($related_product->rating) }}
                             </div> -->
-                            <h3 class="fw-600 fs-13 text-truncate-2 lh-1-4 mb-0 h-35px">
+                            <h3 class="fw-600 fs-13 text-truncate-2 lh-1-4 mb-0 h-35px h-m46">
                                 <a href="{{ route('product', $related_product->slug) }}" class="d-block text-reset">{{ $related_product->getTranslation('name') }}</a>
                             </h3>
                             @if (addon_is_activated('club_point'))
@@ -112,7 +112,7 @@
         </div>
     </div>
     @endif
-    <div class="text-center">
+    <div class="text-center bottom_fixed_prcd">
         <button class="btn btn-outline-success mb-3 mb-sm-0" data-dismiss="modal">{{ translate('Back to shopping')}}</button>
         <a onclick="return gtag_report_conversion('{{ route('cart') }}');" href="{{ route('cart') }}" class="btn btn-success text-white mb-3 mb-sm-0">{{ translate('Proceed to Checkout')}}</a>
     </div>
