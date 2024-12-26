@@ -199,17 +199,16 @@
                         @if (home_price($detailedProduct) != home_discounted_price($detailedProduct))
 
                         <div class="row no-gutters mt-3">
-                            <div class="col-sm-2">
-                                <div class="opacity-90 my-2">{{ translate('Price') }}:</div>
+                           <div class="col-sm-2 col-3">
+                                <div class="opacity-90 my-2">Price:</div>
                             </div>
-
                             <div class="">
-                                <div class="h3 fw-500 text-primary price-size">
-                                    <strong>{{ home_discounted_price($detailedProduct) }}</strong>
+                                <div class="fs-16 fw-500 text-primary price-size gray_green_clr pt-2">
+                                    <strong class="gray_green_clr">{{ home_discounted_price($detailedProduct) }}</strong>
                                 </div>
                             </div>
                             <div class="pl-3">
-                                <div class="fs-20 opacity-90 pt-md-1 pt-0">
+                                <div class="fs-16 opacity-90 pt-2">
                                     <del>
                                         <p class="mb-0">{{ home_base_price($detailedProduct) }}</p>
 
@@ -219,8 +218,8 @@
                                     </del>
                                 </div>
                             </div>
-                            <div class="pl-2 pt-md-1 pt-0">
-                                <strong class="fs-17 fw-500 text-primary">
+                            <div class="pl-2 pt-2">
+                                <strong class="fs-16 fw-500 text-primary">
                                     <!--<span class="box ml-1 mr-0">&nbsp;{{discount_in_percentage($detailedProduct)}}% OFF</span>-->
                                     <p id="discounted_price" class="mb-0" style="color: #f00;"></p>
                                     {{-- discount_in_percentage($detailedProduct) --}}
@@ -356,11 +355,11 @@
                             @endif
 
 
-                            <div class="row no-gutters pb-md-3 pb-1 mt-md-4 mt-2" id="chosen_price_div">
-                                <!-- <div class="col-sm-2">
-                                    <div class="opacity-90 my-1">{{ translate('INR') }}:</div>
-                                </div> -->
-                                <div class="col-sm-12">
+                            <div class="row no-gutters pb-md-3 pb-1 mt-md-3 mt-2" id="chosen_price_div">
+                                <div class="col-sm-2 col-3">
+                                    <div class="opacity-90 my-1">{{ translate('Total  Price') }}:</div>
+                                </div>
+                                <div class="col-sm-10 col-9">
                                     <div class="product-price">
                                         <strong id="chosen_price" class="h4 fw-700 gray_green_clr">
 
@@ -370,7 +369,7 @@
                             </div>
 
                              <!-- Quantity + Add to cart -->
-                            <div class="row no-gutters pb-md-4 pb-2">
+                            <div class="row no-gutters pb-md-3 pb-2">
                                 <div class="col-sm-12">
                                     <div class="opacity-90 my-2">{{ translate('Quantity') }}:</div>
                                 </div>
