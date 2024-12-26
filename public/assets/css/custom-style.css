@@ -3559,9 +3559,13 @@ button.slick-next.slick-arrow {
     position: fixed;
     bottom: 10px;
     background: #fff;
-    width: 99%;
+    width: 99.5%;
     margin-left: -10px;
     padding-top: 10px;
+  }
+
+  .cart_after_checkout {
+    max-height: 80vh !important;
   }
 
   .h-m46 {
