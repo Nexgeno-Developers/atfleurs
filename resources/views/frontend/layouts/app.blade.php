@@ -73,6 +73,13 @@
     <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">-->
     <!--<link rel="stylesheet" href="{{ static_asset('assets/css/whatsapp-chat-support.css') }}" />-->
 
+    <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "pjygmsz9ur");
+</script>
 
     <script>
         var AIZ = AIZ || {};
