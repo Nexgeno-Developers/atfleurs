@@ -202,7 +202,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <div class="p-3">
+                    <div class="p-md-3">
                         <form class="form-default" id="login-form-customer-popup" role="form" action="{{ route('cart.login.submit') }}" method="POST">
                             @csrf
                             @if (addon_is_activated('otp_system') && env('DEMO_MODE') != 'On')
@@ -289,10 +289,10 @@
                                 </li>
                             @endif
                             @if (get_setting('google_login') == 1)
-                                <li class="list-inline-item">
+                                <li class="list-inline-item login_with_google">
                                     <a href="{{ route('social.login', ['provider' => 'google']) }}"
                                         class="google">
-                                        <img src="/public/assets/img/google_icon.webp" alt="google icon">
+                                        <img src="/public/assets/img/google_icon.webp" alt="google icon"> Login with Google
                                     </a>
                                 </li>
                             @endif

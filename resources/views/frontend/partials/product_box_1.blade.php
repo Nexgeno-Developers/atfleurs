@@ -63,7 +63,7 @@
 
     <div class="row align-items-center">
 
-    <div class="col-md-10 col-10 p-md-3 p-2 bg-white pl-2">
+    <div class="col-md-10 col-11 pt-md-3 pb-md-3 pl-md-3 p-2 bg-white pl-2 pr-md-0">
         
          <div class="text-center display_none">
             <a hrer="#" onclick="addToWishList({{ $product->id }})" data-toggle="tooltip" data-title="{{ translate('Add to wishlist') }}" data-placement="left">
@@ -94,7 +94,7 @@
             <span class="fw-900 mobile-16 fs-20 green_color">{{ home_discounted_price($product) }}</span> <!-- simple as well as varaint price (from / to) -->
             @if(home_base_price($product) != home_discounted_base_price($product))
                 <del class="fw-600 fs-14 opacity-60 ml-2">{{ home_base_price($product) }}</del>
-            <span class="text-center mx-1 discount_off"><span class="fs-14 fw-600 box" style="color:#f00;">&nbsp;{{discount_in_percentage($product)}}% Off</span></span>
+            <span class="text-center mx-1 discount_off"><span class="fs-14 size14-m fw-600 box" style="color:#f00;">&nbsp;{{discount_in_percentage($product)}}% Off</span></span>
             @endif
             
         </div>

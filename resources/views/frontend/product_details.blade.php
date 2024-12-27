@@ -35,7 +35,17 @@
 <meta property="fb:app_id" content="{{ env('FACEBOOK_PIXEL_ID') }}">
 @endsection
 
+<style>
+    .aiz-mobile-bottom-nav.d-xl-none.fixed-bottom.bg-white.shadow-lg.border-top.rounded-top {
+    display: none;
+}
+.button_colors_1 i {
+    font-size: 18px !important;
+}
+</style>
 @section('content')
+
+
 <section class="mb-4 pt-md-4 pt-2">
     <div class="container">
 
@@ -410,7 +420,7 @@
 
                         </form>
 
-                        <div class="mt-3">
+                        <div class="mt-3 button_dt_buy_cart">
                             @if ($detailedProduct->external_link != null)
                             <a type="button" class="btn btn-primary buy-now fw-600"
                                 href="{{ $detailedProduct->external_link }}">
@@ -424,7 +434,7 @@
                               <button type="button" class="btn btn-soft-primary ml-2 add-to-cart button_colors_1 darkgray_bg fw-600 gtagaddtocart mb-md-0 mb-3"
                                 data-url="{{ url()->current() }}" onclick="addToCart()">
                                 <i class="las la-shopping-bag"></i>
-                                <span class="d-none d-md-inline-block"> {{ translate('Add to cart') }}</span>
+                                <span class="d-md-inline-block"> {{ translate('Add to cart') }}</span>
                             </button>
                             @endif
                             <button type="button" class="btn btn-secondary out-of-stock fw-600 d-none" disabled>
@@ -680,7 +690,7 @@
                 </div>
             </div>
             <div class="col-xl-12 order-0 order-xl-1">
-                <div class="bg-white mb-3">
+                <div class="bg-md-white mb-3">
                     <!--<div class="nav border-bottom aiz-nav-tabs">-->
                     <!--    <a href="#tab_default_1" data-toggle="tab"-->
                     <!--        class="p-3 fs-16 fw-600 text-reset active show">{{ translate('Description') }}</a>-->
@@ -803,7 +813,7 @@
             }
             @endphp
             @if ($related_products->isNotEmpty())
-            <div class="bg-white">
+            <div class="bg-md-white">
                 <div class="pt-3">
                     <h5 class="fw-500 pb-0 mb-1 heading_font1 green_color related_hed">Related <span class="yellow_color">Products</span></h5>
                 </div>

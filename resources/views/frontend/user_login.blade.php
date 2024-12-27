@@ -101,7 +101,7 @@
                                         <div class="separator mb-3">
                                             <span class="bg-white px-3 opacity-60">{{ translate('Or Login With')}}</span>
                                         </div>
-                                        <ul class="list-inline social colored text-center mb-5">
+                                        <ul class="list-inline social colored text-center mb-4">
                                             @if (get_setting('facebook_login') == 1)
                                                 <li class="list-inline-item">
                                                     <a href="{{ route('social.login', ['provider' => 'facebook']) }}" class="facebook">
@@ -110,9 +110,10 @@
                                                 </li>
                                             @endif
                                             @if(get_setting('google_login') == 1)
-                                                <li class="list-inline-item">
+                                                <li class="list-inline-item login_with_google">
                                                     <a href="{{ route('social.login', ['provider' => 'google']) }}?redirect={{url()->previous()}}" class="google">
-                                                        <img src="/public/assets/img/google_icon.webp" alt="google icon">
+                                                        <img src="/public/assets/img/google_icon.webp" alt="google icon"> 
+                                                        Login with Google
                                                     </a>
                                                 </li>
                                             @endif
