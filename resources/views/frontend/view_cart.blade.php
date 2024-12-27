@@ -65,6 +65,7 @@
                                     @php
                                         $total = 0;
                                     @endphp
+
                                     @foreach ($carts as $key => $cartItem)
                                         @php
                                             $product = \App\Models\Product::find($cartItem['product_id']);
@@ -151,13 +152,13 @@
                                 <span class="fw-600 fs-17">{{ single_price($total) }}</span>
                             </div>
                             <div class="row align-items-center shipoping_bottom_sec">
-                                <div class="col-md-6 col-5 text-center text-md-left">
+                                <div class="col-md-6 col-12 text-center text-md-left">
                                     <a href="{{ route('home') }}" class="btn btn-link">
                                         <i class="las la-arrow-left"></i>
                                         {{ translate('Return to shop') }}
                                     </a>
                                 </div>
-                                <div class="col-md-6 col-7 text-center text-md-right">
+                                <div class="col-md-6 col-12 text-center text-md-right">
                                     @if (Auth::check())
                                         <a href="{{ route('checkout.store_delivery_info2') }}" class="btn btn-primary fw-600">
                                             {{ translate('Continue to Shipping') }}
@@ -181,6 +182,13 @@
                             <div class="text-center p-3">
                                 <i class="las la-frown la-3x opacity-60 mb-3"></i>
                                 <h3 class="h4 fw-700">{{ translate('Your Cart is empty') }}</h3>
+
+
+                                <a href="/search" class="btn btn-link">
+                                    <i class="las la-arrow-left"></i>
+                                    {{ translate('Return to shop') }}
+                                </a>    
+
                             </div>
                         </div>
                     </div>

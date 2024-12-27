@@ -42,6 +42,12 @@
 .button_colors_1 i {
     font-size: 18px !important;
 }
+@media(max-width:767px)
+{
+    .whatsapp_chat_support {
+    display: none !important;
+}
+}
 </style>
 @section('content')
 

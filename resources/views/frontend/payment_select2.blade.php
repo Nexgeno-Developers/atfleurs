@@ -1438,7 +1438,7 @@ div#accordioncCheckoutInfo span {
                                     </form>
 
                                     <!-- Agree Box -->
-                                    <div class="pt-2rem fs-14">
+                                    <div class="pt-2rem fs-14 pb-md-0 pb-3">
                                         <label class="aiz-checkbox">
                                             <input type="checkbox" required id="agree_checkbox"
                                                 onchange="stepCompletionPaymentInfo()" checked>
@@ -1453,16 +1453,16 @@ div#accordioncCheckoutInfo span {
                                             class="fw-700">{{ translate('privacy policy') }}</a>
                                     </div>
 
-                                    <div class="row align-items-center pt-3 mb-4">
+                                    <div class="row align-items-center pt-3 mb-4 place_orders">
                                         <!-- Return to shop -->
-                                        <div class="col-6">
-                                            <a href="{{ route('home') }}" class="btn btn-link fs-14 fw-700 px-0">
+                                        <div class="col-5 paddrght-0">
+                                            <a href="{{ route('home') }}" class="btn btn-link fs-14 fw-700 px-0 font13px">
                                                 <i class="las la-arrow-left fs-16"></i>
                                                 {{ translate('Return to shop') }}
                                             </a>
                                         </div>
                                         <!-- Complete Ordert -->
-                                        <div class="col-6 text-right">
+                                        <div class="col-7 text-right">
                                             <button type="button" onclick="submitOrder(this)" id="submitOrderBtn"
                                                 class="order_buttons btn btn-success fs-14 fw-700 rounded-0 px-md-4">{{ translate('Complete Order') }}</button>
                                         </div>

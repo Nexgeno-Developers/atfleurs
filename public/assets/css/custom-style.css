@@ -3155,20 +3155,33 @@ button.slick-next.slick-arrow {
   .button_colors_1 {
     border: 0;
     border-radius: 50px !important;
-    padding: 5px 23px;
+    padding: 9px 30px;
     color: #fff;
-    font-size: 13px;
+    font-size: 16px;
   }
 
   .button_colors_1 i {
     font-size: 18px !important;
   }
 
+  .place_orders {
+    position: fixed;
+    bottom: -24px;
+    background: #fff;
+    padding-top: 10px;
+    z-index: 99;
+    margin-left: -30px;
+    width: 100%;
+    padding-left: 0;
+    text-align: center;
+    padding-bottom: 10px;
+  }
+
   .button_dt_buy_cart {
     position: fixed;
     bottom: 0;
     background: #fff;
-    padding-top: 10px;
+    padding-top: 15px;
     z-index: 99;
     margin-left: -15px;
     width: 100%;
@@ -3590,6 +3603,14 @@ button.slick-next.slick-arrow {
   max-height: 94vh !important;
 }
 
+.shipoping_bottom_sec .btn {
+  border-radius: 50px;
+}
+
+.order_buttons {
+  border-radius: 50px !important;
+}
+
 @media(max-width:767px) {
   .address_change {
     background-color: transparent;
@@ -3644,14 +3665,25 @@ button.slick-next.slick-arrow {
   }
 
   .shipoping_bottom_sec .btn {
-    padding: 8px 14px;
-    font-size: 13px;
+    padding: 8px 25px;
+    font-size: 14px;
+    border-radius: 50px;
+    margin-bottom: 9px;
   }
 
   .order_buttons {
-    padding-left: 14px;
-    padding-right: 13px;
-    padding-top: 8px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 9px;
+    font-size: 14px !important;
+    border-radius: 50px !important;
+  }
+
+  .paddrght-0 {
+    padding-right: 0px;
+  }
+
+  .font13px {
     font-size: 13px !important;
   }
 

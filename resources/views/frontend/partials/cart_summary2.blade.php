@@ -218,7 +218,7 @@
                     </form>
                 </div>
             @else
-                <div class="mt-3">
+                <div class="mt-3 mb-md-0 mb-4">
                     <form class="" id="apply-coupon-form" enctype="multipart/form-data">
                         @csrf
                         <input type="hidden" name="owner_id" value="{{ $carts[0]['owner_id'] }}">
