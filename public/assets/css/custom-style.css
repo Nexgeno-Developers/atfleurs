@@ -3611,6 +3611,10 @@ button.slick-next.slick-arrow {
   border-radius: 50px !important;
 }
 
+.related_arrow a {
+  padding-top: 9px;
+}
+
 @media(max-width:767px) {
   .address_change {
     background-color: transparent;

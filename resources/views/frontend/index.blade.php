@@ -48,7 +48,7 @@
         <h4>Astronomia & Lily <span class="d-md-block">Flower Bouquets</span> </h4>
         <p>Shop collections you can live in</p>
         <div class=" button_effects mt-lg-5 mt-4">
-                <a class="green_color fs-bold" href="#">Discover More <i class="fa-solid fa-arrow-right"></i></a>
+                <a class="green_color fs-bold" href="/product/astronomia-flower-lily-flower-bouquets-mumbai">Discover More <i class="fa-solid fa-arrow-right"></i></a>
          </div>
       </div>
     </div>
@@ -104,7 +104,7 @@
             <div class="mx-auto text-center mb-3">
                 <img src="{{ static_asset('assets/img/flower_icon.svg ') }}" />
             </div>
-                <h4 class="heading_one heading_font1 green_color text-capitalize text-center">Welcome to <span class="yellow_color">our colourful world.</span></h4>
+                <h4 class="heading_one heading_font1 green_color text-capitalize text-center">Welcome to <span class="yellow_color">our colourful world</span></h4>
            
                 <p class="text-center">Floral greetings from At Fleurs, a boutique flower studio in suburban Mumbai! <span class="d-md-block">
 Our skilled team of passionate floral designers create exquisite arrangements with buds and blossoms for all occasions. Our collective </span>years in the industry allow us the luxury of acquired expertise, an eye for detail and, most importantly, impeccable service.</p>

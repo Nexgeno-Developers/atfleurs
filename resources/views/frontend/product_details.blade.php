@@ -872,7 +872,7 @@
                                 </div>
 
                                    <div class="col-md-2 col-2 d-lg-block d-none">
-<div class="arrow_area">
+<div class="arrow_area related_arrow">
       <a href="{{ route('product', $related_product->slug) }}" class="d-block text-reset fs-16 green_color"><img src="{{ static_asset('assets/img/green_arrow_left.svg') }}" /></a>
    </div>
     </div>
