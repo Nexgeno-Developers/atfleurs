@@ -3630,6 +3630,14 @@ button.slick-next.slick-arrow {
     height: 300px !important;
   }
 
+  .product-gallery .slick-list.draggable img {
+    height: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    object-fit: cover;
+  }
+
   .cart_after_checkout {
     padding: 10px !important;
   }
