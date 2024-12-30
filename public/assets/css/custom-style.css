@@ -3626,6 +3626,10 @@ button.slick-next.slick-arrow {
     left: 7px;
   }
 
+  .product-gallery .slick-list.draggable {
+    height: 345px !important;
+  }
+
   .cart_after_checkout {
     padding: 10px !important;
   }
