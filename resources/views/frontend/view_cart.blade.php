@@ -52,7 +52,7 @@
                 <div class="row">
                     <div class="col-xxl-8 col-xl-10 mx-auto">
                         <div class="shadow-sm bg-white p-md-3 p-2 p-lg-4 rounded text-left">
-                            <div class="mb-4">
+                            <div class="mb-md-4">
                                 <div class="row gutters-5 d-none d-lg-flex border-bottom mb-3 pb-3">
                                     <div class="col-md-5 fw-600">{{ translate('Product') }}</div>
                                     <div class="col fw-600">{{ translate('Price') }}</div>
@@ -88,13 +88,13 @@
                                                     <span class="fs-14">{{ $product_name_with_choice }}</span>
                                                 </div>
 
-                                                <div class="col-lg col-4 order-1 order-lg-0 my-3 my-lg-0">
+                                                <div class="col-lg col-4 order-1 order-lg-0 my-md-3 my-1 my-lg-0">
                                                     <span
                                                         class="opacity-60 fs-12 d-block d-lg-none">{{ translate('Price') }}</span>
                                                     <span
                                                         class="fw-600 fs-16">{{ cart_product_price($cartItem, $product, true, false) }}</span>
                                                 </div>
-                                                <div class="col-lg col-4 order-2 order-lg-0 my-3 my-lg-0">
+                                                <div class="col-lg col-4 order-2 order-lg-0 my-md-3 my-1 my-lg-0">
                                                     <span
                                                         class="opacity-60 fs-12 d-block d-lg-none">{{ translate('Tax') }}</span>
                                                     <span
@@ -128,7 +128,7 @@
                                                         <span class="fw-600 fs-16">1</span>
                                                     @endif
                                                 </div>
-                                                <div class="col-lg col-4 order-3 order-lg-0 my-3 my-lg-0">
+                                                <div class="col-lg col-4 order-3 order-lg-0 my-md-3 my-1 my-lg-0">
                                                     <span
                                                         class="opacity-60 fs-12 d-block d-lg-none">{{ translate('Total') }}</span>
                                                     <span
@@ -137,7 +137,7 @@
                                                 <div class="col-lg-auto col-6 order-5 order-lg-0 text-right">
                                                     <a hrer="#"
                                                         onclick="removeFromCartView(event, {{ $cartItem['id'] }})"
-                                                        class="btn btn-icon btn-sm btn-soft-primary btn-circle">
+                                                        class="btn btn-icon btn-sm btn-soft-primary btn-circle delete_btns1">
                                                         <i class="las la-trash"></i>
                                                     </a>
                                                 </div>
@@ -152,13 +152,13 @@
                                 <span class="fw-600 fs-17">{{ single_price($total) }}</span>
                             </div>
                             <div class="row align-items-center shipoping_bottom_sec">
-                                <div class="col-md-6 col-12 text-center text-md-left">
+                                <div class="col-md-6 col-12 order-md-1 order-2 text-center text-md-left">
                                     <a href="{{ route('home') }}" class="btn btn-link">
                                         <i class="las la-arrow-left"></i>
                                         {{ translate('Return to shop') }}
                                     </a>
                                 </div>
-                                <div class="col-md-6 col-12 text-center text-md-right">
+                                <div class="col-md-6 col-12 order-md-2 order-1 text-center text-md-right">
                                     @if (Auth::check())
                                         <a href="{{ route('checkout.store_delivery_info2') }}" class="btn btn-primary fw-600">
                                             {{ translate('Continue to Shipping') }}

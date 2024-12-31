@@ -977,7 +977,7 @@ your feelings</h3>
 <div class="row gutters-10 position-relative pt-md-2">
 
 
-<div class="col-lg-3 col-6 pb-md-0 pb-3">
+<div class="col-lg-3 col-6 pb-lg-0 pb-md-3 pb-3">
     <div class="free-delivery-box bg-light-orange ">
         <div class="mx-auto text-center mb-1">
                  <img loading="lazy" class="img-fit" src="{{ static_asset('assets/img/flowers_icon.png') }}" alt="Freshness">
@@ -990,7 +990,7 @@ your feelings</h3>
 </div>
 
 
-<div class="col-lg-3 col-6 pb-md-0 pb-3">
+<div class="col-lg-3 col-6 pb-lg-0 pb-md-3 pb-3">
     <div class="free-delivery-box bg-light-orange ">
          <div class="mx-auto text-center mb-1">
        <img loading="lazy" class="img-fit" src="{{ static_asset('assets/img/cart_icon.png') }}" alt="Online Order">

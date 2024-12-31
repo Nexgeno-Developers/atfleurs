@@ -1417,9 +1417,13 @@ a.read-color {
 
   .width_766 {
     width: 100%;
-    height: 70px;
+    height: 64px;
     object-fit: cover;
     object-position: center;
+  }
+
+  .mb-right-0 {
+    padding-right: 0px !important;
   }
 
   .top_br ul li a:nth-child(4) {
@@ -3129,6 +3133,22 @@ button.slick-next.slick-arrow {
   background: #f4f4f438 !important;
 }
 
+.cart_after_checkout {
+  max-height: 94vh !important;
+}
+
+.shipoping_bottom_sec .btn {
+  border-radius: 50px;
+}
+
+.order_buttons {
+  border-radius: 50px !important;
+}
+
+.related_arrow a {
+  padding-top: 9px;
+}
+
 @media(max-width:767px) {
   .border_radius_ct img {
     height: 200px !important;
@@ -3597,23 +3617,15 @@ button.slick-next.slick-arrow {
     padding-top: 0px;
     padding-bottom: 0px;
   }
+
+  .product-gallery .slick-list.draggable {
+    height: 509px !important;
+  }
 }
 
-.cart_after_checkout {
-  max-height: 94vh !important;
-}
 
-.shipoping_bottom_sec .btn {
-  border-radius: 50px;
-}
 
-.order_buttons {
-  border-radius: 50px !important;
-}
 
-.related_arrow a {
-  padding-top: 9px;
-}
 
 @media(max-width:767px) {
   .address_change {
@@ -3624,6 +3636,19 @@ button.slick-next.slick-arrow {
     color: #32533d;
     position: relative;
     left: 7px;
+  }
+
+  .delete_btns1 {
+    background: transparent !important;
+  }
+
+  .delete_btns1 i {
+    font-size: 18px;
+  }
+
+  body .delete_btns1:hover {
+    background: transparent !important;
+    color: #000 !important;
   }
 
   .product-gallery .slick-list.draggable {

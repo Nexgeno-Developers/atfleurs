@@ -48,6 +48,24 @@
     display: none !important;
 }
 }
+
+@media (max-width: 767px) {
+    .footer-widget,
+     .aiz-mobile-bottom-nav,
+    footer,
+    .section.call-buton,
+    .whatsapp_chat_support {
+        display: none !important;
+    }
+
+    .related_boxex_12 .slick-slide {
+    height: auto !important;
+}
+.related_boxex_12 {
+    display: block;
+    padding-bottom: 40px;
+}
+}
 </style>
 @section('content')
 
@@ -75,12 +93,12 @@
 
         <div class="bg-white">
             <div class="row">
-                <div class="col-xl-6 col-lg-6 mb-4">
+                <div class="col-xl-6 col-lg-6 mb-md-4 mb-2">
                     <div class="sticky-top z-3 row gutters-10">
                         @php
                         $photos = explode(',', $detailedProduct->photos);
                         @endphp
-                        <div class="col order-1 order-md-2">
+                        <div class="col-9 order-1 order-md-2 mb-right-0">
                             <div class="aiz-carousel product-gallery" data-nav-for='.product-gallery-thumb'
                                 data-fade='true' data-auto-height='true'>
                                 @foreach ($photos as $key => $photo)
@@ -103,9 +121,9 @@
                                 @endforeach
                             </div>
                         </div>
-                        <div class="col-12 col-md-auto w-md-140px order-2 order-md-1 mt-1 mt-md-0">
-                            <div class="aiz-carousel product-gallery-thumb" data-items='5'
-                                data-nav-for='.product-gallery' data-vertical='true' data-vertical-sm='false'
+                        <div class="col-3 col-md-auto w-md-140px order-2 order-md-1 mt-1 mt-md-0">
+                            <div class="aiz-carousel product-gallery-thumb" data-items='4'
+                                data-nav-for='.product-gallery' data-vertical='true'
                                 data-focus-select='true' data-arrows='true'>
                                 @foreach ($photos as $key => $photo)
                                 <div class="carousel-box c-pointer border p-1 rounded">
@@ -695,8 +713,8 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xl-12 order-0 order-xl-1">
-                <div class="bg-md-white mb-3">
+            <div class="col-xl-12 order-0 order-xl-1 related_boxex_12">
+                <div class="bg-md-white mb-3 ">
                     <!--<div class="nav border-bottom aiz-nav-tabs">-->
                     <!--    <a href="#tab_default_1" data-toggle="tab"-->
                     <!--        class="p-3 fs-16 fw-600 text-reset active show">{{ translate('Description') }}</a>-->
