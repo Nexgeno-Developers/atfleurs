@@ -63,7 +63,7 @@
 }
 .related_boxex_12 {
     display: block;
-    padding-bottom: 40px;
+    padding-bottom: 50px;
 }
 }
 </style>
