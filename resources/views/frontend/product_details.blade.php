@@ -65,6 +65,35 @@
     display: block;
     padding-bottom: 50px;
 }
+.question_mark p {
+    background: #f48fa2;
+    width: 20px;
+    text-align: center;
+    color: #fff;
+    height: 20px;
+    line-height: 20px;
+    border-radius: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    top: 6px;
+}
+
+.question_mark {
+    width: 32px;
+    background: #fff;
+    height: 32px;
+    text-align: center;
+    line-height: 32px;
+    border-radius: 100px;
+    margin-left: auto;
+    position: relative;
+    top: -40px;
+    right: 6px;
+}
+    html {
+        scroll-behavior: smooth;
+    }
 }
 </style>
 @section('content')
@@ -119,6 +148,10 @@
                                 </div>
                                 @endif
                                 @endforeach
+                            </div>
+
+                            <div class="question_mark d-md-none d-block">
+                                   <a href="#tab_default_1"><p>i</p></a>
                             </div>
                         </div>
                         <div class="col-3 col-md-auto w-md-140px order-2 order-md-1 mt-1 mt-md-0">
