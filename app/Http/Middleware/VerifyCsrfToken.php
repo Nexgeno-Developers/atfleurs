@@ -32,6 +32,7 @@ class VerifyCsrfToken extends Middleware
         '/mock_payments',
         '/apple-callback',
         '/lnmo*',
+        '/social-login/google/callback',
         '/razorpay/*',
         '/rozer/*',
         '/ccavenue*'

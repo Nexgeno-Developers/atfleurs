@@ -112,6 +112,7 @@ Route::controller(LoginController::class)->group(function () {
     Route::get('/logout', 'logout');
     Route::get('/social-login/redirect/{provider}', 'redirectToProvider')->name('social.login');
     Route::get('/social-login/{provider}/callback', 'handleProviderCallback')->name('social.callback');
+    Route::post('/social-login/google/callback', 'handleGoogleOneTapCallback')->name('social.google.one_tap_callback');
     //Apple Callback
     Route::post('/apple-callback', 'handleAppleCallback');
     Route::get('/account-deletion', 'account_deletion')->name('account_delete');

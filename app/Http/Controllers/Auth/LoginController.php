@@ -209,6 +209,56 @@ class LoginController extends Controller
             return redirect()->route('dashboard');
         }
     }
+    public function handleGoogleOneTapCallback(Request $request)
+    {
+        $token = $request->input('credential');
+        \Log::info('Received token: ' . $token);
+
+        try {
+            // Initialize cURL
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, 'https://oauth2.googleapis.com/tokeninfo?id_token=' . $token);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            $response = curl_exec($ch);
+            curl_close($ch);
+
+            // Decode the response
+            $payload = json_decode($response, true);
+
+            if (isset($payload['sub'])) {
+                $user_id = $payload['sub'];
+                $email = $payload['email'];
+                $name = $payload['name'];
+
+                $existingUser = User::where('email', $email)->orWhere('provider_id', $user_id)->first();
+
+                if ($existingUser) {
+                    $existingUser->provider_id = $user_id;
+                    $existingUser->provider = 'google';
+                    $existingUser->access_token = $token;
+                    $existingUser->save();
+                    auth()->login($existingUser, true);
+                } else {
+                    $newUser = new User;
+                    $newUser->name = $name;
+                    $newUser->email = $email;
+                    $newUser->email_verified_at = now();
+                    $newUser->provider_id = $user_id;
+                    $newUser->provider = 'google';
+                    $newUser->access_token = $token;
+                    $newUser->save();
+                    auth()->login($newUser, true);
+                }
+                session()->put('welcome_message', 'Welcome');
+                return response()->json(['message' => 'Login successful']);
+            } else {
+                return response()->json(['error' => 'Invalid token'], 401);
+            }
+        } catch (\Exception $e) {
+            \Log::error('Error in handleGoogleOneTapCallback: ' . $e->getMessage());
+            return response()->json(['error' => 'Something went wrong'], 500);
+        }
+    }
 
     public function mobileHandleProviderCallback($request, $provider)
     {
