@@ -84,18 +84,18 @@
                                             <div class="sortbar_tabs-container">
                                                 <div class="btn-group" role="group" aria-label="Sorting Options">
                                                     <select onchange="window.location.href=this.value" class="form-select">
-                                                        <option value="{{ request()->fullUrlWithQuery(['sort_by' => 'featured']) }}" {{ request('sort_by') == 'featured' || !request('sort_by') ? 'selected' : '' }}>
+                                                        <option value="{{ request()->fullUrlWithQuery(['sort_by' => 'price-asc']) }}" {{ request('sort_by') == 'price-asc' || !request('sort_by') ? 'selected' : '' }}>
+                                                            Price Low to High
+                                                        </option>
+                                                        <option value="{{ request()->fullUrlWithQuery(['sort_by' => 'featured']) }}" {{ request('sort_by') == 'featured' ? 'selected' : '' }}>
                                                             Recommended
                                                         </option>
                                                         <option value="{{ request()->fullUrlWithQuery(['sort_by' => 'newest']) }}" {{ request('sort_by') == 'newest' ? 'selected' : '' }}>
                                                             Newest
                                                         </option>
-                                                        <option value="{{ request()->fullUrlWithQuery(['sort_by' => 'price-asc']) }}" {{ request('sort_by') == 'price-asc' ? 'selected' : '' }}>
-                                                            Price Low to High
-                                                        </option>
                                                         <option value="{{ request()->fullUrlWithQuery(['sort_by' => 'price-desc']) }}" {{ request('sort_by') == 'price-desc' ? 'selected' : '' }}>
                                                             Price High to Low
-                                                        </option>
+                                                        </option>       
                                                     </select>
                                                 </div>
                                             </div>

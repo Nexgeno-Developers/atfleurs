@@ -18,7 +18,7 @@ class SearchController extends Controller
     public function index(Request $request, $category_id = null, $brand_id = null)
     {
         $query = $request->keyword;
-        $sort_by = $request->sort_by;
+        $sort_by = $request->sort_by ?? 'price-asc';
         $min_price = $request->min_price;
         $max_price = $request->max_price;
         $seller_id = $request->seller_id;
@@ -115,7 +115,7 @@ class SearchController extends Controller
                 $products->orderBy('unit_price', 'desc');
                 break;
             default:
-                $products->orderBy('featured', 'desc');
+                $products->orderBy('unit_price', 'asc');
                 // $products->orderBy('id', 'desc');
                 break;
         }
