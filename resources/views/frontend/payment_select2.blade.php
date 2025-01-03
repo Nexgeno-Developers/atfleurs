@@ -91,7 +91,7 @@ div#accordioncCheckoutInfo span {
                                 <div class="card-body py-0" id="shipping_info">
                                     
 
-                                    <form class="form-default delivery-type-form d-none"
+                                    <form class="form-default delivery-type-form"
                                         action="{{ route('checkout.store_delivery_info') }}" role="form" method="POST">
                                         @csrf
                                         <input type="hidden" value="" name="delivery_time" />
@@ -466,12 +466,35 @@ div#accordioncCheckoutInfo span {
                                                         <div class="col-md-12">
                                                             <div class="row">
                                                                 @foreach (Auth::user()->addresses as $key => $address)
-                                                                    <div class="col-md-12 mb-0 pb-1 pt-md-2 pt-3">
+
+                                                                    @php
+                                                                        $zp_error = check_zipcode_availability($carts, $address->postal_code);
+                                                                    @endphp
+
+
+                                                                    <div class="col-md-12 mb-0 pb-1 pt-md-2 pt-3"
+                                                                    @if($zp_error != [])
+                                                                    style="
+                                                                        color: gray;
+                                                                        background-color: gray;
+                                                                    "
+                                                                    @endif
+                                                                    >
                                                                         <label class="aiz-megabox d-block bg-white mb-0">
-                                                                            <input type="radio" name="address_id"
+
+                                                                            @if($zp_error == [])
+                                                                                <input type="radio" name="address_id"
+                                                                                    value="{{ $address->id }}"
+                                                                                    {{-- @if ($address->set_default || (isset($carts[0]->address_id) && $carts[0]->address_id == $address->id)) checked @endif --}}
+                                                                                    @if ((isset($carts[0]->address_id) && $carts[0]->address_id == $address->id)) checked @endif
+                                                                                    required>
+                                                                            @else
+                                                                                <input type="radio" name="address_id"
                                                                                 value="{{ $address->id }}"
-                                                                                @if ($address->set_default || (isset($carts[0]->address_id) && $carts[0]->address_id == $address->id)) checked @endif
+                                                                                disabled
                                                                                 required>
+                                                                            @endif
+
                                                                             <span class="d-flex p-md-3 p-2 aiz-megabox-elem">
                                                                                 <span
                                                                                     class="aiz-rounded-check flex-shrink-0 mt-1"></span>
@@ -487,6 +510,18 @@ div#accordioncCheckoutInfo span {
                                                                                         <span
                                                                                             class="fw-600 ml-2">{{ $address->phone }}</span>
                                                                                     </div>
+
+                                                                                    @if($zp_error != [])
+                                                                                        <div class="ml-2 pt-2">
+                                                                                            <span
+                                                                                                class="opacity-60">Not:</span>
+
+                                                                                            @foreach($zp_error as $zip_err) 
+                                                                                                <span
+                                                                                                class="fw-600 ml-2">{{ $zip_err }}</span> 
+                                                                                            @endforeach
+                                                                                        </div>
+                                                                                    @endif
                                                                                 </span>
                                                                             </span>
                                                                         </label>
@@ -505,6 +540,8 @@ div#accordioncCheckoutInfo span {
                                                                             </div> -->
                                                                         </div>
                                                                     </div>
+
+
                                                                 @endforeach
 
 
@@ -1614,168 +1651,110 @@ div#accordioncCheckoutInfo span {
             let cart_page_url = "{{ route('cart') }}";
 
             // Function to check session and toggle visibility of the form
-            function checkDeliverableSession() {
-                $.ajax({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    url: "{{ url(route('get-deliverable-session')) }}", // Proper Blade syntax for route
-                    method: 'GET',
-                    success: function(response) {
-                        const isDeliverable = response.deliverable === true || response.deliverable ===
-                            'true'; // Ensure it works for boolean and string
+            // function checkDeliverableSession() {
+            //     $.ajax({
+            //         headers: {
+            //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            //         },
+            //         url: "{{ url(route('get-deliverable-session')) }}", // Proper Blade syntax for route
+            //         method: 'GET',
+            //         success: function(response) {
+            //             const isDeliverable = response.deliverable === true || response.deliverable ===
+            //                 'true'; // Ensure it works for boolean and string
 
-                        if (isDeliverable) {
-                            $('.delivery-type-form').removeClass(
-                                'd-none'); // Show the form if deliverable is true
-                        } else {
-                            setTimeout(function() {
-                                flushDeliverableSession();
-                                window.location.href = cart_page_url;
-                            }, 1000);
-                        }
-                    },
-                    error: function() {
-                        console.log('Error checking session');
-                    }
-                });
-            }
+            //             if (isDeliverable) {
+            //                 $('.delivery-type-form').removeClass(
+            //                     'd-none'); // Show the form if deliverable is true
+            //             } else {
+            //                 setTimeout(function() {
+            //                     flushDeliverableSession();
+            //                     window.location.href = cart_page_url;
+            //                 }, 1000);
+            //             }
+            //         },
+            //         error: function() {
+            //             console.log('Error checking session');
+            //         }
+            //     });
+            // }
 
-            @if (!Session::has('deliverable'))
-                $('input[name="address_id"]').prop('checked', false);
-            @endif
+            // @if (!Session::has('deliverable'))
+            //     $('input[name="address_id"]').prop('checked', false);
+            // @endif
 
-            function flushDeliverableSession() {
-                $.ajax({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    url: "{{ url(route('flush-deliverable-session')) }}", // Route to flush the session
-                    method: 'POST',
-                    success: function(response) {
-                        // if (response.status === 'success') {
-                        //     AIZ.plugins.notify('success', '{{ translate('Session cleared successfully.') }}');
-                        // } else {
-                        //     AIZ.plugins.notify('danger', '{{ translate('Failed to clear session.') }}');
-                        // }
-                    },
-                    error: function() {
-                        AIZ.plugins.notify('danger',
-                            '{{ translate('An error occurred. Please try again.') }}');
-                    }
-                });
-            }
+            // function flushDeliverableSession() {
+            //     $.ajax({
+            //         headers: {
+            //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            //         },
+            //         url: "{{ url(route('flush-deliverable-session')) }}", // Route to flush the session
+            //         method: 'POST',
+            //         success: function(response) {
+            //             // if (response.status === 'success') {
+            //             //     AIZ.plugins.notify('success', '{{ translate('Session cleared successfully.') }}');
+            //             // } else {
+            //             //     AIZ.plugins.notify('danger', '{{ translate('Failed to clear session.') }}');
+            //             // }
+            //         },
+            //         error: function() {
+            //             AIZ.plugins.notify('danger',
+            //                 '{{ translate('An error occurred. Please try again.') }}');
+            //         }
+            //     });
+            // }
 
             // Function to update the session deliverable status
             function session_update(condition) {
-                $.ajax({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    url: "{{ url(route('set-deliverable-session')) }}", // Proper Blade syntax for route
-                    method: 'POST',
-                    data: {
-                        deliverable: condition
-                    },
-                    success: function() {
-                        if (condition === false) {
-                            // Take 10 seconds then reload
-                            setTimeout(function() {
-                                flushDeliverableSession();
-                                window.location.href =
-                                    cart_page_url; // Reload the page after 10 sec
-                            }, 1000); // 10000 ms = 10 sec
-                        } else {
-                            location.reload(); // Reload immediately if true
-                        }
-                    }
-                });
+                // $.ajax({
+                //     headers: {
+                //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                //     },
+                //     url: "{{ url(route('set-deliverable-session')) }}", // Proper Blade syntax for route
+                //     method: 'POST',
+                //     data: {
+                //         deliverable: condition
+                //     },
+                //     success: function() {
+                //         if (condition === false) {
+                //             // Take 10 seconds then reload
+                //             setTimeout(function() {
+                //                 flushDeliverableSession();
+                //                 window.location.href =
+                //                     cart_page_url; // Reload the page after 10 sec
+                //             }, 1000); // 10000 ms = 10 sec
+                //         } else {
+                //             location.reload(); // Reload immediately if true
+                //         }
+                //     }
+                // });
             }
 
             // Function to check session on page load
-            $.ajax({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                url: "{{ url(route('get-deliverable-session')) }}", // Proper Blade syntax for route
-                method: 'GET',
-                success: function(response) {
-                    const isDeliverable = response.deliverable === true || response.deliverable ===
-                        'true'; // Ensure it works
+            // $.ajax({
+            //     headers: {
+            //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            //     },
+            //     url: "{{ url(route('get-deliverable-session')) }}", // Proper Blade syntax for route
+            //     method: 'GET',
+            //     success: function(response) {
+            //         const isDeliverable = response.deliverable === true || response.deliverable ===
+            //             'true'; // Ensure it works
 
-                    if (isDeliverable) {
-                        $('.delivery-type-form').removeClass(
-                            'd-none'); // Show the form if deliverable is true
-                    }
-                }
-            });
+            //         if (isDeliverable) {
+            //             $('.delivery-type-form').removeClass(
+            //                 'd-none'); // Show the form if deliverable is true
+            //         }
+            //     }
+            // });
 
             stepCompletionShippingInfo();
             stepCompletionDeliveryInfo();
             stepCompletionPaymentInfo();
 
-            // Function to handle form submission via AJAX for address form
-            function addressForm(form) {
-                var url = form.attr('action');
-                var method = form.attr('method');
-                var formData = new FormData(form[0]);
-
-                $.ajax({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    type: method,
-                    url: url,
-                    data: formData,
-                    contentType: false,
-                    processData: false,
-                    success: function(response) {
-                        // console.log(response);
-                        if (response.success === true) {
-                            // Update the cart summary with the response view
-                            $('#cart_summary').html(response.view);
-                            // $('.delivery-type-form').show();
-                            stepCompletionShippingInfo();
-
-                            session_update(true); // Set session to true on success
-
-                        } else if (response.success === false) {
-                            // $('.delivery-type-form').hide();
-                            // $('.checkout-form').hide();
-                            // Display error messages
-                            if (response.errors && Array.isArray(response.errors)) {
-                                response.errors.forEach(function(error) {
-                                    AIZ.plugins.notify('danger', error);
-                                });
-                            }
-
-                            session_update(false); // Set session to false on failure
-                            if (!$('.delivery-type-form').hasClass('d-none')) {
-                                $('.delivery-type-form').addClass('d-none');
-                            }
-
-                        } else {
-                            AIZ.plugins.notify('danger', 'Your cart is empty. Please try again.');
-                            setTimeout(function() {
-                                flushDeliverableSession();
-                                window.location.href = cart_page_url;
-                            }, 1000);
-                        }
-                    },
-                    error: function(xhr) {
-                        // console.log(xhr.responseText);
-                        // Handle errors here
-                        AIZ.plugins.notify('danger', 'Something went wrong, Please Try Again');
-                        setTimeout(function() {
-                            flushDeliverableSession();
-                            window.location.href = home_page_url;
-                        }, 1000);
-                    }
-                });
-            }
 
             // Function to handle form submission via AJAX for delivery type form
             function delivery_typeForm(form) {
+                
                 var url = form.attr('action');
                 var method = form.attr('method');
                 var formData = new FormData(form[0]);
@@ -1807,7 +1786,7 @@ div#accordioncCheckoutInfo span {
                         } else {
                             AIZ.plugins.notify('danger', 'Your cart is empty. Please try again.');
                             setTimeout(function() {
-                                flushDeliverableSession();
+                                // flushDeliverableSession();
                                 window.location.href = cart_page_url;
                             }, 1000);
                         }
@@ -1817,12 +1796,77 @@ div#accordioncCheckoutInfo span {
                         // Handle errors here
                         AIZ.plugins.notify('danger', 'Something went wrong, Please Try Again');
                         setTimeout(function() {
-                            flushDeliverableSession();
+                            // flushDeliverableSession();
                             window.location.href = home_page_url;
                         }, 1000);
                     }
                 });
             }
+
+            // Function to handle form submission via AJAX for address form
+            function addressForm(form) {
+                var url = form.attr('action');
+                var method = form.attr('method');
+                var formData = new FormData(form[0]);
+
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    type: method,
+                    url: url,
+                    data: formData,
+                    contentType: false,
+                    processData: false,
+                    success: function(response) {
+                        // console.log(response);
+                        if (response.success === true) {
+                            // Update the cart summary with the response view
+                            $('#cart_summary').html(response.view);
+                            // $('.delivery-type-form').show();
+
+                            stepCompletionShippingInfo();
+
+                            location.reload();
+
+                            // session_update(true); // Set session to true on success
+
+                        } else if (response.success === false) {
+                            // $('.delivery-type-form').hide();
+                            // $('.checkout-form').hide();
+                            // Display error messages
+                            if (response.errors && Array.isArray(response.errors)) {
+                                response.errors.forEach(function(error) {
+                                    AIZ.plugins.notify('danger', error);
+                                });
+                            }
+
+                            // session_update(false); // Set session to false on failure
+                            // if (!$('.delivery-type-form').hasClass('d-none')) {
+                            //     $('.delivery-type-form').addClass('d-none');
+                            // }
+
+                        } else {
+                            AIZ.plugins.notify('danger', 'Your cart is empty. Please try again.');
+                            setTimeout(function() {
+                                // flushDeliverableSession();
+                                window.location.href = cart_page_url;
+                            }, 1000);
+                        }
+                    },
+                    error: function(xhr) {
+                        // console.log(xhr.responseText);
+                        // Handle errors here
+                        AIZ.plugins.notify('danger', 'Something went wrong, Please Try Again');
+                        setTimeout(function() {
+                            // flushDeliverableSession();
+                            window.location.href = home_page_url;
+                        }, 1000);
+                    }
+                });
+            }
+
+
 
             // Event listener for address form submission
             $('.address-form').on('submit', function(e) {
