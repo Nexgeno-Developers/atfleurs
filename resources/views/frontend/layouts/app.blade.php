@@ -1191,5 +1191,39 @@ jQuery(document).ready(function($) {
 
   </script>
 
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+@if (!in_array(Route::currentRouteName(), ['user.login', 'user.registration']))
+    <script>
+        @guest
+            window.onload = function () {
+                google.accounts.id.initialize({
+                    client_id: '{{ env('GOOGLE_CLIENT_ID') }}',
+                    callback: handleCredentialResponse
+                });
+                google.accounts.id.prompt();
+            };
+
+            function handleCredentialResponse(response) {
+                console.log(response.credential);
+                fetch('/social-login/google/callback', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    },
+                    body: JSON.stringify({ credential: response.credential })
+                }).then(res => res.json())
+                .then(data => {
+                    if (data.message === 'Login successful') {  
+                        window.location.reload(); 
+                    } else { 
+                        console.error('Login failed:', data.error); 
+                        alert('Login failed. Please try again.'); 
+                    }
+                });
+            }
+        @endguest
+    </script>
+@endif
 </body>
 </html>
