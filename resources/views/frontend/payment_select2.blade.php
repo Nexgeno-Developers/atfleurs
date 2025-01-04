@@ -485,8 +485,8 @@ div#accordioncCheckoutInfo span {
                                                                             @if($zp_error == [])
                                                                                 <input type="radio" name="address_id"
                                                                                     value="{{ $address->id }}"
-                                                                                    {{-- @if ($address->set_default || (isset($carts[0]->address_id) && $carts[0]->address_id == $address->id)) checked @endif --}}
-                                                                                    @if ((isset($carts[0]->address_id) && $carts[0]->address_id == $address->id)) checked @endif
+                                                                                    @if ($address->set_default || (isset($carts[0]->address_id) && $carts[0]->address_id == $address->id)) checked @endif
+                                                                                    {{-- @if ((isset($carts[0]->address_id) && $carts[0]->address_id == $address->id)) checked @endif --}}
                                                                                     required>
                                                                             @else
                                                                                 <input type="radio" name="address_id"
@@ -499,6 +499,10 @@ div#accordioncCheckoutInfo span {
                                                                                 <span
                                                                                     class="aiz-rounded-check flex-shrink-0 mt-1"></span>
                                                                                 <span class="flex-grow-1 pl-2 text-left pr-100">
+                                                                                    <div>
+                                                                                        <span
+                                                                                            class="fw-600 ml-2 d-block">{{ $address->address_person }}</span>
+                                                                                    </div>
                                                                                     <div>
                                                                                         <span
                                                                                             class="fw-600 ml-2 d-block">{{ $address->address }}, {{ optional($address->city)->name }} - {{ $address->postal_code }}, {{ optional($address->state)->name }}, {{ optional($address->country)->name }}</span>
@@ -1651,82 +1655,85 @@ div#accordioncCheckoutInfo span {
             let cart_page_url = "{{ route('cart') }}";
 
             // Function to check session and toggle visibility of the form
-            // function checkDeliverableSession() {
-            //     $.ajax({
-            //         headers: {
-            //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            //         },
-            //         url: "{{ url(route('get-deliverable-session')) }}", // Proper Blade syntax for route
-            //         method: 'GET',
-            //         success: function(response) {
-            //             const isDeliverable = response.deliverable === true || response.deliverable ===
-            //                 'true'; // Ensure it works for boolean and string
+            function checkDeliverableSession() {
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    url: "{{ url(route('get-deliverable-session')) }}", // Proper Blade syntax for route
+                    method: 'GET',
+                    success: function(response) {
+                        const isDeliverable = response.deliverable === true || response.deliverable ===
+                            'true'; // Ensure it works for boolean and string
 
-            //             if (isDeliverable) {
-            //                 $('.delivery-type-form').removeClass(
-            //                     'd-none'); // Show the form if deliverable is true
-            //             } else {
-            //                 setTimeout(function() {
-            //                     flushDeliverableSession();
-            //                     window.location.href = cart_page_url;
-            //                 }, 1000);
-            //             }
-            //         },
-            //         error: function() {
-            //             console.log('Error checking session');
-            //         }
-            //     });
-            // }
+                        if (isDeliverable) {
+                            // $('.delivery-type-form').removeClass(
+                            //     'd-none'); // Show the form if deliverable is true
+                        } else {
+                            // setTimeout(function() {
+                            //     flushDeliverableSession();
+                            //     window.location.href = cart_page_url;
+                            // }, 1000);
+
+                            flushDeliverableSession();
+                        }
+                    },
+                    error: function() {
+                        console.log('Error checking session');
+                    }
+                });
+            }
 
             // @if (!Session::has('deliverable'))
             //     $('input[name="address_id"]').prop('checked', false);
             // @endif
 
-            // function flushDeliverableSession() {
-            //     $.ajax({
-            //         headers: {
-            //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            //         },
-            //         url: "{{ url(route('flush-deliverable-session')) }}", // Route to flush the session
-            //         method: 'POST',
-            //         success: function(response) {
-            //             // if (response.status === 'success') {
-            //             //     AIZ.plugins.notify('success', '{{ translate('Session cleared successfully.') }}');
-            //             // } else {
-            //             //     AIZ.plugins.notify('danger', '{{ translate('Failed to clear session.') }}');
-            //             // }
-            //         },
-            //         error: function() {
-            //             AIZ.plugins.notify('danger',
-            //                 '{{ translate('An error occurred. Please try again.') }}');
-            //         }
-            //     });
-            // }
+            function flushDeliverableSession() {
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    url: "{{ url(route('flush-deliverable-session')) }}", // Route to flush the session
+                    method: 'POST',
+                    success: function(response) {
+                        // if (response.status === 'success') {
+                        //     AIZ.plugins.notify('success', '{{ translate('Session cleared successfully.') }}');
+                        // } else {
+                        //     AIZ.plugins.notify('danger', '{{ translate('Failed to clear session.') }}');
+                        // }
+                    },
+                    error: function() {
+                        AIZ.plugins.notify('danger',
+                            '{{ translate('An error occurred. Please try again.') }}');
+                    }
+                });
+            }
 
             // Function to update the session deliverable status
             function session_update(condition) {
-                // $.ajax({
-                //     headers: {
-                //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                //     },
-                //     url: "{{ url(route('set-deliverable-session')) }}", // Proper Blade syntax for route
-                //     method: 'POST',
-                //     data: {
-                //         deliverable: condition
-                //     },
-                //     success: function() {
-                //         if (condition === false) {
-                //             // Take 10 seconds then reload
-                //             setTimeout(function() {
-                //                 flushDeliverableSession();
-                //                 window.location.href =
-                //                     cart_page_url; // Reload the page after 10 sec
-                //             }, 1000); // 10000 ms = 10 sec
-                //         } else {
-                //             location.reload(); // Reload immediately if true
-                //         }
-                //     }
-                // });
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    url: "{{ url(route('set-deliverable-session')) }}", // Proper Blade syntax for route
+                    method: 'POST',
+                    data: {
+                        deliverable: condition
+                    },
+                    success: function() {
+                        if (condition === false) {
+                            // Take 10 seconds then reload
+                            // setTimeout(function() {
+
+                            //     window.location.href =
+                            //         cart_page_url; // Reload the page after 10 sec
+                            // }, 1000); // 10000 ms = 10 sec
+                            flushDeliverableSession();
+                        } else {
+                            // location.reload(); // Reload immediately if true
+                        }
+                    }
+                });
             }
 
             // Function to check session on page load
@@ -1786,7 +1793,7 @@ div#accordioncCheckoutInfo span {
                         } else {
                             AIZ.plugins.notify('danger', 'Your cart is empty. Please try again.');
                             setTimeout(function() {
-                                // flushDeliverableSession();
+                                flushDeliverableSession();
                                 window.location.href = cart_page_url;
                             }, 1000);
                         }
@@ -1796,7 +1803,7 @@ div#accordioncCheckoutInfo span {
                         // Handle errors here
                         AIZ.plugins.notify('danger', 'Something went wrong, Please Try Again');
                         setTimeout(function() {
-                            // flushDeliverableSession();
+                            flushDeliverableSession();
                             window.location.href = home_page_url;
                         }, 1000);
                     }
@@ -1827,9 +1834,9 @@ div#accordioncCheckoutInfo span {
 
                             stepCompletionShippingInfo();
 
-                            location.reload();
+                            $('input[type="radio"][name="shipping_type_9"]:checked').trigger('change'); 
 
-                            // session_update(true); // Set session to true on success
+                            session_update(true); // Set session to true on success
 
                         } else if (response.success === false) {
                             // $('.delivery-type-form').hide();
@@ -1841,7 +1848,7 @@ div#accordioncCheckoutInfo span {
                                 });
                             }
 
-                            // session_update(false); // Set session to false on failure
+                            session_update(false); // Set session to false on failure
                             // if (!$('.delivery-type-form').hasClass('d-none')) {
                             //     $('.delivery-type-form').addClass('d-none');
                             // }
@@ -1849,7 +1856,7 @@ div#accordioncCheckoutInfo span {
                         } else {
                             AIZ.plugins.notify('danger', 'Your cart is empty. Please try again.');
                             setTimeout(function() {
-                                // flushDeliverableSession();
+                                flushDeliverableSession();
                                 window.location.href = cart_page_url;
                             }, 1000);
                         }
@@ -1859,7 +1866,7 @@ div#accordioncCheckoutInfo span {
                         // Handle errors here
                         AIZ.plugins.notify('danger', 'Something went wrong, Please Try Again');
                         setTimeout(function() {
-                            // flushDeliverableSession();
+                            flushDeliverableSession();
                             window.location.href = home_page_url;
                         }, 1000);
                     }
@@ -1904,6 +1911,9 @@ div#accordioncCheckoutInfo span {
             // Show Step 1 form initially
             // $('.address-form').show();
         });
+
+
+
         $(document).ready(function() {
             // Check if the shipping type is 'home_delivery'
             var isHomeDelivery =
@@ -1937,10 +1947,10 @@ div#accordioncCheckoutInfo span {
                 ).is(':checked');
                 if (isPickupPoint) {
                     $('.pickup_point_id_admin').removeClass('d-none');
-                    $('.address-form').addClass('d-none');
+                    // $('.address-form').addClass('d-none');
                 } else {
                     $('.pickup_point_id_admin').addClass('d-none');
-                    $('.address-form').removeClass('d-none');
+                    // $('.address-form').removeClass('d-none');
                 }
             }
 
@@ -2282,6 +2292,12 @@ div#accordioncCheckoutInfo span {
                 }
             });
         }
+
+        $(document).ready(function() {
+            $('input[type="radio"][name="address_id"]:checked').trigger('change');
+        });
+
+
     </script>
 
 

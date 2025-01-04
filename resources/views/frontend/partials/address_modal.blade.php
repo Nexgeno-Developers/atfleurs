@@ -13,6 +13,14 @@
                     <div class="p-3">
                         <div class="row">
                             <div class="col-md-2">
+                                <label>Name</label>
+                            </div>
+                            <div class="col-md-10">
+                                <input type="text" class="form-control mb-3" id="address_person" name="address_person" placeholder="Address Person Name" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">
                                 <label>{{ translate('Address')}}</label>
                             </div>
                             <div class="col-md-10">
