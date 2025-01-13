@@ -221,5 +221,20 @@
                 </div>
             </div>
         </div>
+        <script>
+            window.addEventListener("load", function () {
+              if (window.location.href.includes("/checkout/order-confirmed")) {
+                const transactionId = "{{ $order->code }}";
+                const orderValue = {{ $order->grand_total }};
+          
+                gtag("event", "conversion", {
+                  send_to: "AW-11362608793/fdpsCOCVoYQaEJnNjqoq",
+                  value: orderValue,
+                  currency: "INR",
+                  transaction_id: transactionId,
+                });
+              }
+            });
+          </script>
     </section>
 @endsection
