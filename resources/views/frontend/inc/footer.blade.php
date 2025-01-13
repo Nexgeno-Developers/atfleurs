@@ -635,3 +635,13 @@
  <span class="num"></span>
 </a>
 </section>
+
+<script>
+    document.addEventListener("click", function (e) {
+      if (e.target.innerText == "Continue to Shipping") {
+        gtag("event", "conversion", {
+          send_to: "AW-11362608793/GKEFCOyboYQaEJnNjqoq",
+        })
+      }
+    })
+  </script>
