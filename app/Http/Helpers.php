@@ -1020,7 +1020,7 @@ if (!function_exists('my_asset')) {
             if(env('ENVIRONMENT') == "Production"){
                 return app('url')->asset('public/' . $path, $secure);
             } else {
-                return app('url')->asset($path, $secure);
+                return app('url')->asset('/' .$path, $secure);
             }
 
         }
@@ -1042,7 +1042,7 @@ if (!function_exists('static_asset')) {
         if(env('ENVIRONMENT') == "Production"){
             return app('url')->asset('public/' . $path, $secure);
         } else {
-            return app('url')->asset($path, $secure);
+            return app('url')->asset('/' . $path, $secure);
         }
 
     }
@@ -1060,8 +1060,11 @@ if (!function_exists('getBaseURL')) {
     function getBaseURL()
     {
         $root = '//' . $_SERVER['HTTP_HOST'];
-        $root .= str_replace(basename($_SERVER['SCRIPT_NAME']), '', $_SERVER['SCRIPT_NAME']);
 
+        if(env('ENVIRONMENT') == "Production"){
+            $root .= str_replace(basename($_SERVER['SCRIPT_NAME']), '', $_SERVER['SCRIPT_NAME']);
+        }
+        
         return $root;
     }
 }
@@ -1073,7 +1076,12 @@ if (!function_exists('getFileBaseURL')) {
         if (env('FILESYSTEM_DRIVER') == 's3') {
             return env('AWS_URL') . '/';
         } else {
-            return getBaseURL() . 'public/';
+            // return getBaseURL() . 'public/';
+            if(env('ENVIRONMENT') == "Production"){
+                return getBaseURL() . 'public/';
+            } else {
+                return getBaseURL() . '/';
+            }
         }
     }
 }
@@ -1353,5 +1361,34 @@ if (!function_exists('get_url_params')) {
         parse_str($query_str, $query_params);
 
         return $query_params[$key] ?? '';
+    }
+}
+
+
+// Check zipcode availability params
+if (!function_exists('check_zipcode_availability')) {
+    function check_zipcode_availability($carts, $postal_code)
+    {
+        $zp_error = []; // Initialize the error array for this address
+                                                                
+        foreach ($carts as $cartItem) {
+            $product = DB::table('products')->where('id', $cartItem->product_id)->first();
+
+            if ($product) {
+                $zp = DB::table('zipcode_availibility')->where('id', json_decode($product->zipcode_availibility_id))->first();
+
+                if ($zp) {
+                    $type = $zp->type;
+                    $zipcodes = json_decode($zp->zipcode);
+
+                    // Use the current $address->postal_code
+                    if ($type == 'allow' && !in_array($postal_code, $zipcodes)) {
+                        $zp_error[] = $product->name . ' Not deliverable at ' . $postal_code;
+                    }
+                }
+            }
+        }
+
+        return $zp_error;
     }
 }
