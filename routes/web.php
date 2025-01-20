@@ -176,6 +176,9 @@ Route::controller(HomeController::class)->group(function () {
     Route::get('/privacy-policy', 'privacypolicy')->name('privacypolicy');
 
     Route::get('/track-your-order', 'trackOrder')->name('orders.track');
+
+    Route::post('/check-pincode', 'checkPincode')->name('check.pincode');
+
 });
 
 // Language Switch

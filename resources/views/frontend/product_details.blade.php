@@ -212,7 +212,6 @@
                             @endif
                         </div>
 
-
                         <!--<div class="row align-items-center">
                                 <div class="col-auto">
                                     <small class="mr-2 opacity-90">{{ translate('Sold by') }}: </small><br>
@@ -269,6 +268,7 @@
                            <div class="col-sm-2 col-3">
                                 <div class="opacity-90 my-2">Price:</div>
                             </div>
+
                             <div class="">
                                 <div class="fs-16 fw-500 text-primary price-size gray_green_clr pt-2">
                                     <strong class="gray_green_clr">{{ home_discounted_price($detailedProduct) }}</strong>
@@ -475,6 +475,7 @@
                                 </div>
                             </div>
 
+                            @include('frontend.components.pincode-checker')
                         </form>
 
                         <div class="mt-3 button_dt_buy_cart">
@@ -1186,6 +1187,58 @@
 @endsection
 
 @section('script')
+<script type="text/javascript">
+    $(document).on('click', '#check-pincode-btn', function() {
+        var pincode = $('#pincode').val().trim();
+        var productId = $('#product_id').val();
+
+        if (pincode === '' || pincode.length !== 6) {
+            $('#pincode-result').html('<span class="error">Please enter a valid 6-digit pincode.</span>');
+            return;
+        }
+
+        $.ajax({
+            url: "{{ route('check.pincode') }}",
+            method: "POST",
+            data: {
+                _token: "{{ csrf_token() }}",
+                pincode: pincode,
+                product_id: productId
+            },
+            success: function(response) {
+                if (response.status === 'success') {
+                    $('#pincode').prop('readonly', true);
+                    $('#check-pincode-btn').text('Recheck');
+                    $('#check-pincode-btn').prop('disabled', true);
+                    $('#pincode-result').html(`<span class="success">${response.message}</span>`);
+
+                    if (!$('#edit-pincode-btn').length) {
+                        $('<button>', {
+                            id: 'edit-pincode-btn',
+                            type: 'button',
+                            class: 'btn btn-link ms-2',
+                            html: '<i class="fa fa-edit"></i>'
+                        }).insertAfter('#check-pincode-btn');
+                    }
+                } else {
+                    $('#pincode-result').html(`<span class="error">${response.message}</span>`);
+                }
+            },
+            error: function() {
+                $('#pincode-result').html(
+                    '<span class="error">An error occurred. Please try again.</span>');
+            }
+        });
+    });
+
+    $(document).on('click', '#edit-pincode-btn', function() {
+        $('#pincode').prop('readonly', false);
+        $('#check-pincode-btn').prop('disabled', false);
+        $('#check-pincode-btn').text('Check');
+        $('#pincode-result').empty();
+        $(this).remove();
+    });
+</script>
 <script type="text/javascript">
 $(document).ready(function() {
     getVariantPrice();

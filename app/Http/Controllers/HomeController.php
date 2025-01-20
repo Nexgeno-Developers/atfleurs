@@ -25,6 +25,7 @@ use App\Models\AffiliateConfig;
 use App\Models\CustomerPackage;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Auth\Events\PasswordReset;
 use App\Mail\SecondEmailVerifyMailManager;
 use App\Models\Blog;
@@ -49,7 +50,7 @@ class HomeController extends Controller
         $newest_products = Cache::remember('newest_products', 3600, function () {
             return filter_products(Product::latest())->limit(12)->get();
         });
-        
+
         $blogs = Blog::take(3)->orderBy('created_at', 'desc')->get();
 
         return view('frontend.index', compact('featured_categories', 'todays_deal_products', 'newest_products', 'blogs'));
@@ -158,13 +159,13 @@ class HomeController extends Controller
             flash(translate('Sorry! the action is not permitted in demo '))->error();
             return back();
         }
-        
+
         if(isset($request->phone)){
             if(User::where('phone', $request->phone)->first() != null) {
                 flash(translate('Phone number already exist!'))->error();
-                return back();            
+                return back();
             }
-        }        
+        }
 
         $user = Auth::user();
         $user->name = $request->name;
@@ -174,10 +175,10 @@ class HomeController extends Controller
         $user->postal_code = $request->postal_code;
         //$user->phone = $request->phone;
         $user->gst_number = $request->gst_number;
-        
+
         if(isset($request->phone)) {
-            $user->phone = $request->phone;            
-        }        
+            $user->phone = $request->phone;
+        }
 
         if ($request->new_password != null && ($request->new_password == $request->confirm_password)) {
             $user->password = Hash::make($request->new_password);
@@ -243,7 +244,7 @@ class HomeController extends Controller
     {
         $previousUrl = url()->previous();
         $lastPart = basename(parse_url($previousUrl, PHP_URL_PATH));
-        
+
         $category = Category::where('slug', $lastPart)->first();
 
         if ($category) {
@@ -252,9 +253,9 @@ class HomeController extends Controller
         } else {
             $category_id1 = 'null';
         }
-        
-        
-        
+
+
+
         $detailedProduct  = Product::with('reviews', 'brand', 'stocks', 'user', 'user.shop')->where('auction_product', 0)->where('slug', $slug)->where('approved', 1)->first();
         if(empty($detailedProduct->id)){
             abort(404);
@@ -290,6 +291,56 @@ class HomeController extends Controller
         }
         abort(404);
     }
+
+    public function checkPincode(Request $request)
+    {
+        // Validate input
+        $request->validate([
+            'pincode' => 'required|digits:6',
+            'product_id' => 'required|exists:products,id',
+        ]);
+
+        // Fetch the product details
+        $product = Product::findOrFail($request->product_id);
+
+        // Decode the JSON field `zipcode_availibility_id` from the product model
+        $zipcodeIds = json_decode($product->zipcode_availibility_id, true);
+
+
+        if (empty($zipcodeIds)) {
+            return response()->json(['status' => 'error', 'message' => 'No zipcodes are available for this product.']);
+        }
+
+        // Query the `zipcode_availibility` table for matching rows
+        $zipcodeRows = DB::table('zipcode_availibility')
+            ->whereIn('id', $zipcodeIds)
+            ->pluck('zipcode') // Pluck the 'zipcode' column (JSON string)
+            ->toArray();
+
+        // Decode the JSON-encoded zipcode arrays into PHP arrays
+        $availableZipcodes = [];
+        foreach ($zipcodeRows as $zipcodeRow) {
+            $availableZipcodes = array_merge($availableZipcodes, json_decode($zipcodeRow, true));
+        }
+
+        // Now check if the entered pincode is in any of the available zipcodes
+        if (in_array($request->pincode, $availableZipcodes)) {
+            // Store the pincode in the session if available
+            session([
+                'pincode' => $request->pincode,
+                'pincode_result' => [
+                    'status' => 'success',
+                    'message' => 'Product is available for delivery in this area.',
+                ],
+            ]);
+            return response()->json(['status' => 'success', 'message' => 'Product is available for delivery in this area.']);
+        } else {
+            // If not found, clear the session
+            session()->forget(['pincode', 'pincode_result']);
+            return response()->json(['status' => 'error', 'message' => 'Sorry, product is not deliverable to this pincode.']);
+        }
+    }
+
 
     public function shop($slug)
     {
@@ -439,12 +490,12 @@ class HomeController extends Controller
 
         $price += $tax;
         $regular_price = $product_stock->price;
-        
-        
+
+
         $percentage = $regular_price - $price;
         $percentage = $percentage / $regular_price;
         $Discount_percentage = $percentage * 100;
-        
+
         $price = round($price);
 
         return array(
@@ -605,7 +656,7 @@ class HomeController extends Controller
 
     public function reset_password_with_code(Request $request)
     {
-        
+
         if (($user = User::where('email', $request->email)->where('verification_code', $request->code)->first()) != null) {
             if ($request->password == $request->password_confirmation) {
                 $user->password = Hash::make($request->password);
