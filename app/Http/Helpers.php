@@ -189,7 +189,7 @@ if (!function_exists('format_price')) {
         }
 
 
-        // Minimize the price 
+        // Minimize the price
         if ($isMinimize) {
             $temp = number_format($price / 1000000000, get_setting('no_of_decimals'), ".", "");
 
@@ -273,7 +273,7 @@ if (!function_exists('cart_product_price')) {
             $price = $product->bids->max('amount');
         }
 
-        //calculation of taxes 
+        //calculation of taxes
         if ($tax) {
             $taxAmount = 0;
             foreach ($product->taxes as $product_tax) {
@@ -324,7 +324,7 @@ if (!function_exists('cart_product_tax')) {
             }
         }
 
-        //calculation of taxes 
+        //calculation of taxes
         $tax = 0;
         foreach ($product->taxes as $product_tax) {
             if ($product_tax->tax_type == 'percent') {
@@ -440,7 +440,7 @@ if (!function_exists('carts_coupon_discount')) {
 
                     $subtotal = 0;
 
-                    foreach ($carts as $key => $cartItem) { 
+                    foreach ($carts as $key => $cartItem) {
                         $product = Product::find($cartItem['product_id']);
                         $subtotal += cart_product_price($cartItem, $product, false, false) * $cartItem['quantity'];
                     }
@@ -480,11 +480,11 @@ if (!function_exists('carts_coupon_discount')) {
                                         $current_date = time();
                                         $offer_start_date = strtotime('2024-10-28 00:00:00');
                                         $offer_end_date = strtotime('2024-11-03 23:59:59');
-        
+
                                         if ($sum >= 10000 && $current_date >= $offer_start_date && $current_date <= $offer_end_date) {
-        
+
                                             // var_dump('working 1');
-        
+
                                             $coupon_discount += (cart_product_price($cartItem, $product, false, false) * 10 / 100) * $cartItem['quantity'];
 
                                         } elseif ( $sum <= 10000 && $current_date >= $offer_start_date && $current_date <= $offer_end_date ) {
@@ -492,7 +492,7 @@ if (!function_exists('carts_coupon_discount')) {
                                             // var_dump('working 2');
 
                                             $coupon_discount += (cart_product_price($cartItem, $product, false, false) * 5 / 100) * $cartItem['quantity'];
-            
+
                                         } else {
 
                                             // var_dump('working 3');
@@ -500,7 +500,7 @@ if (!function_exists('carts_coupon_discount')) {
                                             $coupon_discount += (cart_product_price($cartItem, $product, false, false) * $coupon->discount / 100) * $cartItem['quantity'];
 
                                         }
-        
+
                                         // $coupon_discount += (cart_product_price($cartItem, $product, false, false) * $coupon->discount / 100) * $cartItem['quantity'];
                                     } elseif ($coupon->discount_type == 'amount') {
                                         $coupon_discount += $coupon->discount * $cartItem['quantity'];
@@ -995,7 +995,7 @@ if (!function_exists('uploaded_asset')) {
         $asset = Cache::rememberForever('uploaded_asset_'.$id , function() use ($id) {
             return \App\Models\Upload::find($id);
         });
-        
+
         if ($asset != null) {
             return $asset->external_link == null ? my_asset($asset->file_name) : $asset->external_link;
         }
@@ -1064,7 +1064,7 @@ if (!function_exists('getBaseURL')) {
         if(env('ENVIRONMENT') == "Production"){
             $root .= str_replace(basename($_SERVER['SCRIPT_NAME']), '', $_SERVER['SCRIPT_NAME']);
         }
-        
+
         return $root;
     }
 }
@@ -1370,7 +1370,7 @@ if (!function_exists('check_zipcode_availability')) {
     function check_zipcode_availability($carts, $postal_code)
     {
         $zp_error = []; // Initialize the error array for this address
-                                                                
+
         foreach ($carts as $cartItem) {
             $product = DB::table('products')->where('id', $cartItem->product_id)->first();
 
@@ -1390,5 +1390,38 @@ if (!function_exists('check_zipcode_availability')) {
         }
 
         return $zp_error;
+    }
+}
+
+if (!function_exists('getBusinessSettingValue')) {
+    /**
+     * Get the value of a business setting by its type.
+     *
+     * @param string $type
+     * @return string|null
+     */
+    function getBusinessSettingValue($type)
+    {
+        // Check if type is empty or null
+        if (empty($type)) {
+            return ''; // Return empty if no type is provided
+        }
+
+        try {
+            // Attempt to retrieve the business setting by type
+            $setting = BusinessSetting::where('type', $type)->first();
+
+            // If no setting is found, return an empty string
+            if (!$setting) {
+                return '';
+            }
+
+            // Return the value of the setting
+            return $setting->value;
+
+        } catch (\Exception $e) {
+            // In case of an error, return an empty string
+            return '';
+        }
     }
 }

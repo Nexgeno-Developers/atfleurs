@@ -500,7 +500,10 @@
                             </button>
                         </div>
 
-
+                        <!-- Countdown Timer Display -->
+                        <div id="countdown-container" class="mt-3">
+                            <div id="countdown">Loading countdown...</div>
+                        </div>
 
                         <div class="d-table width-100 mt-3">
                             <div class="d-table-cell">
@@ -1188,6 +1191,75 @@
 
 @section('script')
 <script type="text/javascript">
+function startCountdown() {
+    const officeStart = {{ getBusinessSettingValue("office_start") }} ?? 8; // Office start time (8 AM)
+    const officeEnd = {{ getBusinessSettingValue('office_end') }} ?? 21; // Office end time (9 PM)
+    const deliveryInterval = 1; // Delivery interval in hours
+
+    // For testing, manually set the current hour, minute, and second
+    // let currentHour = 20; // Set the hour for testing (e.g., 12 PM)
+    // let currentDate = 20; // Set the hour for testing (e.g., 12 PM)
+
+
+    function updateCountdown() {
+        const now = new Date();
+
+        // Manually set the current time for testing purposes
+        // now.setHours(currentHour); // Set the hour for testing (e.g., 12 PM)
+        // now.setDate(currentDate); // Set the date for testing (e.g., 20)
+
+
+        const msPerHour = 60 * 60 * 1000;
+
+        let targetMessage = "Get Today!";
+        let nextInterval;
+// console.log(now.getDate());
+        if (now.getHours() < officeStart) {
+            // Before office hours
+            nextInterval = new Date(now.getFullYear(), now.getMonth(), now.getDate(), officeStart, 0, 0);
+        } else if (now.getHours() >= officeEnd) {
+            // After office hours, prepare for the next day's first delivery slot
+            targetMessage = "Get Tomorrow!";
+            nextInterval = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, officeStart + deliveryInterval, 0, 0);
+        } else {
+            // During office hours
+            const nextDeliveryTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), now.getHours() + deliveryInterval, 0, 0);
+
+            if (nextDeliveryTime.getHours() <= 23) {
+                // If the delivery can be completed on the same day
+                nextInterval = nextDeliveryTime;
+            } else {
+                // Otherwise, move to tomorrow's first delivery slot
+                targetMessage = "Get Tomorrow!";
+                nextInterval = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, officeStart + deliveryInterval, 0, 0);
+            }
+        }
+
+        const diff = nextInterval - now;
+        const hours = Math.floor(diff / msPerHour);
+        const minutes = Math.floor((diff % msPerHour) / (60 * 1000));
+        // console.log(now.getHours());
+        const seconds = Math.floor((diff % (60 * 1000)) / 1000);
+
+        const countdownText = `${hours.toString().padStart(2, '0')}:${minutes
+            .toString()
+            .padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+
+        document.getElementById("countdown").innerText = `${targetMessage} Order within ${countdownText} Hrs.`;
+    }
+
+    // Run the updateCountdown function every second
+    setInterval(updateCountdown, 1000);
+}
+
+// Start the countdown
+startCountdown();
+
+
+
+
+
+
     $(document).on('click', '#check-pincode-btn', function() {
         var pincode = $('#pincode').val().trim();
         var productId = $('#product_id').val();
@@ -1208,10 +1280,11 @@
             success: function(response) {
                 if (response.status === 'success') {
                     $('#pincode').prop('readonly', true);
-                    $('#check-pincode-btn').text('Recheck');
+                    // $('#check-pincode-btn').text('Recheck');
                     $('#check-pincode-btn').prop('disabled', true);
                     $('#pincode-result').html(`<span class="success">${response.message}</span>`);
-
+                    // Enable "Buy Now" and "Add to Cart" buttons
+                    $('.buy-now, .add-to-cart').prop('disabled', false);
                     if (!$('#edit-pincode-btn').length) {
                         $('<button>', {
                             id: 'edit-pincode-btn',
@@ -1222,11 +1295,15 @@
                     }
                 } else {
                     $('#pincode-result').html(`<span class="error">${response.message}</span>`);
+                    // Disable "Buy Now" and "Add to Cart" buttons
+                    $('.buy-now, .add-to-cart').prop('disabled', true);
                 }
             },
             error: function() {
                 $('#pincode-result').html(
                     '<span class="error">An error occurred. Please try again.</span>');
+                    // Disable "Buy Now" and "Add to Cart" buttons
+                    $('.buy-now, .add-to-cart').prop('disabled', true);
             }
         });
     });
@@ -1236,8 +1313,17 @@
         $('#check-pincode-btn').prop('disabled', false);
         $('#check-pincode-btn').text('Check');
         $('#pincode-result').empty();
+        // Disable "Buy Now" and "Add to Cart" buttons
+        $('.buy-now, .add-to-cart').prop('disabled', true);
         $(this).remove();
     });
+    // On page load, disable the buttons
+    $('.buy-now, .add-to-cart').prop('disabled', true);
+
+    // Check session product availability
+    @if (session('pincode_result') && session('pincode_result')['status'] === 'success')
+        $('.buy-now, .add-to-cart').prop('disabled', false);
+    @endif
 </script>
 <script type="text/javascript">
 $(document).ready(function() {
