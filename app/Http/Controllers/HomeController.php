@@ -306,6 +306,137 @@ class HomeController extends Controller
         // Decode the JSON field `zipcode_availibility_id` from the product model
         $zipcodeIds = json_decode($product->zipcode_availibility_id, true);
 
+        if (empty($zipcodeIds)) {
+            return response()->json(['status' => 'error', 'message' => 'No zipcodes are available for this product.']);
+        }
+
+        // Query the `zipcode_availibility` table for matching rows and get their delivery intervals
+        $zipcodeRows = DB::table('zipcode_availibility')
+            ->whereIn('id', $zipcodeIds)
+            ->select('zipcode', 'delivery_interval') // Select both zipcode and delivery_interval
+            ->get();
+
+        // Decode the JSON-encoded zipcode arrays into PHP arrays
+        $deliveryIntervals = []; // Array to hold delivery intervals for the matching pincode
+
+        foreach ($zipcodeRows as $zipcodeRow) {
+            $decodedZipcodes = json_decode($zipcodeRow->zipcode, true);
+
+            if (in_array($request->pincode, $decodedZipcodes)) {
+                // Store delivery intervals for the requested pincode
+                $deliveryIntervals[] = $zipcodeRow->delivery_interval;
+            }
+        }
+
+        // Check if the requested pincode is available
+        if (!empty($deliveryIntervals)) {
+            // Get the highest delivery interval
+            $maxDeliveryInterval = max($deliveryIntervals);
+
+            // Store the pincode and result in the session
+            session([
+                'pincode' => $request->pincode,
+                'pincode_result' => [
+                    'status' => 'success',
+                    'message' => 'Product is available for delivery in this area.',
+                    'delivery_interval' => $maxDeliveryInterval, // Add highest delivery interval
+                ],
+            ]);
+
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Product is available for delivery in this area.',
+                'delivery_interval' => $maxDeliveryInterval, // Include highest delivery interval
+            ]);
+        } else {
+            // Store the pincode in the session
+            session(['pincode' => $request->pincode]);
+            // If not found, clear the result from session
+            session()->forget(['pincode_result']);
+            return response()->json(['status' => 'error', 'message' => 'Sorry, product is not deliverable to this pincode.']);
+        }
+    }
+
+
+    /*
+    public function checkPincode(Request $request)
+    {
+        // Validate input
+        $request->validate([
+            'pincode' => 'required|digits:6',
+            'product_id' => 'required|exists:products,id',
+        ]);
+
+        // Fetch the product details
+        $product = Product::findOrFail($request->product_id);
+
+        // Decode the JSON field `zipcode_availibility_id` from the product model
+        $zipcodeIds = json_decode($product->zipcode_availibility_id, true);
+
+        if (empty($zipcodeIds)) {
+            return response()->json(['status' => 'error', 'message' => 'No zipcodes are available for this product.']);
+        }
+
+        // Query the `zipcode_availibility` table for matching rows and get their delivery intervals
+        $zipcodeRows = DB::table('zipcode_availibility')
+            ->whereIn('id', $zipcodeIds)
+            ->select('zipcode', 'delivery_interval') // Select both zipcode and delivery_interval
+            ->get();
+
+        // Decode the JSON-encoded zipcode arrays into PHP arrays
+        $availableZipcodes = [];
+        $zipcodeDeliveryIntervals = []; // Array to hold delivery intervals for each zipcode
+
+        foreach ($zipcodeRows as $zipcodeRow) {
+            $decodedZipcodes = json_decode($zipcodeRow->zipcode, true);
+            $availableZipcodes = array_merge($availableZipcodes, $decodedZipcodes);
+
+            // Store the delivery intervals corresponding to the zipcodes
+            foreach ($decodedZipcodes as $zipcode) {
+                $zipcodeDeliveryIntervals[$zipcode] = $zipcodeRow->delivery_interval;
+            }
+        }
+
+        // Now check if the entered pincode is in any of the available zipcodes
+        if (in_array($request->pincode, $availableZipcodes)) {
+            // Store the pincode in the session if available
+            session([
+                'pincode' => $request->pincode,
+                'pincode_result' => [
+                    'status' => 'success',
+                    'message' => 'Product is available for delivery in this area.',
+                    'delivery_interval' => $zipcodeDeliveryIntervals[$request->pincode], // Add delivery interval
+                ],
+            ]);
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Product is available for delivery in this area.',
+                'delivery_interval' => $zipcodeDeliveryIntervals[$request->pincode], // Include delivery interval
+            ]);
+        } else {
+            // Store the pincode in the session if available
+            session([ 'pincode' => $request->pincode, ]);
+            // If not found, clear the session
+            session()->forget(['pincode_result']);
+            // session()->forget(['pincode', 'pincode_result']);
+            return response()->json(['status' => 'error', 'message' => 'Sorry, product is not deliverable to this pincode.']);
+        }
+    }
+
+    public function checkPincode(Request $request)
+    {
+        // Validate input
+        $request->validate([
+            'pincode' => 'required|digits:6',
+            'product_id' => 'required|exists:products,id',
+        ]);
+
+        // Fetch the product details
+        $product = Product::findOrFail($request->product_id);
+
+        // Decode the JSON field `zipcode_availibility_id` from the product model
+        $zipcodeIds = json_decode($product->zipcode_availibility_id, true);
+
 
         if (empty($zipcodeIds)) {
             return response()->json(['status' => 'error', 'message' => 'No zipcodes are available for this product.']);
@@ -340,7 +471,7 @@ class HomeController extends Controller
             return response()->json(['status' => 'error', 'message' => 'Sorry, product is not deliverable to this pincode.']);
         }
     }
-
+*/
 
     public function shop($slug)
     {

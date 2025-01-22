@@ -10,7 +10,7 @@
                 <input type="text" id="pincode" name="pincode" class="form-control me-2" placeholder="Enter Pincode"
                     maxlength="6" value="{{ session('pincode', '') }}" {{ session('pincode') ? 'readonly' : '' }}>
                 <button type="button" id="check-pincode-btn" class="btn btn-primary" {{ session('pincode') ? 'disabled' : '' }}>
-                    {{ session('pincode') ? 'Recheck' : 'Check' }}
+                    Check
                 </button>
                 @if (session('pincode'))
                     <button type="button" id="edit-pincode-btn" class="btn btn-link ms-2">
@@ -19,11 +19,11 @@
                 @endif
             </div>
             <div id="pincode-result" class="mt-3">
-                @if (session('pincode_result'))
+                {{-- @if (session('pincode_result'))
                     <span class="{{ session('pincode_result')['status'] }}">
                         {{ session('pincode_result')['message'] }}
                     </span>
-                @endif
+                @endif --}}
             </div>
         </form>
     </div>

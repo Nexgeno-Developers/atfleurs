@@ -29,6 +29,7 @@
                     <th>{{translate('Name')}}</th>
                     <th>{{translate('Zipcode')}}</th>
                     <th>{{translate('Zipcode Charges')}}</th>
+                    <th>{{translate('Delivery Interval Time(hour)')}}</th>
                     <th>{{translate('Type')}}</th>
                     <th 1data-breakpoints="lg">{{translate('Options')}}</th>
                 </tr>
@@ -41,18 +42,19 @@
                         <td>{{ ucfirst($row->name) }}</td>
                         <td>{{ implode(', ', json_decode($row->zipcode)) }}</td>
                         <td>{{ ucfirst($row->charges) }}</td>
+                        <td>{{ ucfirst($row->delivery_interval) }}</td>
                         <td>{{ ucfirst($row->type) }}</td>
                         <td>
                             <a class="btn btn-soft-primary btn-icon btn-circle btn-sm" href="{{route('zipcode.edit', ['id' => $row->id])}}" title="{{ translate('Edit') }}">
                                 <i class="las la-edit"></i>
-                            </a>                            
+                            </a>
                             <a href="#" class="btn btn-soft-danger btn-icon btn-circle btn-sm confirm-delete" data-href="{{route('zipcode.destroy', $row->id)}}" title="{{ translate('Delete') }}">
                                 <i class="las la-trash"></i>
-                            </a>                                
+                            </a>
                         </td>
                     </tr>
                 @endforeach
-                
+
             </tbody>
         </table>
         <div class="aiz-pagination">
