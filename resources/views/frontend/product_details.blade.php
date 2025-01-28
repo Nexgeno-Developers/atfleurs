@@ -131,10 +131,10 @@
                             <div class="aiz-carousel product-gallery" data-nav-for='.product-gallery-thumb'
                                 data-fade='true' data-auto-height='true'>
                                 @foreach ($photos as $key => $photo)
-                                <div class="carousel-box img-zoom rounded">
+                                <div class="carousel-box img-zoom rounded pointer_none">
                                     <img class="img-fluid lazyload"
                                         src="{{ static_asset('assets/img/placeholder.jpg') }}"
-                                        data-src="{{ uploaded_asset($photo) }}"
+                                        data-src="{{ uploaded_asset($photo) }}" data-toggle="modal" data-target="#imagezoommodal"
                                         onerror="this.onerror=null;this.src='{{ static_asset('assets/img/placeholder.jpg') }}';">
                                 </div>
                                 @endforeach
@@ -154,6 +154,8 @@
                                    <a href="#tab_default_1"><p>i</p></a>
                             </div>
                         </div>
+
+                      
                         <div class="col-3 col-md-auto w-md-140px order-2 order-md-1 mt-1 mt-md-0">
                             <div class="aiz-carousel product-gallery-thumb" data-items='4'
                                 data-nav-for='.product-gallery' data-vertical='true'
@@ -478,6 +480,13 @@
                             @include('frontend.components.pincode-checker')
                         </form>
 
+                         <!-- Countdown Timer Display -->
+                        <div id="countdown-container" class="d-none mt-0 mb-4">
+                            <div class="countdown_class d-flex align-items-center gap-5">
+                            <i class="fa-regular fa-clock"></i><div id="countdown">Loading countdown...</div>
+                            </div>
+                        </div>
+
                         <div class="mt-3 button_dt_buy_cart">
                             @if ($detailedProduct->external_link != null)
                             <a type="button" class="btn btn-primary buy-now fw-600"
@@ -500,10 +509,7 @@
                             </button>
                         </div>
 
-                        <!-- Countdown Timer Display -->
-                        <div id="countdown-container" class="d-none mt-3">
-                            <div id="countdown">Loading countdown...</div>
-                        </div>
+                       
 
                         <div class="d-table width-100 mt-3">
                             <div class="d-table-cell">
@@ -1086,6 +1092,23 @@
     </div>
 </div>
 
+
+<!-- Image Modal -->
+<div class="modal fade product_dt_image_modal" id="imagezoommodal" tabindex="-1" role="dialog" aria-labelledby="imagezoommodalTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      <div class="modal-body">
+        <img src="http://127.0.0.1:8000/uploads/all/VNFKMo0UuIuZsFEIgBCpFC5fTB0Wz1xkxdVIwweF.jpg" class="w-full w-100">
+      </div>
+     
+    </div>
+  </div>
+</div>
+
+
 <!-- Modal -->
 <div class="modal fade" id="login_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
@@ -1189,6 +1212,10 @@
 </div>
 @endsection
 
+
+
+
+
 @section('script')
 <script type="text/javascript">
     // Variable to store the interval ID of the countdown
@@ -1207,7 +1234,7 @@
 
         let deliveryInterval = deliveryIntervalHour * 60;
         let targetTime;
-        let targetMessage = "Get Today!";
+        let targetMessage = " Get Today!";
 
         // Check if the current time is after office hours
         if (currentHour >= officeEnd) {

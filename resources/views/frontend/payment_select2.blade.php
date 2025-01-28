@@ -472,15 +472,12 @@ div#accordioncCheckoutInfo span {
                                                                     @endphp
 
 
-                                                                    <div class="col-md-12 mb-0 pb-1 pt-md-2 pt-3"
-                                                                    @if($zp_error != [])
+                                                                    <div class="col-md-12 mb-0 pb-1 pt-md-2 pt-3">
+                                                                        <label class="aiz-megabox d-block bg-white mb-0" @if($zp_error != [])
                                                                     style="
-                                                                        color: gray;
-                                                                        background-color: gray;
+                                                                        opacity:0.7;
                                                                     "
-                                                                    @endif
-                                                                    >
-                                                                        <label class="aiz-megabox d-block bg-white mb-0">
+                                                                    @endif>
 
                                                                             @if($zp_error == [])
                                                                                 <input type="radio" name="address_id"
