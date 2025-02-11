@@ -104,7 +104,7 @@ ul.social.colored [class*="google"] {
 }
 
 .home-banner-area .carousel-box img {
-  height: 500px !important;
+  height: auto !important;
 }
 
 .about_content_box h3 {
@@ -274,11 +274,12 @@ ul.social.colored [class*="google"] {
 
 .newsletter_box p {
   font-size: 16px;
+  font-weight: 200;
 }
 
 .newsletter_box h4 {
   text-align: left;
-  font-weight: 600;
+  font-weight: 400;
   font-size: 26px;
   padding-top: 0;
 }
@@ -1345,7 +1346,7 @@ div#main-container::-webkit-scrollbar-thumb {
 
 .career_page p a {
   color: #e18a14;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 
@@ -1354,7 +1355,7 @@ a.read-color {
 }
 
 .free-delivery-box h4 {
-  font-size: 26px;
+  font-size: 22px;
   padding-top: 7px;
 }
 
@@ -1405,7 +1406,7 @@ body .darkgray_bg {
   background: transparent;
   color: #45585E;
   font-size: 18px !important;
-  font-weight: 700;
+  font-weight: 500;
 }
 
 .quantity_bg i {
@@ -1468,8 +1469,8 @@ body .darkgray_bg {
 
   .pb-5,
   .py-5 {
-    padding-bottom: 2rem !important;
-    padding-top: 2rem !important;
+    padding-bottom: 1rem !important;
+    padding-top: 1rem !important;
   }
 
   .menu_icons.menu-360 {
@@ -1533,7 +1534,7 @@ body .darkgray_bg {
     border-radius: 110px 110px 0 0;
   } */
   .category_boxex_action h4.heading_one.heading_font1 {
-    font-size: 34px !important;
+    font-size: 22px !important;
   }
 
   .heading_font1 {
@@ -1582,9 +1583,15 @@ body .darkgray_bg {
     padding-top: 16px;
   }
 
+  .free-delivery-box h4 {
+    font-size: 20px !important;
+    padding-top: 7px;
+  }
+
   .free-delivery-box p {
     margin-bottom: 0;
     font-size: 13px;
+    padding: 0px 5px;
   }
 
   .newsletter_box {
@@ -1808,7 +1815,7 @@ ol {
 
 footer.pt-1.pb-1.pb-xl-0.bg-white.text-light.border-top.border-dark-900.balsamiq_font.copyright a {
   color: #e18a14 !important;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .our_category ul li a:not(:first-child) {
@@ -2118,22 +2125,22 @@ span.num {
 
 .category_main h1 {
   font-size: 20px;
-  font-weight: 700;
+  font-weight: 500;
 }
 
 .category_main h2 span {
   font-size: 20px;
-  font-weight: 700;
+  font-weight: 500;
 }
 
 .category_main h3 span {
   font-size: 20px;
-  font-weight: 700;
+  font-weight: 500;
 }
 
 .category_main h4 span {
   font-size: 20px;
-  font-weight: 700;
+  font-weight: 500;
 }
 
 .category_main p {
@@ -2531,7 +2538,7 @@ table.table.aiz-table.mb-0.footable.footable-1.breakpoint-lg span.badge.badge-in
   padding: 5px 10px;
   gap: 7px;
   text-align: center;
-  font-weight: 700;
+  font-weight: 600;
   border-radius: 48px;
   justify-content: center;
   font-size: 13px;
@@ -2837,7 +2844,7 @@ table.table.aiz-table.mb-0.footable.footable-1.breakpoint-lg span.badge.badge-in
 
 .footer_headings {
   font-size: 20px !important;
-  font-weight: 600;
+  font-weight: 400;
 }
 
 .social_icons li {
@@ -3142,7 +3149,7 @@ button.slick-next.slick-arrow {
   color: #444;
   background-color: transparent !important;
   border-color: #32533d !important;
-  font-weight: 600;
+  font-weight: 400;
   font-size: 15px;
 }
 
@@ -3349,7 +3356,7 @@ button.slick-next.slick-arrow {
 
   .footer_headings {
     font-size: 16px !important;
-    font-weight: 600;
+    font-weight: 400;
   }
 
   .social_icons i {
@@ -3376,7 +3383,7 @@ button.slick-next.slick-arrow {
 
   .blog_content h4 {
     font-size: 18px;
-    font-weight: 700;
+    font-weight: 600;
     color: #333;
     line-height: 24px;
   }
@@ -3473,6 +3480,9 @@ button.slick-next.slick-arrow {
   }
 }
 
+.footer_links1 li a {
+  font-weight: 200;
+}
 
 @media(min-width:768px) and (max-width:991px) {
   .border_radius_ct img {
@@ -3553,7 +3563,7 @@ button.slick-next.slick-arrow {
 
   .footer_headings {
     font-size: 16px !important;
-    font-weight: 600;
+    font-weight: 400;
   }
 
   .social_icons i {
@@ -3582,7 +3592,7 @@ button.slick-next.slick-arrow {
 
   .blog_content h4 {
     font-size: 18px;
-    font-weight: 700;
+    font-weight: 600;
     color: #333;
     line-height: 24px;
   }
@@ -3714,6 +3724,15 @@ button.slick-next.slick-arrow {
     color: #32533d;
     position: relative;
     left: 7px;
+  }
+
+  .new_head {
+    font-size: 30px !important;
+    display: block;
+  }
+
+  .font-64 {
+    padding-bottom: 20px;
   }
 
   .delete_btns1 {

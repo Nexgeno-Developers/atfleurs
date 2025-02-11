@@ -27,7 +27,7 @@
     <div class="media mb-md-4 mb-2">
         <img src="{{ static_asset('assets/img/placeholder.jpg') }}" data-src="{{ uploaded_asset($product->thumbnail_img) }}" class="mr-3 lazyload size-100px img-fit rounded" alt="Product Image">
         <div class="media-body pt-md-3 text-left">
-            <h6 class="fw-600">
+            <h6 class="fw-500">
                 {{  $product->getTranslation('name')  }}
             </h6>
             <div class="row mt-3">
@@ -64,7 +64,7 @@
     @if(!$results->isEmpty())
     <div class="bg-white rounded shadow-sm">
         <div class="border-bottom p-md-3 pb-md-3 pb-3">
-            <h3 class="fs-16 fw-600 mb-0">
+            <h3 class="fs-16 fw-500 mb-0">
                 <span class="mr-4">{{ translate('Frequently Bought Together')}}</span>
             </h3>
         </div>
@@ -95,7 +95,7 @@
                             <!-- <div class="rating rating-sm mt-1">
                                 {{ renderStarRating($related_product->rating) }}
                             </div> -->
-                            <h3 class="fw-600 fs-13 text-truncate-2 lh-1-4 mb-0 h-35px h-m46">
+                            <h3 class="fw-500 fs-13 text-truncate-2 lh-1-4 mb-0 h-35px h-m46">
                                 <a href="{{ route('product', $related_product->slug) }}" class="d-block text-reset">{{ $related_product->getTranslation('name') }}</a>
                             </h3>
                             @if (addon_is_activated('club_point'))
