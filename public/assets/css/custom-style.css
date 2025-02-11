@@ -13,7 +13,7 @@ body {
 }
 
 .greenbg {
-  background-color: #32533D;
+  background-color: #32533D !important;
 }
 
 .dark_greenbg {
@@ -1359,20 +1359,20 @@ a.read-color {
   font-size: 18px;
 }
 
-.darkgray_bg {
-  background-color: #5C5C5C;
+body .darkgray_bg {
+  background-color: #e18a14 !important;
 }
 
-.buy-now:hover {
+/* .buy-now:hover {
   background-color: #5C5C5C !important;
-}
+} */
 
 [data-vertical=true] .slick-current .carousel-box {
   border-color: #32534f !important;
 }
 
 .darkgray_bg:hover {
-  background-color: #32533D;
+  background-color: #e18a14 !important;
 }
 
 .button_colors_1 i {
@@ -2269,14 +2269,28 @@ span.badge.badge-inline.badge-success {
   width: auto;
 }
 
-section#cart-summary .col-md-6.text-center.text-md-right a {
+.btn-outline-primary:hover,
+.btn-primary,
+.btn-soft-primary:hover {
+  background-color: #32533D !important;
+  border-color: #00000000 !important;
+  color: #fff !important;
+  border-radius: 0;
+}
+
+/* section#cart-summary .col-md-6.text-center.text-md-right a {
   background-color: var(--success);
   border-color: var(--success);
   color: var(--white);
-}
+} */
 
 table.table.aiz-table.mb-0.footable.footable-1.breakpoint-lg span.badge.badge-inline.badge-danger {
   width: auto;
+}
+
+.pickup_point_id_admin .bootstrap-select.form-control button.btn.dropdown-toggle.btn-light {
+  background: #d1d1d145 !important;
+  border: 1px solid #b8b8b854 !important;
 }
 
 .social-media-links {
@@ -3004,7 +3018,6 @@ button.slick-next.slick-arrow {
 .btn-outline-primary:hover,
 .btn-primary,
 .btn-soft-primary:hover {
-  background-color: #32533D !important;
   border-color: #00000000 !important;
   color: #fff !important;
   border-radius: 0;

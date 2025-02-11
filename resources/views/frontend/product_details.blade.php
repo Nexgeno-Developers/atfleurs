@@ -134,7 +134,7 @@
                                 <div class="carousel-box img-zoom rounded pointer_none">
                                     <img class="img-fluid lazyload"
                                         src="{{ static_asset('assets/img/placeholder.jpg') }}"
-                                        data-src="{{ uploaded_asset($photo) }}" data-toggle="modal" data-target="#imagezoommodal"
+                                        data-src="{{ uploaded_asset($photo) }}" 
                                         onerror="this.onerror=null;this.src='{{ static_asset('assets/img/placeholder.jpg') }}';">
                                 </div>
                                 @endforeach
@@ -1094,7 +1094,7 @@
 
 
 <!-- Image Modal -->
-<div class="modal fade product_dt_image_modal" id="imagezoommodal" tabindex="-1" role="dialog" aria-labelledby="imagezoommodalTitle" aria-hidden="true">
+<!-- <div class="modal fade product_dt_image_modal" id="imagezoommodal" tabindex="-1" role="dialog" aria-labelledby="imagezoommodalTitle" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -1106,7 +1106,7 @@
      
     </div>
   </div>
-</div>
+</div> -->
 
 
 <!-- Modal -->
