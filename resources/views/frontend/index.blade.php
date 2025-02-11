@@ -49,7 +49,7 @@
         <h4>Astronomia & Lily <span class="d-md-block">Flower Bouquets</span> </h4>
         <p>Shop collections you can live in</p>
         <div class=" button_effects mt-lg-5 mt-4">
-                <a class="green_color fs-bold" href="/product/astronomia-flower-lily-flower-bouquets-mumbai">Discover More <i class="fa-solid fa-arrow-right"></i></a>
+                <a class="green_color fs-bold" href="/product/astronomia-flower-lily-flower-bouquets-mumbai">Shop Now <i class="fa-solid fa-arrow-right"></i></a>
          </div>
       </div>
     </div>
@@ -58,7 +58,7 @@
         <h4>Artificial Tulips  <span class="d-md-block">Flower With Dry Stick</span> </h4>
         <p>Shop collections you can live in</p>
         <div class=" button_effects mt-lg-5 mt-4">
-                <a class="green_color fs-bold" href="/product/artificial-tulips-flower-dry-stick-online-mumbai">Discover More <i class="fa-solid fa-arrow-right"></i></a>
+                <a class="green_color fs-bold" href="/product/artificial-tulips-flower-dry-stick-online-mumbai">Shop Now <i class="fa-solid fa-arrow-right"></i></a>
          </div>
       </div>
     </div>
@@ -67,7 +67,7 @@
         <h4>Pink Rose Flower <span class="d-md-block">Arrangement</span> </h4>
         <p>Shop collections you can live in</p>
         <div class=" button_effects mt-lg-5 mt-4">
-                <a class="green_color fs-bold" href="/product/pink-rose-flower-arrangement-online-mumbai">Discover More <i class="fa-solid fa-arrow-right"></i></a>
+                <a class="green_color fs-bold" href="/product/pink-rose-flower-arrangement-online-mumbai">Shop Now <i class="fa-solid fa-arrow-right"></i></a>
          </div>
       </div>
     </div>
@@ -77,7 +77,7 @@
         <h4>Gerbera Daisy Pink <span class="d-md-block">Flower Bouquet</span> </h4>
         <p>Shop collections you can live in</p>
         <div class=" button_effects mt-lg-5 mt-4">
-                <a class="green_color fs-bold" href="/product/gerbera-flower-bouquet-online-mumbai">Discover More <i class="fa-solid fa-arrow-right"></i></a>
+                <a class="green_color fs-bold" href="/product/gerbera-flower-bouquet-online-mumbai">Shop Now <i class="fa-solid fa-arrow-right"></i></a>
          </div>
       </div>
     </div>
@@ -97,7 +97,7 @@
 </div>
 </div>
 
-<section class="pt-5 pb-5">
+<!-- <section class="pt-5 pb-5">
     <div class="container ">
         <div class="row">
             <div class="col-md-12 ">
@@ -105,21 +105,16 @@
             <div class="mx-auto text-center mb-3">
                 <img src="{{ static_asset('assets/img/flower_icon.svg ') }}" />
             </div>
-                <h4 class="heading_one heading_font1 green_color text-capitalize text-center">Welcome to <span class="yellow_color">our colourful world</span></h4>
+                <h4 class="heading_one heading_font1 green_color text-capitalize text-center">Welcome to <span class="new_head">our colourful world</span></h4>
            
-                <p class="text-center">Floral greetings from At Fleurs, a boutique flower studio in suburban Mumbai! <span class="d-md-block">
-Our skilled team of passionate floral designers create exquisite arrangements with buds and blossoms for all occasions. Our collective </span>years in the industry allow us the luxury of acquired expertise, an eye for detail and, most importantly, impeccable service.</p>
-
-<div class="text-center">
-    <a class="green_color fs-bold" href="/about-us"><b><u>Read Story</u></b></a>
-</div>
+                
             </div>
         </div>
     </div>
-</section>
+</section> -->
 
 
-<section class="elegant_blooms_sec orange_light_bg">
+<!-- <section class="elegant_blooms_sec orange_light_bg">
         <div class="row align-items-center">
             <div class="col-lg-6 col-md-12 order-md-2 order-lg-1 order-2 pt-lg-0 pb-lg-0 pt-md-4 pb-md-5 pt-4 pb-5">
                 <div class="mx-auto text-center mb-3">
@@ -129,7 +124,7 @@ Our skilled team of passionate floral designers create exquisite arrangements wi
                 <h4 class="heading_one1 heading_font1 yellow_color text-capitalize text-center pb-md-3 pb-0 pl-md-0 pr-md-0 pl-3 pr-3">Elegant Blooms, <span class="green_color d-lg-block">Perfectly Crafted for Life’s </span> Special <span class="green_color">Moments</span></h4>
                 <p class="text-center body_text_vw width_70 mx-auto">Whether it’s a wedding, an anniversary, or simply a day to celebrate, our bespoke floral arrangements bring beauty and emotion to every occasion.</p>
                  <div class="text-center button_effects mt-md-5 mt-4">
-                <a class="green_color fs-bold" href="/category/artificial-flower-bouquet-mumbai">Discover More <i class="fa-solid fa-arrow-right"></i></a>
+                <a class="green_color fs-bold" href="/category/artificial-flower-bouquet-mumbai">Shop Now <i class="fa-solid fa-arrow-right"></i></a>
                </div>
            </div>
 
@@ -141,12 +136,12 @@ Our skilled team of passionate floral designers create exquisite arrangements wi
                 </div>
            </div>
         </div>
-</section>
+</section> -->
 
      <div class="product_category shop_collection pt-xl-6 pt-lg-6 pt-md-6 pt-5 pb-5 ">
     <div class="container">
         <h4 class="heading_one heading_font1 green_color text-capitalize text-center pb-md-2 mb-md-0">
-            Discover our <span class="yellow_color">exquisite array</span>
+            Discover our <span class="new_head">exquisite array</span>
         </h4>
         <div class="row gutters-10 position-relative">
             @php
@@ -184,18 +179,18 @@ Our skilled team of passionate floral designers create exquisite arrangements wi
                                 </a>
                             </div>
 
-                            @if ($loop->iteration === 4)
+                            @if ($loop->iteration === 8)
                                 <!-- For larger screens: Show in 4th position -->
                                 <div class="d-lg-block d-none minw-0 col-lg-4 col-6 mt-3 border_radius_ct position-relative">
                                     <div class="greenbg text-center h-100 align-items-center d-flex w-100">
                                         <div class="category_boxex_action w-100">
                                             <h4 class="heading_one heading_font1 text-white text-capitalize text-center">
-                                                Shop your <span class="d-lg-block">favourite <span class="yellow_color">items of</span></span>
-                                                <span class="yellow_color">the</span> season
+                                                Shop your <span class="d-block"><span class="new_head">favourite</span> <span class="">items of</span></span>
+                                                <span class="">the</span> season
                                             </h4>
                                             <div class="mt-5 reversebg_btn">
                                                 <a class="green_color fs-bold" href="/category/seasonal-flowers">
-                                                    Discover More <i class="fa-solid fa-arrow-right"></i>
+                                                    Shop Now <i class="fa-solid fa-arrow-right"></i>
                                                 </a>
                                             </div>
                                         </div>
@@ -209,12 +204,12 @@ Our skilled team of passionate floral designers create exquisite arrangements wi
                                     <div class="greenbg text-center h-100 align-items-center d-flex w-100">
                                         <div class="category_boxex_action w-100">
                                             <h4 class="heading_one heading_font1 text-white text-capitalize text-center">
-                                                Shop your <span class="d-block">favourite <span class="yellow_color">items of</span></span>
-                                                <span class="yellow_color">the</span> season
+                                                Shop your <span class="d-block"><span class="new_head">favourite</span> <span class="">items of</span></span>
+                                                <span class="">the</span> season
                                             </h4>
                                             <div class="mt-lg-5 mt-4 reversebg_btn">
                                                 <a class="green_color fs-bold" href="/category/seasonal-flowers">
-                                                    Discover More <i class="fa-solid fa-arrow-right"></i>
+                                                    Shop Now <i class="fa-solid fa-arrow-right"></i>
                                                 </a>
                                             </div>
                                         </div>
@@ -372,7 +367,7 @@ Our skilled team of passionate floral designers create exquisite arrangements wi
                     <div class="">
                         <div class="mb-4 align-items-baseline">
                          
-                            <h4 class="heading_one heading_font1 green_color text-capitalize text-center">New <span class="yellow_color">In</span></h4>
+                            <h4 class="heading_one heading_font1 green_color text-capitalize text-center">Premium <span class="new_head">Hampers</span></h4>
            
                         </div>
                         
@@ -394,36 +389,66 @@ Our skilled team of passionate floral designers create exquisite arrangements wi
 
     
 <section class="ocasssion_video mt-md-4">
+    <div class="container">
         <div class="row align-items-center">
           <div class="video-background">
   <video class="embed-responsive embed-responsive-16by9" autoplay="" muted="" loop="" id="myVideo2">
                         <source src="{{ static_asset('assets/img/occassion_video.mp4 ') }}" type="video/mp4">
                     </video>
   <div class="content">
-     <div class="mx-auto text-center mb-3">
+     <!-- <div class="mx-auto text-center mb-3">
                 <img src="{{ static_asset('assets/img/flower_icon.svg ') }}" />
-                </div>
+                </div> -->
 
-   <h4 class="heading_one heading_font1 green_color text-capitalize">Artful Floral Creations <span class="yellow_color d-lg-block ml-50">for Every Occasion</span></h4>
+   <h4 class="heading_one heading_font1 green_color text-capitalize">Artful Floral Creations <span class="new_head d-lg-block ml-50">for Every Occasion</span></h4>
    <div class="text-center button_effects mt-4 ml-5">
-                <a class="green_color fs-bold" href="/category/floral-arrangements-events-mumbai">Discover More <i class="fa-solid fa-arrow-right"></i></a>
+                <a class="green_color fs-bold" href="/category/floral-arrangements-events-mumbai">Shop Now <i class="fa-solid fa-arrow-right"></i></a>
                </div>  
 </div>
-</div>
+</div></div>
         </div>
 </section>
 
 
 
 
+<section class="elegant_blooms_sec pb-md-0 pt-md-5 pt-4">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-6 pt-md-0 pt-5 pb-md-0 pb-5 order-md-1 order-2">
+                <!-- <div class="mx-auto text-center mb-3">
+                <img src="{{ static_asset('assets/img/flower_icon.svg ') }}" />
+                </div> -->
 
+                <h4 class="heading_one heading_font1 green_color text-capitalize text-left pb-md-0 pl-md-0 pr-md-0 pl-3 pr-md-5 pr-3">Welcome To</h4>
+                <h3 class="new_head text-left green_color font-64">Our colourful world.</h3>
+                <p class="text-left">Floral greetings from At Fleurs, a boutique flower studio in suburban Mumbai!</p>
+
+ <p class="text-left">Our skilled team of passionate floral designers create exquisite arrangements with buds and blossoms for all occasions. Our collective years in the industry allow us the luxury of acquired expertise, an eye for detail and, most importantly, impeccable service.</p>
+
+
+
+<div class="text-left">
+    <a class="green_color fs-bold" href="/about-us"><b><u>Read Story</u></b></a>
+</div>
+           </div>
+
+            <div class="col-md-6 p-0 order-md-2 order-1">
+                <div class="">
+                <img class="w-100" src="{{ static_asset('assets/img/welcome_images.webp ') }}" />
+                </div>
+           </div>
+        </div>
+        </div>
+</section>
 
 
     <section class="elegant_blooms_sec pt-5 ">
+        <div class="container">
         <div class="row align-items-center">
 
 
-        <div class="col-md-12">
+        <!-- <div class="col-md-12">
              <div class="mx-auto text-center mb-3">
                 <img src="{{ static_asset('assets/img/flower_icon.svg ') }}" />
                 </div>
@@ -432,18 +457,16 @@ Our skilled team of passionate floral designers create exquisite arrangements wi
 
 
 
-        </div>
-            <div class="col-md-6 p-0">
+        </div> -->
+            <div class="col-md-6 p-md-4">
                 <div class="">
-                <img class="w-100" src="{{ static_asset('assets/img/bloomin_img2.svg ') }}" />
+                <img class="w-100" src="{{ static_asset('assets/img/h1_images.webp ') }}" />
                 </div>
            </div>
             <div class="col-md-6 pt-md-0 pt-5 pb-md-0 pb-5">
-                <div class="mx-auto text-center mb-3">
-                <img src="{{ static_asset('assets/img/flower_icon.svg ') }}" />
-                </div>
+                
 
-                <h4 class="heading_one heading_font1 green_color text-capitalize text-center pb-md-3 pl-md-0 pr-md-0 pl-3 pr-3"><span class="yellow_color">Blossoming Tradition:</span> <span class="d-lg-block">Honoring Nature’s </span>Timeless Artistry</h4>
+                <h4 class="heading_one heading_font1 green_color text-capitalize text-center pb-md-3 pl-md-0 pr-md-0 pl-3 pr-3"><span class="">Blossoming Tradition:</span> <span class="d-lg-block">Honoring Nature’s </span>Timeless Artistry</h4>
                 <p class="text-center body_text_vw width_70 mx-auto mb-0">Our floral creations are rooted in tradition and inspired by nature’s timeless rhythms. With handpicked blooms and thoughtful designs, we deliver flowers that reflect love, respect, and the beauty of connection. Perfect for weddings, gifts, and everyday elegance.
 
 
@@ -451,27 +474,29 @@ Our skilled team of passionate floral designers create exquisite arrangements wi
                
            </div>
 
-            
+            </div>
         </div>
 </section>
 
 <section class="elegant_blooms_sec pb-md-4">
+    <div class="container">
         <div class="row align-items-center">
             <div class="col-md-6 pt-md-0 pt-5 pb-md-0 pb-5 order-md-1 order-2">
-                <div class="mx-auto text-center mb-3">
+                <!-- <div class="mx-auto text-center mb-3">
                 <img src="{{ static_asset('assets/img/flower_icon.svg ') }}" />
-                </div>
+                </div> -->
 
-                <h4 class="heading_one heading_font1 green_color text-capitalize text-center pb-md-3 pl-md-0 pr-md-0 pl-3 pr-3">Artistry in Bloom: Where<span class=" d-lg-block"><span class="yellow_color">Creativity</span> and Craft  <span class="yellow_color">Blossom</span></span></h4>
+                <h4 class="heading_one heading_font1 green_color text-capitalize text-center pb-md-3 pl-md-0 pr-md-0 pl-3 pr-3">Artistry in Bloom: Where<span class=" d-lg-block"><span class="">Creativity</span> and Craft  <span class="">Blossom</span></span></h4>
                 <p class="text-center body_text_vw width_70 mx-auto">Our passion lies in transforming fresh flowers into stunning works of art. Each arrangement is thoughtfully designed to marry color, texture, and elegance, making it perfect for weddings, celebrations, or adding charm to your home.</p>
        
            </div>
 
-            <div class="col-md-6 p-0 order-md-2 order-1">
+            <div class="col-md-6 p-md-4 order-md-2 order-1">
                 <div class="">
-                <img class="w-100" src="{{ static_asset('assets/img/bloomin_img3.svg ') }}" />
+                <img class="w-100" src="{{ static_asset('assets/img/h2_images.webp ') }}" />
                 </div>
            </div>
+        </div>
         </div>
 </section>
 
@@ -730,8 +755,8 @@ your feelings</h3>
 
 
 <!-- TESTIMONIALS -->
-<section class="testimonials pt-md-4">
-                         <h4 class="heading_one heading_font1 green_color text-capitalize text-center pb-3"> Our <span class="yellow_color">Testimonials</span></h4>
+<section class="testimonials pt-md-5 pt-4">
+                         <h4 class="heading_one heading_font1 green_color text-capitalize text-center pb-3"> Our <span class="new_head">Testimonials</span></h4>
            
                     
       <div class="row">
@@ -873,7 +898,7 @@ your feelings</h3>
    <div class="container">
       <div class="mb-md-4 mb-3 pt-2 text-center position_relative align-items-baseline">
        
-          <h4 class="heading_one heading_font1 green_color text-capitalize text-center"> Latest <span class="yellow_color">News & Blog</span></h4>
+          <h4 class="heading_one heading_font1 green_color text-capitalize text-center"> Latest <span class="new_head">News & Blog</span></h4>
            
                     
       </div>
@@ -971,7 +996,7 @@ your feelings</h3>
    
      <div class="mb-md-4 mb-3 text-center position_relative align-items-baseline">
                  
-                        <h4 class="heading_one heading_font1 green_color text-capitalize text-center">Why <span class="yellow_color">Atfleurs</span></h4>
+                        <h4 class="heading_one heading_font1 green_color text-capitalize text-center">Why <span class="new_head">Atfleurs</span></h4>
                     
                             
                 </div>

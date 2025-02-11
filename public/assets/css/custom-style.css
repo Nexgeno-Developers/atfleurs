@@ -1406,6 +1406,11 @@ body .darkgray_bg {
   padding-right: 100px;
 }
 
+.font-64 {
+  font-size: 56px;
+  padding-bottom: 37px;
+}
+
 @media (max-width: 767px) {
   p.two-lines {
     overflow: hidden;
@@ -2385,7 +2390,7 @@ table.table.aiz-table.mb-0.footable.footable-1.breakpoint-lg span.badge.badge-in
 /*new theme css*/
 
 .bg-light-orange {
-  background-color: #F3EEE2;
+  background-color: #E6EEE9;
 }
 
 .width_70 {
@@ -2830,7 +2835,7 @@ table.table.aiz-table.mb-0.footable.footable-1.breakpoint-lg span.badge.badge-in
 
 
 .shadow-effect {
-  background: #FCF8F0;
+  background: #E9F0EB;
   padding: 60px 30px 20px 30px;
   border-radius: 0;
   text-align: center;
@@ -3304,7 +3309,7 @@ button.slick-next.slick-arrow {
   }
 
   .shadow-effect {
-    background: #FCF8F0;
+    background: #E9F0EB;
     padding: 25px 20px 20px 20px;
     border-radius: 0;
     text-align: center;
@@ -3508,7 +3513,7 @@ button.slick-next.slick-arrow {
   }
 
   .shadow-effect {
-    background: #FCF8F0;
+    background: #E9F0EB;
     padding: 25px 20px 20px 20px;
     border-radius: 0;
     text-align: center;
