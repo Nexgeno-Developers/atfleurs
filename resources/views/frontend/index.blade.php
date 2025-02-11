@@ -766,7 +766,7 @@ your feelings</h3>
             <!--TESTIMONIAL 1 -->
             <div class="item">
               <div class="shadow-effect">
-                 <div class="quote_icon"> <img src="{{ static_asset('assets/img/quote.svg') }}"/></div>
+                 <div class="quote_icon"> <img src="{{ static_asset('assets/img/quote1.svg') }}"/></div>
                 <div class="rating1 text-left">
          <i class="las la-star green_color"></i>
        <i class="las la-star green_color"></i>
@@ -782,7 +782,7 @@ your feelings</h3>
             <!--TESTIMONIAL 2 -->
            <div class="item">
               <div class="shadow-effect">
-                 <div class="quote_icon"> <img src="{{ static_asset('assets/img/quote.svg') }}"/></div>
+                 <div class="quote_icon"> <img src="{{ static_asset('assets/img/quote1.svg') }}"/></div>
                 <div class="rating1 text-left">
          <i class="las la-star green_color"></i>
        <i class="las la-star green_color"></i>
@@ -798,7 +798,7 @@ your feelings</h3>
             <!--TESTIMONIAL 3 -->
            <div class="item">
               <div class="shadow-effect">
-                 <div class="quote_icon"> <img src="{{ static_asset('assets/img/quote.svg') }}"/></div>
+                 <div class="quote_icon"> <img src="{{ static_asset('assets/img/quote1.svg') }}"/></div>
                 <div class="rating1 text-left">
          <i class="las la-star green_color"></i>
        <i class="las la-star green_color"></i>
@@ -814,7 +814,7 @@ your feelings</h3>
             <!--TESTIMONIAL 4 -->
             <div class="item">
               <div class="shadow-effect">
-                 <div class="quote_icon"> <img src="{{ static_asset('assets/img/quote.svg') }}"/></div>
+                 <div class="quote_icon"> <img src="{{ static_asset('assets/img/quote1.svg') }}"/></div>
                 <div class="rating1 text-left">
          <i class="las la-star"></i>
        <i class="las la-star"></i>
@@ -830,7 +830,7 @@ your feelings</h3>
             <!--TESTIMONIAL 5 -->
             <div class="item">
               <div class="shadow-effect">
-                <div class="quote_icon"> <img src="{{ static_asset('assets/img/quote.svg') }}"/></div>
+                <div class="quote_icon"> <img src="{{ static_asset('assets/img/quote1.svg') }}"/></div>
                 <div class="rating1 text-left">
          <i class="las la-star"></i>
        <i class="las la-star"></i>
@@ -846,7 +846,7 @@ your feelings</h3>
 
              <div class="item">
               <div class="shadow-effect">
-                 <div class="quote_icon"> <img src="{{ static_asset('assets/img/quote.svg') }}"/></div>
+                 <div class="quote_icon"> <img src="{{ static_asset('assets/img/quote1.svg') }}"/></div>
                 <div class="rating1 text-left">
          <i class="las la-star"></i>
        <i class="las la-star"></i>
