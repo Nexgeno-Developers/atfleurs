@@ -1330,7 +1330,6 @@
     //         }
     //     });
     // });
-
     // Define the function to handle the pincode check
     function checkPincode() {
     var pincode = $('#pincode').val().trim();
