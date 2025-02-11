@@ -1399,9 +1399,9 @@
         }
     });
     // Call the function on document ready (if necessary)
-    // $(document).ready(function() {
-    //     checkPincode();
-    // });
+    $(document).ready(function() {
+        checkPincode();
+    });
 
     $(document).on('click', '#edit-pincode-btn', function() {
         $('#pincode').prop('readonly', false);
