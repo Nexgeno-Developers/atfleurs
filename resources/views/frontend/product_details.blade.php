@@ -915,10 +915,10 @@
                                         @if (home_base_price($related_product) !=
                                         home_discounted_base_price($related_product))
                                         <del
-                                            class="fw-900 mobile-16 fs-20 green_color mr-1">{{ home_base_price($related_product) }}</del>
+                                            class="fw-600 mobile-16 fs-20 green_color mr-1">{{ home_base_price($related_product) }}</del>
                                         @endif
                                         <span
-                                            class="fw-900 mobile-16 fs-20 green_color">{{ home_discounted_base_price($related_product) }}</span>
+                                            class="fw-600 mobile-16 fs-20 green_color">{{ home_discounted_base_price($related_product) }}</span>
                                     </div>
                                     <!--<div class="rating rating-sm mt-1">-->
                                     <!--    {{ renderStarRating($related_product->rating) }}-->

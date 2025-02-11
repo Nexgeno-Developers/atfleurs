@@ -13,7 +13,7 @@
     border-radius: 31px;
 }
 </style>
-    <!-- {{-- Categories , Sliders . Today's deal --}}
+     {{-- Categories , Sliders . Today's deal --}}
     <div class="home-banner-area">
         <div class="row gutters-10 position-relative">
                
@@ -39,10 +39,10 @@
 
 
             </div>
-    </div> -->
+    </div>
   
     
-<div class="main_banner_slider">
+<!-- <div class="main_banner_slider">
     <div class="slick-banner-mian">
     <div class="slide" style="background-image: url('{{ static_asset('assets/img/banner_main_1.webp ') }}');">
       <div class="slide-content">
@@ -95,7 +95,7 @@
     <p class="last_number_pegination">04</p>
   </ul>
 </div>
-</div>
+</div> -->
 
 <!-- <section class="pt-5 pb-5">
     <div class="container ">
@@ -105,7 +105,7 @@
             <div class="mx-auto text-center mb-3">
                 <img src="{{ static_asset('assets/img/flower_icon.svg ') }}" />
             </div>
-                <h4 class="heading_one heading_font1 green_color text-capitalize text-center">Welcome to <span class="new_head">our colourful world</span></h4>
+                <h4 class="heading_one heading_font1 green_color text-capitalize text-center">Welcome to <span class="new_head green_color">our colourful world</span></h4>
            
                 
             </div>
@@ -141,7 +141,7 @@
      <div class="product_category shop_collection pt-xl-6 pt-lg-6 pt-md-6 pt-5 pb-5 ">
     <div class="container">
         <h4 class="heading_one heading_font1 green_color text-capitalize text-center pb-md-2 mb-md-0">
-            Discover our <span class="new_head">exquisite array</span>
+            Discover our <span class="new_head green_color">exquisite array</span>
         </h4>
         <div class="row gutters-10 position-relative">
             @php
@@ -185,7 +185,7 @@
                                     <div class="greenbg text-center h-100 align-items-center d-flex w-100">
                                         <div class="category_boxex_action w-100">
                                             <h4 class="heading_one heading_font1 text-white text-capitalize text-center">
-                                                Shop your <span class="d-block"><span class="new_head">favourite</span> <span class="">items of</span></span>
+                                                Shop your <span class="d-block"><span class="new_head faviroute_font">favourite</span> <span class="">items of</span></span>
                                                 <span class="">the</span> season
                                             </h4>
                                             <div class="mt-5 reversebg_btn">
@@ -204,7 +204,7 @@
                                     <div class="greenbg text-center h-100 align-items-center d-flex w-100">
                                         <div class="category_boxex_action w-100">
                                             <h4 class="heading_one heading_font1 text-white text-capitalize text-center">
-                                                Shop your <span class="d-block"><span class="new_head">favourite</span> <span class="">items of</span></span>
+                                                Shop your <span class="d-block"><span class="new_head faviroute_font">favourite</span> <span class="">items of</span></span>
                                                 <span class="">the</span> season
                                             </h4>
                                             <div class="mt-lg-5 mt-4 reversebg_btn">
@@ -367,7 +367,7 @@
                     <div class="">
                         <div class="mb-4 align-items-baseline">
                          
-                            <h4 class="heading_one heading_font1 green_color text-capitalize text-center">Premium <span class="new_head">Hampers</span></h4>
+                            <h4 class="heading_one heading_font1 green_color text-capitalize text-center">Premium <span class="new_head green_color">Hampers</span></h4>
            
                         </div>
                         
@@ -400,7 +400,7 @@
                 <img src="{{ static_asset('assets/img/flower_icon.svg ') }}" />
                 </div> -->
 
-   <h4 class="heading_one heading_font1 green_color text-capitalize">Artful Floral Creations <span class="new_head d-lg-block ml-50">for Every Occasion</span></h4>
+   <h4 class="heading_one heading_font1 green_color text-capitalize">Artful Floral Creations <span class="new_head green_color d-lg-block ml-50">for Every Occasion</span></h4>
    <div class="text-center button_effects mt-4 ml-5">
                 <a class="green_color fs-bold" href="/category/floral-arrangements-events-mumbai">Shop Now <i class="fa-solid fa-arrow-right"></i></a>
                </div>  
@@ -421,7 +421,7 @@
                 </div> -->
 
                 <h4 class="heading_one heading_font1 green_color text-capitalize text-left pb-md-0 pl-md-0 pr-md-0 pl-3 pr-md-5 pr-3">Welcome To</h4>
-                <h3 class="new_head text-left green_color font-64">Our colourful world.</h3>
+                <h3 class="new_head green_color text-left green_color font-64">Our colourful world.</h3>
                 <p class="text-left">Floral greetings from At Fleurs, a boutique flower studio in suburban Mumbai!</p>
 
  <p class="text-left">Our skilled team of passionate floral designers create exquisite arrangements with buds and blossoms for all occasions. Our collective years in the industry allow us the luxury of acquired expertise, an eye for detail and, most importantly, impeccable service.</p>
@@ -756,7 +756,7 @@ your feelings</h3>
 
 <!-- TESTIMONIALS -->
 <section class="testimonials pt-md-5 pt-4">
-                         <h4 class="heading_one heading_font1 green_color text-capitalize text-center pb-3"> Our <span class="new_head">Testimonials</span></h4>
+                         <h4 class="heading_one heading_font1 green_color text-capitalize text-center pb-3"> Our <span class="new_head green_color">Testimonials</span></h4>
            
                     
       <div class="row">
@@ -898,7 +898,7 @@ your feelings</h3>
    <div class="container">
       <div class="mb-md-4 mb-3 pt-2 text-center position_relative align-items-baseline">
        
-          <h4 class="heading_one heading_font1 green_color text-capitalize text-center"> Latest <span class="new_head">News & Blog</span></h4>
+          <h4 class="heading_one heading_font1 green_color text-capitalize text-center"> Latest <span class="new_head green_color">News & Blog</span></h4>
            
                     
       </div>
@@ -996,7 +996,7 @@ your feelings</h3>
    
      <div class="mb-md-4 mb-3 text-center position_relative align-items-baseline">
                  
-                        <h4 class="heading_one heading_font1 green_color text-capitalize text-center">Why <span class="new_head">Atfleurs</span></h4>
+                        <h4 class="heading_one heading_font1 green_color text-capitalize text-center">Why <span class="new_head green_color">Atfleurs</span></h4>
                     
                             
                 </div>

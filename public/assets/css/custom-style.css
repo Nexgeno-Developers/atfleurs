@@ -1,11 +1,13 @@
 body {
-  font-family: "Manrope", sans-serif !important;
+  font-family: "Poppins", serif !important;
   font-weight: 400;
   color: #413D45;
 }
 
 .heading_font1 {
-  font-family: "Forum", serif !important;
+  font-family: "Poppins", serif !important;
+  font-weight: 400 !important;
+  color: #313131;
 }
 
 .green_color {
@@ -107,7 +109,7 @@ ul.social.colored [class*="google"] {
 
 .about_content_box h3 {
   font-size: 45px;
-  font-weight: 700;
+  font-weight: 600;
   color: #333;
   padding-bottom: 14px;
   padding-right: 21px;
@@ -134,6 +136,10 @@ ul.social.colored [class*="google"] {
   width: 68%;
   position: relative;
   z-index: 9;
+}
+
+.blac_clrs {
+  color: #313131
 }
 
 .about_content_box a {
@@ -183,12 +189,17 @@ ul.social.colored [class*="google"] {
   font-weight: 500;
 }
 
+.faviroute_font {
+  font-size: 56px;
+  line-height: 76px;
+}
+
 .padding-50 {
   padding: 50px 0;
 }
 
 .heading_one {
-  font-size: 48px;
+  font-size: 42px;
 }
 
 .heading_one1 {
@@ -267,7 +278,7 @@ ul.social.colored [class*="google"] {
 
 .newsletter_box h4 {
   text-align: left;
-  font-weight: 700;
+  font-weight: 600;
   font-size: 26px;
   padding-top: 0;
 }
@@ -968,7 +979,7 @@ div#section_best_selling .slick-slide {
 
 .blog_content h4 {
   font-size: 20px;
-  font-weight: 700;
+  font-weight: 600;
   color: #333;
   line-height: 29px;
 }
