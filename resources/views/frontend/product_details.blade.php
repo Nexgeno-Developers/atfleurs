@@ -134,7 +134,7 @@
                                 <div class="carousel-box img-zoom rounded pointer_none">
                                     <img class="img-fluid lazyload"
                                         src="{{ static_asset('assets/img/placeholder.jpg') }}"
-                                        data-src="{{ uploaded_asset($photo) }}" 
+                                        data-src="{{ uploaded_asset($photo) }}"
                                         onerror="this.onerror=null;this.src='{{ static_asset('assets/img/placeholder.jpg') }}';">
                                 </div>
                                 @endforeach
@@ -155,7 +155,7 @@
                             </div>
                         </div>
 
-                      
+
                         <div class="col-3 col-md-auto w-md-140px order-2 order-md-1 mt-1 mt-md-0">
                             <div class="aiz-carousel product-gallery-thumb" data-items='4'
                                 data-nav-for='.product-gallery' data-vertical='true'
@@ -509,7 +509,7 @@
                             </button>
                         </div>
 
-                       
+
 
                         <div class="d-table width-100 mt-3">
                             <div class="d-table-cell">
@@ -1103,7 +1103,7 @@
       <div class="modal-body">
         <img src="http://127.0.0.1:8000/uploads/all/VNFKMo0UuIuZsFEIgBCpFC5fTB0Wz1xkxdVIwweF.jpg" class="w-full w-100">
       </div>
-     
+
     </div>
   </div>
 </div> -->
@@ -1333,69 +1333,75 @@
 
     // Define the function to handle the pincode check
     function checkPincode() {
+    var pincode = $('#pincode').val().trim();
+    var productId = $('#product_id').val();
+    var isValid = false;
 
-        var pincode = $('#pincode').val().trim();
-        var productId = $('#product_id').val();
+    if (pincode === '' || pincode.length !== 6) {
+        $('#pincode-result').html('<span class="error">Please enter a valid 6-digit pincode.</span>');
+        return false;
+    }
 
-        if (pincode === '' || pincode.length !== 6) {
-            $('#pincode-result').html('<span class="error">Please enter a valid 6-digit pincode.</span>');
-            return;
-        }
+    $.ajax({
+        url: "{{ route('check.pincode') }}",
+        method: "POST",
+        async: false, // ✅ Make it synchronous so it returns true/false directly
+        data: {
+            _token: "{{ csrf_token() }}",
+            pincode: pincode,
+            product_id: productId
+        },
+        success: function(response) {
+            if (response.status === 'success') {
+                $('#pincode').prop('readonly', true);
+                $('#check-pincode-btn').prop('disabled', true);
+                $('#pincode-result').html(`<span class="success">${response.message}</span>`);
+                $('#countdown-container').removeClass('d-none');
 
-        $.ajax({
-            url: "{{ route('check.pincode') }}",
-            method: "POST",
-            data: {
-                _token: "{{ csrf_token() }}",
-                pincode: pincode,
-                product_id: productId
-            },
-            success: function(response) {
-                if (response.status === 'success') {
-                    $('#pincode').prop('readonly', true);
-                    $('#check-pincode-btn').prop('disabled', true);
-                    $('#pincode-result').html(`<span class="success">${response.message}</span>`);
-                    $('#countdown-container').removeClass('d-none');
-                    // Call the function with delivery interval from the response
-                    startCountdown(
-                        {{ getBusinessSettingValue("office_start") }} ?? 8,
-                        {{ getBusinessSettingValue("office_end") }} ?? 21,
-                        response.delivery_interval
-                    );
+                startCountdown(
+                    {{ getBusinessSettingValue("office_start") }} ?? 8,
+                    {{ getBusinessSettingValue("office_end") }} ?? 21,
+                    response.delivery_interval
+                );
 
-                    // Enable "Buy Now" and "Add to Cart" buttons
-                    $('.buy-now, .add-to-cart').prop('disabled', false);
-                    if (!$('#edit-pincode-btn').length) {
-                        $('<button>', {
-                            id: 'edit-pincode-btn',
-                            type: 'button',
-                            class: 'btn btn-link ms-2',
-                            html: '<i class="fa fa-edit"></i>'
-                        }).insertAfter('#check-pincode-btn');
-                    }
-                } else {
-                    $('#pincode-result').html(`<span class="error">${response.message}</span>`);
-                    $('.buy-now, .add-to-cart').prop('disabled', true);
-                    $('#countdown-container').addClass('d-none');
-                }
-            },
-            error: function() {
-                $('#pincode-result').html('<span class="error">An error occurred. Please try again.</span>');
-                $('.buy-now, .add-to-cart').prop('disabled', true);
+                // $('.buy-now, .add-to-cart').prop('disabled', false);
+                isValid = true; // ✅ Mark as valid
+            } else {
+                $('#pincode-result').html(`<span class="error">${response.message}</span>`);
+                // $('.buy-now, .add-to-cart').prop('disabled', true);
                 $('#countdown-container').addClass('d-none');
             }
-        });
-    }
+        },
+        error: function() {
+            $('#pincode-result').html('<span class="error">An error occurred. Please try again.</span>');
+            // $('.buy-now, .add-to-cart').prop('disabled', true);
+            $('#countdown-container').addClass('d-none');
+        }
+    });
+
+    return isValid; // ✅ Return the final validation result
+}
+
 
     $(document).on('click', '#check-pincode-btn', function(e) {
         e.preventDefault(); // Prevent the default button behavior if needed (like form submit)
-        checkPincode();  // Call the checkPincode function when the button is clicked
+        // checkPincode();  // Call the checkPincode function when the button is clicked
+        if(checkPincode()){
+            $('#edit-pincode-btn').removeClass('d-none');
+        }
     });
 
-    // Call the function on document ready (if necessary)
-    $(document).ready(function() {
-        checkPincode();
+    // Trigger check button when pincode length reaches 6
+    $(document).on('input', '#pincode', function(e) {
+        var pincode = $(this).val().trim();
+        if (pincode.length === 6) {
+            $('#check-pincode-btn').click();
+        }
     });
+    // Call the function on document ready (if necessary)
+    // $(document).ready(function() {
+    //     checkPincode();
+    // });
 
     $(document).on('click', '#edit-pincode-btn', function() {
         $('#pincode').prop('readonly', false);
@@ -1403,12 +1409,13 @@
         $('#check-pincode-btn').text('Check');
         $('#pincode-result').empty();
         // Disable "Buy Now" and "Add to Cart" buttons
-        $('.buy-now, .add-to-cart').prop('disabled', true);
-        $(this).remove();
+        // $('.buy-now, .add-to-cart').prop('disabled', true);
+        // $(this).remove();
+        $(this).addClass('d-none');
     });
 
     // On page load, disable the buttons
-    $('.buy-now, .add-to-cart').prop('disabled', true);
+    // $('.buy-now, .add-to-cart').prop('disabled', true);
 
 
     // // Check session product availability

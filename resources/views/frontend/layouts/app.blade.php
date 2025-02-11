@@ -122,7 +122,7 @@
 
         .new_head
         {
-           
+
             font-family: 'Eyesome';
                 font-size: 60px;
         }
@@ -904,7 +904,8 @@ jQuery(document).ready(function($){
                 AIZ.plugins.notify('warning', "{{ translate('Please Login as a customer to add products to the Cart.') }}");
                 return false;
             @endif
-
+            if (!checkPincode()) return; // Stop execution if pincode is empty or invalid
+            console.log("Proceeding with Add to cart");
             if(checkAddToCartValidity()) {
                 $('#addToCart').modal();
                 $('.c-preloader').show();
@@ -934,7 +935,7 @@ jQuery(document).ready(function($){
                 AIZ.plugins.notify('warning', "{{ translate('Please Login as a customer to add products to the Cart.') }}");
                 return false;
             @endif
-
+            if (!checkPincode()) return; // Stop execution if pincode is empty or invalid
             if(checkAddToCartValidity()) {
                 $('#addToCart-modal-body').html(null);
                 $('#addToCart').modal();
@@ -1223,11 +1224,11 @@ jQuery(document).ready(function($) {
                     body: JSON.stringify({ credential: response.credential })
                 }).then(res => res.json())
                 .then(data => {
-                    if (data.message === 'Login successful') {  
-                        window.location.reload(); 
-                    } else { 
-                        console.error('Login failed:', data.error); 
-                        alert('Login failed. Please try again.'); 
+                    if (data.message === 'Login successful') {
+                        window.location.reload();
+                    } else {
+                        console.error('Login failed:', data.error);
+                        alert('Login failed. Please try again.');
                     }
                 });
             }
