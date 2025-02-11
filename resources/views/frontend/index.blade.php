@@ -435,7 +435,7 @@
 
             <div class="col-md-6 p-md-0 order-md-2 order-1">
                 <div class="">
-                <img class="w-100" src="{{ static_asset('assets/img/welcome_images.webp ') }}" />
+                <img class="w-100" src="{{ static_asset('assets/img/welcome_images1.webp ') }}" />
                 </div>
            </div>
         </div>
