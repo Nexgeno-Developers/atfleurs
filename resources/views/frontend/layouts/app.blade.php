@@ -673,7 +673,7 @@ jQuery(document).ready(function($){
             //     AIZ.plugins.notify('{{ $message['level'] }}', '{{ $message['message'] }}');
             // @endforeach
     </script>
-
+@yield('script')
     <script>
 
         $(document).ready(function() {
@@ -968,7 +968,7 @@ jQuery(document).ready(function($){
 
     </script>
 
-    @yield('script')
+    
 
     @php
         echo get_setting('footer_script');
