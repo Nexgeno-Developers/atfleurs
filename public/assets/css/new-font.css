@@ -1,7 +1,6 @@
-
 @font-face {
   font-family: 'Eyesome';
   font-style: normal;
   font-display: swap;
-  src: url(http://127.0.0.1:8000/assets/new-fonts/eyesome-script.woff2) format('woff2');
+  src: url(public/assets/new-fonts/eyesome-script.woff2) format('woff2');
 }
