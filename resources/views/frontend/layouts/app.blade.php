@@ -61,9 +61,9 @@
 
     <!--<link rel="stylesheet" href="{{ static_asset('assets/css/aiz-core.css') }}">-->
     <link rel="stylesheet" href="{{ static_asset('assets/css/aiz-core.min.css') }}">
-    <link rel="stylesheet" href="{{ static_asset('assets/css/custom-style.css?v-1.7.9') }}">
+    <link rel="stylesheet" href="{{ static_asset('assets/css/custom-style.css?v-1.8.1') }}">
     <link rel="stylesheet" href="{{ static_asset('assets/css/fancybox.min.css') }}">
-    <link rel="stylesheet" href="{{ static_asset('assets/css/new-font.css') }}">
+    <link rel="stylesheet" href="{{ static_asset('assets/css/new-font.css?v-1.8.1') }}">
 
     <link rel="preload" href="{{ static_asset('assets/css/owl.carousel.min.css') }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
