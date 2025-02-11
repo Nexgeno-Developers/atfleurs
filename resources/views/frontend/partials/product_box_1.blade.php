@@ -78,7 +78,7 @@
         </div>
         
         
-        <h3 class="fw-600 fs-14 text-truncate-2 lh-1-6 mb-lg-1 mb-0 leter_space pl-2">
+        <h3 class="fw-500 fs-14 text-truncate-2 lh-1-6 mb-lg-1 mb-0 leter_space pl-2">
             <a href="{{ $product_url }}" class="d-block text-reset fs-16 green_color">{{ ucwords($product->getTranslation('name')) }}</a>
             <!--<a href="{{ $product_url }}" class="d-block text-reset">{{  $product->getTranslation('name')  }}</a>-->
         </h3>

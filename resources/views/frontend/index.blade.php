@@ -140,8 +140,8 @@
 
      <div class="product_category shop_collection pt-xl-6 pt-lg-6 pt-md-6 pt-5 pb-5 ">
     <div class="container">
-        <h4 class="heading_one heading_font1 green_color text-capitalize text-center pb-md-2 mb-md-0">
-            Discover our <span class="new_head green_color">exquisite array</span>
+        <h4 class="heading_one text-capitalize text-center pb-md-2 mb-md-0">
+            <span class="heading_font1 green_color">Discover our</span> <span class="new_head green_color">exquisite array</span>
         </h4>
         <div class="row gutters-10 position-relative">
             @php
@@ -185,7 +185,7 @@
                                     <div class="greenbg text-center h-100 align-items-center d-flex w-100">
                                         <div class="category_boxex_action w-100">
                                             <h4 class="heading_one heading_font1 text-white text-capitalize text-center">
-                                                Shop your <span class="d-block"><span class="new_head faviroute_font">favourite</span> <span class="">items of</span></span>
+                                                Shop your <span class="d-md-block"><span class="new_head faviroute_font">favourite</span> <span class="">items of</span></span>
                                                 <span class="">the</span> season
                                             </h4>
                                             <div class="mt-5 reversebg_btn">
@@ -204,7 +204,7 @@
                                     <div class="greenbg text-center h-100 align-items-center d-flex w-100">
                                         <div class="category_boxex_action w-100">
                                             <h4 class="heading_one heading_font1 text-white text-capitalize text-center">
-                                                Shop your <span class="d-block"><span class="new_head faviroute_font">favourite</span> <span class="">items of</span></span>
+                                                Shop your <span class="d-md-block"><span class="new_head faviroute_font">favourite</span> <span class="">items of</span></span>
                                                 <span class="">the</span> season
                                             </h4>
                                             <div class="mt-lg-5 mt-4 reversebg_btn">
@@ -400,7 +400,7 @@
                 <img src="{{ static_asset('assets/img/flower_icon.svg ') }}" />
                 </div> -->
 
-   <h4 class="heading_one heading_font1 green_color text-capitalize">Artful Floral Creations <span class="new_head green_color d-lg-block ml-50">for Every Occasion</span></h4>
+   <h4 class="heading_one heading_font1 green_color text-capitalize">Artful Floral Creations <span class="new_head green_color d-lg-block">for Every Occasion</span></h4>
    <div class="text-center button_effects mt-4 ml-5">
                 <a class="green_color fs-bold" href="/category/floral-arrangements-events-mumbai">Shop Now <i class="fa-solid fa-arrow-right"></i></a>
                </div>  
@@ -420,7 +420,7 @@
                 <img src="{{ static_asset('assets/img/flower_icon.svg ') }}" />
                 </div> -->
 
-                <h4 class="heading_one heading_font1 green_color text-capitalize text-left pb-md-0 pl-md-0 pr-md-0 pl-3 pr-md-5 pr-3">Welcome To</h4>
+                <h4 class="heading_one heading_font1 green_color text-capitalize text-left pb-md-0 pl-md-0 pr-md-0 pl-0 pr-md-5 pr-3">Welcome To</h4>
                 <h3 class="new_head green_color text-left green_color font-64">Our colourful world.</h3>
                 <p class="text-left">Floral greetings from At Fleurs, a boutique flower studio in suburban Mumbai!</p>
 
@@ -433,7 +433,7 @@
 </div>
            </div>
 
-            <div class="col-md-6 p-0 order-md-2 order-1">
+            <div class="col-md-6 p-md-0 order-md-2 order-1">
                 <div class="">
                 <img class="w-100" src="{{ static_asset('assets/img/welcome_images.webp ') }}" />
                 </div>
@@ -443,7 +443,7 @@
 </section>
 
 
-    <section class="elegant_blooms_sec pt-5 ">
+    <section class="elegant_blooms_sec pt-md-5 ">
         <div class="container">
         <div class="row align-items-center">
 

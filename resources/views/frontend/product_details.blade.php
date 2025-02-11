@@ -107,13 +107,13 @@
                 <a class="text-reset" href="{{ route('home') }}">{{ translate('Home')}}</a>
             </li>
             @if($category_id1 != 'null')
-            <li class="text-dark fw-600 breadcrumb-item">
+            <li class="text-dark fw-400 breadcrumb-item">
                 <a class="text-reset" href="{{ route('products.category', $category_id1->slug) }}">
                     {{ $category_id1->name }}
                 </a>
             </li>
             @endif
-            <li class="breadcrumb-item fw-600 opacity-90">
+            <li class="breadcrumb-item fw-400 opacity-90">
                 <a class="text-reset" href="#"> {{ $detailedProduct->getTranslation('name') }}</a>
             </li>
 
@@ -430,7 +430,7 @@
                                 </div>
                                 <div class="col-sm-10 col-9">
                                     <div class="product-price">
-                                        <strong id="chosen_price" class="h4 fw-700 gray_green_clr">
+                                        <strong id="chosen_price" class="h4 fw-500 gray_green_clr">
 
                                         </strong>
                                     </div>
@@ -489,22 +489,22 @@
 
                         <div class="mt-3 button_dt_buy_cart">
                             @if ($detailedProduct->external_link != null)
-                            <a type="button" class="btn btn-primary buy-now fw-600"
+                            <a type="button" class="btn btn-primary buy-now fw-400"
                                 href="{{ $detailedProduct->external_link }}">
                                 <i class="la la-share"></i> {{ translate($detailedProduct->external_link_btn) }}
                             </a>
                             @else
 
-                            <button type="button" class="btn btn-primary buy-now button_colors_1 greenbg fw-600 mb-md-0 mb-3" onclick="buyNow()">
+                            <button type="button" class="btn btn-primary buy-now button_colors_1 greenbg fw-400 mb-md-0 mb-3" onclick="buyNow()">
                                 <i class="la la-shopping-cart"></i> {{ translate('Buy Now') }}
                             </button>
-                              <button type="button" class="btn btn-soft-primary ml-2 add-to-cart button_colors_1 darkgray_bg fw-600 gtagaddtocart mb-md-0 mb-3"
+                              <button type="button" class="btn btn-soft-primary ml-2 add-to-cart button_colors_1 darkgray_bg fw-400 gtagaddtocart mb-md-0 mb-3"
                                 data-url="{{ url()->current() }}" onclick="addToCart()">
                                 <i class="las la-shopping-bag"></i>
                                 <span class="d-md-inline-block"> {{ translate('Add to cart') }}</span>
                             </button>
                             @endif
-                            <button type="button" class="btn btn-secondary out-of-stock fw-600 d-none" disabled>
+                            <button type="button" class="btn btn-secondary out-of-stock fw-400 d-none" disabled>
                                 <i class="la la-cart-arrow-down"></i> {{ translate('Out of Stock') }}
                             </button>
                         </div>

@@ -4,7 +4,7 @@
 
     <style>
         @media(max-width:767px) {
-            h6.fs-15.fw-600.text-right.pt-3 {
+            h6.fs-15.fw-400.text-right.pt-3 {
                 text-align: start !important;
                 padding-bottom: 5px;
             }
@@ -30,7 +30,7 @@ div#accordioncCheckoutInfo span {
                         <div class="col done">
                             <div class="text-success text-center mobile_crt_font">
                                 <i class="la-3x las la-shopping-cart mb-2"></i>
-                                <h3 class="fs-14 fw-600 d-lg-block">{{ translate('1. My Cart') }}</h3>
+                                <h3 class="fs-14 fw-400 d-lg-block">{{ translate('1. My Cart') }}</h3>
                             </div>
                         </div>
                         {{-- <div class="col done">
@@ -124,7 +124,7 @@ div#accordioncCheckoutInfo span {
                                         @if (!empty($admin_products))
                                             <div class="card mb-md-3 mb-0 border-0 rounded">
                                                 {{-- <div class="card-header p-3">
-                                                    <h5 class="fs-16 fw-600 mb-0">{{ get_setting('site_name') }}
+                                                    <h5 class="fs-16 fw-400 mb-0">{{ get_setting('site_name') }}
                                                         {{ translate('Products') }}</h5>
                                                 </div> --}}
                                                 <div class="card-body p-0">
@@ -155,7 +155,7 @@ div#accordioncCheckoutInfo span {
                                                     @if ($physical)
                                                         <div class="row ">
                                                             <div class="col-md-7">
-                                                                <h6 class="fs-15 fw-600 text-md-right pt-2 pb-md-0 pb-2">
+                                                                <h6 class="fs-15 fw-400 text-md-right pt-2 pb-md-0 pb-2">
                                                                     {{ translate('Choose Delivery Type') }}</h6>
                                                             </div>
                                                             <div class="col-md-5">
@@ -176,7 +176,7 @@ div#accordioncCheckoutInfo span {
                                                                                     <span
                                                                                         class="aiz-rounded-check flex-shrink-0 mt-0"></span>
                                                                                     <span
-                                                                                        class="flex-grow-1 pl-2 fw-600 fs-13">{{ translate('Home Delivery') }}</span>
+                                                                                        class="flex-grow-1 pl-2 fw-400 fs-13">{{ translate('Home Delivery') }}</span>
                                                                                 </span>
                                                                             </label>
                                                                         </div>
@@ -193,7 +193,7 @@ div#accordioncCheckoutInfo span {
                                                                                     <span
                                                                                         class="aiz-rounded-check flex-shrink-0 mt-1"></span>
                                                                                     <span
-                                                                                        class="flex-grow-1 pl-2 fw-600">{{ translate('Carrier') }}</span>
+                                                                                        class="flex-grow-1 pl-2 fw-400">{{ translate('Carrier') }}</span>
                                                                                 </span>
                                                                             </label>
                                                                         </div>
@@ -215,7 +215,7 @@ div#accordioncCheckoutInfo span {
                                                                                     <span
                                                                                         class="aiz-rounded-check flex-shrink-0 mt-0"></span>
                                                                                     <span
-                                                                                        class="flex-grow-1 pl-2 fw-600 fs-13">{{ translate('Local Pickup') }}</span>
+                                                                                        class="flex-grow-1 pl-2 fw-400 fs-13">{{ translate('Local Pickup') }}</span>
                                                                                 </span>
                                                                             </label>
                                                                         </div>
@@ -261,7 +261,7 @@ div#accordioncCheckoutInfo span {
                                                                             <span class="d-flex p-md-3 p-2 aiz-megabox-elem">
                                                                                 <span
                                                                                     class="aiz-rounded-check flex-shrink-0 mt-1"></span>
-                                                                                <span class="flex-grow-1 pl-3 fw-600">
+                                                                                <span class="flex-grow-1 pl-3 fw-400">
                                                                                     <img src="{{ uploaded_asset($carrier->logo) }}"
                                                                                         alt="Image"
                                                                                         class="w-50px img-fit">
@@ -269,10 +269,10 @@ div#accordioncCheckoutInfo span {
                                                                                 <span
                                                                                     class="flex-grow-1 pl-3 fw-700">{{ $carrier->name }}</span>
                                                                                 <span
-                                                                                    class="flex-grow-1 pl-3 fw-600">{{ translate('Transit in') . ' ' . $carrier->transit_time }}</span>
-                                                                                {{-- <span class="flex-grow-1 pl-3 fw-600">{{ Str::headline($carrier->carrier_ranges->first()->billing_type) }}</span> --}}
+                                                                                    class="flex-grow-1 pl-3 fw-400">{{ translate('Transit in') . ' ' . $carrier->transit_time }}</span>
+                                                                                {{-- <span class="flex-grow-1 pl-3 fw-400">{{ Str::headline($carrier->carrier_ranges->first()->billing_type) }}</span> --}}
                                                                                 <span
-                                                                                    class="flex-grow-1 pl-3 fw-600">{{ single_price(carrier_base_price($carts, $carrier->id, \App\Models\User::where('user_type', 'admin')->first()->id)) }}</span>
+                                                                                    class="flex-grow-1 pl-3 fw-400">{{ single_price(carrier_base_price($carts, $carrier->id, \App\Models\User::where('user_type', 'admin')->first()->id)) }}</span>
                                                                             </span>
                                                                         </label>
                                                                     </div>
@@ -287,7 +287,7 @@ div#accordioncCheckoutInfo span {
                                             @foreach ($seller_products as $key => $seller_product)
                                                 <div class="card mb-3 shadow-sm border-0 rounded">
                                                     <div class="card-header p-3">
-                                                        <h5 class="fs-16 fw-600 mb-0">
+                                                        <h5 class="fs-16 fw-400 mb-0">
                                                             {{ \App\Models\Shop::where('user_id', $key)->first()->name }}
                                                             {{ translate('Products') }}</h5>
                                                     </div>
@@ -320,7 +320,7 @@ div#accordioncCheckoutInfo span {
                                                         @if ($physical)
                                                             <div class="row border-top pt-3">
                                                                 <div class="col-md-6">
-                                                                    <h6 class="fs-15 fw-600">
+                                                                    <h6 class="fs-15 fw-400">
                                                                         {{ translate('Choose Delivery Type') }}</h6>
                                                                 </div>
                                                                 <div class="col-md-6">
@@ -339,7 +339,7 @@ div#accordioncCheckoutInfo span {
                                                                                         <span
                                                                                             class="aiz-rounded-check flex-shrink-0 mt-1"></span>
                                                                                         <span
-                                                                                            class="flex-grow-1 pl-3 fw-600">{{ translate('Home Delivery') }}</span>
+                                                                                            class="flex-grow-1 pl-3 fw-400">{{ translate('Home Delivery') }}</span>
                                                                                     </span>
                                                                                 </label>
                                                                             </div>
@@ -357,7 +357,7 @@ div#accordioncCheckoutInfo span {
                                                                                         <span
                                                                                             class="aiz-rounded-check flex-shrink-0 mt-1"></span>
                                                                                         <span
-                                                                                            class="flex-grow-1 pl-3 fw-600">{{ translate('Carrier') }}</span>
+                                                                                            class="flex-grow-1 pl-3 fw-400">{{ translate('Carrier') }}</span>
                                                                                     </span>
                                                                                 </label>
                                                                             </div>
@@ -377,7 +377,7 @@ div#accordioncCheckoutInfo span {
                                                                                         <span
                                                                                             class="aiz-rounded-check flex-shrink-0 mt-1"></span>
                                                                                         <span
-                                                                                            class="flex-grow-1 pl-3 fw-600">{{ translate('Local Pickup') }}</span>
+                                                                                            class="flex-grow-1 pl-3 fw-400">{{ translate('Local Pickup') }}</span>
                                                                                     </span>
                                                                                 </label>
                                                                             </div>
@@ -396,7 +396,7 @@ div#accordioncCheckoutInfo span {
                                                                                     <option
                                                                                         value="{{ $pick_up_point->id }}"
                                                                                         data-content="<span class='d-block'>
-                                                                                                        <span class='d-block fs-16 fw-600 mb-2'>{{ $pick_up_point->getTranslation('name') }}</span>
+                                                                                                        <span class='d-block fs-16 fw-400 mb-2'>{{ $pick_up_point->getTranslation('name') }}</span>
                                                                                                         <span class='d-block opacity-50 fs-12'><i class='las la-map-marker'></i> {{ $pick_up_point->getTranslation('address') }}</span>
                                                                                                         <span class='d-block opacity-50 fs-12'><i class='las la-phone'></i>{{ $pick_up_point->phone }}</span>
                                                                                                     </span>">
@@ -421,18 +421,18 @@ div#accordioncCheckoutInfo span {
                                                                                 <span class="d-flex p-md-3 p-2 aiz-megabox-elem">
                                                                                     <span
                                                                                         class="aiz-rounded-check flex-shrink-0 mt-1"></span>
-                                                                                    <span class="flex-grow-1 pl-3 fw-600">
+                                                                                    <span class="flex-grow-1 pl-3 fw-400">
                                                                                         <img src="{{ uploaded_asset($carrier->logo) }}"
                                                                                             alt="Image"
                                                                                             class="w-50px img-fit">
                                                                                     </span>
                                                                                     <span
-                                                                                        class="flex-grow-1 pl-3 fw-600">{{ $carrier->name }}</span>
+                                                                                        class="flex-grow-1 pl-3 fw-400">{{ $carrier->name }}</span>
                                                                                     <span
-                                                                                        class="flex-grow-1 pl-3 fw-600">{{ translate('Transit in') . ' ' . $carrier->transit_time }}</span>
-                                                                                    {{-- <span class="flex-grow-1 pl-3 fw-600">{{ Str::headline($carrier->carrier_ranges->first()->billing_type) }}</span> --}}
+                                                                                        class="flex-grow-1 pl-3 fw-400">{{ translate('Transit in') . ' ' . $carrier->transit_time }}</span>
+                                                                                    {{-- <span class="flex-grow-1 pl-3 fw-400">{{ Str::headline($carrier->carrier_ranges->first()->billing_type) }}</span> --}}
                                                                                     <span
-                                                                                        class="flex-grow-1 pl-3 fw-600">{{ single_price(carrier_base_price($carts, $carrier->id, $key)) }}</span>
+                                                                                        class="flex-grow-1 pl-3 fw-400">{{ single_price(carrier_base_price($carts, $carrier->id, $key)) }}</span>
                                                                                 </span>
                                                                             </label>
                                                                         </div>
@@ -450,7 +450,7 @@ div#accordioncCheckoutInfo span {
                                                 <i class="la la-angle-left"></i>
                                                 {{ translate('Return to shop')}}
                                             </a>
-                                            <button type="submit" class="btn fw-600 btn-primary">{{ translate('Continue to Payment')}}</button>
+                                            <button type="submit" class="btn fw-400 btn-primary">{{ translate('Continue to Payment')}}</button>
                                         </div>
                                         --}}
                                     </form>
@@ -498,18 +498,18 @@ div#accordioncCheckoutInfo span {
                                                                                 <span class="flex-grow-1 pl-2 text-left pr-100">
                                                                                     <div>
                                                                                         <span
-                                                                                            class="fw-600 ml-2 d-block">{{ $address->address_person }}</span>
+                                                                                            class="fw-400 ml-2 d-block">{{ $address->address_person }}</span>
                                                                                     </div>
                                                                                     <div>
                                                                                         <span
-                                                                                            class="fw-600 ml-2 d-block">{{ $address->address }}, {{ optional($address->city)->name }} - {{ $address->postal_code }}, {{ optional($address->state)->name }}, {{ optional($address->country)->name }}</span>
+                                                                                            class="fw-400 ml-2 d-block">{{ $address->address }}, {{ optional($address->city)->name }} - {{ $address->postal_code }}, {{ optional($address->state)->name }}, {{ optional($address->country)->name }}</span>
                                                                                     </div>
                                                                                    
                                                                                     <div class="ml-2 pt-2">
                                                                                         <span
                                                                                             class="opacity-60">{{ translate('Phone') }}:</span>
                                                                                         <span
-                                                                                            class="fw-600 ml-2">{{ $address->phone }}</span>
+                                                                                            class="fw-400 ml-2">{{ $address->phone }}</span>
                                                                                     </div>
 
                                                                                     @if($zp_error != [])
@@ -519,7 +519,7 @@ div#accordioncCheckoutInfo span {
 
                                                                                             @foreach($zp_error as $zip_err) 
                                                                                                 <span
-                                                                                                class="fw-600 ml-2">{{ $zip_err }}</span> 
+                                                                                                class="fw-400 ml-2">{{ $zip_err }}</span> 
                                                                                             @endforeach
                                                                                         </div>
                                                                                     @endif
@@ -569,7 +569,7 @@ div#accordioncCheckoutInfo span {
                                                 </a>
                                             </div>
                                             <div class="col-md-6 text-center text-md-right">
-                                                <button type="submit" class="btn btn-primary fw-600">{{ translate('Continue to Delivery Info')}}</a>
+                                                <button type="submit" class="btn btn-primary fw-400">{{ translate('Continue to Delivery Info')}}</a>
                                             </div>
                                         </div>
                                         --}}
@@ -659,7 +659,7 @@ div#accordioncCheckoutInfo span {
 
                                             {{-- <div class="row">
                                             <div class="col-md-12 mb-4">
-                                                <h3 class="fs-16 fw-600 mb-0 pb-2">
+                                                <h3 class="fs-16 fw-400 mb-0 pb-2">
                                                     {{ translate('Choose Delivery Date And Time') }}
                                                 </h3>
                                                <div class="input-group date_time1">
@@ -690,7 +690,7 @@ div#accordioncCheckoutInfo span {
 
                                             <div class="row">
                                                 <div class="col-md-12 mb-4">
-                                                    <h3 class="fs-16 fw-600 mb-0 pb-2">
+                                                    <h3 class="fs-16 fw-400 mb-0 pb-2">
                                                         {{ translate('Choose Delivery Date And Time Slot') }}
                                                     </h3>
                                                     <div class="row">
@@ -855,7 +855,7 @@ div#accordioncCheckoutInfo span {
 
                                                 <div class="">
                                                     <div class="pb-2">
-                                                            <h3 class="fs-16 fw-600 mb-0 text-left">
+                                                            <h3 class="fs-16 fw-400 mb-0 text-left">
                                                                 {{ translate('Any additional info?') }}
                                                             </h3>
                                                         </div>
@@ -900,7 +900,7 @@ div#accordioncCheckoutInfo span {
 
                                                     <div class="">
                                                         <div class="pb-2">
-                                                            <h3 class="fs-16 fw-600 mb-0 text-left">
+                                                            <h3 class="fs-16 fw-400 mb-0 text-left">
                                                                 {{ translate('Select a payment option') }}
                                                             </h3>
                                                         </div>
@@ -924,7 +924,7 @@ div#accordioncCheckoutInfo span {
                                                                                 class="img-fluid mb-2 w-110">
                                                                             <span class="d-block text-center">
                                                                                 <span
-                                                                                    class="d-block fw-600 fs-15">{{ translate('Ccavenue') }}</span>
+                                                                                    class="d-block fw-400 fs-15">{{ translate('Ccavenue') }}</span>
                                                                             </span>
                                                                         </span>
                                                                     </label>
@@ -940,7 +940,7 @@ div#accordioncCheckoutInfo span {
                                                                                 class="img-fluid mb-2">
                                                                             <span class="d-block text-center">
                                                                                 <span
-                                                                                    class="d-block fw-600 fs-15">{{ translate('Paypal') }}</span>
+                                                                                    class="d-block fw-400 fs-15">{{ translate('Paypal') }}</span>
                                                                             </span>
                                                                         </span>
                                                                     </label>
@@ -956,7 +956,7 @@ div#accordioncCheckoutInfo span {
                                                                                 class="img-fluid mb-2">
                                                                             <span class="d-block text-center">
                                                                                 <span
-                                                                                    class="d-block fw-600 fs-15">{{ translate('Stripe') }}</span>
+                                                                                    class="d-block fw-400 fs-15">{{ translate('Stripe') }}</span>
                                                                             </span>
                                                                         </span>
                                                                     </label>
@@ -972,7 +972,7 @@ div#accordioncCheckoutInfo span {
                                                                                 class="img-fluid mb-2">
                                                                             <span class="d-block text-center">
                                                                                 <span
-                                                                                    class="d-block fw-600 fs-15">{{ translate('Mercadopago') }}</span>
+                                                                                    class="d-block fw-400 fs-15">{{ translate('Mercadopago') }}</span>
                                                                             </span>
                                                                         </span>
                                                                     </label>
@@ -988,7 +988,7 @@ div#accordioncCheckoutInfo span {
                                                                                 class="img-fluid mb-2">
                                                                             <span class="d-block text-center">
                                                                                 <span
-                                                                                    class="d-block fw-600 fs-15">{{ translate('sslcommerz') }}</span>
+                                                                                    class="d-block fw-400 fs-15">{{ translate('sslcommerz') }}</span>
                                                                             </span>
                                                                         </span>
                                                                     </label>
@@ -1004,7 +1004,7 @@ div#accordioncCheckoutInfo span {
                                                                                 class="img-fluid mb-2">
                                                                             <span class="d-block text-center">
                                                                                 <span
-                                                                                    class="d-block fw-600 fs-15">{{ translate('Instamojo') }}</span>
+                                                                                    class="d-block fw-400 fs-15">{{ translate('Instamojo') }}</span>
                                                                             </span>
                                                                         </span>
                                                                     </label>
@@ -1029,7 +1029,7 @@ div#accordioncCheckoutInfo span {
                                                                                 class="img-fluid mb-2 w-110">
                                                                             <span class="d-block text-center">  
                                                                                 <span
-                                                                                    class="d-block fw-600 fs-15">{{ translate('Razorpay') }}</span>
+                                                                                    class="d-block fw-400 fs-15">{{ translate('Razorpay') }}</span>
                                                                             </span>
                                                                         </span>
                                                                     </label>
@@ -1045,7 +1045,7 @@ div#accordioncCheckoutInfo span {
                                                                                 class="img-fluid mb-2">
                                                                             <span class="d-block text-center">
                                                                                 <span
-                                                                                    class="d-block fw-600 fs-15">{{ translate('Paystack') }}</span>
+                                                                                    class="d-block fw-400 fs-15">{{ translate('Paystack') }}</span>
                                                                             </span>
                                                                         </span>
                                                                     </label>
@@ -1061,7 +1061,7 @@ div#accordioncCheckoutInfo span {
                                                                                 class="img-fluid mb-2">
                                                                             <span class="d-block text-center">
                                                                                 <span
-                                                                                    class="d-block fw-600 fs-15">{{ translate('VoguePay') }}</span>
+                                                                                    class="d-block fw-400 fs-15">{{ translate('VoguePay') }}</span>
                                                                             </span>
                                                                         </span>
                                                                     </label>
@@ -1077,7 +1077,7 @@ div#accordioncCheckoutInfo span {
                                                                                 class="img-fluid mb-2">
                                                                             <span class="d-block text-center">
                                                                                 <span
-                                                                                    class="d-block fw-600 fs-15">{{ translate('payhere') }}</span>
+                                                                                    class="d-block fw-400 fs-15">{{ translate('payhere') }}</span>
                                                                             </span>
                                                                         </span>
                                                                     </label>
@@ -1093,7 +1093,7 @@ div#accordioncCheckoutInfo span {
                                                                                 class="img-fluid mb-2">
                                                                             <span class="d-block text-center">
                                                                                 <span
-                                                                                    class="d-block fw-600 fs-15">{{ translate('ngenius') }}</span>
+                                                                                    class="d-block fw-400 fs-15">{{ translate('ngenius') }}</span>
                                                                             </span>
                                                                         </span>
                                                                     </label>
@@ -1109,7 +1109,7 @@ div#accordioncCheckoutInfo span {
                                                                                 class="img-fluid mb-2">
                                                                             <span class="d-block text-center">
                                                                                 <span
-                                                                                    class="d-block fw-600 fs-15">{{ translate('Iyzico') }}</span>
+                                                                                    class="d-block fw-400 fs-15">{{ translate('Iyzico') }}</span>
                                                                             </span>
                                                                         </span>
                                                                     </label>
@@ -1125,7 +1125,7 @@ div#accordioncCheckoutInfo span {
                                                                                 class="img-fluid mb-2">
                                                                             <span class="d-block text-center">
                                                                                 <span
-                                                                                    class="d-block fw-600 fs-15">{{ translate('Nagad') }}</span>
+                                                                                    class="d-block fw-400 fs-15">{{ translate('Nagad') }}</span>
                                                                             </span>
                                                                         </span>
                                                                     </label>
@@ -1141,7 +1141,7 @@ div#accordioncCheckoutInfo span {
                                                                                 class="img-fluid mb-2">
                                                                             <span class="d-block text-center">
                                                                                 <span
-                                                                                    class="d-block fw-600 fs-15">{{ translate('Bkash') }}</span>
+                                                                                    class="d-block fw-400 fs-15">{{ translate('Bkash') }}</span>
                                                                             </span>
                                                                         </span>
                                                                     </label>
@@ -1157,7 +1157,7 @@ div#accordioncCheckoutInfo span {
                                                                                 class="img-fluid mb-2">
                                                                             <span class="d-block text-center">
                                                                                 <span
-                                                                                    class="d-block fw-600 fs-15">{{ translate('Aamarpay') }}</span>
+                                                                                    class="d-block fw-400 fs-15">{{ translate('Aamarpay') }}</span>
                                                                             </span>
                                                                         </span>
                                                                     </label>
@@ -1173,7 +1173,7 @@ div#accordioncCheckoutInfo span {
                                                                                 class="img-fluid mb-2">
                                                                             <span class="d-block text-center">
                                                                                 <span
-                                                                                    class="d-block fw-600 fs-15">{{ translate('Authorize Net') }}</span>
+                                                                                    class="d-block fw-400 fs-15">{{ translate('Authorize Net') }}</span>
                                                                             </span>
                                                                         </span>
                                                                     </label>
@@ -1189,7 +1189,7 @@ div#accordioncCheckoutInfo span {
                                                                                 class="img-fluid mb-2">
                                                                             <span class="d-block text-center">
                                                                                 <span
-                                                                                    class="d-block fw-600 fs-15">{{ translate('Payku') }}</span>
+                                                                                    class="d-block fw-400 fs-15">{{ translate('Payku') }}</span>
                                                                             </span>
                                                                         </span>
                                                                     </label>
@@ -1207,7 +1207,7 @@ div#accordioncCheckoutInfo span {
                                                                                     class="img-fluid mb-2">
                                                                                 <span class="d-block text-center">
                                                                                     <span
-                                                                                        class="d-block fw-600 fs-15">{{ translate('flutterwave') }}</span>
+                                                                                        class="d-block fw-400 fs-15">{{ translate('flutterwave') }}</span>
                                                                                 </span>
                                                                             </span>
                                                                         </label>
@@ -1224,7 +1224,7 @@ div#accordioncCheckoutInfo span {
                                                                                     class="img-fluid mb-2">
                                                                                 <span class="d-block text-center">
                                                                                     <span
-                                                                                        class="d-block fw-600 fs-15">{{ translate('payfast') }}</span>
+                                                                                        class="d-block fw-400 fs-15">{{ translate('payfast') }}</span>
                                                                                 </span>
                                                                             </span>
                                                                         </label>
@@ -1241,7 +1241,7 @@ div#accordioncCheckoutInfo span {
                                                                                 class="img-fluid mb-2">
                                                                             <span class="d-block text-center">
                                                                                 <span
-                                                                                    class="d-block fw-600 fs-15">{{ translate('Paytm') }}</span>
+                                                                                    class="d-block fw-400 fs-15">{{ translate('Paytm') }}</span>
                                                                             </span>
                                                                         </span>
                                                                     </label>
@@ -1257,7 +1257,7 @@ div#accordioncCheckoutInfo span {
                                                                                 class="img-fluid mb-2">
                                                                             <span class="d-block text-center">
                                                                                 <span
-                                                                                    class="d-block fw-600 fs-15">{{ translate('ToyyibPay') }}</span>
+                                                                                    class="d-block fw-400 fs-15">{{ translate('ToyyibPay') }}</span>
                                                                             </span>
                                                                         </span>
                                                                     </label>
@@ -1273,7 +1273,7 @@ div#accordioncCheckoutInfo span {
                                                                                 class="img-fluid mb-2">
                                                                             <span class="d-block text-center">
                                                                                 <span
-                                                                                    class="d-block fw-600 fs-15">{{ translate('MyFatoorah') }}</span>
+                                                                                    class="d-block fw-400 fs-15">{{ translate('MyFatoorah') }}</span>
                                                                             </span>
                                                                         </span>
                                                                     </label>
@@ -1289,7 +1289,7 @@ div#accordioncCheckoutInfo span {
                                                                                 class="img-fluid mb-2">
                                                                             <span class="d-block text-center">
                                                                                 <span
-                                                                                    class="d-block fw-600 fs-15">{{ translate('Khalti') }}</span>
+                                                                                    class="d-block fw-400 fs-15">{{ translate('Khalti') }}</span>
                                                                             </span>
                                                                         </span>
                                                                     </label>
@@ -1322,7 +1322,7 @@ div#accordioncCheckoutInfo span {
                                                                                     class="img-fluid mb-2">
                                                                                 <span class="d-block text-center">
                                                                                     <span
-                                                                                        class="d-block fw-600 fs-15">{{ translate('Cash on Delivery') }}</span>
+                                                                                        class="d-block fw-400 fs-15">{{ translate('Cash on Delivery') }}</span>
                                                                                 </span>
                                                                             </span>
                                                                         </label>
@@ -1345,7 +1345,7 @@ div#accordioncCheckoutInfo span {
                                                                                         class="img-fluid mb-2">
                                                                                     <span class="d-block text-center">
                                                                                         <span
-                                                                                            class="d-block fw-600 fs-15">{{ $method->heading }}</span>
+                                                                                            class="d-block fw-400 fs-15">{{ $method->heading }}</span>
                                                                                     </span>
                                                                                 </span>
                                                                             </label>
@@ -1434,7 +1434,7 @@ div#accordioncCheckoutInfo span {
                                                             <span
                                                                 class="opacity-80">{{ translate('Your wallet balance :') }}</span>
                                                             <span
-                                                                class="fw-600">{{ single_price(Auth::user()->balance) }}</span>
+                                                                class="fw-400">{{ single_price(Auth::user()->balance) }}</span>
                                                         </div>
                                                         @if (Auth::user()->balance < $total)
                                                             <button type="button" class="btn btn-secondary" disabled>
@@ -1442,7 +1442,7 @@ div#accordioncCheckoutInfo span {
                                                             </button>
                                                         @else
                                                             <button type="button" onclick="use_wallet()"
-                                                                class="btn btn-primary fw-600">
+                                                                class="btn btn-primary fw-400">
                                                                 {{ translate('Pay with wallet') }}
                                                             </button>
                                                         @endif
@@ -1470,7 +1470,7 @@ div#accordioncCheckoutInfo span {
                             </div>
                             <div class="col-6 text-right">
                                 <button type="button" onclick="submitOrder(this)"
-                                    class="btn btn-primary fw-600">{{ translate('Complete Order') }}</button>
+                                    class="btn btn-primary fw-400">{{ translate('Complete Order') }}</button>
                             </div>
                         </div> --}}
                                     </form>
