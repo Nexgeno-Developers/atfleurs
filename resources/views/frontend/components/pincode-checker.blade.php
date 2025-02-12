@@ -9,7 +9,7 @@
             <div class="form-group d-flex align-items-center mb-2">
                 <input type="text" id="pincode" name="pincode" class="form-control me-2" placeholder="Enter Pincode"
                     maxlength="6" value="{{ session('pincode', '') }}" {{ session('pincode') ? 'readonly' : '' }}>
-                <button type="button" id="check-pincode-btn" class="btn btn-primary" {{ session('pincode') ? 'disabled' : '' }}>
+                <button type="button" id="check-pincode-btn" class="d-none btn btn-primary" {{ session('pincode') ? 'disabled' : '' }}>
                     Check
                 </button>
                 @if (session('pincode'))
@@ -40,15 +40,24 @@
     }
 
     .product_avaiblity input#pincode {
-    border-radius: 50px 0px 0px 50px;
-    padding-left: 15px;
-    width: 200px;
-    border-right: 0;
-}
+        border-radius: 24px;
+        padding-left: 15px;
+        width: 300px;
+        /* border-right: 0; */
+        color: #000000ab;
+        border-color: #000000ab;
+    }
 
-.product_avaiblity button#check-pincode-btn {
-    border-radius: 0px 50px 50px 0px;
-}
+    .product_avaiblity input#pincode.error:not(:focus) {
+        color: black;
+        border: 2px solid red; /* Red border for error */
+        box-shadow: 0 0 5px rgba(255, 0, 0, 0.6); /* Optional shadow for emphasis */
+    }
+
+    .product_avaiblity button#check-pincode-btn {
+        border-radius: 0px 50px 50px 0px;
+    }
+
     .form-group input {
         width: 100%;
         padding: 8px;
