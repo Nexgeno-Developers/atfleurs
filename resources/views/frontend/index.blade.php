@@ -401,7 +401,7 @@
                 </div> -->
 
    <h4 class="heading_one heading_font1 green_color text-capitalize">Artful Floral Creations <span class="new_head green_color d-lg-block">for Every Occasion</span></h4>
-   <div class="text-center button_effects mt-4 ml-5">
+   <div class="text-center button_effects mt-4 ml-md-5">
                 <a class="green_color fs-bold" href="/category/floral-arrangements-events-mumbai">Shop Now <i class="fa-solid fa-arrow-right"></i></a>
                </div>  
 </div>
