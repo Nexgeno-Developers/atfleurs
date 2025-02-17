@@ -14,7 +14,7 @@
 }
 </style>
      {{-- Categories , Sliders . Today's deal --}}
-    <div class="home-banner-area">
+    <!-- <div class="home-banner-area">
         <div class="row gutters-10 position-relative">
                
                 @php
@@ -39,10 +39,10 @@
 
 
             </div>
-    </div>
+    </div> -->
   
     
-<!-- <div class="main_banner_slider">
+ <div class="main_banner_slider">
     <div class="slick-banner-mian">
     <div class="slide" style="background-image: url('{{ static_asset('assets/img/banner_main_1.webp ') }}');">
       <div class="slide-content">
@@ -95,7 +95,7 @@
     <p class="last_number_pegination">04</p>
   </ul>
 </div>
-</div> -->
+</div>
 
 <!-- <section class="pt-5 pb-5">
     <div class="container ">
