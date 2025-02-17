@@ -107,13 +107,13 @@
                 <a class="text-reset" href="{{ route('home') }}">{{ translate('Home')}}</a>
             </li>
             @if($category_id1 != 'null')
-            <li class="text-dark fw-400 breadcrumb-item">
+            <li class="text-dark fw-600 breadcrumb-item">
                 <a class="text-reset" href="{{ route('products.category', $category_id1->slug) }}">
                     {{ $category_id1->name }}
                 </a>
             </li>
             @endif
-            <li class="breadcrumb-item fw-400 opacity-90">
+            <li class="breadcrumb-item fw-600 opacity-90">
                 <a class="text-reset" href="#"> {{ $detailedProduct->getTranslation('name') }}</a>
             </li>
 
@@ -430,7 +430,7 @@
                                 </div>
                                 <div class="col-sm-10 col-9">
                                     <div class="product-price">
-                                        <strong id="chosen_price" class="h4 fw-500 gray_green_clr">
+                                        <strong id="chosen_price" class="h4 fw-700 gray_green_clr">
 
                                         </strong>
                                     </div>
@@ -489,22 +489,22 @@
 
                         <div class="mt-3 button_dt_buy_cart">
                             @if ($detailedProduct->external_link != null)
-                            <a type="button" class="btn btn-primary buy-now fw-400"
+                            <a type="button" class="btn btn-primary buy-now fw-600"
                                 href="{{ $detailedProduct->external_link }}">
                                 <i class="la la-share"></i> {{ translate($detailedProduct->external_link_btn) }}
                             </a>
                             @else
 
-                            <button type="button" class="btn btn-primary buy-now button_colors_1 greenbg fw-400 mb-md-0 mb-3" onclick="buyNow()">
+                            <button type="button" class="btn btn-primary buy-now button_colors_1 greenbg fw-600 mb-md-0 mb-3" onclick="buyNow()">
                                 <i class="la la-shopping-cart"></i> {{ translate('Buy Now') }}
                             </button>
-                              <button type="button" class="btn btn-soft-primary ml-2 add-to-cart button_colors_1 darkgray_bg fw-400 gtagaddtocart mb-md-0 mb-3"
+                              <button type="button" class="btn btn-soft-primary ml-2 add-to-cart button_colors_1 darkgray_bg fw-600 gtagaddtocart mb-md-0 mb-3"
                                 data-url="{{ url()->current() }}" onclick="addToCart()">
                                 <i class="las la-shopping-bag"></i>
                                 <span class="d-md-inline-block"> {{ translate('Add to cart') }}</span>
                             </button>
                             @endif
-                            <button type="button" class="btn btn-secondary out-of-stock fw-400 d-none" disabled>
+                            <button type="button" class="btn btn-secondary out-of-stock fw-600 d-none" disabled>
                                 <i class="la la-cart-arrow-down"></i> {{ translate('Out of Stock') }}
                             </button>
                         </div>
@@ -1332,54 +1332,68 @@
     // });
     // Define the function to handle the pincode check
     function checkPincode() {
-    var pincode = $('#pincode').val().trim();
-    var productId = $('#product_id').val();
-    var isValid = false;
+        var pincode = $('#pincode').val().trim();
+        var productId = $('#product_id').val();
+        var isValid = false;
 
-    if (pincode === '' || pincode.length !== 6) {
-        $('#pincode-result').html('<span class="error">Please enter a valid 6-digit pincode.</span>');
-        return false;
-    }
+        if (pincode === '' || pincode.length !== 6) {
+            $('#pincode-result').html('<span class="error">Please enter a valid 6-digit pincode.</span>');
+            return false;
+        }
 
-    $.ajax({
-        url: "{{ route('check.pincode') }}",
-        method: "POST",
-        async: false, // ✅ Make it synchronous so it returns true/false directly
-        data: {
-            _token: "{{ csrf_token() }}",
-            pincode: pincode,
-            product_id: productId
-        },
-        success: function(response) {
-            if (response.status === 'success') {
-                $('#pincode').prop('readonly', true);
-                $('#check-pincode-btn').prop('disabled', true);
-                $('#pincode-result').html(`<span class="success">${response.message}</span>`);
-                $('#countdown-container').removeClass('d-none');
+        if ($('#pincode').hasClass('error')) {
+            $('#pincode').removeClass('error'); // Remove the error class if it was previously applied
+        }
 
-                startCountdown(
-                    {{ getBusinessSettingValue("office_start") }} ?? 8,
-                    {{ getBusinessSettingValue("office_end") }} ?? 21,
-                    response.delivery_interval
-                );
+        $.ajax({
+            url: "{{ route('check.pincode') }}",
+            method: "POST",
+            async: false, // ✅ Make it synchronous so it returns true/false directly
+            data: {
+                _token: "{{ csrf_token() }}",
+                pincode: pincode,
+                product_id: productId
+            },
+            success: function(response) {
+                if (response.status === 'success') {
+                    $('#pincode').prop('readonly', true);
+                    $('#check-pincode-btn').prop('disabled', true);
+                    $('#pincode-result').html(`<span class="success">${response.message}</span>`);
+                    $('#countdown-container').removeClass('d-none');
 
-                // $('.buy-now, .add-to-cart').prop('disabled', false);
-                isValid = true; // ✅ Mark as valid
-            } else {
-                $('#pincode-result').html(`<span class="error">${response.message}</span>`);
+                    startCountdown(
+                        {{ getBusinessSettingValue("office_start") }} ?? 8,
+                        {{ getBusinessSettingValue("office_end") }} ?? 21,
+                        response.delivery_interval
+                    );
+
+                    // $('.buy-now, .add-to-cart').prop('disabled', false);
+                    if (!$('#edit-pincode-btn').length) {
+                        $('<button>', {
+                            id: 'edit-pincode-btn',
+                            type: 'button',
+                            class: 'btn btn-link ms-2',
+                            html: '<i class="fa fa-edit"></i>'
+                        }).insertAfter('#check-pincode-btn');
+                    }
+                    isValid = true; // ✅ Mark as valid
+                } else {
+                    $('#pincode-result').html(`<span class="error">${response.message}</span>`);
+                    $('#pincode').addClass('error'); // Add the error class to apply the red border
+                    // $('.buy-now, .add-to-cart').prop('disabled', true);
+                    $('#countdown-container').addClass('d-none');
+                }
+            },
+            error: function() {
+                $('#pincode-result').html('<span class="error">An error occurred. Please try again.</span>');
+                $('#pincode').addClass('error'); // Add the error class to apply the red border
                 // $('.buy-now, .add-to-cart').prop('disabled', true);
                 $('#countdown-container').addClass('d-none');
             }
-        },
-        error: function() {
-            $('#pincode-result').html('<span class="error">An error occurred. Please try again.</span>');
-            // $('.buy-now, .add-to-cart').prop('disabled', true);
-            $('#countdown-container').addClass('d-none');
-        }
-    });
+        });
 
-    return isValid; // ✅ Return the final validation result
-}
+        return isValid; // ✅ Return the final validation result
+    }
 
 
     $(document).on('click', '#check-pincode-btn', function(e) {
@@ -1390,22 +1404,68 @@
         }
     });
 
-    // Trigger check button when pincode length reaches 6
-    $(document).on('input', '#pincode', function(e) {
+    // $(document).on('keyup', '#pincode', function(e) {
+    //     var pincode = $(this).val().trim();
+    //     if (pincode.length === 6) {
+    //         $('#check-pincode-btn').click();
+
+    //         // Check if the edit button has the class 'd-none'
+    //         // and if #pincode-result does not contain the text 'Product is not deliverable'
+    //         if ($('#edit-pincode-btn').hasClass('d-none') && !$('#pincode-result').text().includes('Sorry, product is not deliverable to this pincode.')) {
+    //             console.log('product is not deliverable');
+    //             $('#edit-pincode-btn').removeClass('d-none');
+    //         }
+    //     }
+    // });
+
+    $(document).on('keyup', '#pincode', function(e) {
         var pincode = $(this).val().trim();
         if (pincode.length === 6) {
             $('#check-pincode-btn').click();
+
+            // Check if the edit button has the class 'd-none'
+            // and if #pincode-result does not exactly match the text
+            // 'Sorry, product is not deliverable to this pincode.'
+            if ($('#edit-pincode-btn').hasClass('d-none') && $('#pincode-result').text().trim() !== 'Sorry, product is not deliverable to this pincode.') {
+                console.log('Product is not deliverable');
+                $('#edit-pincode-btn').removeClass('d-none');
+            }
         }
     });
+
+
+
+    // // Trigger check button when pincode length reaches 6
+    // $(document).on('input', '#pincode', function(e) {
+    //     var pincode = $(this).val().trim();
+    //     if (pincode.length === 6) {
+    //         $('#check-pincode-btn').click();
+    //     }
+    // });
+
     // Call the function on document ready (if necessary)
     $(document).ready(function() {
-        checkPincode();
+        var pinCode = $('#pincode').val().trim();
+
+        if (pinCode !== '' && pinCode.length == 6) {
+            checkPincode();
+        }
     });
 
     $(document).on('click', '#edit-pincode-btn', function() {
-        $('#pincode').prop('readonly', false);
+        // $('#pincode').prop('readonly', false).focus();
+        var pincodeInput = $('#pincode');
+        pincodeInput.prop('readonly', false);
+
+        // Focus on the input and set the cursor to the end
+        pincodeInput.focus();
+        var len = pincodeInput.val().length;
+        pincodeInput[0].setSelectionRange(len, len);
         $('#check-pincode-btn').prop('disabled', false);
         $('#check-pincode-btn').text('Check');
+        if ($('#pincode').hasClass('error')) {
+            $('#pincode').removeClass('error'); // Remove the error class if it was previously applied
+        }
         $('#pincode-result').empty();
         // Disable "Buy Now" and "Add to Cart" buttons
         // $('.buy-now, .add-to-cart').prop('disabled', true);
