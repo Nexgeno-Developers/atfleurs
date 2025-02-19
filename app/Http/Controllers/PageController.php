@@ -263,8 +263,12 @@ class PageController extends Controller
         ]);
 
         if ($validator->fails()) {
-            $errorMessages = implode('<br>', $validator->errors()->all()); // Convert errors to a string with line breaks
-            flash($errorMessages)->error(); // Flash the error messages
+            $errorMessages = $validator->errors()->all(); // Get all errors as an array
+
+            foreach ($errorMessages as $error) {
+                flash($error)->error(); // Flash each error separately
+            }
+
             return back()->withInput();
         }
 
