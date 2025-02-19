@@ -260,7 +260,7 @@ Route::controller(CompareController::class)->group(function () {
 });
 
 // Subscribe
-Route::resource('subscribers', SubscriberController::class);
+Route::resource('subscribers', SubscriberController::class)->middleware('throttle:5,1'); // Limits to 5 requests per minute per IP;
 
 Route::group(['middleware' => ['user', 'verified', 'unbanned']], function() {
 

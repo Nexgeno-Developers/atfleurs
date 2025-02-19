@@ -674,6 +674,7 @@ jQuery(document).ready(function($){
             // @endforeach
     </script>
 @yield('script')
+@yield('script2')
     <script>
 
         $(document).ready(function() {
@@ -968,7 +969,7 @@ jQuery(document).ready(function($){
 
     </script>
 
-    
+
 
     @php
         echo get_setting('footer_script');

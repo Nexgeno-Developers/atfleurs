@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\RateLimiter;
+use Illuminate\Support\Facades\Cache;
 use App\Models\Subscriber;
 
 class SubscriberController extends Controller
@@ -16,7 +19,7 @@ class SubscriberController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Response|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function index()
     {
@@ -38,8 +41,9 @@ class SubscriberController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
+    /*
     public function store(Request $request)
     {
         $subscriber = Subscriber::where('email', $request->email)->first();
@@ -52,6 +56,52 @@ class SubscriberController extends Controller
         else{
             flash(translate('You are  already a subscriber'))->success();
         }
+        return back();
+    }*/
+
+    public function store(Request $request)
+    {
+        $ip = $request->ip();
+        $key = 'subscribe-form:' . $ip;
+        $permanentBlockKey = 'blocked-ip:' . $ip;
+
+        // 🚨 Check if IP is permanently blocked
+        if (Cache::has($permanentBlockKey)) {
+            Log::alert("🚨 Blocked IP tried accessing: $ip");
+            flash(translate('Your IP has been permanently blocked due to suspicious activity.'))->error();
+            return back();
+        }
+
+        // Increment the rate limiter counter for this request.
+        // Here, the counter will expire after 120 seconds.
+        RateLimiter::hit($key, 120);
+        $attempts = RateLimiter::attempts($key);
+
+        // 🔹 Check for permanent block threshold (e.g., 3 or more attempts)
+        if ($attempts >= 4) {
+            Cache::put($permanentBlockKey, true, now()->addDays(30)); // Block permanently for 30 days
+            Log::alert("🚨 Permanent block activated for IP: $ip");
+            flash(translate('Your IP has been permanently blocked.'))->error();
+            return back();
+        }
+        // 🔸 Check for temporary block threshold (e.g., exactly 2 attempts)
+        elseif ($attempts == 3) {
+            Log::warning("⚠️ Temporary block for repeated requests from IP: $ip");
+            flash(translate('Too many requests. Please try again later.'))->warning();
+            return back();
+        }
+
+        // ✅ Process the subscription
+        $subscriber = Subscriber::where('email', $request->email)->first();
+        if ($subscriber === null) {
+            $subscriber = new Subscriber;
+            $subscriber->email = $request->email;
+            $subscriber->save();
+            flash(translate('You have subscribed successfully!'))->success();
+        } else {
+            flash(translate('You are already a subscriber.'))->info();
+        }
+
         return back();
     }
 

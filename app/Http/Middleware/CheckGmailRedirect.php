@@ -11,9 +11,9 @@ class CheckGmailRedirect
     public function handle($request, Closure $next)
     {
         // Log the request referer and session status
-        Log::info('Session active: ', ['session' => $request->session()->all()]);
-        Log::info('Request Query: ', ['query' => $request->query()]);
-        
+        // Log::info('Session active: ', ['session' => $request->session()->all()]);
+        // Log::info('Request Query: ', ['query' => $request->query()]);
+
         // Check if the 'source' query parameter is set to 'gmail'
         if ($request->query('source') === 'gmail') {
             Log::info('User is coming from Gmail.');
@@ -26,7 +26,7 @@ class CheckGmailRedirect
 
             // If user is not authenticated, store the intended cart route in session
             $request->session()->put('redirect_to', route('cart')); // Store the cart route
-            
+
             Log::info('User not authenticated, redirecting to login.');
             // Redirect to login page
             return redirect()->route('login');

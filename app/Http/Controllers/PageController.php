@@ -7,6 +7,11 @@ use App\Models\Page;
 use App\Models\PageTranslation;
 use Mail;
 use App\Mail\EmailManager;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\RateLimiter;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Log;
 
 
 class PageController extends Controller
@@ -16,7 +21,7 @@ class PageController extends Controller
         $this->middleware(['permission:add_website_page'])->only('create');
         $this->middleware(['permission:edit_website_page'])->only('edit');
         $this->middleware(['permission:delete_website_page'])->only('destroy');
-        
+
     }
 
     /**
@@ -175,64 +180,156 @@ class PageController extends Controller
         }
         abort(404);
     }
-    
+
     public function aboutpage(){
         return view('frontend.custom.about');
     }
-    
+
     public function careerspage(){
         return view('frontend.custom.careers');
     }
-    
-    
+
+
      public function partnerspage(){
         return view('frontend.custom.partners');
     }
-    
-    
+
+
     public function servicespage(){
         return view('frontend.custom.services');
     }
-    
+
     public function contactpage(){
         return view('frontend.custom.contact');
     }
 
+/*
     public function sendEmail(Request $request){
-    $fromAddress = env('MAIL_FROM_ADDRESS');
-    $toAddress = $request->email;
+        $fromAddress = env('MAIL_FROM_ADDRESS');
+        $toAddress = $request->email;
 
-    $name = $request->name;
-    $email = $request->email;
-    $phone = $request->phone;
-    $subject = $request->subject;
-    $message = $request->message;
+        $name = $request->name;
+        $email = $request->email;
+        $phone = $request->phone;
+        $subject = $request->subject;
+        $message = $request->message;
 
-   $emailData = [
-    'view' => 'emails.formdata',
-    'from' => $toAddress,
-    'to' => $fromAddress,
-    'subject' => $subject, // Add this line
-    'content' => [
-        'name' => $name,
-        'email' => $email,
-        'phone' => $phone,
-        'subject' => $subject, // Add this line
-        'message' => $message,
-    ],
-];
+        $emailData = [
+            'view' => 'emails.formdata',
+            'from' => $toAddress,
+            'to' => $fromAddress,
+            'subject' => $subject, // Add this line
+            'content' => [
+                'name' => $name,
+                'email' => $email,
+                'phone' => $phone,
+                'subject' => $subject, // Add this line
+                'message' => $message,
+            ],
+        ];
 
-    try {
-        Mail::to($fromAddress)->send(new EmailManager($emailData));
-    } catch (\Exception $e) {
-        dd($e);
+        try {
+            Mail::to($fromAddress)->send(new EmailManager($emailData));
+        } catch (\Exception $e) {
+            dd($e);
+        }
+
+        flash(translate('An email has been sent.'))->success();
+        return back();
     }
+*/
 
-    flash(translate('An email has been sent.'))->success();
-    return back();
-}
-    
-    
+    public function sendEmail(Request $request)
+    {
+        $ip = $request->ip();
+        $key = 'subscribe-form:' . $ip;
+        $permanentBlockKey = 'blocked-ip:' . $ip;
+
+        // 🚨 Check if IP is permanently blocked
+        if (Cache::has($permanentBlockKey)) {
+            Log::alert("🚨 Blocked IP tried accessing: $ip");
+            flash('Your IP has been permanently blocked due to suspicious activity.')->error();
+            return back();
+        }
+
+        // 🔹 Use Laravel Validator
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'email' => 'required|email',
+            'phone' => 'required',
+            'subject' => 'nullable',
+            'message' => 'nullable',
+            'g-recaptcha-response' => 'required' // Ensure reCAPTCHA is checked
+        ]);
+
+        // 🔹 Check if validation fails
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
+
+        // 🔹 Verify reCAPTCHA with Google
+        $recaptchaResponse = $request->input('g-recaptcha-response');
+        $secretKey = env('GOOGLE_RECAPTCHA_SECRET_KEY');
+
+        $response = Http::asForm()->post('https://www.google.com/recaptcha/api/siteverify', [
+            'secret' => $secretKey,
+            'response' => $recaptchaResponse,
+            'remoteip' => $ip
+        ]);
+
+        $result = $response->json();
+
+        if (!$result['success']) {
+            // Increment failed attempt counter
+            RateLimiter::hit($key, 120); // Set expiry to 120 seconds (2 minutes)
+            $attempts = RateLimiter::attempts($key);
+
+            // 🚨 Permanent block if exceeded max attempts
+            if ($attempts >= 4) {
+                Cache::put($permanentBlockKey, true, now()->addDays(30)); // Block permanently for 30 days
+                Log::alert("🚨 Permanent block activated for IP: $ip");
+                flash('Your IP has been permanently blocked.')->error();
+                return back();
+            }
+            // ⏳ Temporary warning message
+            elseif ($attempts == 3) {
+                Log::warning("⚠️ Temporary block for repeated requests from IP: $ip");
+                flash('Too many requests. Please try again later.')->warning();
+                return back();
+            }
+
+            return back()->withErrors(['g-recaptcha-response' => 'reCAPTCHA verification failed.'])->withInput();
+        }
+
+        // ✅ reCAPTCHA passed, reset rate limiter
+        RateLimiter::clear($key);
+
+        // 🔹 Prepare email data
+        $emailData = [
+            'view' => 'emails.formdata',
+            'from' => $request->email,
+            'to' => env('MAIL_FROM_ADDRESS'),
+            'subject' => $request->subject,
+            'content' => [
+                'name' => $request->name,
+                'email' => $request->email,
+                'phone' => $request->phone,
+                'subject' => $request->subject,
+                'message' => $request->message,
+            ],
+        ];
+
+        // 🔹 Send email
+        try {
+            Mail::to(env('MAIL_FROM_ADDRESS'))->send(new EmailManager($emailData));
+            flash('Your message has been sent successfully!')->success();
+        } catch (\Exception $e) {
+            flash('Failed to send email. Please try again later.')->error();
+            return back()->withInput();
+        }
+
+        return back();
+    }
     public function faqpage(){
         return view('frontend.custom.faq');
     }

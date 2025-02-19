@@ -132,9 +132,9 @@ color: #333 !important;
         background-position: 214px 155px;
         border-radius: 10px;
         border:1px solid #bbbbbb40;
-        
-        
-        
+
+
+
     }
 
     #contactus-intro .second-coloum-of-GET-IN-TOUCH ul {
@@ -148,7 +148,7 @@ color: #333 !important;
    #contactus-intro  .second-coloum-of-GET-IN-TOUCH h2 {
         font-size: 32px;
         color:black;
-        
+
     }
 
     #contactus-intro .second-coloum-of-GET-IN-TOUCH .row img {
@@ -207,7 +207,7 @@ color: #333 !important;
     color:black;
 }
 #contactus-intro .all-text ul a{
-    
+
     color:black;
 }
 
@@ -219,8 +219,8 @@ color: #333 !important;
     #exampleFormControlTextarea1 {
         border-radius: 0px;
     }
-    
-    
+
+
     @media(max-width:767px)
     {
         #contactus-intro .container-form {
@@ -258,7 +258,7 @@ color: #333 !important;
 #contactus-intro .second-coloum-of-GET-IN-TOUCH {
     background-size: 256px 252px;
     background-position: 144px 143px;
-   
+
 }
 
 #contactus-intro .form-control {
@@ -272,7 +272,7 @@ color: #333 !important;
 
 #contactus-intro .row.contactus .form-button.col-md-12 button {
     padding: 10px 20px;
-    
+
 }
 
 .contact_map{
@@ -281,7 +281,7 @@ color: #333 !important;
 
 .form_boxex .heading_font1{
     text-align:center;
-} 
+}
     }
 </style>
 
@@ -321,7 +321,7 @@ color: #333 !important;
                             <ul>
                                 <h3> Email Address </h3>
                                 <a onclick="return gtag_report_conversion('mailto: atfleurss@gmail.com');" href="mailto: atfleurss@gmail.com">atfleurss@gmail.com</a>
-                               
+
                             </ul>
                         </div>
                     </div>
@@ -334,7 +334,7 @@ color: #333 !important;
                                 <h3> Phone Number </h3>
                                 <a onclick="return gtag_report_conversion('tel:+91 7070070716');" href="tel:+91 7070070716">+91 7070070716</a> <br>
                                <a onclick="return gtag_report_conversion('tel:+91 9808867777');" href="tel:+91 9808867777">+91 9808867777</a>
-                                
+
                             </ul>
                         </div>
                     </div>
@@ -350,42 +350,47 @@ color: #333 !important;
                             <!--<form action="{{ route('custom-pages.sendemail') }}" method="POST" class="">-->
                                 @csrf
                                 <h4 class="heading_one heading_font1 green_color text-capitalize text-left">Request A <span class="yellow_color"> Quote</span></h4>
-                               
+
                                     <div class="row">
                                             <div class="col-md-6 mt-3">
-                                               
-                                                <input type="name" name="name" placeholder="Your Name" class="form-control"
+
+                                                <input required type="name" name="name" placeholder="Your Name" class="form-control"
                                                     id="inputEmail4">
                                             </div>
                                             <div class="col-md-6 mt-3">
-                                                
-                                                <input type="email" name="email" class="form-control" id="exampleFormControlInput1"
+
+                                                <input required type="email" name="email" class="form-control" id="exampleFormControlInput1"
                                                     placeholder="Email">
                                             </div>
-                                            
+
                                             <div class="col-md-6 mt-3">
-                                                
-                                                <input type="number" name="phone" placeholder="Cell Phone" class="form-control"
+
+                                                <input required type="number" name="phone" placeholder="Cell Phone" class="form-control"
                                                     id="inputEmail4">
                                             </div>
                                             <div class="col-md-6 mt-3">
-                                              
+
                                                 <input type="text" name="subject" class="form-control" id="exampleFormControlInput1"
                                                     placeholder="Subject">
                                             </div>
-                                            
+
                                              <div class="col-md-12 mt-3 ">
-                                          
+
                                             <textarea class="form-control" name="message" id="exampleFormControlTextarea1" placeholder="Your Message"
                                                 rows="6"></textarea>
-                                        </div> 
+                                        </div>
+
+                                            <!-- 🔹 Google reCAPTCHA Checkbox -->
+                                            <div class="col-md-12 mt-3">
+                                                <div class="g-recaptcha" data-sitekey="{{ env('GOOGLE_RECAPTCHA_SITE_KEY') }}"></div>
+                                            </div>
 
                                         <div class="form-button col-md-12">
-                                            <button type="submit"> Send Message 
+                                            <button type="submit"> Send Message
                                                 </button>
                                         </div>
                                         </div>
-                                       
+
                             </form>
                             </div>
                         </div>
@@ -413,4 +418,8 @@ color: #333 !important;
 
 
 
+@endsection
+@section('script2')
+    <!-- 🔹 Load Google reCAPTCHA -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 @endsection
