@@ -263,10 +263,9 @@ class PageController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return response()->json([
-                'status' => false,
-                'notification' => $validator->errors()->all()
-            ], 200);
+            $errorMessages = implode('<br>', $validator->errors()->all()); // Convert errors to a string with line breaks
+            flash($errorMessages)->error(); // Flash the error messages
+            return back()->withInput();
         }
 
         // 🔹 Check if validation fails
@@ -305,7 +304,12 @@ class PageController extends Controller
                 return back();
             }
 
-            return back()->withErrors(['g-recaptcha-response' => 'reCAPTCHA verification failed.'])->withInput();
+            return response()->json([
+                'status' => false,
+                'notification' => 'reCAPTCHA verification failed.'
+            ], 200)->withInput();
+
+            // return back()->withErrors(['g-recaptcha-response' => 'reCAPTCHA verification failed.'])->withInput();
         }
 
         // ✅ reCAPTCHA passed, reset rate limiter
@@ -337,6 +341,7 @@ class PageController extends Controller
 
         return back();
     }
+
     public function faqpage(){
         return view('frontend.custom.faq');
     }
