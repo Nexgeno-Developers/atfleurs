@@ -346,7 +346,7 @@ color: #333 !important;
                     <div class="container">
                         <div class="row justify-content-center">
                             <div class="form_boxex">
-                            <form action="{{ url('/email') }}" method="POST" class="">
+                            <form id="contact-form" action="{{ url('/email') }}" method="POST" class="">
                             <!--<form action="{{ route('custom-pages.sendemail') }}" method="POST" class="">-->
                                 @csrf
                                 <h4 class="heading_one heading_font1 green_color text-capitalize text-left">Request A <span class="yellow_color"> Quote</span></h4>
@@ -422,4 +422,18 @@ color: #333 !important;
 @section('script2')
     <!-- 🔹 Load Google reCAPTCHA -->
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById("contact-form").addEventListener("submit", function (event) {
+                var recaptcha = document.querySelector(".g-recaptcha-response").value;
+                if (!recaptcha) {
+                    event.preventDefault(); // Stop form submission
+                    // alert("Please verify that you are not a robot!"); // Show alert
+                    AIZ.plugins.notify('danger', 'Please verify that you are not a robot!');
+                }
+            });
+        });
+    </script>
+
 @endsection
