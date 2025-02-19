@@ -262,10 +262,17 @@ class PageController extends Controller
             'g-recaptcha-response' => 'required' // Ensure reCAPTCHA is checked
         ]);
 
-        // 🔹 Check if validation fails
         if ($validator->fails()) {
-            return back()->withErrors($validator)->withInput();
+            return response()->json([
+                'status' => false,
+                'notification' => $validator->errors()->all()
+            ], 200);
         }
+
+        // 🔹 Check if validation fails
+        // if ($validator->fails()) {
+        //     return back()->withErrors($validator)->withInput();
+        // }
 
         // 🔹 Verify reCAPTCHA with Google
         $recaptchaResponse = $request->input('g-recaptcha-response');
