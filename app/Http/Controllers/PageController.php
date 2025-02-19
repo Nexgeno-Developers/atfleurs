@@ -242,7 +242,7 @@ class PageController extends Controller
     public function sendEmail(Request $request)
     {
         $ip = $request->ip();
-        $key = 'subscribe-form:' . $ip;
+        $key = 'contact-form:' . $ip;
         $permanentBlockKey = 'blocked-ip:' . $ip;
 
         // 🚨 Check if IP is permanently blocked
@@ -291,18 +291,18 @@ class PageController extends Controller
 
         if (!$result['success']) {
             // Increment failed attempt counter
-            RateLimiter::hit($key, 120); // Set expiry to 120 seconds (2 minutes)
+            RateLimiter::hit($key, 60); // Set expiry to 120 seconds (2 minutes)
             $attempts = RateLimiter::attempts($key);
 
             // 🚨 Permanent block if exceeded max attempts
-            if ($attempts >= 4) {
+            if ($attempts >= 5) {
                 Cache::put($permanentBlockKey, true, now()->addDays(30)); // Block permanently for 30 days
                 Log::alert("🚨 Permanent block activated for IP: $ip");
                 flash('Your IP has been permanently blocked.')->error();
                 return back();
             }
             // ⏳ Temporary warning message
-            elseif ($attempts == 3) {
+            elseif ($attempts == 4) {
                 Log::warning("⚠️ Temporary block for repeated requests from IP: $ip");
                 flash('Too many requests. Please try again later.')->warning();
                 return back();

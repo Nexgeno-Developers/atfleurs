@@ -74,18 +74,18 @@ class SubscriberController extends Controller
 
         // Increment the rate limiter counter for this request.
         // Here, the counter will expire after 120 seconds.
-        RateLimiter::hit($key, 120);
+        RateLimiter::hit($key, 60);
         $attempts = RateLimiter::attempts($key);
 
         // 🔹 Check for permanent block threshold (e.g., 3 or more attempts)
-        if ($attempts >= 4) {
+        if ($attempts >= 5) {
             Cache::put($permanentBlockKey, true, now()->addDays(30)); // Block permanently for 30 days
             Log::alert("🚨 Permanent block activated for IP: $ip");
             flash(translate('Your IP has been permanently blocked.'))->error();
             return back();
         }
         // 🔸 Check for temporary block threshold (e.g., exactly 2 attempts)
-        elseif ($attempts == 3) {
+        elseif ($attempts == 4) {
             Log::warning("⚠️ Temporary block for repeated requests from IP: $ip");
             flash(translate('Too many requests. Please try again later.'))->warning();
             return back();

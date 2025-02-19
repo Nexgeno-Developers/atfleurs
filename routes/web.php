@@ -491,7 +491,7 @@ Route::controller(PageController::class)->group(function () {
     //test created by mak
     Route::get('/newsletter', 'index')->name('newsletters.index');
     Route::post('/newsletter/send', 'send')->name('newsletters.send');
-    Route::post('/email', 'sendEmail')->name('custom-pages.sendemail');
+    Route::post('/email', 'sendEmail')->name('custom-pages.sendemail')->middleware('throttle:5,1');
 
 
 
