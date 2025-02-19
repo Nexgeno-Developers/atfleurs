@@ -1361,11 +1361,17 @@
                     $('#pincode-result').html(`<span class="success">${response.message}</span>`);
                     $('#countdown-container').removeClass('d-none');
 
-                    startCountdown(
-                        {{ getBusinessSettingValue("office_start") }} ?? 8,
-                        {{ getBusinessSettingValue("office_end") }} ?? 21,
-                        response.delivery_interval
-                    );
+                    // startCountdown(
+                    //     {{ getBusinessSettingValue("office_start") }} ?? 8,
+                    //     {{ getBusinessSettingValue("office_end") }} ?? 21,
+                    //     response.delivery_interval
+                    // );
+                    let officeStart2 = parseInt(`{{ getBusinessSettingValue("office_start") }}`) || 8;
+                    let officeEnd2 = parseInt(`{{ getBusinessSettingValue("office_end") }}`) || 21;
+                    let deliveryIntervalHour2 = parseInt(response.delivery_interval) || 3;
+
+                    startCountdown(officeStart2, officeEnd2, deliveryIntervalHour2);
+
 
                     // $('.buy-now, .add-to-cart').prop('disabled', false);
                     if (!$('#edit-pincode-btn').length) {
