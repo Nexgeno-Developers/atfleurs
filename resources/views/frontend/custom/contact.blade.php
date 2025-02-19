@@ -423,7 +423,7 @@ color: #333 !important;
     <!-- 🔹 Load Google reCAPTCHA -->
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
-    <script>
+    {{-- <script>
         document.addEventListener("DOMContentLoaded", function () {
             document.getElementById("contact-form").addEventListener("submit", function (event) {
                 var recaptcha = document.querySelector(".g-recaptcha-response").value;
@@ -434,6 +434,69 @@ color: #333 !important;
                 }
             });
         });
+    </script> --}}
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById("contact-form").addEventListener("submit", function (event) {
+                var errors = [];
+                var name = document.querySelector("[name='name']").value.trim();
+                var email = document.querySelector("[name='email']").value.trim();
+                var phone = document.querySelector("[name='phone']").value.trim();
+                var recaptcha = document.querySelector(".g-recaptcha-response").value;
+
+                // Validate name
+                if (!name) {
+                    errors.push("Name is required.");
+                }
+
+                // Validate email
+                if (!email) {
+                    errors.push("Email is required.");
+                } else if (!/^\S+@\S+\.\S+$/.test(email)) {
+                    errors.push("Enter a valid email address.");
+                }
+
+                // Validate phone
+                if (!phone) {
+                    errors.push("Phone number is required.");
+                }
+                // else if (!/^\d{10}$/.test(phone)) { // Adjust regex as needed
+                //     errors.push("Enter a valid 10-digit phone number.");
+                // }
+
+                // Set minimum and maximum phone number lengths
+                // var minPhoneLength = 7;  // Minimum digits (e.g., UAE, Qatar: 7 digits)
+                // var maxPhoneLength = 15; // Maximum digits (e.g., International format: 15 digits)
+
+                // if (!phone) {
+                //     errors.push("Phone number is required.");
+                // } else if (!/^\d+$/.test(phone)) {
+                //     errors.push("Phone number should contain only digits.");
+                // } else if (phone.length < minPhoneLength || phone.length > maxPhoneLength) {
+                //     errors.push(`Enter a valid phone number (${minPhoneLength}-${maxPhoneLength} digits).`);
+                // }
+
+                // Validate reCAPTCHA
+                if (!recaptcha) {
+                    errors.push("Please verify that you are not a robot!");
+                }
+
+                // If errors exist, prevent form submission and show notifications
+                if (errors.length > 0) {
+                    event.preventDefault();
+
+                    if (typeof AIZ !== 'undefined' && typeof AIZ.plugins !== 'undefined' && typeof AIZ.plugins.notify === 'function') {
+                        errors.forEach(function (error) {
+                            AIZ.plugins.notify('danger', error);
+                        });
+                    } else {
+                        alert(errors.join("\n")); // Fallback alert
+                    }
+                }
+            });
+        });
     </script>
+
 
 @endsection
