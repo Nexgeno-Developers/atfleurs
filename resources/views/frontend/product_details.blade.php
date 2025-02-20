@@ -1218,6 +1218,7 @@
 
 @section('script')
 <script type="text/javascript">
+
     // Variable to store the interval ID of the countdown
     let countdownInterval;
     function startCountdown(officeStart, officeEnd, deliveryIntervalHour) {
@@ -1226,46 +1227,53 @@
             clearInterval(countdownInterval);
         }
 
-        // Set the current time
+        // Set the current time and extract current hour
         const now = new Date();
-        const currentHour = now.getHours(); // hour
-        const currentMinutes = now.getMinutes(); // minutes
-        const currentSeconds = now.getSeconds(); // seconds
-
-        let deliveryInterval = deliveryIntervalHour * 60;
+        const currentHour = now.getHours();
+        const deliveryIntervalMinutes = deliveryIntervalHour * 60;
         let targetTime;
-        let targetMessage = " Get Today!";
+        let targetMessage = "Get Today!";
 
-        // Check if the current time is after office hours
-        if (currentHour >= officeEnd) {
-            // After office hours, set target time to tomorrow's first delivery slot
-            targetTime = new Date(now); // Copy the current time to targetTime
-            targetTime.setDate(targetTime.getDate() + 1); // Move to next day
-            const nextdaytime = officeStart + (deliveryInterval / 60);
-            targetTime.setHours(nextdaytime, 0, 0, 0); // Set to next day (8 AM + delivery interval)
-            targetMessage = "Get Tomorrow!";
-        } else if (currentHour >= officeStart && currentHour < officeEnd) {
-            // Within office hours, calculate target time by adding the delivery interval
-            targetTime = new Date(now);
-            targetTime.setMinutes(now.getMinutes() + deliveryInterval); // Add the delivery interval in minutes
+        if (currentHour >= officeStart && currentHour < officeEnd) {
+            // Case 1: Order placed during office hours (e.g., 8AM to 9PM)
+            // console.log("Case 1: Order placed in office hours");
+            targetTime = new Date(now.getTime() + deliveryIntervalMinutes * 60000);
             targetMessage = "Get Today!";
+        } else {
+            let targetDate = new Date(now);
+            if (currentHour >= officeEnd) {
+                // Case 2: Order placed after office hours (e.g., 9PM to 11:59PM)
+                // console.log("Office End Hour:", officeEnd);
+                // console.log("Case 2: Order placed after office hours");
+                targetDate.setDate(targetDate.getDate() + 1); // Move to next day
+                targetMessage = "Get Tomorrow!";
+            } else {
+                // Case 3: Order placed before office hours (e.g., 12:00AM to 7:59AM)
+                // console.log("Case 3: Order placed before office hours");
+                targetMessage = "Get Today!";
+            }
+            // Set targetDate to the office start hour while preserving current minutes
+            targetDate.setHours(officeStart, now.getMinutes(), 0, 0);
+            // Then add the delivery interval (in hours)
+            targetTime = new Date(targetDate.getTime() + deliveryIntervalHour * 60 * 60000);
         }
 
-        // Define the updateCountdown function
+        // Define the updateCountdown function to update the countdown display every second
         function updateCountdown() {
             const now = new Date();
             const timeDiff = targetTime - now;
 
             if (timeDiff <= 0) {
                 $("#countdown").text("Time's up!");
+                clearInterval(countdownInterval);
                 return;
             }
 
             const hours = String(Math.floor(timeDiff / (1000 * 60 * 60))).padStart(2, "0");
             const minutes = String(Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, "0");
             const seconds = String(Math.floor((timeDiff % (1000 * 60)) / 1000)).padStart(2, "0");
-
             const countdownText = `${hours}:${minutes}:${seconds}`;
+
             $("#countdown").text(`${targetMessage} Order within ${countdownText} Hrs.`);
         }
 
@@ -1274,6 +1282,145 @@
     }
 
 
+/*
+    // Variable to store the interval ID of the countdown
+    let countdownInterval;
+function startCountdown(officeStart, officeEnd, deliveryIntervalHour) {
+    // Clear any existing countdown interval
+    if (countdownInterval) {
+        clearInterval(countdownInterval);
+    }
+
+    // Set the current time and extract current hour
+    const now = new Date();
+    const currentHour = now.getHours();
+    const deliveryIntervalMinutes = deliveryIntervalHour * 60;
+    let targetTime;
+    let targetMessage = "Get Today!";
+
+    if (currentHour >= officeStart && currentHour < officeEnd) {
+        // Case 1: Order placed during office hours (e.g., 8AM to 9PM)
+        console.log("Case 1: Order placed in office hours");
+        targetTime = new Date(now.getTime() + deliveryIntervalMinutes * 60000);
+        targetMessage = "Get Today!";
+    } else {
+        let targetDate = new Date(now);
+        if (currentHour >= officeEnd) {
+            // Case 2: Order placed after office hours (e.g., 9PM to 11:59PM)
+            console.log("Office End Hour:", officeEnd);
+            console.log("Case 2: Order placed after office hours");
+            targetDate.setDate(targetDate.getDate() + 1); // Move to next day
+            targetMessage = "Get Tomorrow!";
+        } else {
+            // Case 3: Order placed before office hours (e.g., 12:00AM to 7:59AM)
+            console.log("Case 3: Order placed before office hours");
+            targetMessage = "Get Today!";
+        }
+        // Set targetDate to the office start hour while preserving current minutes
+        targetDate.setHours(officeStart, now.getMinutes(), 0, 0);
+        // Then add the delivery interval (in hours)
+        targetTime = new Date(targetDate.getTime() + deliveryIntervalHour * 60 * 60000);
+    }
+
+    // Define the updateCountdown function to update the countdown display every second
+    function updateCountdown() {
+        const now = new Date();
+        const timeDiff = targetTime - now;
+
+        if (timeDiff <= 0) {
+            $("#countdown").text("Time's up!");
+            clearInterval(countdownInterval);
+            return;
+        }
+
+        const hours = String(Math.floor(timeDiff / (1000 * 60 * 60))).padStart(2, "0");
+        const minutes = String(Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, "0");
+        const seconds = String(Math.floor((timeDiff % (1000 * 60)) / 1000)).padStart(2, "0");
+        const countdownText = `${hours}:${minutes}:${seconds}`;
+
+        $("#countdown").text(`${targetMessage} Order within ${countdownText} Hrs.`);
+    }
+
+    // Run the updateCountdown function every second
+    countdownInterval = setInterval(updateCountdown, 1000);
+}
+*/
+
+/*
+ // Global variable for static testing: initial manual "current" time.
+ let staticNow = new Date('2025-02-21T22:00:00');
+
+// Global variable to store the interval ID of the countdown
+let countdownInterval;
+
+function startCountdown(officeStart, officeEnd, deliveryIntervalHour) {
+    // Clear any existing countdown interval
+    if (countdownInterval) {
+        clearInterval(countdownInterval);
+    }
+
+    // For static testing, use the manual time (staticNow) instead of live time.
+    // In a live scenario, you would use: const now = new Date();
+    // const now = staticNow;
+
+    const now = new Date();
+
+    const currentHour = now.getHours();
+    let targetTime;
+    let targetMessage;
+    const deliveryIntervalMinutes = 3 * 60; // Convert delivery interval to minutes
+
+    if (currentHour >= officeStart && currentHour < officeEnd) {
+        // Case 1: Order placed during office hours (8AM to 9PM)
+        targetTime = new Date(now.getTime() + deliveryIntervalMinutes * 60000);
+        targetMessage = "Get Today!";
+    } else {
+        let targetDate = new Date(now);
+        if (currentHour >= officeEnd) {
+            // Case 2: Order placed after office hours (9PM to 11:59PM)
+            console.log("Office End Hour:", officeEnd);
+            console.log("Case 2: Order placed after office hours");
+            targetDate.setDate(targetDate.getDate() + 1); // Move to next day
+            targetMessage = "Get Tomorrow!";
+        } else {
+            // Case 3: Order placed before office hours (12:00AM to 7:59AM)
+            console.log("Case 3: Order placed 12 baje");
+            targetMessage = "Get Today!";
+        }
+        // Set targetDate to the office start hour, preserving the minutes from the current time
+        targetDate.setHours(officeStart, now.getMinutes(), 0, 0);
+        // Then add the delivery interval (3 hours)
+        targetTime = new Date(targetDate.getTime() + 3 * 60 * 60000);
+    }
+
+    console.log("Static Current Time:", now);
+    console.log("Target Time:", targetTime);
+
+    // Define the updateCountdown function for static testing
+    function updateCountdown() {
+        // Increment the staticNow by one second on each update
+        staticNow = new Date(staticNow.getTime() + 1000);
+
+        // Use the manually updated staticNow for our countdown calculation
+        const timeDiff = targetTime - staticNow;
+
+        if (timeDiff <= 0) {
+            $("#countdown").text("Time's up!");
+            return;
+        }
+
+        const hours = String(Math.floor(timeDiff / (1000 * 60 * 60))).padStart(2, "0");
+        const minutes = String(Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, "0");
+        const seconds = String(Math.floor((timeDiff % (1000 * 60)) / 1000)).padStart(2, "0");
+
+        const countdownText = `${hours}:${minutes}:${seconds}`;
+        $("#countdown").text(`${targetMessage} Order within ${countdownText} Hrs.`);
+    }
+
+    // Run the updateCountdown function every second (using static time increments)
+    countdownInterval = setInterval(updateCountdown, 1000);
+}
+*/
 
     // $(document).on('click', '#check-pincode-btn', function() {
     //     var pincode = $('#pincode').val().trim();
