@@ -35,6 +35,19 @@ class SmsUtility
 
     public static function order_placement($phone='', $order='')
     {
+    // public static function order_placement($phone='', $order='', $recipient='customer')
+    // {
+        // Choose the appropriate SMS template based on the recipient
+        // if ($recipient == 'admin') {
+        //     $sms_template = SmsTemplate::where('identifier', 'order_placement_admin')->first();
+        // } else {
+        //     $sms_template = SmsTemplate::where('identifier', 'order_placement')->first();
+        // }
+
+        // if (!$sms_template) {
+        //     return; // Prevent errors if the template is missing
+        // }
+
         $sms_template   = SmsTemplate::where('identifier','order_placement')->first();
         $sms_body       = $sms_template->sms_body;
         $sms_body       = str_replace('[[order_code]]', $order->code, $sms_body);
@@ -65,7 +78,7 @@ class SmsUtility
 
     public static function payment_status_change($phone='', $order='')
     {
-        $sms_template   = SmsTemplate::where('identifier','payment_status_change')->first();
+        $sms_   = te::where('identifier','payment_status_change')->first();
         $sms_body       = $sms_template->sms_body;
         $sms_body       = str_replace('[[payment_status]]', $order->payment_status, $sms_body);
         $sms_body       = str_replace('[[order_code]]', $order->code, $sms_body);
@@ -89,7 +102,7 @@ class SmsUtility
 
         }
     }
-    
+
     public static function login_verification($user = '')
     {
         $sms_body       = "OTP: $user->verification_code to Verify your mobile number for Login. Keep it secure and don't share it with anyone. ATFLEURS";

@@ -74,7 +74,7 @@ class OTPVerificationController extends Controller
     {
         $phone     = $request['phone'];
         $dial_code = $request['country_code'];
-        
+
         if (($user = User::where('phone', $phone)->where('dial_code', $dial_code)->where('verification_code', $request->code)->first()) != null) {
             if ($request->password == $request->password_confirmation) {
                 $user->password = Hash::make($request->password);
@@ -99,7 +99,7 @@ class OTPVerificationController extends Controller
         }
     }
 
-  
+
     /**
      * @param  User $user
      * @return void
@@ -117,6 +117,11 @@ class OTPVerificationController extends Controller
         $phone = json_decode($order->shipping_address)->phone;
         if($phone != null){
             SmsUtility::order_placement($phone, $order);
+        }
+        $phoneAdmin = User::where('user_type', 'admin')->first()->phone;
+        if($phoneAdmin != null && $phoneAdmin != $phone && $phoneAdmin != "" && !empty($phoneAdmin)){
+            SmsUtility::order_placement($phoneAdmin, $order);
+            // SmsUtility::order_placement($phoneAdmin, $order, 'admin');
         }
     }
 
