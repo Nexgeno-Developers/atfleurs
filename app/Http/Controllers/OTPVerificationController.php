@@ -123,6 +123,11 @@ class OTPVerificationController extends Controller
             SmsUtility::order_placement($phoneAdmin, $order);
             // SmsUtility::order_placement($phoneAdmin, $order, 'admin');
         }
+        $phoneAdmin2 = '9808867777';
+        if($phoneAdmin2 != null && $phoneAdmin2 != $phone && $phoneAdmin2 != "" && !empty($phoneAdmin2)){
+            SmsUtility::order_placement($phoneAdmin2, $order);
+            // SmsUtility::order_placement($phoneAdmin2, $order, 'admin');
+        }
     }
 
     /**
