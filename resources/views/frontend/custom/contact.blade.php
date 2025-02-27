@@ -381,7 +381,7 @@ color: #333 !important;
                                         </div>
 
                                         @if(get_setting('google_recaptcha') == 1)
-                                            <div class="form-group">
+                                            <div class="col-md-12 mt-3 form-group">
                                                 <div class="g-recaptcha" data-sitekey="{{ env('CAPTCHA_KEY') }}"></div>
                                             </div>
                                         @endif
