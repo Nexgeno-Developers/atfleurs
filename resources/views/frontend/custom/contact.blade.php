@@ -421,8 +421,9 @@ color: #333 !important;
 
 @endsection
 @section('script2')
-    <!-- 🔹 Load Google reCAPTCHA -->
+    @if(get_setting('google_recaptcha') == 1)
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    @endif
 
     {{-- <script>
         document.addEventListener("DOMContentLoaded", function () {
