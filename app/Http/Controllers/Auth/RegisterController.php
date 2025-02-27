@@ -62,13 +62,40 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function validator(array $data)
+    /*protected function validator(array $data)
     {
         return Validator::make($data, [
             'name' => 'required|string|max:255',
             'password' => 'required|string|min:6|confirmed',
         ]);
+    }*/
+    // protected function validator(array $data)
+    // {
+    //     $rules = [
+    //         'name'     => 'required|string|max:255',
+    //         'password' => 'required|string|min:6|confirmed',
+    //     ];
+
+    //     if (isset($data['email']) && filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
+    //         $rules['email'] = 'required|string|email|max:255|unique:users';
+    //     } else {
+    //         $rules['phone'] = 'required|string|unique:users,phone';
+    //         $rules['country_code'] = 'required|string';
+    //     }
+
+    //     return Validator::make($data, $rules);
+    // }
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'name'         => 'required|string|max:255',
+            'email'        => 'required|string|email|max:255|unique:users',
+            'phone'        => 'required|string|unique:users,phone',
+            'country_code' => 'required|string',
+            'password'     => 'required|string|min:6|confirmed',
+        ]);
     }
+
 
     /**
      * Create a new user instance after a valid registration.
@@ -125,17 +152,13 @@ class RegisterController extends Controller
 
     public function register(Request $request)
     {
-
-        $rules = [
-            'name' => 'required',
-        ];
-
         // Conditionally apply the reCAPTCHA rule
         if (get_setting('google_recaptcha') == 1) {
             $rules['g-recaptcha-response'] = ['required', new Recaptcha];
+            $request->validate($rules);
         }
 
-        $request->validate($rules);
+        $this->validator($request->all())->validate();
 
         $ip = $request->ip();
         $key = 'registration-form:' . $ip;
@@ -178,7 +201,6 @@ class RegisterController extends Controller
             return back();
         }
 
-        $this->validator($request->all())->validate();
 
         $user = $this->create($request->all());
 
@@ -204,6 +226,48 @@ class RegisterController extends Controller
         return $this->registered($request, $user)
             ?: redirect($this->redirectPath());
     }
+
+    /* old code*/
+    /*
+    public function register(Request $request)
+    {
+        if (filter_var($request->email, FILTER_VALIDATE_EMAIL)) {
+            if(User::where('email', $request->email)->first() != null){
+                flash(translate('Email or Phone already exists.'));
+                return back();
+            }
+        }
+        elseif (User::where('phone', $request->phone)->where('dial_code', $request->country_code)->first() != null) {
+            flash(translate('Phone already exists.'));
+            return back();
+        }
+
+        $this->validator($request->all())->validate();
+
+        $user = $this->create($request->all());
+
+        $this->guard()->login($user);
+
+        if($user->email != null){
+            if(BusinessSetting::where('type', 'email_verification')->first()->value != 1){
+                $user->email_verified_at = date('Y-m-d H:m:s');
+                $user->save();
+                flash(translate('Registration successful.'))->success();
+            }
+            else {
+                try {
+                    $user->sendEmailVerificationNotification();
+                    flash(translate('Registration successful. Please verify your email.'))->success();
+                } catch (\Throwable $th) {
+                    $user->delete();
+                    flash(translate('Registration failed. Please try again later.'))->error();
+                }
+            }
+        }
+
+        return $this->registered($request, $user)
+            ?: redirect($this->redirectPath());
+    }*/
 
     protected function registered(Request $request, $user)
     {

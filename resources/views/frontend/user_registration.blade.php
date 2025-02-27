@@ -26,7 +26,21 @@
                                         </div>
 
                                         @if (addon_is_activated('otp_system'))
-                                            <div class="form-group phone-form-group mb-1">
+                                            <div class="form-group phone-form-group">
+                                                <input type="tel" id="phone-code" class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" value="{{ old('phone') }}" name="phone" autocomplete="off" pattern="[1-9]{1}[0-9]{9}" minlength="10" maxlength="10" placeholder="Enter 10 digit phone number" title="Enter 10 digit phone number">
+                                            </div>
+
+                                            <input type="hidden" name="country_code" value="">
+
+                                            <div class="form-group email-form-group">
+                                                <input type="email" class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}" value="{{ old('email') }}" placeholder="{{  translate('Email') }}" name="email"  autocomplete="off">
+                                                @if ($errors->has('email'))
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $errors->first('email') }}</strong>
+                                                    </span>
+                                                @endif
+                                            </div>
+                                            {{-- <div class="form-group phone-form-group mb-1">
                                                 <input type="tel" id="phone-code" class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" value="{{ old('phone') }}" name="phone" autocomplete="off" pattern="[1-9]{1}[0-9]{9}" minlength="10" maxlength="10" placeholder="Enter 10 digit phone number" title="Enter 10 digit phone number">
                                             </div>
 
@@ -43,7 +57,7 @@
 
                                             <div class="form-group text-right">
                                                 <button class="btn btn-link p-0 opacity-50 text-reset" type="button" onclick="toggleEmailPhone(this)">{{ translate('Use Email Instead') }}</button>
-                                            </div>
+                                            </div> --}}
                                         @else
                                             <div class="form-group">
                                                 <input type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" value="{{ old('email') }}" placeholder="{{  translate('Email') }}" name="email">
@@ -200,19 +214,19 @@
 
         });
 
-        function toggleEmailPhone(el){
-            if(isPhoneShown){
-                $('.phone-form-group').addClass('d-none');
-                $('.email-form-group').removeClass('d-none');
-                isPhoneShown = false;
-                $(el).html('{{ translate('Use Phone Instead') }}');
-            }
-            else{
-                $('.phone-form-group').removeClass('d-none');
-                $('.email-form-group').addClass('d-none');
-                isPhoneShown = true;
-                $(el).html('{{ translate('Use Email Instead') }}');
-            }
-        }
+        // function toggleEmailPhone(el){
+        //     if(isPhoneShown){
+        //         $('.phone-form-group').addClass('d-none');
+        //         $('.email-form-group').removeClass('d-none');
+        //         isPhoneShown = false;
+        //         $(el).html('{{ translate('Use Phone Instead') }}');
+        //     }
+        //     else{
+        //         $('.phone-form-group').removeClass('d-none');
+        //         $('.email-form-group').addClass('d-none');
+        //         isPhoneShown = true;
+        //         $(el).html('{{ translate('Use Email Instead') }}');
+        //     }
+        // }
     </script>
 @endsection
