@@ -90,7 +90,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name'         => 'required|string|max:255',
             'email'        => 'required|string|email|max:255|unique:users',
-            'phone'        => 'required|string|unique:users,phone',
+            'phone'        => 'required',
             'country_code' => 'required|string',
             'password'     => 'required|string|min:6|confirmed',
         ]);
@@ -105,28 +105,28 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        if (filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
+        // if (filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
+        //     $user = User::create([
+        //         'name' => $data['name'],
+        //         'email' => $data['email'],
+        //         'password' => Hash::make($data['password']),
+        //     ]);
+        // }
+
+        if (addon_is_activated('otp_system')){
             $user = User::create([
                 'name' => $data['name'],
-                'email' => $data['email'],
+                //'phone' => '+'.$data['country_code'].$data['phone'],
+                'phone'             => $data['phone'],
+                'dial_code'         => $data['country_code'],
                 'password' => Hash::make($data['password']),
+                'verification_code' => rand(100000, 999999)
             ]);
-        }
-        else {
-            if (addon_is_activated('otp_system')){
-                $user = User::create([
-                    'name' => $data['name'],
-                    //'phone' => '+'.$data['country_code'].$data['phone'],
-                    'phone'             => $data['phone'],
-                    'dial_code'         => $data['country_code'],
-                    'password' => Hash::make($data['password']),
-                    'verification_code' => rand(100000, 999999)
-                ]);
 
-                $otpController = new OTPVerificationController;
-                $otpController->send_code($user);
-            }
+            $otpController = new OTPVerificationController;
+            $otpController->send_code($user);
         }
+
 
         if(session('temp_user_id') != null){
             Cart::where('temp_user_id', session('temp_user_id'))
@@ -190,14 +190,25 @@ class RegisterController extends Controller
             return back();
         }
 
-        if (filter_var($request->email, FILTER_VALIDATE_EMAIL)) {
-            if(User::where('email', $request->email)->first() != null){
-                flash(translate('Email or Phone already exists.'));
-                return back();
-            }
+        $errors = [];
+
+        // Validate email format
+        if (!filter_var($request->email, FILTER_VALIDATE_EMAIL)) {
+            $errors[] = translate('Invalid email address.');
+        } elseif (User::where('email', $request->email)->exists()) {
+            $errors[] = translate('Email already exists.');
         }
-        elseif (User::where('phone', $request->phone)->where('dial_code', $request->country_code)->first() != null) {
-            flash(translate('Phone already exists.'));
+
+        if (User::where('phone', $request->phone)
+                 ->where('dial_code', $request->country_code)
+                 ->exists()) {
+            $errors[] = translate('Phone already exists.');
+        }
+
+        if (!empty($errors)) {
+            foreach ($errors as $error) {
+                flash($error);
+            }
             return back();
         }
 
