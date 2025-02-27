@@ -7,6 +7,7 @@ use Hash;
 use Mail;
 use Cache;
 use Cookie;
+use App\Models\Blog;
 use App\Models\Cart;
 use App\Models\Page;
 use App\Models\Shop;
@@ -16,6 +17,7 @@ use App\Models\Order;
 use App\Models\Coupon;
 use App\Models\Product;
 use App\Models\Category;
+use App\Rules\Recaptcha;
 use App\Models\FlashDeal;
 use App\Models\PickupPoint;
 use Illuminate\Support\Str;
@@ -23,12 +25,13 @@ use App\Models\ProductQuery;
 use Illuminate\Http\Request;
 use App\Models\AffiliateConfig;
 use App\Models\CustomerPackage;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Response;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Auth\Events\PasswordReset;
 use App\Mail\SecondEmailVerifyMailManager;
-use App\Models\Blog;
+use Illuminate\Support\Facades\RateLimiter;
 
 class HomeController extends Controller
 {
@@ -67,6 +70,47 @@ class HomeController extends Controller
 
     public function registration(Request $request)
     {
+        $rules = [
+            'name' => 'required',
+        ];
+
+        // Conditionally apply the reCAPTCHA rule
+        if (get_setting('google_recaptcha') == 1) {
+            $rules['g-recaptcha-response'] = ['required', new Recaptcha];
+        }
+
+        $request->validate($rules);
+
+        $ip = $request->ip();
+        $key = 'registration-form:' . $ip;
+        $permanentBlockKey = 'blocked-ip:' . $ip;
+
+        // 🚨 Check if IP is permanently blocked
+        if (Cache::has($permanentBlockKey)) {
+            Log::alert("🚨 Blocked IP tried accessing: $ip");
+            flash(translate('Your IP has been permanently blocked due to suspicious activity.'))->error();
+            return back();
+        }
+
+        // Increment the rate limiter counter for this request.
+        // Here, the counter will expire after 120 seconds.
+        RateLimiter::hit($key, 60);
+        $attempts = RateLimiter::attempts($key);
+
+        // 🔹 Check for permanent block threshold (e.g., 3 or more attempts)
+        if ($attempts >= 5) {
+            Cache::put($permanentBlockKey, true, now()->addDays(30)); // Block permanently for 30 days
+            Log::alert("🚨 Permanent block activated for IP: $ip");
+            flash(translate('Your IP has been permanently blocked.'))->error();
+            return back();
+        }
+        // 🔸 Check for temporary block threshold (e.g., exactly 2 attempts)
+        elseif ($attempts == 4) {
+            Log::warning("⚠️ Temporary block for repeated requests from IP: $ip");
+            flash(translate('Too many requests. Please try again later.'))->warning();
+            return back();
+        }
+
         if (Auth::check()) {
             return redirect()->route('home');
         }

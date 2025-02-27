@@ -134,7 +134,7 @@ Route::controller(HomeController::class)->group(function () {
     Route::get('/email_change/callback', 'email_change_callback')->name('email_change.callback');
     Route::post('/password/reset/email/submit', 'reset_password_with_code')->name('password.update');
     Route::get('/users/login', 'login')->name('user.login');
-    Route::get('/users/registration', 'registration')->name('user.registration');
+    Route::get('/users/registration', 'registration')->name('user.registration')->middleware('throttle:5,1');
     Route::post('/users/login/cart', 'cart_login')->name('cart.login.submit');
     // Route::get('/new-page', 'new_page')->name('new_page');
 

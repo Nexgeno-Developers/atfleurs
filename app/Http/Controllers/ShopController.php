@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Shop;
-use App\Models\User;
-use App\Models\BusinessSetting;
 use Auth;
 use Hash;
+use App\Models\Shop;
+use App\Models\User;
+use App\Rules\Recaptcha;
+use Illuminate\Http\Request;
+use App\Models\BusinessSetting;
+use Illuminate\Support\Facades\Validator;
 use App\Notifications\EmailVerificationNotification;
 
 class ShopController extends Controller
@@ -44,7 +46,7 @@ class ShopController extends Controller
 				flash(translate('This user already a seller'))->error();
 				return back();
 			}
-            
+
         } else {
             return view('frontend.seller_form');
         }
@@ -58,6 +60,18 @@ class ShopController extends Controller
      */
     public function store(Request $request)
     {
+        // Conditionally validate reCAPTCHA if enabled
+        if (get_setting('google_recaptcha') == 1) {
+            $recaptchaValidator = Validator::make($request->all(), [
+                'g-recaptcha-response' => ['required', new Recaptcha],
+            ]);
+
+            if ($recaptchaValidator->fails()) {
+                flash(translate('reCAPTCHA verification failed.'))->error();
+                return back()->withInput();
+            }
+        }
+
         $user = null;
         if (!Auth::check()) {
             if (User::where('email', $request->email)->first() != null) {

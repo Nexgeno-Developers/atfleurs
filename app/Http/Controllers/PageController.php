@@ -2,16 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Page;
-use App\Models\PageTranslation;
 use Mail;
+use App\Models\Page;
+use App\Rules\Recaptcha;
 use App\Mail\EmailManager;
+use Illuminate\Http\Request;
+use App\Models\PageTranslation;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\RateLimiter;
-use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Log;
 
 
 class PageController extends Controller
@@ -239,6 +240,7 @@ class PageController extends Controller
     }
 */
 
+/*
     public function sendEmail(Request $request)
     {
         $ip = $request->ip();
@@ -345,6 +347,94 @@ class PageController extends Controller
 
         return back();
     }
+    */
+
+    public function sendEmail(Request $request)
+    {
+        $ip = $request->ip();
+        $key = 'contact-form:' . $ip;
+        $permanentBlockKey = 'blocked-ip:' . $ip;
+
+        // 🚨 Check if IP is permanently blocked
+        if (Cache::has($permanentBlockKey)) {
+            Log::alert("🚨 Blocked IP tried accessing: $ip");
+            flash('Your IP has been permanently blocked due to suspicious activity.')->error();
+            return back();
+        }
+
+        // Define the basic rules
+        $rules = [
+            'name'    => 'required',
+            'email'   => 'required|email',
+            'phone'   => 'required',
+            'subject' => 'nullable',
+            'message' => 'nullable',
+        ];
+
+        // Conditionally apply reCAPTCHA validation rule if enabled
+        if (get_setting('google_recaptcha') == 1) {
+            $rules['g-recaptcha-response'] = ['required', new Recaptcha];
+        }
+
+        // Create the validator instance with the full rules array
+        $validator = Validator::make($request->all(), $rules);
+
+        if ($validator->fails()) {
+            $errorMessages = $validator->errors()->all();
+
+            // If the error is due to reCAPTCHA, apply rate limiting
+            if ($validator->errors()->has('g-recaptcha-response')) {
+                RateLimiter::hit($key, 60);
+                $attempts = RateLimiter::attempts($key);
+
+                if ($attempts >= 5) {
+                    Cache::put($permanentBlockKey, true, now()->addDays(30));
+                    Log::alert("🚨 Permanent block activated for IP: $ip");
+                    flash('Your IP has been permanently blocked.')->error();
+                    return back();
+                } elseif ($attempts == 4) {
+                    Log::warning("⚠️ Temporary block for repeated requests from IP: $ip");
+                    flash('Too many requests. Please try again later.')->warning();
+                    return back();
+                }
+            }
+
+            foreach ($errorMessages as $error) {
+                flash($error)->error();
+            }
+            return back()->withInput();
+        }
+
+        // ✅ reCAPTCHA passed (if enabled), reset rate limiter
+        RateLimiter::clear($key);
+
+        // Prepare email data
+        $emailData = [
+            'view'    => 'emails.formdata',
+            'from'    => $request->email,
+            'to'      => env('MAIL_FROM_ADDRESS'),
+            'subject' => $request->subject,
+            'content' => [
+                'name'    => $request->name,
+                'email'   => $request->email,
+                'phone'   => $request->phone,
+                'subject' => $request->subject,
+                'message' => $request->message,
+            ],
+        ];
+
+        // Send email
+        try {
+            Mail::to(env('MAIL_FROM_ADDRESS'))->send(new EmailManager($emailData));
+            flash('Your message has been sent successfully!')->success();
+        } catch (\Exception $e) {
+            flash('Failed to send email. Please try again later.')->error();
+            return back()->withInput();
+        }
+
+        return back();
+    }
+
 
     public function faqpage(){
         return view('frontend.custom.faq');

@@ -380,10 +380,11 @@ color: #333 !important;
                                                 rows="6"></textarea>
                                         </div>
 
-                                            <!-- 🔹 Google reCAPTCHA Checkbox -->
-                                            <div class="col-md-12 mt-3">
-                                                <div class="g-recaptcha" data-sitekey="{{ env('GOOGLE_RECAPTCHA_SITE_KEY') }}"></div>
+                                        @if(get_setting('google_recaptcha') == 1)
+                                            <div class="form-group">
+                                                <div class="g-recaptcha" data-sitekey="{{ env('CAPTCHA_KEY') }}"></div>
                                             </div>
+                                        @endif
 
                                         <div class="form-button col-md-12">
                                             <button type="submit"> Send Message
@@ -443,8 +444,9 @@ color: #333 !important;
                 var name = document.querySelector("[name='name']").value.trim();
                 var email = document.querySelector("[name='email']").value.trim();
                 var phone = document.querySelector("[name='phone']").value.trim();
+                @if(get_setting('google_recaptcha') == 1)
                 var recaptcha = document.querySelector(".g-recaptcha-response").value;
-
+                @endif
                 // Validate name
                 if (!name) {
                     errors.push("Name is required.");
@@ -476,12 +478,12 @@ color: #333 !important;
                 // } else if (phone.length < minPhoneLength || phone.length > maxPhoneLength) {
                 //     errors.push(`Enter a valid phone number (${minPhoneLength}-${maxPhoneLength} digits).`);
                 // }
-
+                @if(get_setting('google_recaptcha') == 1)
                 // Validate reCAPTCHA
                 if (!recaptcha) {
                     errors.push("Please verify that you are not a robot!");
                 }
-
+                @endif
                 // If errors exist, prevent form submission and show notifications
                 if (errors.length > 0) {
                     event.preventDefault();
