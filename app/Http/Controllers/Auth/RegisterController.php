@@ -132,7 +132,7 @@ class RegisterController extends Controller
             $user = User::create([
                 'name' => $data['name'],
                 //'phone' => '+'.$data['country_code'].$data['phone'],
-                // 'email' => $data['email'],
+                'email' => $data['email'],
                 'phone'             => $data['phone'],
                 'dial_code'         => $data['country_code'],
                 'password' => Hash::make($data['password']),
@@ -241,7 +241,7 @@ class RegisterController extends Controller
 
         $this->guard()->login($user);
 
-        if($user->email != null){
+        /*if($user->email != null){
             if(BusinessSetting::where('type', 'email_verification')->first()->value != 1){
                 $user->email_verified_at = date('Y-m-d H:m:s');
                 $user->save();
@@ -256,6 +256,29 @@ class RegisterController extends Controller
                     flash(translate('Registration failed. Please try again later.'))->error();
                 }
             }
+        }*/
+
+        if (!addon_is_activated('otp_system')) {
+            if ($user->email != null) {
+                if (BusinessSetting::where('type', 'email_verification')->first()->value != 1) {
+                    $user->email_verified_at = date('Y-m-d H:m:s');
+                    $user->save();
+                    flash(translate('Registration successful.'))->success();
+                } else {
+                    try {
+                        $user->sendEmailVerificationNotification();
+                        flash(translate('Registration successful. Please verify your email.'))->success();
+                    } catch (\Throwable $th) {
+                        $user->delete();
+                        flash(translate('Registration failed. Please try again later.'))->error();
+                    }
+                }
+            }
+        } else {
+            $user->email_verified_at = date('Y-m-d H:m:s');
+            $user->save();
+            // Trigger OTP verification for phone here
+            flash(translate('Registration successful. Please verify your phone number.'))->success();
         }
 
         return $this->registered($request, $user)
