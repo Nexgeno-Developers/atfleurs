@@ -85,15 +85,37 @@ class RegisterController extends Controller
 
     //     return Validator::make($data, $rules);
     // }
+    // protected function validator(array $data)
+    // {
+    //     return Validator::make($data, [
+    //         'name'         => 'required|string|max:255',
+    //         'email'        => 'required|string|email|max:255|unique:users',
+    //         'phone'        => 'required',
+    //         'country_code' => 'required|string',
+    //         'password'     => 'required|string|min:6|confirmed',
+    //     ]);
+    // }
     protected function validator(array $data)
     {
-        return Validator::make($data, [
-            'name'         => 'required|string|max:255',
-            'email'        => 'required|string|email|max:255|unique:users',
-            'phone'        => 'required',
-            'country_code' => 'required|string',
-            'password'     => 'required|string|min:6|confirmed',
-        ]);
+        $rules = [
+            'name'     => 'required|string|max:255',
+            'password' => 'required|string|min:6|confirmed',
+        ];
+
+        if (addon_is_activated('otp_system')) {
+            $rules['email'] = 'required|string|email|max:255|unique:users';
+            $rules['phone'] = 'required';
+            $rules['country_code'] = 'required|string';
+        }else{
+            if (isset($data['email']) && filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
+                $rules['email'] = 'required|string|email|max:255|unique:users';
+            } else {
+                $rules['phone'] = 'required';
+                $rules['country_code'] = 'required';
+            }
+        }
+
+        return Validator::make($data, $rules);
     }
 
 
@@ -223,10 +245,12 @@ class RegisterController extends Controller
             $errors[] = translate('Email already exists.');
         }
 
-        if (User::where('phone', $request->phone)
-                 ->where('dial_code', $request->country_code)
-                 ->exists()) {
-            $errors[] = translate('Phone already exists.');
+        if (addon_is_activated('otp_system')) {
+            if (User::where('phone', $request->phone)
+                    ->where('dial_code', $request->country_code)
+                    ->exists()) {
+                $errors[] = translate('Phone already exists.');
+            }
         }
 
         if (!empty($errors)) {
@@ -243,7 +267,7 @@ class RegisterController extends Controller
 
         /*if($user->email != null){
             if(BusinessSetting::where('type', 'email_verification')->first()->value != 1){
-                $user->email_verified_at = date('Y-m-d H:m:s');
+                $user->email_verified_at = date('Y-m-d H:i:s');
                 $user->save();
                 flash(translate('Registration successful.'))->success();
             }
@@ -258,10 +282,12 @@ class RegisterController extends Controller
             }
         }*/
 
-        if (!addon_is_activated('otp_system')) {
+        if (addon_is_activated('otp_system')) {
+            flash(translate('Registration successful. Please verify your phone number.'))->success();
+        } else {
             if ($user->email != null) {
                 if (BusinessSetting::where('type', 'email_verification')->first()->value != 1) {
-                    $user->email_verified_at = date('Y-m-d H:m:s');
+                    $user->email_verified_at = date('Y-m-d H:i:s');
                     $user->save();
                     flash(translate('Registration successful.'))->success();
                 } else {
@@ -274,11 +300,6 @@ class RegisterController extends Controller
                     }
                 }
             }
-        } else {
-            // $user->email_verified_at = date('Y-m-d H:m:s');
-            // $user->save();
-            // Trigger OTP verification for phone here
-            flash(translate('Registration successful. Please verify your phone number.'))->success();
         }
 
         return $this->registered($request, $user)
@@ -308,7 +329,7 @@ class RegisterController extends Controller
 
         if($user->email != null){
             if(BusinessSetting::where('type', 'email_verification')->first()->value != 1){
-                $user->email_verified_at = date('Y-m-d H:m:s');
+                $user->email_verified_at = date('Y-m-d H:i:s');
                 $user->save();
                 flash(translate('Registration successful.'))->success();
             }
@@ -329,6 +350,9 @@ class RegisterController extends Controller
 
     protected function registered(Request $request, $user)
     {
+        if (addon_is_activated('otp_system')) {
+            return redirect()->route('verification');
+        }
         if ($user->email == null) {
             return redirect()->route('verification');
         }elseif(session('link') != null){
