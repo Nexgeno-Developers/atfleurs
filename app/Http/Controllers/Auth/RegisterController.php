@@ -111,12 +111,28 @@ class RegisterController extends Controller
         //         'email' => $data['email'],
         //         'password' => Hash::make($data['password']),
         //     ]);
+        // }else{
+        //     if (addon_is_activated('otp_system')){
+        //         $user = User::create([
+        //             'name' => $data['name'],
+        //             //'phone' => '+'.$data['country_code'].$data['phone'],
+        //             'email' => $data['email'],
+        //             'phone'             => $data['phone'],
+        //             'dial_code'         => $data['country_code'],
+        //             'password' => Hash::make($data['password']),
+        //             'verification_code' => rand(100000, 999999)
+        //         ]);
+
+        //         $otpController = new OTPVerificationController;
+        //         $otpController->send_code($user);
+        //     }
         // }
 
         if (addon_is_activated('otp_system')){
             $user = User::create([
                 'name' => $data['name'],
                 //'phone' => '+'.$data['country_code'].$data['phone'],
+                'email' => $data['email'],
                 'phone'             => $data['phone'],
                 'dial_code'         => $data['country_code'],
                 'password' => Hash::make($data['password']),
@@ -125,6 +141,14 @@ class RegisterController extends Controller
 
             $otpController = new OTPVerificationController;
             $otpController->send_code($user);
+        }else{
+            if (filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
+                $user = User::create([
+                    'name' => $data['name'],
+                    'email' => $data['email'],
+                    'password' => Hash::make($data['password']),
+                ]);
+            }
         }
 
 
