@@ -275,8 +275,8 @@ class RegisterController extends Controller
                 }
             }
         } else {
-            $user->email_verified_at = date('Y-m-d H:m:s');
-            $user->save();
+            // $user->email_verified_at = date('Y-m-d H:m:s');
+            // $user->save();
             // Trigger OTP verification for phone here
             flash(translate('Registration successful. Please verify your phone number.'))->success();
         }
