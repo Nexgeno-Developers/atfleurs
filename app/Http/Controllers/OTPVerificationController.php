@@ -120,12 +120,12 @@ class OTPVerificationController extends Controller
         }
         $phoneAdmin = User::where('user_type', 'admin')->first()->phone;
         if($phoneAdmin != null && $phoneAdmin != $phone && $phoneAdmin != "" && !empty($phoneAdmin)){
-            SmsUtility::order_placement($phoneAdmin, $order);
+            SmsUtility::order_placement_admin($phoneAdmin, $order);
             // SmsUtility::order_placement($phoneAdmin, $order, 'admin');
         }
         $phoneAdmin2 = '7070070716';
         if($phoneAdmin2 != null && $phoneAdmin2 != $phone && $phoneAdmin2 != "" && !empty($phoneAdmin2)){
-            SmsUtility::order_placement($phoneAdmin2, $order);
+            SmsUtility::order_placement_admin($phoneAdmin2, $order);
             // SmsUtility::order_placement($phoneAdmin2, $order, 'admin');
         }
     }

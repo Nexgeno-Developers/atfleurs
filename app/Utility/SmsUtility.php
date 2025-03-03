@@ -58,6 +58,18 @@ class SmsUtility
 
         }
     }
+    public static function order_placement_admin($phone='', $order='')
+    {
+        $sms_template   = SmsTemplate::where('identifier','order_placement_admin')->first();
+        $sms_body       = $sms_template->sms_body;
+        $sms_body       = str_replace('[[order_code]]', $order->code, $sms_body);
+        $template_id    = $sms_template->template_id;
+        try {
+            sendSMS($phone, env('APP_NAME'), $sms_body, $template_id);
+        } catch (\Exception $e) {
+
+        }
+    }
 
     public static function delivery_status_change($phone='', $order)
     {
